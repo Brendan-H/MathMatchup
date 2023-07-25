@@ -1,13 +1,25 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:math_matchup/firebase_options.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:math_matchup/utils/themes.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
   runApp(const MyApp());
 }
 
@@ -17,54 +29,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final Themes _customTheme = Themes();
     return MaterialApp(
       title: 'MathMatchup',
-      theme: FlexThemeData.light(
-        colors: const FlexSchemeColor(
-          primary: Color(0xff1976d2),
-          primaryContainer: Color(0xff90caf9),
-          secondary: Color(0xff039be5),
-          secondaryContainer: Color(0xffcbe6ff),
-          tertiary: Color(0xff0277bd),
-          tertiaryContainer: Color(0xffbedcff),
-          appBarColor: Color(0xffcbe6ff),
-          error: Color(0xffb00020),
-        ),
-        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-        blendLevel: 7,
-        subThemesData: const FlexSubThemesData(
-          blendOnLevel: 10,
-          blendOnColors: false,
-          useTextTheme: true,
-          useM2StyleDividerInM3: true,
-        ),
-        visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
-      ),
-      darkTheme: FlexThemeData.dark(
-        colors: const FlexSchemeColor(
-          primary: Color(0xff90caf9),
-          primaryContainer: Color(0xff0d47a1),
-          secondary: Color(0xff81d4fa),
-          secondaryContainer: Color(0xff004b73),
-          tertiary: Color(0xffe1f5fe),
-          tertiaryContainer: Color(0xff1a567d),
-          appBarColor: Color(0xff004b73),
-          error: Color(0xffcf6679),
-        ),
-        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-        blendLevel: 13,
-        subThemesData: const FlexSubThemesData(
-          blendOnLevel: 20,
-          useTextTheme: true,
-          useM2StyleDividerInM3: true,
-        ),
-        visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
-      ),
+      theme: _customTheme.lightTheme,
+      darkTheme: _customTheme.darkTheme,
       home: const MyHomePage(title: 'MathMatchup'),
       debugShowCheckedModeBanner: false,
-
+      builder: (context, child) => ResponsiveBreakpoints.builder(
+        child: child!,
+        breakpoints: [
+          const Breakpoint(start: 0, end: 450, name: MOBILE),
+          const Breakpoint(start: 451, end: 800, name: TABLET),
+          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+        ],
+      ),
     );
   }
 }
@@ -72,14 +52,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -92,11 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }

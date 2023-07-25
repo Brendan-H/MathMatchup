@@ -4,7 +4,7 @@ Players join the game and are separated into teams. The only catch is that they 
 They then have to answer questions to get points, which get added together with their partner's points at the end.
 Teammates are revealed and the partnership with the most points wins!
 
-# Running MathMatchup
+## Running MathMatchup
 
 1. Run ```flutter pub get```
 2. then ```flutter run```
