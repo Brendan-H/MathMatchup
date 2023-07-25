@@ -1,10 +1,15 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_matchup/src/utils/Router.dart';
+import 'package:math_matchup/src/utils/theme_provider.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:math_matchup/src/common_widgets/drawer.dart';
+
+import '../generated/l10n.dart';
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
@@ -15,12 +20,24 @@ class MyApp extends ConsumerWidget {
     final goRouter = ref.watch(goRouterProvider);
     final lightTheme = ref.watch(lightThemeProvider);
     final darkTheme = ref.watch(darkThemeProvider);
+    final themeModeState = ref.watch(themesProvider);
 
     return MaterialApp.router(
       title: 'MathMatchup',
       theme: lightTheme,
       darkTheme: darkTheme,
       routerConfig: goRouter,
+      themeMode: themeModeState,
+      supportedLocales: const [
+        Locale('en', 'US'), // English
+        // const Locale('es', 'ES'), // Spanish
+      ],
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        // Add other localization delegates as needed
+      ],
       debugShowCheckedModeBanner: false,
       builder: (context, child) => ResponsiveBreakpoints.builder(
         child: child!,

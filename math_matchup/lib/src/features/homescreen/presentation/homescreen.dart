@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup/src/common_widgets/textfield.dart';
+import 'package:math_matchup/src/common_widgets/drawer.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _gamecodecontroller = TextEditingController();
-    final _namecontroller = TextEditingController();
+    final gameCodeController = TextEditingController();
+    final nameController = TextEditingController();
 
     return Scaffold(
+      drawer: CustomDrawer(),
       appBar: AppBar(
-        title: Text("Welcome to MathMatchup"),
+        toolbarHeight: MediaQuery.of(context).size.height * .1,
+        title: const Text("Welcome to MathMatchup"),
         centerTitle: true,
         elevation: 2,
       ),
       body:  SafeArea(
-        minimum: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        minimum: const EdgeInsets.fromLTRB(5, 5, 5, 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
               child: Text("Join Game",
               style: TextStyle(
@@ -31,21 +33,21 @@ class HomeScreen extends ConsumerWidget {
               ),
             ),
         TextField(
-          controller: _gamecodecontroller,
+          controller: gameCodeController,
           keyboardType: TextInputType.text,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: "Enter Gamecode",
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
           ),
         ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
               child: TextField(
-                controller: _namecontroller,
+                controller: nameController,
                 keyboardType: TextInputType.text,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Enter Name",
-                  border: const OutlineInputBorder(),
+                  border: OutlineInputBorder(),
                 ),
               ),
             ),
@@ -56,7 +58,7 @@ class HomeScreen extends ConsumerWidget {
                   onPressed: () async {
 
                   },
-                  child: Text("Join Game")
+                  child: const Text("Join Game")
               ),
             )
           ],

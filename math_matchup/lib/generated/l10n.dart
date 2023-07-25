@@ -49,6 +49,16 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Change Theme Mode`
+  String get changeThemeMode {
+    return Intl.message(
+      'Change Theme Mode',
+      name: 'changeThemeMode',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
