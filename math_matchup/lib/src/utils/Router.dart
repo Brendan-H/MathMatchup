@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/main.dart';
+import 'package:math_matchup/src/features/homescreen/presentation/homescreen.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,7 +14,7 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
         GoRoute(
             path: '/',
             pageBuilder: (context, state) {
-              return const MaterialPage(child: MyHomePage());
+              return const MaterialPage(child: HomeScreen());
             }
         ),
       ],
