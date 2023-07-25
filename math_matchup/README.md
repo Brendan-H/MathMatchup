@@ -1,16 +1,10 @@
-# math_matchup
+# MathMatchup
 
-A new Flutter project.
+Players join the game and are separated into teams. The only catch is that they don't know their teammate.
+They then have to answer questions to get points, which get added together with their partner's points at the end.
+Teammates are revealed and the partnership with the most points wins!
 
-## Getting Started
+# Running MathMatchup
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Run ```flutter pub get```
+2. then ```flutter run```
