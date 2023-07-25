@@ -130,7 +130,7 @@ flutter_native_splash:
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file and should be sized for 4x pixel density.
   #UNCOMMENT THIS WITH A LOGO
-  #image: assets/restaurantlistlogo.png
+  image: assets/mathmatchuplogo.png
 
   # The branding property allows you to specify an image used as branding in the splash screen.
   # It must be a png file. It is supported for Android, iOS and the Web.  For Android 12,
@@ -253,17 +253,17 @@ flutter_native_splash:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/restaurantlistlogo.png"
+  image_path: "assets/mathmatchuplogo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "assets/restaurantlistlogo.png"
+    image_path: "assets/mathmatchuplogo.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
   windows:
     generate: true
-    image_path: "assets/restaurantlistlogo.png"
+    image_path: "assets/mathmatchuplogo.png"
     icon_size: 48 # min:48, max:256, default: 48
   macos:
     generate: true
-    image_path: "assets/restaurantlistlogo.png"
+    image_path: "assets/mathmatchuplogo.png"
