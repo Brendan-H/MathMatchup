@@ -3,24 +3,32 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:math_matchup/firebase_options.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:math_matchup/utils/themes.dart';
+import 'package:math_matchup/utils/Router.dart' as router;
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
+void main() async {
+  runApp(
+    ProviderScope(
+      child: MaterialApp.router(
+        title: 'MathMatchup',
+        routerConfig: router.Router.returnRouter(),
+        debugShowCheckedModeBanner: false,
+        builder: (context, child) => ResponsiveBreakpoints.builder(
+          child: child!,
+          breakpoints: [
+            const Breakpoint(start: 0, end: 450, name: MOBILE),
+            const Breakpoint(start: 451, end: 800, name: TABLET),
+            const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+            const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+          ],
+        ),
+      ),
+    ),
   );
-  FlutterError.onError = (errorDetails) {
-    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-  };
-  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,11 +38,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Themes _customTheme = Themes();
+
     return MaterialApp(
       title: 'MathMatchup',
       theme: _customTheme.lightTheme,
       darkTheme: _customTheme.darkTheme,
-      home: const MyHomePage(title: 'MathMatchup'),
       debugShowCheckedModeBanner: false,
       builder: (context, child) => ResponsiveBreakpoints.builder(
         child: child!,
@@ -50,10 +58,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key});
 
 
-  final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -84,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text("MathMatchup", style: TextStyle(color: Colors.black),),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
