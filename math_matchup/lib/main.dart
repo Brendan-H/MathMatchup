@@ -6,55 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/firebase_options.dart';
+import 'package:math_matchup/src/app.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:math_matchup/utils/themes.dart';
-import 'package:math_matchup/utils/Router.dart' as router;
+import 'package:math_matchup/src/utils/themes.dart';
+import 'package:math_matchup/src/utils/Router.dart' as router;
 
 void main() async {
   runApp(
     ProviderScope(
-      child: MaterialApp.router(
-        title: 'MathMatchup',
-        routerConfig: router.Router.returnRouter(),
-        debugShowCheckedModeBanner: false,
-        builder: (context, child) => ResponsiveBreakpoints.builder(
-          child: child!,
-          breakpoints: [
-            const Breakpoint(start: 0, end: 450, name: MOBILE),
-            const Breakpoint(start: 451, end: 800, name: TABLET),
-            const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-            const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-          ],
-        ),
-      ),
+      child: MyApp()
     ),
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    final Themes _customTheme = Themes();
-
-    return MaterialApp(
-      title: 'MathMatchup',
-      theme: _customTheme.lightTheme,
-      darkTheme: _customTheme.darkTheme,
-      debugShowCheckedModeBanner: false,
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
-      ),
-    );
-  }
 }
 
 class MyHomePage extends StatefulWidget {

@@ -1,8 +1,12 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class Themes {
-  ThemeData lightTheme = FlexThemeData.light(
+part 'themes.g.dart';
+
+@riverpod
+ThemeData lightTheme(LightThemeRef lightThemeRef) {
+  return FlexThemeData.light(
     colors: const FlexSchemeColor(
       primary: Color(0xff1976d2),
       primaryContainer: Color(0xff90caf9),
@@ -24,7 +28,11 @@ class Themes {
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
   );
-  ThemeData darkTheme = FlexThemeData.dark(
+}
+
+@riverpod
+ThemeData darkTheme(DarkThemeRef darkThemeRef) {
+  return FlexThemeData.dark(
     colors: const FlexSchemeColor(
       primary: Color(0xff90caf9),
       primaryContainer: Color(0xff0d47a1),
