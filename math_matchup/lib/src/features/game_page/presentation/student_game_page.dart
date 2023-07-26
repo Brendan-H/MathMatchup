@@ -35,7 +35,7 @@ class GamePage extends ConsumerWidget {
                 ),
               );
             },
-            loading: () => Expanded(child: Center(child: CircularProgressIndicator())),
+            loading: () => const Expanded(child: Center(child: CircularProgressIndicator())),
             error: (error, stackTrace) => Text('Error: $error'),
           ),
         ],

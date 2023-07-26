@@ -23,7 +23,7 @@ void joinGame(String gamecode, String name, BuildContext context) async {
 
     if (response.statusCode == 200) {
       print("game joined");
-      context.go('/game_page/$gamecode');
+      context.go('/student_game_page/$gamecode');
     } else {
       // Handle other status codes if needed
       showAlertDialog(

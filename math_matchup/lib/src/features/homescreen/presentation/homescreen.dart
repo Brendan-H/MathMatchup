@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_matchup/src/common_widgets/drawer.dart';
+import 'package:math_matchup/src/features/homescreen/repository/create_game.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
+import 'package:math_matchup/src/utils/themes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../generated/l10n.dart';
@@ -20,6 +22,8 @@ final gameCodeProvider = StateNotifierProvider<GameCodeNotifier, String>((ref) {
   return GameCodeNotifier();
 });
 //TODO add widget tests
+
+
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -87,7 +91,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ref.read(lightThemeProvider);
+
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SizedBox(
+        width: MediaQuery.of(context).size.width * .8,
+        child: FloatingActionButton.large(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(60),
+          ),
+          backgroundColor: theme.primaryColor,
+          child: const Text("Create Game",
+            style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+
+            ),
+          ),
+            onPressed: () async {
+            createGame(context);
+            }
+        ),
+      ),
       drawer: CustomDrawer(),
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.height * .1,
@@ -145,6 +171,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * .1,
               child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(60),
+                    ),
+                  ),
+                  backgroundColor: MaterialStateProperty.all<Color>(theme.primaryColor)),
                 onPressed: () async {
                   String? gameCodeError = _validateGameCode(gameCodeController.text);
                   String? nameError = _validateName(nameController.text);
@@ -153,7 +186,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   print("Code:" + ref.read(gameCodeProvider.notifier).state);
                   _onJoinGamePressed(gameCodeController.text, nameController.text, context);
                 },
-                child: Text(S.of(context).joinGame),
+                child: Text(S.of(context).joinGame, style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),),
               ),
             )
           ],
