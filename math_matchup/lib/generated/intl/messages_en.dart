@@ -23,6 +23,11 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "changeThemeMode":
-            MessageLookupByLibrary.simpleMessage("Change Theme Mode")
+            MessageLookupByLibrary.simpleMessage("Toggle Dark Mode"),
+        "enterGamecode": MessageLookupByLibrary.simpleMessage("Enter Gamecode"),
+        "enterName": MessageLookupByLibrary.simpleMessage("Enter Name"),
+        "joinGame": MessageLookupByLibrary.simpleMessage("Join Game"),
+        "welcomeToMathmatchup":
+            MessageLookupByLibrary.simpleMessage("Welcome to MathMatchup")
       };
 }

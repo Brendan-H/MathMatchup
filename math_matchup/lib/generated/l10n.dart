@@ -50,11 +50,51 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Change Theme Mode`
+  /// `Toggle Dark Mode`
   String get changeThemeMode {
     return Intl.message(
-      'Change Theme Mode',
+      'Toggle Dark Mode',
       name: 'changeThemeMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to MathMatchup`
+  String get welcomeToMathmatchup {
+    return Intl.message(
+      'Welcome to MathMatchup',
+      name: 'welcomeToMathmatchup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join Game`
+  String get joinGame {
+    return Intl.message(
+      'Join Game',
+      name: 'joinGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Gamecode`
+  String get enterGamecode {
+    return Intl.message(
+      'Enter Gamecode',
+      name: 'enterGamecode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Name`
+  String get enterName {
+    return Intl.message(
+      'Enter Name',
+      name: 'enterName',
       desc: '',
       args: [],
     );

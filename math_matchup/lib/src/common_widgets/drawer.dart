@@ -25,16 +25,17 @@ class CustomDrawer extends ConsumerWidget {
     return Drawer(
       child: Column(
         children: [
-          DrawerHeader(
+          const DrawerHeader(
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
+             // color: Theme.of(context).canvasColor,
             ),
-            child: const Center(
+            child: Center(
               child: Text(
                 'MathMatchup',
                 style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
+                  fontSize: 40,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold
                 ),
               ),
             ),

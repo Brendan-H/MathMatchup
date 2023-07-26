@@ -1,3 +1,7 @@
 {
-  "changeThemeMode": "Change Theme Mode"
+  "changeThemeMode": "Toggle Dark Mode",
+  "welcomeToMathmatchup": "Welcome to MathMatchup",
+  "joinGame": "Join Game",
+  "enterGamecode": "Enter Gamecode",
+  "enterName": "Enter Name"
 }

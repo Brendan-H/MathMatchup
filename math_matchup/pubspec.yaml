@@ -47,6 +47,7 @@ dependencies:
   shared_preferences: ^2.2.0
   flutter_localizations:
     sdk: flutter
+  dio: ^5.3.0
 
 dev_dependencies:
   flutter_native_splash: ^2.3.1
