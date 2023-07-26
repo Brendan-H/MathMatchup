@@ -2,11 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_matchup/src/common_widgets/drawer.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../generated/l10n.dart';
 import '../repository/join_game.dart';
 
 
+class GameCodeNotifier extends StateNotifier<String> {
+  GameCodeNotifier() : super('');
+
+  void setGameCode(String code) {
+    state = code;
+  }
+}
+
+final gameCodeProvider = StateNotifierProvider<GameCodeNotifier, String>((ref) {
+  return GameCodeNotifier();
+});
+//TODO add widget tests
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -17,6 +30,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   late final TextEditingController gameCodeController;
   late final TextEditingController nameController;
+  final gameCodeProvider = StateProvider<String>((ref) => '');
   String? _gameCodeError;
   String? _nameError;
   String? _validateGameCode(String value) {
@@ -134,6 +148,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 onPressed: () async {
                   String? gameCodeError = _validateGameCode(gameCodeController.text);
                   String? nameError = _validateName(nameController.text);
+
+                  ref.read(gameCodeProvider.notifier).state = gameCodeController.text;
+                  print("Code:" + ref.read(gameCodeProvider.notifier).state);
                   _onJoinGamePressed(gameCodeController.text, nameController.text, context);
                 },
                 child: Text(S.of(context).joinGame),
