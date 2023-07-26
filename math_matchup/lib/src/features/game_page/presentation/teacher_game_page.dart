@@ -2,17 +2,60 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup/src/features/game_page/repository/start_game.dart';
 
-class TeacherGamePage extends ConsumerStatefulWidget {
-  const TeacherGamePage({super.key});
+import '../../../../generated/l10n.dart';
+import '../../../common_widgets/drawer.dart';
+import '../../../utils/themes.dart';
+import '../repository/get_names.dart';
+
+class TeacherGamePage extends ConsumerWidget {
+  final String gameCode;
+  const TeacherGamePage({Key? key, required this.gameCode}) : super(key: key);
 
   @override
-  ConsumerState createState() => _TeacherGamePageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.read(lightThemeProvider);
+    final playersAsyncValue = ref.watch(playersStreamProvider(gameCode));
+    return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SizedBox(
+        width: MediaQuery.of(context).size.width * .8,
+        child: FloatingActionButton.large(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(60),
+            ),
+            backgroundColor: theme.primaryColor,
+            child: Text(S.of(context).startGame,
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
 
-class _TeacherGamePageState extends ConsumerState<TeacherGamePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+              ),
+            ),
+            onPressed: () async {
+              startGame(gameCode);
+            }
+        ),
+      ),
+      drawer: CustomDrawer(),
+      appBar: AppBar(
+        title: Text(gameCode),
+      ),
+      body: playersAsyncValue.when(
+        data: (players) {
+          return ListView.builder(
+            itemCount: players.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(players[index]),
+              );
+            },
+          );
+        },
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) => Text('Error: $error'),
+      ),
+    );
   }
 }

@@ -63,6 +63,12 @@ public class GameController {
         }
     }
 
+    @GetMapping("/{gameCode}/status")
+    public ResponseEntity<GameStatus> getGameStatusByCode(@PathVariable String gameCode) {
+        Game game = gameService.getGameByCode(gameCode);
+        return ResponseEntity.ok(game.getStatus());
+    }
+
     @PostMapping("/finish")
     public ResponseEntity<String> finishGameByCode(@RequestParam String gameCode) {
         Long gameId = gameService.getGameIdFromCode(gameCode);

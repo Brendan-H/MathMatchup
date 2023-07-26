@@ -2,7 +2,6 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup/src/features/homescreen/presentation/homescreen.dart';
 import 'package:math_matchup/src/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

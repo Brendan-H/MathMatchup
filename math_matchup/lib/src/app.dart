@@ -7,7 +7,6 @@ import 'package:math_matchup/src/utils/Router.dart';
 import 'package:math_matchup/src/utils/theme_provider.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:math_matchup/src/common_widgets/drawer.dart';
 
 import '../generated/l10n.dart';
 

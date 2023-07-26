@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterGamecode": MessageLookupByLibrary.simpleMessage("Enter Gamecode"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter Name"),
         "joinGame": MessageLookupByLibrary.simpleMessage("Join Game"),
+        "startGame": MessageLookupByLibrary.simpleMessage("Start Game"),
         "welcomeToMathmatchup":
             MessageLookupByLibrary.simpleMessage("Welcome to MathMatchup")
       };

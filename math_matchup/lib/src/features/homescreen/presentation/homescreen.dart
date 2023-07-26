@@ -4,7 +4,6 @@ import 'package:math_matchup/src/common_widgets/drawer.dart';
 import 'package:math_matchup/src/features/homescreen/repository/create_game.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/themes.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../generated/l10n.dart';
 import '../repository/join_game.dart';
@@ -167,7 +166,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * .1,
               child: ElevatedButton(
@@ -183,10 +182,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   String? nameError = _validateName(nameController.text);
 
                   ref.read(gameCodeProvider.notifier).state = gameCodeController.text;
-                  print("Code:" + ref.read(gameCodeProvider.notifier).state);
+                  print("Code:${ref.read(gameCodeProvider.notifier).state}");
                   _onJoinGamePressed(gameCodeController.text, nameController.text, context);
                 },
-                child: Text(S.of(context).joinGame, style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),),
+                child: Text(S.of(context).joinGame, style: const TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),),
               ),
             )
           ],
