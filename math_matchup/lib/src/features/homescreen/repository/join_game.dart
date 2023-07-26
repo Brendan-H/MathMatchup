@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/constants.dart';
 
@@ -11,7 +12,7 @@ void joinGame(String gamecode, String name, BuildContext context) async {
 
   try {
     final response = await dio.post(
-      "$backendurl/players/create}",
+      "$backendurl/players/create",
       queryParameters: {
         "gameCode": gamecode,
       },
@@ -21,7 +22,8 @@ void joinGame(String gamecode, String name, BuildContext context) async {
     );
 
     if (response.statusCode == 200) {
-      return;
+      print("game joined");
+      context.go('/game_page');
     } else {
       // Handle other status codes if needed
       showAlertDialog(

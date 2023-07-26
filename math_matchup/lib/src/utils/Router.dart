@@ -17,6 +17,13 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
               return const MaterialPage(child: HomeScreen());
             }
         ),
+        GoRoute(
+            path: '/game_page',
+            pageBuilder: (context, state) {
+              //TODO add game page
+              return const MaterialPage(child: HomeScreen());
+            }
+        ),
       ],
   );
 }
