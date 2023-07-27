@@ -1,13 +1,13 @@
 version: '3.1'
 services:
   API:
-    image: 'instructionarsenal-docker.jar'
+    image: 'mathmatchup-docker.jar'
     ports:
       - "8080:8080"
     depends_on:
       - PostgreSQL
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/instructionarsenal
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/mathmatchup
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
@@ -19,7 +19,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=instructionarsenal
+      - POSTGRES_DB=mathmatchup
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s

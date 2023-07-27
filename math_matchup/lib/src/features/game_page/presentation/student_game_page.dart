@@ -34,6 +34,7 @@ class GameStatusNotifier extends StateNotifier<GameStatus> {
       final gameStatus = parseGameStatus(gameStatusString);
       print("Game Status: $gameStatus");
       state = gameStatus;
+      await Future.delayed(Duration(seconds: 2));
     } catch (e) {
       print("Error fetching game status: $e");
       throw e;
@@ -119,20 +120,6 @@ class _GamePageState extends ConsumerState<GamePage> {
           ),
         ],
       ),
-      // floatingActionButton: gameStatus == GameStatus.ACTIVE
-      //     ? FloatingActionButton(
-      //   onPressed: () {
-      //     // Navigate to the new page when the game status is "ACTIVE"
-      //     context.go('/game/${widget.gameCode}/play');
-      //   },
-      //   child: Icon(Icons.play_arrow),
-      // )
-      //     : FloatingActionButton(
-      //   onPressed: () {
-      //     ref.refresh(gameStatusProvider); // Retry fetching the game status.
-      //   },
-      //   child: Icon(Icons.play_arrow),
-      // ),
     );
   }
 }

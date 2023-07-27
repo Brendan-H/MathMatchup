@@ -4,5 +4,6 @@
   "joinGame": "Join Game",
   "enterGamecode": "Enter Gamecode",
   "enterName": "Enter Name",
-  "startGame": "Start Game"
+  "startGame": "Start Game",
+  "createGame": "Create Game"
 }

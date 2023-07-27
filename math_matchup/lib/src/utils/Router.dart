@@ -5,6 +5,7 @@ import 'package:math_matchup/src/features/homescreen/presentation/homescreen.dar
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../features/game_page/presentation/teacher_game_page.dart';
+import '../features/question_page/presentation/questions_page.dart';
 
 part 'Router.g.dart';
 
@@ -19,20 +20,29 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
             }
         ),
         GoRoute(
-          path: '/student_game_page/:gamecode', // Corrected the path parameter syntax
+          path: '/student_game_page/:gamecode',
           pageBuilder: (context, state) {
             final gameCode = state.pathParameters['gamecode'];
             return MaterialPage(
-              child: GamePage(gameCode: gameCode ?? "123456"), // Use the gameCode directly
+              child: GamePage(gameCode: gameCode ?? "123456"),
             );
           },
         ),
         GoRoute(
-          path: '/teacher_game_page/:gamecode', // Corrected the path parameter syntax
+          path: '/teacher_game_page/:gamecode',
           pageBuilder: (context, state) {
             final gameCode = state.pathParameters['gamecode'];
             return MaterialPage(
-              child: TeacherGamePage(gameCode: gameCode ?? "123456"), // Use the gameCode directly
+              child: TeacherGamePage(gameCode: gameCode ?? "123456"),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/game/:gamecode/play',
+          pageBuilder: (context, state) {
+            final gameCode = state.pathParameters['gamecode'];
+            return MaterialPage(
+              child: QuestionsPage(gameCode: gameCode ?? "123456"),
             );
           },
         ),

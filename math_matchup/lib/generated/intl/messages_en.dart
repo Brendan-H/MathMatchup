@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "changeThemeMode":
             MessageLookupByLibrary.simpleMessage("Toggle Dark Mode"),
+        "createGame": MessageLookupByLibrary.simpleMessage("Create Game"),
         "enterGamecode": MessageLookupByLibrary.simpleMessage("Enter Gamecode"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter Name"),
         "joinGame": MessageLookupByLibrary.simpleMessage("Join Game"),

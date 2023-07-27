@@ -101,7 +101,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             borderRadius: BorderRadius.circular(60),
           ),
           backgroundColor: theme.primaryColor,
-          child: const Text("Create Game",
+          child: Text(S.of(context).createGame,
             style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
