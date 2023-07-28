@@ -1,10 +1,15 @@
 
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../presentation/questions_page.dart';
 
 import '../data/addition_question.dart';
 
 final questionsProvider = StateNotifierProvider<QuestionsNotifier, List<AdditionQuestion>>((ref) => QuestionsNotifier());
+final playerPointsProvider = StateProvider<int>((ref) => 0);
+
+final currentQuestionIndexProvider = StateProvider<int>((ref) => 0);
 
 final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
   final questions = ref.watch(questionsProvider);
@@ -16,7 +21,6 @@ final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
   );
 });
 
-final currentQuestionIndexProvider = Provider<int>((ref) => ref.watch(questionsProvider.notifier).currentQuestionIndex);
 
 final remainingTimeProvider = Provider<int>((ref) => 300);
 class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
@@ -27,18 +31,25 @@ class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
     state = questions;
   }
 
-  int currentQuestionIndex = 0;
 
-  AdditionQuestion get currentQuestion =>
-      state.isNotEmpty ? state[currentQuestionIndex] : AdditionQuestion(
-        question: 'No questions available',
-        answerChoices: [],
-        correctAnswer: '',
-      );
+  final getCurrentQuestion = Provider<AdditionQuestion>((ref) {
+    final questions = ref.watch(questionsProvider);
+    final currentQuestionIndex = ref.watch(currentQuestionIndexProvider);
+    return questions.isNotEmpty ? questions[currentQuestionIndex] : AdditionQuestion(
+      question: 'No questions available',
+      answerChoices: ['An error Occurred', 'hi', 'hello', 'hola'],
+      correctAnswer: '',
+    );
+  });
 
-  void checkAnswer(String selectedAnswer) {
+  void incrementPlayerPoints(int amount, WidgetRef ref) {
+       ref.read(playerPointsProvider.notifier).state += amount;
+  }
+
+  void checkAnswer(String selectedAnswer, WidgetRef ref, AdditionQuestion currentQuestion) {
+    var currentQuestionIndex = ref.read(currentQuestionIndexProvider);
     if (currentQuestion.correctAnswer == selectedAnswer) {
-      // Handle correct answer
+      incrementPlayerPoints(50, ref);
       final correctAnswerIndex = currentQuestion.answerChoices.indexOf(currentQuestion.correctAnswer);
       state[currentQuestionIndex].answerChoices[correctAnswerIndex] = 'Correct!';
     } else {

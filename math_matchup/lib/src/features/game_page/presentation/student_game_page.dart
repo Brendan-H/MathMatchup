@@ -4,11 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:math_matchup/src/common_widgets/drawer.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../utils/constants.dart';
-import '../../homescreen/presentation/homescreen.dart';
 import '../repository/get_names.dart';
 
 
@@ -34,10 +31,10 @@ class GameStatusNotifier extends StateNotifier<GameStatus> {
       final gameStatus = parseGameStatus(gameStatusString);
       print("Game Status: $gameStatus");
       state = gameStatus;
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
     } catch (e) {
       print("Error fetching game status: $e");
-      throw e;
+      rethrow;
     }
   }
 
@@ -111,7 +108,7 @@ class _GamePageState extends ConsumerState<GamePage> {
                 ),
               );
             },
-            loading: () => Expanded(
+            loading: () => const Expanded(
               child: Center(
                 child: CircularProgressIndicator(),
               ),

@@ -22,7 +22,7 @@ void main() async {
          observers: [
            Logger(),
          ],
-      child: MyApp()
+      child: const MyApp()
     ),
   );
 }

@@ -102,7 +102,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
           backgroundColor: theme.primaryColor,
           child: Text(S.of(context).createGame,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
 

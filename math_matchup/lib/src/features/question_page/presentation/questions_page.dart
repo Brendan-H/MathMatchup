@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../data/addition_question.dart';
 import '../domain/questions_notifier.dart';
+
+
 
 class QuestionsPage extends ConsumerStatefulWidget {
   final String gameCode;
   final int totalDurationInSeconds = 300; // 5 minutes in seconds
 
-  QuestionsPage({Key? key, required this.gameCode}) : super(key: key);
+  const QuestionsPage({Key? key, required this.gameCode}) : super(key: key);
 
   @override
   ConsumerState<QuestionsPage> createState() => _QuestionsPageState();
@@ -22,7 +23,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
     super.initState();
     currentQuestionIndex = 0;
     Future.delayed(Duration.zero, () {
-      ref.read(questionsProvider.notifier).generateQuestions(totalQuestions: 10);
+      ref.read(questionsProvider.notifier).generateQuestions(totalQuestions: 100);
     });
   }
 
@@ -34,9 +35,15 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
     final selectedAnswerProvider = StateProvider<String?>((ref) => null);
 
 
+
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Questions Page'),
+        title: Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
+          var points = ref.watch(playerPointsProvider);
+          return Text("Points: $points", style: TextStyle(fontSize: 24),);
+        },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -46,9 +53,9 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
             // Question
             Text(
               currentQuestion.question,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Answer Choices
             ...ref.watch(currentQuestionProvider).answerChoices.map((answer) {
@@ -61,17 +68,20 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
                 onTap: () {
                   ref.read(selectedAnswerProvider.notifier).state = answer;
                   Future.delayed(Duration.zero, () {
-                    ref.read(questionsProvider.notifier).checkAnswer(answer);
+                    ref.read(questionsProvider.notifier).checkAnswer(answer, ref, currentQuestion);
+                  });
+                  Future.delayed(Duration(seconds: 1), () {
+                    currentQuestionIndex++;
                   });
                 },
               );
             }),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Remaining Time
             Text(
               'Time Remaining: $remainingTime seconds',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -93,7 +103,7 @@ class AnswerChoice extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(8.0),
@@ -101,8 +111,8 @@ class AnswerChoice extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(Icons.circle_outlined),
-            SizedBox(width: 8.0),
+            const Icon(Icons.circle_outlined),
+            const SizedBox(width: 8.0),
             Expanded(child: Text(answer)),
           ],
         ),
