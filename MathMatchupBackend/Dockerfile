@@ -1,4 +1,5 @@
-FROM openjdk:17
-ADD target/mathmatchup-docker.jar mathmatchup-docker.jar
-ENTRYPOINT ["java", "-jar","instructionarsenal-docker.jar"]
+FROM eclipse-temurin:17
+ADD target/mathmatchupbackend.jar mathmatchupbackend.jar
+ENTRYPOINT ["java", "-jar", "mathmatchupbackend.jar"]
 EXPOSE 8080
+
