@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    depends_on:
-      - postgreSQL
+#    depends_on:
+#      - postgreSQL
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgres://mathmatchup_user:qun4grrSZLF5zZqVYCrioi4A3w6bIFz6@dpg-cjels1qvvtos739m3560-a.ohio-postgres.render.com/mathmatchup
       - SPRING_DATASOURCE_USERNAME=mathmatchup_user
