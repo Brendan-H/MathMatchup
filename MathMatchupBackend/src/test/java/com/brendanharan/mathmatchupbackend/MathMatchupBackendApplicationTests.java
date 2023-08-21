@@ -10,4 +10,13 @@ class MathMatchupBackendApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    public void givenEmployees_whenGetEmployees_thenStatus200()
+            throws Exception {
+
+
+    }
+
+
+
 }

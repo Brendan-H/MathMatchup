@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.brendanharan.mathmatchupbackend.MathMatchupBackendApplicationTests" time="3.527" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.brendanharan.mathmatchupbackend.LeaderboardTests" time="0.017" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -61,41 +61,5 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="givenEmployees_whenGetEmployees_thenStatus200" classname="com.brendanharan.mathmatchupbackend.MathMatchupBackendApplicationTests" time="0.26">
-    <system-out><![CDATA[18:08:50.059 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.brendanharan.mathmatchupbackend.MathMatchupBackendApplicationTests]: MathMatchupBackendApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:08:50.099 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.brendanharan.mathmatchupbackend.MathMatchupBackendApplication for test class com.brendanharan.mathmatchupbackend.MathMatchupBackendApplicationTests
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v3.1.2)
-
-2023-08-21T18:08:50.266-05:00  INFO 93234 --- [           main] c.b.m.MathMatchupBackendApplicationTests : Starting MathMatchupBackendApplicationTests using Java 17.0.7 with PID 93234 (started by brendan in /Users/brendan/StudioProjects/Null Safety/RIVERPOD-ENABLED-APPS/MathMatchup/MathMatchupBackend)
-2023-08-21T18:08:50.266-05:00  INFO 93234 --- [           main] c.b.m.MathMatchupBackendApplicationTests : No active profile set, falling back to 1 default profile: "default"
-2023-08-21T18:08:50.513-05:00  INFO 93234 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-21T18:08:50.538-05:00  INFO 93234 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 3 JPA repository interfaces.
-2023-08-21T18:08:50.718-05:00  INFO 93234 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-08-21T18:08:50.743-05:00  INFO 93234 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.6.Final
-2023-08-21T18:08:50.744-05:00  INFO 93234 --- [           main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-08-21T18:08:50.803-05:00  INFO 93234 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-08-21T18:08:50.853-05:00  INFO 93234 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-21T18:08:50.861-05:00  INFO 93234 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-08-21T18:08:51.536-05:00  INFO 93234 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@56da96b3
-2023-08-21T18:08:51.537-05:00  INFO 93234 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-08-21T18:08:51.799-05:00  INFO 93234 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-08-21T18:08:51.822-05:00  WARN 93234 --- [           main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.brendanharan.mathmatchupbackend.teams.TeamId
-2023-08-21T18:08:51.822-05:00  WARN 93234 --- [           main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.brendanharan.mathmatchupbackend.teams.TeamId
-2023-08-21T18:08:52.078-05:00  INFO 93234 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-21T18:08:52.203-05:00 DEBUG 93234 --- [           main] org.hibernate.SQL                        : alter table if exists games alter column end_time set data type timestamp(6)
-Hibernate: alter table if exists games alter column end_time set data type timestamp(6)
-2023-08-21T18:08:52.730-05:00  INFO 93234 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-08-21T18:08:52.894-05:00  INFO 93234 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2023-08-21T18:08:53.109-05:00  WARN 93234 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-08-21T18:08:53.248-05:00  INFO 93234 --- [           main] c.b.m.MathMatchupBackendApplicationTests : Started MathMatchupBackendApplicationTests in 3.09 seconds (process running for 3.498)
-]]></system-out>
-  </testcase>
-  <testcase name="contextLoads" classname="com.brendanharan.mathmatchupbackend.MathMatchupBackendApplicationTests" time="0.002"/>
+  <testcase name="testGetLeaderboardForGame" classname="com.brendanharan.mathmatchupbackend.LeaderboardTests" time="0.016"/>
 </testsuite>

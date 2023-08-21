@@ -38,6 +38,7 @@ public class Game {
     @Column(name = "end_time")
     private LocalDateTime endTime;
 
+
 }
 
 
