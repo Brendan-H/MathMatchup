@@ -1,5 +1,12 @@
 
 
+/*
+ * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (app.dart) Last Modified on 7/26/23, 12:25 PM
+ *
+ */
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

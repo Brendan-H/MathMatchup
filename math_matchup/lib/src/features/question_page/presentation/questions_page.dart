@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (questions_page.dart) Last Modified on 7/27/23, 8:52 PM
+ *
+ */
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

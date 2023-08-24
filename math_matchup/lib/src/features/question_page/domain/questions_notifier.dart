@@ -1,5 +1,12 @@
 
 
+/*
+ * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (questions_notifier.dart) Last Modified on 7/27/23, 8:45 PM
+ *
+ */
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../presentation/questions_page.dart';

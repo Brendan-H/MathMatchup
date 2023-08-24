@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (Router.dart) Last Modified on 7/27/23, 3:47 PM
+ *
+ */
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/game_page/presentation/student_game_page.dart';

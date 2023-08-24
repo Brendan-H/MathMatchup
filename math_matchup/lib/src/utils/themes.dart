@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (themes.dart) Last Modified on 7/25/23, 3:37 PM
+ *
+ */
+
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

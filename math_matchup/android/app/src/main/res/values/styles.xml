@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+  ~ Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+  ~ Current File (styles.xml) Last Modified on 7/25/23, 5:26 PM
+  ~
+  -->
+
 <resources>
     <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">

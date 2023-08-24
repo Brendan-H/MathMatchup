@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (LeaderboardController.java) Last Modified on 7/25/23, 12:50 PM
+ *
+ */
+
 package com.brendanharan.mathmatchupbackend.leaderboard;
 
 import com.brendanharan.mathmatchupbackend.games.GameService;

@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (join_game.dart) Last Modified on 7/26/23, 11:50 AM
+ *
+ */
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
