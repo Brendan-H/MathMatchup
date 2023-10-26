@@ -1,5 +1,7 @@
 # MathMatchup
 
+ WIP!!! Not yet done! Progress will be resumed before the end of the year.
+
 Players join the game and are separated into teams. The only catch is that they don't know their teammate.
 They then have to answer questions to get points, which get added together with their partner's points at the end.
 Teammates are revealed and the partnership with the most points wins!
