@@ -1,9 +1,9 @@
 
 
 /*
- * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (app.dart) Last Modified on 7/26/23, 12:25 PM
+ * Current File (app.dart) Last Modified on 8/24/23, 2:18 PM
  *
  */
 
@@ -42,7 +42,6 @@ class MyApp extends ConsumerWidget {
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        // Add other localization delegates as needed
       ],
       debugShowCheckedModeBanner: false,
       builder: (context, child) => ResponsiveBreakpoints.builder(

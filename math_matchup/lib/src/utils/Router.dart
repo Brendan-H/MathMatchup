@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (Router.dart) Last Modified on 7/27/23, 3:47 PM
+ * Current File (Router.dart) Last Modified on 1/11/24, 2:59 PM
  *
  */
 
@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/game_page/presentation/student_game_page.dart';
 import 'package:math_matchup/src/features/homescreen/presentation/homescreen.dart';
+import 'package:math_matchup/src/utils/page_not_found_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../features/game_page/presentation/teacher_game_page.dart';
@@ -19,6 +20,7 @@ part 'Router.g.dart';
 @riverpod
 GoRouter goRouter(GoRouterRef goRouterRef) {
   return GoRouter(
+      debugLogDiagnostics: true,
       routes: [
         GoRoute(
             path: '/',
@@ -54,5 +56,6 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
           },
         ),
       ],
+    errorBuilder: (context, state) => const PageNotFoundScreen(),
   );
 }

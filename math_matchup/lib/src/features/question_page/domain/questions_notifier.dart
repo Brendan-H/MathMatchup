@@ -1,12 +1,15 @@
 
 
 /*
- * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (questions_notifier.dart) Last Modified on 7/27/23, 8:45 PM
+ * Current File (questions_notifier.dart) Last Modified on 8/24/23, 2:18 PM
  *
  */
 
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../presentation/questions_page.dart';
@@ -21,6 +24,7 @@ final currentQuestionIndexProvider = StateProvider<int>((ref) => 0);
 final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
   final questions = ref.watch(questionsProvider);
   final currentQuestionIndex = ref.watch(currentQuestionIndexProvider);
+
   return questions.isNotEmpty ? questions[currentQuestionIndex] : AdditionQuestion(
     question: 'No questions available',
     answerChoices: ['An error Occurred', 'hi', 'hello', 'hola'],
@@ -28,8 +32,59 @@ final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
   );
 });
 
+final remainingTimeProvider = StateProvider<int>((ref) => 300);
 
-final remainingTimeProvider = Provider<int>((ref) => 300);
+class CountdownNotifier extends StateNotifier<int> {
+  CountdownNotifier(int remainingTime) : super(remainingTime) {
+    _startTimer();
+  }
+
+  Timer? _timer;
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (state > 0) {
+        state--;
+      } else {
+        timer.cancel();
+        _onTimerComplete();
+      }
+    });
+  }
+
+  void _onTimerComplete() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Time's Up!"),
+          content: Text("Please submit your answer."),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                // Add any other action you want to perform after the dialog is dismissed
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+}
+
+final countdownProvider = StateNotifierProvider<CountdownNotifier, int>((ref) {
+  return CountdownNotifier(300); // 5 minutes in seconds
+});
+
 class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
   QuestionsNotifier() : super([]);
 
@@ -38,39 +93,21 @@ class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
     state = questions;
   }
 
-
-  final getCurrentQuestion = Provider<AdditionQuestion>((ref) {
-    final questions = ref.watch(questionsProvider);
-    final currentQuestionIndex = ref.watch(currentQuestionIndexProvider);
-    return questions.isNotEmpty ? questions[currentQuestionIndex] : AdditionQuestion(
-      question: 'No questions available',
-      answerChoices: ['An error Occurred', 'hi', 'hello', 'hola'],
-      correctAnswer: '',
-    );
-  });
-
   void incrementPlayerPoints(int amount, WidgetRef ref) {
-       ref.read(playerPointsProvider.notifier).state += amount;
+    ref.read(playerPointsProvider.notifier).state += amount;
   }
 
   void checkAnswer(String selectedAnswer, WidgetRef ref, AdditionQuestion currentQuestion) {
     var currentQuestionIndex = ref.read(currentQuestionIndexProvider);
     if (currentQuestion.correctAnswer == selectedAnswer) {
       incrementPlayerPoints(50, ref);
-      final correctAnswerIndex = currentQuestion.answerChoices.indexOf(currentQuestion.correctAnswer);
-      state[currentQuestionIndex].answerChoices[correctAnswerIndex] = 'Correct!';
     } else {
       // Handle incorrect answer
-    }
-
-    // Move to the next question
-    if (currentQuestionIndex < state.length - 1) {
-      currentQuestionIndex++;
-    } else {
-      // No more questions, game over or generate new questions
     }
 
     // Notify listeners about the state change
     state = [...state];
   }
 }
+
+

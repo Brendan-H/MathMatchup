@@ -1,16 +1,9 @@
-/*
- * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (questions_page.dart) Last Modified on 7/27/23, 8:52 PM
- *
- */
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../domain/questions_notifier.dart';
 
-
+final selectedAnswerProvider = StateProvider<String?>((ref) => null);
 
 class QuestionsPage extends ConsumerStatefulWidget {
   final String gameCode;
@@ -23,34 +16,40 @@ class QuestionsPage extends ConsumerStatefulWidget {
 }
 
 class _QuestionsPageState extends ConsumerState<QuestionsPage> {
-  late int currentQuestionIndex;
-
   @override
   void initState() {
     super.initState();
-    currentQuestionIndex = 0;
     Future.delayed(Duration.zero, () {
       ref.read(questionsProvider.notifier).generateQuestions(totalQuestions: 100);
+      ref.read(countdownProvider.notifier); // Start the countdown
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final questions = ref.watch(questionsProvider);
+    final currentQuestionIndex = ref.watch(currentQuestionIndexProvider);
+    final remainingTime = ref.watch(countdownProvider); // Watch the countdown timer
+
+    if (questions.isEmpty || currentQuestionIndex >= questions.length) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("No Questions Available"),
+        ),
+        body: Center(
+          child: Text("No questions available"),
+        ),
+      );
+    }
+
     final currentQuestion = questions[currentQuestionIndex];
-    final remainingTime = ref.watch(remainingTimeProvider);
-    final selectedAnswerProvider = StateProvider<String?>((ref) => null);
-
-
-
 
     return Scaffold(
       appBar: AppBar(
         title: Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
           var points = ref.watch(playerPointsProvider);
-          return Text("Points: $points", style: TextStyle(fontSize: 24),);
-        },
-        ),
+          return Text("Points: $points", style: TextStyle(fontSize: 24));
+        }),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -65,24 +64,26 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
             const SizedBox(height: 16),
 
             // Answer Choices
-            ...ref.watch(currentQuestionProvider).answerChoices.map((answer) {
-              final isCorrect = answer == ref.watch(currentQuestionProvider).correctAnswer;
-              final isSelected = answer == ref.watch(selectedAnswerProvider);
+            ...currentQuestion.answerChoices.map((answer) {
+              final isCorrect = answer == currentQuestion.correctAnswer;
               return AnswerChoice(
                 answer: answer,
                 isCorrect: isCorrect,
-                isSelected: isSelected,
                 onTap: () {
+                  // Update selected answer
                   ref.read(selectedAnswerProvider.notifier).state = answer;
-                  Future.delayed(Duration.zero, () {
-                    ref.read(questionsProvider.notifier).checkAnswer(answer, ref, currentQuestion);
-                  });
+
+                  // Check answer and update UI
+                  ref.read(questionsProvider.notifier).checkAnswer(answer, ref, currentQuestion);
+
+                  // Move to next question after a delay
                   Future.delayed(Duration(seconds: 1), () {
-                    currentQuestionIndex++;
+                    ref.read(currentQuestionIndexProvider.notifier).state++;
+                    ref.read(selectedAnswerProvider.notifier).state = null;
                   });
                 },
               );
-            }),
+            }).toList(),
             const SizedBox(height: 16),
 
             // Remaining Time
@@ -97,16 +98,32 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
   }
 }
 
-class AnswerChoice extends StatelessWidget {
+
+
+class AnswerChoice extends ConsumerWidget {
   final String answer;
   final VoidCallback onTap;
   final bool isCorrect;
-  final bool isSelected;
 
-  const AnswerChoice({Key? key, required this.answer, required this.onTap, required this.isCorrect, required this.isSelected}) : super(key: key);
+  const AnswerChoice({
+    Key? key,
+    required this.answer,
+    required this.onTap,
+    required this.isCorrect,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedAnswer = ref.watch(selectedAnswerProvider);
+    final isSelected = answer == selectedAnswer;
+
+    Color backgroundColor;
+    if (isSelected) {
+      backgroundColor = isCorrect ? Colors.green : Colors.red;
+    } else {
+      backgroundColor = Colors.white;
+    }
+
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -114,7 +131,7 @@ class AnswerChoice extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(8.0),
-          color: isSelected ? (isCorrect ? Colors.green : Colors.red) : null,
+          color: backgroundColor,
         ),
         child: Row(
           children: [

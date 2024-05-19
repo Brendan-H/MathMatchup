@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2023 by Brendan Haran, All Rights Reserved.
+ * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (drawer.dart) Last Modified on 7/26/23, 12:25 PM
+ * Current File (drawer.dart) Last Modified on 8/24/23, 2:18 PM
  *
  */
 
@@ -14,18 +14,13 @@ import '../utils/theme_provider.dart';
 
 class CustomDrawer extends ConsumerWidget {
    CustomDrawer({super.key});
-
    final themeModeProvider = StateProvider<bool>((ref) {
      return true;
    });
 
-
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeModeState = ref.watch(themesProvider);
-
-
     return Drawer(
       child: Column(
         children: [
@@ -48,7 +43,7 @@ class CustomDrawer extends ConsumerWidget {
             builder: (context, ref, child) {
               return SwitchListTile(
                 title: Text(S.of(context).changeThemeMode),
-                  value: themeModeState == ThemeMode.dark, //false or true
+                  value: themeModeState == ThemeMode.light, //false or true
                   onChanged: (value) {
                     ref.read(themesProvider.notifier).changeTheme(value);
                   });
