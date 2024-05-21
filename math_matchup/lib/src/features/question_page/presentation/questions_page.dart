@@ -7,7 +7,7 @@ final selectedAnswerProvider = StateProvider<String?>((ref) => null);
 
 class QuestionsPage extends ConsumerStatefulWidget {
   final String gameCode;
-  final int totalDurationInSeconds = 300; // 5 minutes in seconds
+  final int totalDurationInSeconds = 30; // 1 minute in seconds
 
   const QuestionsPage({Key? key, required this.gameCode}) : super(key: key);
 

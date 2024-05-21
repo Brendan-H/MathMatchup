@@ -11,6 +11,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup/src/app.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../presentation/questions_page.dart';
 
@@ -32,7 +33,7 @@ final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
   );
 });
 
-final remainingTimeProvider = StateProvider<int>((ref) => 300);
+final remainingTimeProvider = StateProvider<int>((ref) => 30);
 
 class CountdownNotifier extends StateNotifier<int> {
   CountdownNotifier(int remainingTime) : super(remainingTime) {
@@ -54,15 +55,16 @@ class CountdownNotifier extends StateNotifier<int> {
 
   void _onTimerComplete() {
     showDialog(
-      context: context,
+      context: rootNavigatorKey.currentState!.overlay!.context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Time's Up!"),
-          content: Text("Please submit your answer."),
+          content: Text("Your points will be submitted"),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
+                print("dialog popped");
                 // Add any other action you want to perform after the dialog is dismissed
               },
               child: Text('OK'),
@@ -82,7 +84,7 @@ class CountdownNotifier extends StateNotifier<int> {
 }
 
 final countdownProvider = StateNotifierProvider<CountdownNotifier, int>((ref) {
-  return CountdownNotifier(300); // 5 minutes in seconds
+  return CountdownNotifier(30); // 5 minutes in seconds
 });
 
 class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {

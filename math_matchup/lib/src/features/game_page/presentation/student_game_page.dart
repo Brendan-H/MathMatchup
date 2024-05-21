@@ -126,4 +126,8 @@ class _GamePageState extends ConsumerState<GamePage> {
       ),
     );
   }
+  @override
+  void dispose() {
+    super.dispose();
+  }
 }

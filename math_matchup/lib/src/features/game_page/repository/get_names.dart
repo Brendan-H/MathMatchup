@@ -13,7 +13,7 @@ import 'package:math_matchup/src/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 
-final playersStreamProvider = StreamProvider.family<List<String>, String>((ref, gameCode) async* {
+final playersStreamProvider = StreamProvider.family.autoDispose<List<String>, String>((ref, gameCode) async* {
   final dio = Dio();
   var baseurl = Constants.backendurl;
 
