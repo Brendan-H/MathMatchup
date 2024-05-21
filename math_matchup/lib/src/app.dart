@@ -18,6 +18,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../generated/l10n.dart';
 
 GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey();
+final playerIdProvider = StateProvider<int?>((ref) => null);
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 

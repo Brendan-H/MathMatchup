@@ -21,7 +21,7 @@ class AdditionQuestion {
 }
 
 AdditionQuestion generateAdditionQuestion({
-  int digitsPerNumber = 2,
+  int digitsPerNumber = 1,
   int maxNumber = 10,
 }) {
   final random = Random();

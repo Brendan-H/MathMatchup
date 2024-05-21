@@ -7,12 +7,14 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/constants.dart';
+import 'package:math_matchup/src/app.dart';
 
 
-void joinGame(String gamecode, String name, BuildContext context) async {
+void joinGame(String gamecode, String name, BuildContext context, WidgetRef ref) async {
   var backendurl = Constants.backendurl;
   var dio = Dio();
   print("$backendurl/players/create?gameCode=${gamecode.toString()}");
@@ -30,6 +32,8 @@ void joinGame(String gamecode, String name, BuildContext context) async {
 
     if (response.statusCode == 200) {
       print("game joined");
+      var playerID = response.data['id'];
+      ref.read(playerIdProvider.notifier).state = playerID;
       context.go('/student_game_page/$gamecode');
     } else {
       // Handle other status codes if needed

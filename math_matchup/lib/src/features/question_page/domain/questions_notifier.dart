@@ -12,6 +12,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_matchup/src/app.dart';
+import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../presentation/questions_page.dart';
 
@@ -19,6 +20,7 @@ import '../data/addition_question.dart';
 
 final questionsProvider = StateNotifierProvider<QuestionsNotifier, List<AdditionQuestion>>((ref) => QuestionsNotifier());
 final playerPointsProvider = StateProvider<int>((ref) => 0);
+final timerCompleteProvider = StateProvider<bool>((ref) => false);
 
 final currentQuestionIndexProvider = StateProvider<int>((ref) => 0);
 
@@ -36,10 +38,11 @@ final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
 final remainingTimeProvider = StateProvider<int>((ref) => 30);
 
 class CountdownNotifier extends StateNotifier<int> {
-  CountdownNotifier(int remainingTime) : super(remainingTime) {
+  CountdownNotifier(int remainingTime, this.ref) : super(remainingTime) {
     _startTimer();
   }
 
+  final StateNotifierProviderRef<CountdownNotifier, int> ref;
   Timer? _timer;
 
   void _startTimer() {
@@ -54,25 +57,9 @@ class CountdownNotifier extends StateNotifier<int> {
   }
 
   void _onTimerComplete() {
-    showDialog(
-      context: rootNavigatorKey.currentState!.overlay!.context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Time's Up!"),
-          content: Text("Your points will be submitted"),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                print("dialog popped");
-                // Add any other action you want to perform after the dialog is dismissed
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+    ref.read(timerCompleteProvider.notifier).state = true;
+    final points = ref.read(playerPointsProvider);
+    print("\n\n\n\n Timer Complete. Points: $points \n\n\n\n");
   }
 
 
@@ -84,7 +71,7 @@ class CountdownNotifier extends StateNotifier<int> {
 }
 
 final countdownProvider = StateNotifierProvider<CountdownNotifier, int>((ref) {
-  return CountdownNotifier(30); // 5 minutes in seconds
+  return CountdownNotifier(30, ref); // 5 minutes in seconds
 });
 
 class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {

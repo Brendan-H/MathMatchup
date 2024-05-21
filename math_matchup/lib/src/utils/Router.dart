@@ -14,6 +14,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../features/game_page/presentation/teacher_game_page.dart';
 import '../features/question_page/presentation/questions_page.dart';
+import '../features/question_page/presentation/results_page.dart';
+import '../features/teacher_countdown/presentation/teacher_countdown.dart';
 
 part 'Router.g.dart';
 
@@ -52,6 +54,24 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
             final gameCode = state.pathParameters['gamecode'];
             return MaterialPage(
               child: QuestionsPage(gameCode: gameCode ?? "123456"),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/teacher_countdown/:gamecode',
+          pageBuilder: (context, state) {
+            final gameCode = state.pathParameters['gamecode'];
+            return MaterialPage(
+              child: TeacherCountdown(gameCode: gameCode ?? "123456"),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/game/game_results/:points',
+          pageBuilder: (context, state) {
+            final gameCode = state.pathParameters['points'];
+            return MaterialPage(
+              child: ResultsPage(points: int.parse(gameCode ?? "0"))
             );
           },
         ),

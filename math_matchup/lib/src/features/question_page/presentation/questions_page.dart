@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:math_matchup/src/features/question_page/repository/submit_points.dart';
+import 'package:math_matchup/src/utils/alert_dialogs.dart';
+import 'package:math_matchup/src/features/homescreen/repository/join_game.dart';
 
+import '../../../app.dart';
 import '../domain/questions_notifier.dart';
 
 final selectedAnswerProvider = StateProvider<String?>((ref) => null);
 
 class QuestionsPage extends ConsumerStatefulWidget {
   final String gameCode;
-  final int totalDurationInSeconds = 30; // 1 minute in seconds
 
   const QuestionsPage({Key? key, required this.gameCode}) : super(key: key);
 
@@ -29,7 +33,29 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
   Widget build(BuildContext context) {
     final questions = ref.watch(questionsProvider);
     final currentQuestionIndex = ref.watch(currentQuestionIndexProvider);
-    final remainingTime = ref.watch(countdownProvider); // Watch the countdown timer
+    final remainingTime = ref.watch(countdownProvider);
+    final isTimerComplete = ref.watch(timerCompleteProvider);
+    final points = ref.watch(playerPointsProvider);
+    final playerID = ref.read(playerIdProvider.notifier).state;
+
+    if (isTimerComplete) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog(context: context, builder: (context) => AlertDialog(
+          title: Text("Time's Up!"),
+          content: Text("Total points: $points\nPress OK to submit"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                context.pop();
+               context.go('/game/game_results/$points');
+               submitPoints(widget.gameCode, points, playerID ?? 0);
+              },
+              child: Text("Ok"),
+            ),
+          ],
+        ));
+       });
+    }
 
     if (questions.isEmpty || currentQuestionIndex >= questions.length) {
       return Scaffold(

@@ -27,7 +27,7 @@ final playersStreamProvider = StreamProvider.family.autoDispose<List<String>, St
         final List<String> players = data.map((playerData) => playerData['name'] as String).toList();
         yield players;
       }
-      await Future.delayed(const Duration(seconds: 2)); // Adjust the delay to your requirements
+      await Future.delayed(const Duration(seconds: 5)); 
     }
   } catch (error) {
     print('Error: $error');

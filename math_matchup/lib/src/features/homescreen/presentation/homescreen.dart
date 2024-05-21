@@ -76,7 +76,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       }
 
     } else {
-       joinGame(gameCodeController.text, nameController.text, context);
+       joinGame(gameCodeController.text, nameController.text, context, ref);
     }
   }
 
