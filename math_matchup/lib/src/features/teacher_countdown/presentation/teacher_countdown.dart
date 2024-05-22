@@ -21,8 +21,37 @@ class TeacherCountdown extends ConsumerStatefulWidget {
 
 class _TeacherCountdownState extends ConsumerState<TeacherCountdown> {
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      ref.read(teacherCountdownProvider.notifier); // Start the countdown
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final remainingTime = ref.watch(teacherCountdownProvider);
+    final isTimerComplete = ref.watch(teacherTimerCompleteProvider);
+    if (isTimerComplete) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog(context: context, builder: (context) => AlertDialog(
+          title: Text("Time's Up!"),
+          content: const Text("Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                context.pop();
+                context.go('/game/scoring_page/${widget.gameCode}');
+              },
+              child: Text("Continue"),
+            ),
+          ],
+        ));
+      });
+    }
+
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.gameCode),

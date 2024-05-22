@@ -13,6 +13,7 @@ import 'package:math_matchup/src/utils/page_not_found_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../features/game_page/presentation/teacher_game_page.dart';
+import '../features/leaderboard/presentation/scoring_page.dart';
 import '../features/question_page/presentation/questions_page.dart';
 import '../features/question_page/presentation/results_page.dart';
 import '../features/teacher_countdown/presentation/teacher_countdown.dart';
@@ -72,6 +73,15 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
             final gameCode = state.pathParameters['points'];
             return MaterialPage(
               child: ResultsPage(points: int.parse(gameCode ?? "0"))
+            );
+          },
+        ),
+        GoRoute(
+          path: '/game/scoring_page/:gamecode',
+          pageBuilder: (context, state) {
+            final gameCode = state.pathParameters['gamecode'];
+            return MaterialPage(
+                child: ScoringPage(gameCode: gameCode ?? "123456")
             );
           },
         ),

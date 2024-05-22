@@ -44,5 +44,5 @@ class TeacherCountdownNotifier extends StateNotifier<int> {
 }
 
 final teacherCountdownProvider = StateNotifierProvider<TeacherCountdownNotifier, int>((ref) {
-  return TeacherCountdownNotifier(30, ref); // 5 minutes in seconds
+  return TeacherCountdownNotifier(30, ref);
 });
