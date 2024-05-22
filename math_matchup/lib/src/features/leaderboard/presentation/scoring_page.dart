@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../app.dart';
+import '../domain/scoring_countdown_notifier.dart';
 import '../repository/get_leaderboard.dart';
 
 class ScoringPage extends ConsumerStatefulWidget {
@@ -24,6 +25,9 @@ class _ScoringPageState extends ConsumerState<ScoringPage> {
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration.zero, () {
+      ref.read(scoringCountdownProvider.notifier); // Start the countdown
+    });
     futureTeams = fetchLeaderboard(widget.gameCode);
     futureTeams.then((teams) {
       ref.read(leaderboardProvider.notifier).state = teams;
@@ -33,20 +37,33 @@ class _ScoringPageState extends ConsumerState<ScoringPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Team>>(
-      future: futureTeams,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}'));
-        } else {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.go('/game/leaderboard/${widget.gameCode}');
-          });
-          return Container();
-        }
-      },
+    final remainingTime = ref.watch(scoringCountdownProvider);
+    final isTimerComplete = ref.watch(scoringTimerCompleteProvider);
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text("Who will YOUR teammate be? You'll find out in: $remainingTime", style: Theme.of(context).textTheme.headlineLarge),
+          FutureBuilder<List<Team>>(
+            future: futureTeams,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Future.delayed(Duration(seconds: 10), () {
+                    context.go('/game/leaderboard/${widget.gameCode}');
+                  });
+                });
+                return Container();
+              }
+            },
+          ),
+        ],
+      ),
     );
   }
 }
