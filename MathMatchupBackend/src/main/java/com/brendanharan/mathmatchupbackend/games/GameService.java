@@ -31,17 +31,17 @@ public class GameService {
     private final GameRepository gameRepository;
     private final TeamRepository teamRepository;
     private final PlayerRepository playerRepository;
-    private Long nextTeamId = 0L;
+    private Long nextTeamId;
 
     @Autowired
     public GameService(GameRepository gameRepository, TeamRepository teamRepository, PlayerRepository playerRepository) {
         this.gameRepository = gameRepository;
         this.teamRepository = teamRepository;
         this.playerRepository = playerRepository;
+        this.nextTeamId = 1L;
     }
 
     public Game createGame(Game game) {
-        // Implement any validation or additional logic here if needed
         return gameRepository.save(game);
     }
 
@@ -80,6 +80,7 @@ public class GameService {
     private static final Logger logger = LoggerFactory.getLogger(GameService.class);
 
     public Game startGame(Long gameId) throws ChangeSetPersister.NotFoundException {
+        nextTeamId = 1L;
         logger.info("Starting game with ID: {}", gameId);
         // Fetch the game from the database
         Game game = gameRepository.findById(gameId).orElseThrow(ChangeSetPersister.NotFoundException::new);
