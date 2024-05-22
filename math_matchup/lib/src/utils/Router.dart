@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (Router.dart) Last Modified on 1/11/24, 2:59 PM
+ * Current File (Router.dart) Last Modified on 5/21/24, 7:02 PM
  *
  */
 
@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/game_page/presentation/student_game_page.dart';
 import 'package:math_matchup/src/features/homescreen/presentation/homescreen.dart';
+import 'package:math_matchup/src/features/leaderboard/presentation/leaderboard_page.dart';
 import 'package:math_matchup/src/utils/page_not_found_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -82,6 +83,15 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
             final gameCode = state.pathParameters['gamecode'];
             return MaterialPage(
                 child: ScoringPage(gameCode: gameCode ?? "123456")
+            );
+          },
+        ),
+        GoRoute(
+          path: '/game/leaderboard/:gamecode',
+          pageBuilder: (context, state) {
+            final gameCode = state.pathParameters['gamecode'];
+            return MaterialPage(
+                child: LeaderboardPage(gameCode: gameCode ?? "123456")
             );
           },
         ),

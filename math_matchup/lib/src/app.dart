@@ -3,7 +3,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (app.dart) Last Modified on 8/24/23, 2:18 PM
+ * Current File (app.dart) Last Modified on 5/21/24, 4:30 PM
  *
  */
 
@@ -16,9 +16,11 @@ import 'package:math_matchup/src/utils/themes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../generated/l10n.dart';
+import 'features/leaderboard/repository/get_leaderboard.dart';
 
 GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey();
 final playerIdProvider = StateProvider<int?>((ref) => null);
+final leaderboardProvider = StateProvider<List<Team>?>((ref) => null);
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 

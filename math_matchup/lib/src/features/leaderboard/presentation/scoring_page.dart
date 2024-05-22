@@ -1,58 +1,52 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (scoring_page.dart) Last Modified on 5/21/24, 6:50 PM
+ * Current File (scoring_page.dart) Last Modified on 5/21/24, 7:05 PM
  *
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../app.dart';
+import '../repository/get_leaderboard.dart';
 
-class ScoringPage extends StatefulWidget {
+class ScoringPage extends ConsumerStatefulWidget {
   const ScoringPage({Key? key, required this.gameCode}) : super(key: key);
   final String gameCode;
 
   @override
-  _ScoringPageState createState() => _ScoringPageState();
+  ConsumerState createState() => _ScoringPageState();
 }
 
-class _ScoringPageState extends State<ScoringPage> {
-  bool _showLoading = true;
+class _ScoringPageState extends ConsumerState<ScoringPage> {
+  late Future<List<Team>> futureTeams;
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
-        setState(() {
-          _showLoading = false;
-        });
-      }
+    futureTeams = fetchLeaderboard(widget.gameCode);
+    futureTeams.then((teams) {
+      ref.read(leaderboardProvider.notifier).state = teams;
+      print(teams);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Center(
-            child: _showLoading
-                ? const CircularProgressIndicator()
-                : const Text("The scores have been calculated!"),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            child: _showLoading
-                ? null
-                : ElevatedButton(
-                    onPressed: () {
-                      context.go('/game/leaderboard/${widget.gameCode}');
-                    },
-                    child: const Text("View Leaderboard"),
-                  )
-          )
-        ],
-      ),
+    return FutureBuilder<List<Team>>(
+      future: futureTeams,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        } else {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.go('/game/leaderboard/${widget.gameCode}');
+          });
+          return Container();
+        }
+      },
     );
   }
 }
