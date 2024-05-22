@@ -5,10 +5,13 @@
  *
  */
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/teacher_countdown/domain/teacher_countdown_notifier.dart';
+
+import '../../../utils/constants.dart';
 
 
 class TeacherCountdown extends ConsumerStatefulWidget {
@@ -20,6 +23,8 @@ class TeacherCountdown extends ConsumerStatefulWidget {
 }
 
 class _TeacherCountdownState extends ConsumerState<TeacherCountdown> {
+  final backendUrl = Constants.backendurl;
+
   @override
   void initState() {
     super.initState();
@@ -39,7 +44,8 @@ class _TeacherCountdownState extends ConsumerState<TeacherCountdown> {
           content: const Text("Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted"),
           actions: [
             TextButton(
-              onPressed: () {
+              onPressed: () async{
+                await Dio().post('$backendUrl/games/finish?gameCode=${widget.gameCode}');
                 context.pop();
                 context.go('/game/scoring_page/${widget.gameCode}');
               },
