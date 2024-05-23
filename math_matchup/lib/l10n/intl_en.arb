@@ -5,5 +5,17 @@
   "enterGamecode": "Enter Gamecode",
   "enterName": "Enter Name",
   "startGame": "Start Game",
-  "createGame": "Create Game"
+  "createGame": "Create Game",
+  "timesUp": "Time's Up!",
+  "waitForYourStudentsToFinish": "Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted",
+  "continueText": "Continue",
+  "noQuestionsAvailable": "No Questions Available",
+  "points": "Points:",
+  "timeRemainingRemainingtimeSeconds": "Time Remaining: {remainingTime} seconds",
+  "youScoredXPoints": "You scored {points} points! Nice job! Look to your teacher's screen for the results",
+  "whoWillYourTeammateBeYoullFindOutInRemainingtime": "Who will YOUR teammate be? You'll find out in: {remainingTime}",
+  "gameCodeIsRequired": "Game code is required",
+  "gameCodeMustBe6Digits": "Game code must be 6 digits",
+  "nameIsRequired": "Name is required",
+  "anErrorOccurred": "An error occurred"
 }

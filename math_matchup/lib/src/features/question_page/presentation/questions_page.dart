@@ -12,6 +12,7 @@ import 'package:math_matchup/src/features/question_page/repository/submit_points
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/features/homescreen/repository/join_game.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../app.dart';
 import '../domain/questions_notifier.dart';
 
@@ -48,7 +49,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
     if (isTimerComplete) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         showDialog(context: context, builder: (context) => AlertDialog(
-          title: Text("Time's Up!"),
+          title: Text(S.of(context).timesUp),
           content: Text("Total points: $points\nPress OK to submit"),
           actions: [
             TextButton(
@@ -67,10 +68,10 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
     if (questions.isEmpty || currentQuestionIndex >= questions.length) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("No Questions Available"),
+          title: Text(S.of(context).noQuestionsAvailable),
         ),
         body: Center(
-          child: Text("No questions available"),
+          child: Text(S.of(context).noQuestionsAvailable),
         ),
       );
     }
@@ -81,7 +82,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
       appBar: AppBar(
         title: Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
           var points = ref.watch(playerPointsProvider);
-          return Text("Points: $points", style: TextStyle(fontSize: 24));
+          return Text("${S.of(context).points} $points", style: TextStyle(fontSize: 24));
         }),
       ),
       body: Padding(
@@ -121,7 +122,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
 
             // Remaining Time
             Text(
-              'Time Remaining: $remainingTime seconds',
+              S.of(context).timeRemainingRemainingtimeSeconds(remainingTime),
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],

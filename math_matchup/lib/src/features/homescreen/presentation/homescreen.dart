@@ -45,16 +45,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   String? _nameError;
   String? _validateGameCode(String value) {
     if (value.isEmpty) {
-      return 'Game code is required';
+      return S.of(context).gameCodeIsRequired;
     } else if (value.length != 6 || int.tryParse(value) == null) {
-      return 'Game code must be 6 digits';
+      return S.of(context).gameCodeMustBe6Digits;
     }
     return null;
   }
 
   String? _validateName(String value) {
     if (value.isEmpty) {
-      return 'Name is required';
+      return S.of(context).nameIsRequired;
     }
     return null;
   }
@@ -70,9 +70,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         _nameError = nameError;
       });
       if (_gameCodeError!.isNotEmpty) {
-        showExceptionAlertDialog(context: context, title: "An error occurred", exception: _gameCodeError);
+        showExceptionAlertDialog(context: context, title: S.of(context).anErrorOccurred, exception: _gameCodeError);
       } else if (_nameError!.isNotEmpty) {
-        showExceptionAlertDialog(context: context, title: "An error occurred", exception: _nameError);
+        showExceptionAlertDialog(context: context, title: S.of(context).anErrorOccurred, exception: _nameError);
       }
 
     } else {

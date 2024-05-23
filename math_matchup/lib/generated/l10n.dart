@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (l10n.dart) Last Modified on 1/12/24, 1:05 PM
- *
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -122,6 +115,127 @@ class S {
     return Intl.message(
       'Create Game',
       name: 'createGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time's Up!`
+  String get timesUp {
+    return Intl.message(
+      'Time\'s Up!',
+      name: 'timesUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted`
+  String get waitForYourStudentsToFinish {
+    return Intl.message(
+      'Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted',
+      name: 'waitForYourStudentsToFinish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueText {
+    return Intl.message(
+      'Continue',
+      name: 'continueText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Questions Available`
+  String get noQuestionsAvailable {
+    return Intl.message(
+      'No Questions Available',
+      name: 'noQuestionsAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Points:`
+  String get points {
+    return Intl.message(
+      'Points:',
+      name: 'points',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time Remaining: {remainingTime} seconds`
+  String timeRemainingRemainingtimeSeconds(Object remainingTime) {
+    return Intl.message(
+      'Time Remaining: $remainingTime seconds',
+      name: 'timeRemainingRemainingtimeSeconds',
+      desc: '',
+      args: [remainingTime],
+    );
+  }
+
+  /// `You scored {points} points! Nice job! Look to your teacher's screen for the results`
+  String youScoredXPoints(Object points) {
+    return Intl.message(
+      'You scored $points points! Nice job! Look to your teacher\'s screen for the results',
+      name: 'youScoredXPoints',
+      desc: '',
+      args: [points],
+    );
+  }
+
+  /// `Who will YOUR teammate be? You'll find out in: {remainingTime}`
+  String whoWillYourTeammateBeYoullFindOutInRemainingtime(
+      Object remainingTime) {
+    return Intl.message(
+      'Who will YOUR teammate be? You\'ll find out in: $remainingTime',
+      name: 'whoWillYourTeammateBeYoullFindOutInRemainingtime',
+      desc: '',
+      args: [remainingTime],
+    );
+  }
+
+  /// `Game code is required`
+  String get gameCodeIsRequired {
+    return Intl.message(
+      'Game code is required',
+      name: 'gameCodeIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Game code must be 6 digits`
+  String get gameCodeMustBe6Digits {
+    return Intl.message(
+      'Game code must be 6 digits',
+      name: 'gameCodeMustBe6Digits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name is required`
+  String get nameIsRequired {
+    return Intl.message(
+      'Name is required',
+      name: 'nameIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred`
+  String get anErrorOccurred {
+    return Intl.message(
+      'An error occurred',
+      name: 'anErrorOccurred',
       desc: '',
       args: [],
     );

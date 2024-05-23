@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/teacher_countdown/domain/teacher_countdown_notifier.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../utils/constants.dart';
 
 
@@ -40,8 +41,8 @@ class _TeacherCountdownState extends ConsumerState<TeacherCountdown> {
     if (isTimerComplete) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         showDialog(context: context, builder: (context) => AlertDialog(
-          title: Text("Time's Up!"),
-          content: const Text("Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted"),
+          title: Text(S.of(context).timesUp),
+          content: Text(S.of(context).waitForYourStudentsToFinish),
           actions: [
             TextButton(
               onPressed: () async{
@@ -49,7 +50,7 @@ class _TeacherCountdownState extends ConsumerState<TeacherCountdown> {
                 context.pop();
                 context.go('/game/scoring_page/${widget.gameCode}');
               },
-              child: Text("Continue"),
+              child: Text(S.of(context).continueText),
             ),
           ],
         ));

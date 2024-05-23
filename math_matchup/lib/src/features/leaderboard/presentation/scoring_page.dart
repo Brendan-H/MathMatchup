@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../generated/l10n.dart';
 import '../../../app.dart';
 import '../domain/scoring_countdown_notifier.dart';
 import '../repository/get_leaderboard.dart';
@@ -44,7 +45,7 @@ class _ScoringPageState extends ConsumerState<ScoringPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("Who will YOUR teammate be? You'll find out in: $remainingTime", style: Theme.of(context).textTheme.headlineLarge),
+          Text(S.of(context).whoWillYourTeammateBeYoullFindOutInRemainingtime(remainingTime), style: Theme.of(context).textTheme.headlineLarge),
           FutureBuilder<List<Team>>(
             future: futureTeams,
             builder: (context, snapshot) {

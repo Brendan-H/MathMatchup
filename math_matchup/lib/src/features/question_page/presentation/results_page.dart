@@ -7,6 +7,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
+
 class ResultsPage extends StatelessWidget {
   final int points;
   const ResultsPage({super.key, required this.points});
@@ -15,7 +17,7 @@ class ResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('You scored $points points! Nice job! Look to your teacher\'s screen for the results'),
+        child: Text(S.of(context).youScoredXPoints(points)),
       ),);
   }
 }

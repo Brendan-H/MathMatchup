@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (themes.g.dart) Last Modified on 1/12/24, 1:05 PM
- *
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'themes.dart';
@@ -42,4 +35,4 @@ final darkThemeProvider = AutoDisposeProvider<ThemeData>.internal(
 
 typedef DarkThemeRef = AutoDisposeProviderRef<ThemeData>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

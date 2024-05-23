@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (messages_all.dart) Last Modified on 1/12/24, 1:05 PM
- *
- */
-
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
 // This is a library that looks up messages for specific locales by
 // delegating to the appropriate library.
