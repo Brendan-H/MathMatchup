@@ -26,7 +26,7 @@ public class PlayerController {
     private GameService gameService;
 
     @PostMapping("/create")
-    public ResponseEntity<Player> createPlayer(@RequestBody Player player, @RequestParam("gameCode") String gameCode) {
+    public ResponseEntity<PlayerResponse> createPlayer(@RequestBody Player player, @RequestParam("gameCode") String gameCode) {
 
         Game game = gameService.getGameByCode(gameCode);
         if (game == null) {
@@ -38,7 +38,12 @@ public class PlayerController {
 
 
         Player createdPlayer = playerService.createPlayer(player);
-        return ResponseEntity.ok(createdPlayer);
+        PlayerResponse playerResponse = new PlayerResponse();
+        playerResponse.setPlayer(createdPlayer);
+        playerResponse.setGameDifficulty(game.getDifficulty());
+        playerResponse.setGameType(game.getGameType());
+
+        return ResponseEntity.ok(playerResponse);
     }
 
     @PostMapping("/{playerId}/submit-points")

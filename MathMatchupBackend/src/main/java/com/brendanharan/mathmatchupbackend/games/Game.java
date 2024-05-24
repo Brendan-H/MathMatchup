@@ -32,6 +32,12 @@ public class Game {
     @Column(unique = true, nullable = false)
     private String gameCode;
 
+    @Column(nullable = false)
+    private String gameType;
+
+    @Column(nullable = false)
+    private String difficulty;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private GameStatus status;
