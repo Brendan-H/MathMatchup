@@ -21,6 +21,9 @@ import 'features/leaderboard/repository/get_leaderboard.dart';
 GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey();
 final playerIdProvider = StateProvider<int?>((ref) => null);
 final leaderboardProvider = StateProvider<List<Team>?>((ref) => null);
+final diffucultyProvider = StateProvider<String?>((ref) => null);
+final gameTypeProvider = StateProvider<String?>((ref) => null);
+
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 

@@ -32,8 +32,12 @@ void joinGame(String gamecode, String name, BuildContext context, WidgetRef ref)
 
     if (response.statusCode == 200) {
       print("game joined");
-      var playerID = response.data['id'];
+      var playerID = response.data['player']['id'];
+      var gameDifficulty = response.data['gameDifficulty'];
+      var gameType = response.data['gameType'];
       ref.read(playerIdProvider.notifier).state = playerID;
+      ref.read(gameTypeProvider.notifier).state = gameType;
+      ref.read(diffucultyProvider.notifier).state = gameDifficulty;
       context.go('/student_game_page/$gamecode');
     } else {
       // Handle other status codes if needed

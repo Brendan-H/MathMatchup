@@ -7,6 +7,10 @@
 
 import 'dart:math';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../app.dart';
+
 
 class AdditionQuestion {
   String question;
@@ -20,10 +24,14 @@ class AdditionQuestion {
   });
 }
 
-AdditionQuestion generateAdditionQuestion({
-  int digitsPerNumber = 1,
-  int maxNumber = 10,
-}) {
+AdditionQuestion generateAdditionQuestion(WidgetRef ref) {
+  final difficulty = ref.read(diffucultyProvider.notifier).state;
+  final digitsPerNumber = difficulty == "easy" ? 1 :
+         difficulty == "medium" ? 2 :
+         difficulty == "hard" ? 3 :
+         difficulty == "impossible" ? 4
+           : 1; //default to easy
+  int maxNumber = 10;
   final random = Random();
 
   // Generate two random numbers
