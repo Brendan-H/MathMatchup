@@ -77,8 +77,8 @@ final countdownProvider = StateNotifierProvider<CountdownNotifier, int>((ref) {
 class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
   QuestionsNotifier() : super([]);
 
-  void generateQuestions({required int totalQuestions}) {
-    final questions = List.generate(totalQuestions, (_) => generateAdditionQuestion());
+  void generateQuestions({required int totalQuestions, required WidgetRef ref}) {
+    final questions = List.generate(totalQuestions, (_) => generateAdditionQuestion(ref));
     state = questions;
   }
 

@@ -17,4 +17,5 @@ public class PlayerResponse {
     private Player player;
     private String gameDifficulty;
     private String gameType;
+    private int timer;
 }

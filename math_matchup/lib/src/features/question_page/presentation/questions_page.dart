@@ -32,7 +32,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
   void initState() {
     super.initState();
     Future.delayed(Duration.zero, () {
-      ref.read(questionsProvider.notifier).generateQuestions(totalQuestions: 100);
+      ref.read(questionsProvider.notifier).generateQuestions(totalQuestions: 100, ref: ref);
       ref.read(countdownProvider.notifier); // Start the countdown
     });
   }

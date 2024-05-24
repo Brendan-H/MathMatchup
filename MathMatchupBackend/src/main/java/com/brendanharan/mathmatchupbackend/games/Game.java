@@ -42,6 +42,12 @@ public class Game {
     @Column(nullable = false)
     private GameStatus status;
 
+    @Column
+    private LocalDateTime startTime;
+
+    @Column
+    private int timer;
+
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Player> players = new ArrayList<>();
 

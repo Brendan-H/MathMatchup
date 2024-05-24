@@ -42,6 +42,7 @@ public class PlayerController {
         playerResponse.setPlayer(createdPlayer);
         playerResponse.setGameDifficulty(game.getDifficulty());
         playerResponse.setGameType(game.getGameType());
+        playerResponse.setTimer(game.getTimer());
 
         return ResponseEntity.ok(playerResponse);
     }
