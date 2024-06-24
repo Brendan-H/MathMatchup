@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup/src/common_widgets/drawer.dart';
 import 'package:math_matchup/src/features/homescreen/repository/create_game.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/themes.dart';
@@ -101,7 +100,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final theme = ref.read(lightThemeProvider);
     final themeModeState = ref.watch(themesProvider);
     return Scaffold(
-      drawer: CustomDrawer(),
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),

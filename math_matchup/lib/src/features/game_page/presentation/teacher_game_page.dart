@@ -13,7 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/game_page/repository/start_game.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../common_widgets/drawer.dart';
+import '../../../utils/theme_provider.dart';
 import '../../../utils/themes.dart';
 import '../repository/get_names.dart';
 
@@ -24,6 +24,7 @@ class TeacherGamePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.read(lightThemeProvider);
+    final themeModeState = ref.watch(themesProvider);
     final playersAsyncValue = ref.watch(playersStreamProvider(gameCode));
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -47,9 +48,17 @@ class TeacherGamePage extends ConsumerWidget {
             }
         ),
       ),
-      drawer: CustomDrawer(),
       appBar: AppBar(
         title: Text(gameCode),
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          child: IconButton(
+            icon:  themeModeState == ThemeMode.light ? Icon(Icons.light_mode_outlined) : Icon(Icons.dark_mode_outlined),
+            onPressed: () {
+              ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
+            },
+          ),
+        ),
       ),
       body: playersAsyncValue.when(
         data: (players) {
