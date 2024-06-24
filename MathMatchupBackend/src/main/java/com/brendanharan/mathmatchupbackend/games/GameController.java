@@ -9,6 +9,7 @@ package com.brendanharan.mathmatchupbackend.games;
 
 import com.brendanharan.mathmatchupbackend.players.Player;
 import com.brendanharan.mathmatchupbackend.players.PlayerService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,8 @@ public class GameController {
     private static final Logger logger = LoggerFactory.getLogger(GameService.class);
 
     @PostMapping()
-    public ResponseEntity<Game> createGame(@RequestBody Game game) {
+    public ResponseEntity<Game> createGame(@Valid @RequestBody Game game) {
+
         String gameCode = generateGameCode();
         game.setGameCode(gameCode);
         game.setStatus(GameStatus.WAITING_FOR_PLAYERS);

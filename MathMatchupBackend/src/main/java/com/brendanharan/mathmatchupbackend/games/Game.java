@@ -12,6 +12,7 @@ import com.brendanharan.mathmatchupbackend.teams.Team;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,9 +34,11 @@ public class Game {
     private String gameCode;
 
     @Column(nullable = false)
+    @NotBlank(message = "Game type must be provided.")
     private String gameType;
 
     @Column(nullable = false)
+    @NotBlank(message = "Game difficulty must be provided.")
     private String difficulty;
 
     @Enumerated(EnumType.STRING)
