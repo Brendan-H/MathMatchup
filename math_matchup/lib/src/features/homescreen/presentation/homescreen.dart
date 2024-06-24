@@ -97,8 +97,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ref.read(lightThemeProvider);
     final themeModeState = ref.watch(themesProvider);
+    final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
+    final textTheme = theme.textTheme;
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -176,7 +177,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   print("Code:${ref.read(gameCodeProvider.notifier).state}");
                   _onJoinGamePressed(gameCodeController.text, nameController.text, context);
                 },
-                child: Text(S.of(context).joinGame, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),),
+                child: Text(S.of(context).joinGame, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
               ),
             ),
             Padding(
@@ -186,8 +187,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 height: MediaQuery.of(context).size.height * .1,
                 child: ElevatedButton(
                     child: Text(S.of(context).createGame,
-                      style: const TextStyle(
-                        color: Colors.black,
+                      style: TextStyle(
+                        color: textTheme.headlineLarge?.color,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),

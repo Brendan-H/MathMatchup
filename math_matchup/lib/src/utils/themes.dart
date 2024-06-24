@@ -40,6 +40,14 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
     useMaterial3: true,
     appBarElevation: 2,
     typography: Typography.material2021(platform: defaultTargetPlatform),
+      textTheme: const TextTheme(
+        headlineLarge: TextStyle(
+          fontSize: 42,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+      )
+   // textTheme: Typography.material2021(platform: defaultTargetPlatform).black,
   );
 }
 @riverpod
@@ -68,5 +76,14 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
     appBarElevation: 5,
+    typography: Typography.material2021(platform: defaultTargetPlatform),
+  textTheme: TextTheme(
+    headlineLarge: TextStyle(
+      fontSize: 42,
+      fontWeight: FontWeight.bold,
+      color: Colors.grey[350],
+    ),
+  )
+  //  textTheme: Typography.material2021(platform: defaultTargetPlatform).white,
   );
 }
