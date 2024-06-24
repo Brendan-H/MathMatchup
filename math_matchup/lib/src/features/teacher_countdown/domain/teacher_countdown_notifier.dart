@@ -21,7 +21,7 @@ class TeacherCountdownNotifier extends StateNotifier<int> {
   Timer? _timer;
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (state > 0) {
         state--;
       } else {

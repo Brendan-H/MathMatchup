@@ -6,6 +6,7 @@
  */
 
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -34,6 +35,8 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
     ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
+    appBarElevation: 2,
+    typography: Typography.material2021(platform: defaultTargetPlatform),
   );
 }
 
@@ -59,5 +62,6 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
     ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
+    appBarElevation: 5,
   );
 }

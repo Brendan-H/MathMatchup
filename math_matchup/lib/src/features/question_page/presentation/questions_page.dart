@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/question_page/repository/submit_points.dart';
-import 'package:math_matchup/src/utils/alert_dialogs.dart';
-import 'package:math_matchup/src/features/homescreen/repository/join_game.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../app.dart';
@@ -58,7 +56,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
                context.go('/game/game_results/$points');
                submitPoints(widget.gameCode, points, playerID ?? 0);
               },
-              child: Text("Ok"),
+              child: const Text("Ok"),
             ),
           ],
         ));
@@ -82,7 +80,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
       appBar: AppBar(
         title: Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
           var points = ref.watch(playerPointsProvider);
-          return Text("${S.of(context).points} $points", style: TextStyle(fontSize: 24));
+          return Text("${S.of(context).points} $points", style: const TextStyle(fontSize: 24));
         }),
       ),
       body: Padding(
@@ -111,7 +109,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
                   ref.read(questionsProvider.notifier).checkAnswer(answer, ref, currentQuestion);
 
                   // Move to next question after a delay
-                  Future.delayed(Duration(seconds: 1), () {
+                  Future.delayed(const Duration(seconds: 1), () {
                     ref.read(currentQuestionIndexProvider.notifier).state++;
                     ref.read(selectedAnswerProvider.notifier).state = null;
                   });

@@ -55,7 +55,7 @@ class _ScoringPageState extends ConsumerState<ScoringPage> {
                 return Center(child: Text('Error: ${snapshot.error}'));
               } else {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  Future.delayed(Duration(seconds: 10), () {
+                  Future.delayed(const Duration(seconds: 10), () {
                     context.go('/game/leaderboard/${widget.gameCode}');
                   });
                 });

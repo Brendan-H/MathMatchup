@@ -9,12 +9,7 @@
 
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup/src/app.dart';
-import 'package:math_matchup/src/utils/alert_dialogs.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../presentation/questions_page.dart';
 
 import '../data/addition_question.dart';
 
@@ -46,7 +41,7 @@ class CountdownNotifier extends StateNotifier<int> {
   Timer? _timer;
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (state > 0) {
         state--;
       } else {

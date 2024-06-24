@@ -64,7 +64,6 @@
         "points": 0
     }
 ] */
-import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import '../../../utils/constants.dart';
@@ -121,7 +120,7 @@ Future<List<Team>> fetchLeaderboard(String gameCode) async {
 
   if (response.statusCode == 200) {
     List jsonResponse = response.data;
-    Future.delayed(Duration(seconds: 3));
+    Future.delayed(const Duration(seconds: 3));
     return jsonResponse.map((team) => Team.fromJson(team)).toList();
   } else {
     throw Exception('Failed to load leaderboard from API');

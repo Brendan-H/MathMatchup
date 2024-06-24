@@ -13,6 +13,7 @@ import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../utils/theme_provider.dart';
 import '../repository/join_game.dart';
 
 
@@ -98,34 +99,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = ref.read(lightThemeProvider);
-
+    final themeModeState = ref.watch(themesProvider);
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SizedBox(
-        width: MediaQuery.of(context).size.width * .8,
-        child: FloatingActionButton.large(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(60),
-          ),
-          backgroundColor: theme.primaryColor,
-          child: Text(S.of(context).createGame,
-            style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-
-            ),
-          ),
-            onPressed: () async {
-            createGame(context);
-            }
-        ),
-      ),
       drawer: CustomDrawer(),
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          child: IconButton(
+            icon:  themeModeState == ThemeMode.light ? Icon(Icons.light_mode_outlined) : Icon(Icons.dark_mode_outlined),
+            onPressed: () {
+              ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
+            },
+          ),
+        ),
         toolbarHeight: MediaQuery.of(context).size.height * .1,
         title: Text(S.of(context).welcomeToMathmatchup),
         centerTitle: true,
-        elevation: 2,
       ),
       body: SafeArea(
         minimum: const EdgeInsets.fromLTRB(5, 5, 5, 5),
@@ -178,12 +167,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               height: MediaQuery.of(context).size.height * .1,
               child: ElevatedButton(
                 style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  backgroundColor: WidgetStateProperty.all<Color>(theme.primaryColor),
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(60),
                     ),
                   ),
-                  backgroundColor: MaterialStateProperty.all<Color>(theme.primaryColor)),
+                ),
                 onPressed: () async {
                   String? gameCodeError = _validateGameCode(gameCodeController.text);
                   String? nameError = _validateName(nameController.text);
@@ -192,9 +182,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   print("Code:${ref.read(gameCodeProvider.notifier).state}");
                   _onJoinGamePressed(gameCodeController.text, nameController.text, context);
                 },
-                child: Text(S.of(context).joinGame, style: const TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),),
+                child: Text(S.of(context).joinGame, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .1,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(60),
+                      ),
+                    ),
+                    backgroundColor: WidgetStateProperty.all<Color>(theme.primaryColor)),
+                    child: Text(S.of(context).createGame,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () async {
+                      createGame(context);
+                    }
+                ),
+              ),
+            ),
           ],
         ),
       ),
