@@ -24,6 +24,13 @@ if (flutterVersionName == null) {
 }
 
 
+/*
+ * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (build.gradle) Last Modified on 5/21/24, 3:21 PM
+ *
+ */
+
 // Android configuration
 android {
     namespace "com.brendanharan.math_matchup"

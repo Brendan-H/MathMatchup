@@ -3,7 +3,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (app.dart) Last Modified on 5/21/24, 4:30 PM
+ * Current File (app.dart) Last Modified on 5/24/24, 4:59 PM
  *
  */
 

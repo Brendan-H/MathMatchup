@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (themes.dart) Last Modified on 1/12/24, 1:05 PM
+ * Current File (themes.dart) Last Modified on 6/24/24, 12:58 PM
  *
  */
 
@@ -34,8 +34,8 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
       elevatedButtonSchemeColor: SchemeColor.primaryContainer,
       elevatedButtonElevation: 2,
       elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
- //     elevatedButtonTextStyle: WidgetStatePropertyAll(TextStyle(fontSize: 16, fontWeight: FontWeight.w100)),
-    ),
+      appBarBackgroundSchemeColor: SchemeColor.secondaryContainer,
+  ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
     appBarElevation: 2,
@@ -63,6 +63,7 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
       elevatedButtonSchemeColor: SchemeColor.primaryContainer,
       elevatedButtonElevation: 2,
       elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
+      appBarBackgroundSchemeColor: SchemeColor.secondaryContainer,
     ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,

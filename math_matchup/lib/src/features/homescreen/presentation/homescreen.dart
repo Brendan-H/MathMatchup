@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (homescreen.dart) Last Modified on 5/21/24, 4:26 PM
+ * Current File (homescreen.dart) Last Modified on 6/24/24, 12:55 PM
  *
  */
 
@@ -115,7 +115,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         centerTitle: true,
       ),
       body: SafeArea(
-        minimum: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+        minimum: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -124,11 +124,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: Text(
                 S.of(context).joinGame,
-                style: const TextStyle(
-                  fontSize: 32,
+                style: TextStyle(
+                  fontSize: 42,
+                  fontWeight: FontWeight.bold,
+                  color: theme.textTheme.headlineLarge?.color,
                 ),
               ),
             ),
+            const SizedBox(height: 20,),
             TextField(
               controller: gameCodeController,
               keyboardType: TextInputType.number,
@@ -140,9 +143,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               decoration: InputDecoration(
                 labelText: S.of(context).enterGamecode,
                 errorText: _gameCodeError,
-                border: const OutlineInputBorder(),
               ),
             ),
+            const SizedBox(height: 5,),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: TextField(
@@ -160,20 +163,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
+            const SizedBox(height: 20,),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * .1,
               child: ElevatedButton(
-            //    style: theme.elevatedButtonTheme.style,
-               //  style: ButtonStyle(
-               //    backgroundColor: theme.elevatedButtonTheme.style?.backgroundColor,
-               // //   backgroundColor: WidgetStateProperty.all<Color>(theme.primaryColor),
-               //    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-               //      RoundedRectangleBorder(
-               //        borderRadius: BorderRadius.circular(60),
-               //      ),
-               //    ),
-               //  ),
                 onPressed: () async {
                   String? gameCodeError = _validateGameCode(gameCodeController.text);
                   String? nameError = _validateName(nameController.text);
