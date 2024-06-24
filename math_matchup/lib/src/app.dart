@@ -42,7 +42,7 @@ class MyApp extends ConsumerWidget {
       themeMode: themeModeState,
       supportedLocales: const [
         Locale('en', 'US'), // English
-        // const Locale('es', 'ES'), // Spanish
+        Locale('es', 'ES'), // Spanish
       ],
       localizationsDelegates: const [
         S.delegate,

@@ -1,0 +1,21 @@
+{
+  "changeThemeMode": "Cambiar a modo oscuro",
+  "welcomeToMathmatchup": "Bienvenido a MathMatchup",
+  "joinGame": "Unirse al juego",
+  "enterGamecode": "Introducir código de juego",
+  "enterName": "Introducir nombre",
+  "startGame": "Iniciar juego",
+  "createGame": "Crear juego",
+  "timesUp": "¡Se acabó el tiempo!",
+  "waitForYourStudentsToFinish": "Espera a que tus estudiantes terminen el juego y presiona el botón OK antes de continuar o sus puntuaciones no se contarán",
+  "continueText": "Continuar",
+  "noQuestionsAvailable": "No hay preguntas disponibles",
+  "points": "Puntos:",
+  "timeRemainingRemainingtimeSeconds": "Tiempo restante: {remainingTime} segundos",
+  "youScoredXPoints": "¡Has conseguido {points} puntos! ¡Buen trabajo! Mira la pantalla de tu profesor para ver los resultados",
+  "whoWillYourTeammateBeYoullFindOutInRemainingtime": "¿Quién será tu compañero de equipo? Lo descubrirás en: {remainingTime}",
+  "gameCodeIsRequired": "Se requiere código de juego",
+  "gameCodeMustBe6Digits": "El código de juego debe tener 6 dígitos",
+  "nameIsRequired": "Se requiere nombre",
+  "anErrorOccurred": "Ocurrió un error"
+}
