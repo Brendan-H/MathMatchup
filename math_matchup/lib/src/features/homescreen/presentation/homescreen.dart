@@ -164,14 +164,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * .1,
               child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all<Color>(theme.primaryColor),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(60),
-                    ),
-                  ),
-                ),
+            //    style: theme.elevatedButtonTheme.style,
+               //  style: ButtonStyle(
+               //    backgroundColor: theme.elevatedButtonTheme.style?.backgroundColor,
+               // //   backgroundColor: WidgetStateProperty.all<Color>(theme.primaryColor),
+               //    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+               //      RoundedRectangleBorder(
+               //        borderRadius: BorderRadius.circular(60),
+               //      ),
+               //    ),
+               //  ),
                 onPressed: () async {
                   String? gameCodeError = _validateGameCode(gameCodeController.text);
                   String? nameError = _validateName(nameController.text);
@@ -189,13 +191,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * .1,
                 child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(60),
-                      ),
-                    ),
-                    backgroundColor: WidgetStateProperty.all<Color>(theme.primaryColor)),
                     child: Text(S.of(context).createGame,
                       style: const TextStyle(
                         color: Colors.black,
