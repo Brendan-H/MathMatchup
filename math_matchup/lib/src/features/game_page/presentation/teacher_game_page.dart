@@ -53,7 +53,7 @@ class TeacherGamePage extends ConsumerWidget {
         leading: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
           child: IconButton(
-            icon:  themeModeState == ThemeMode.light ? Icon(Icons.light_mode_outlined) : Icon(Icons.dark_mode_outlined),
+            icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
             onPressed: () {
               ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
             },

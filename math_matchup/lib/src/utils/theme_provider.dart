@@ -7,14 +7,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final themesProvider = StateNotifierProvider<ThemesProvider, ThemeMode?>((_) {
-  return ThemesProvider();
+final themesProvider = StateNotifierProvider<ThemesProvider, ThemeMode>((_) {
+  return ThemesProvider(ThemeMode.light);
 });
 
-class ThemesProvider extends StateNotifier<ThemeMode?> {
-  ThemesProvider() : super(ThemeMode.system);
+class ThemesProvider extends StateNotifier<ThemeMode> {
+  ThemesProvider(ThemeMode initialThemeMode) : super(initialThemeMode);
   void changeTheme(bool isOn) {
     state = isOn ? ThemeMode.dark : ThemeMode.light;
   }

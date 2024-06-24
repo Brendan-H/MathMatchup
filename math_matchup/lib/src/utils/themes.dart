@@ -8,7 +8,6 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'themes.g.dart';
@@ -35,7 +34,7 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
       elevatedButtonSchemeColor: SchemeColor.primaryContainer,
       elevatedButtonElevation: 2,
       elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
-      elevatedButtonTextStyle: WidgetStatePropertyAll(TextStyle(fontSize: 16, fontWeight: FontWeight.w100)),
+ //     elevatedButtonTextStyle: WidgetStatePropertyAll(TextStyle(fontSize: 16, fontWeight: FontWeight.w100)),
     ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
@@ -61,6 +60,9 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
     subThemesData: const FlexSubThemesData(
       blendOnLevel: 20,
       useTextTheme: true,
+      elevatedButtonSchemeColor: SchemeColor.primaryContainer,
+      elevatedButtonElevation: 2,
+      elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
     ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,

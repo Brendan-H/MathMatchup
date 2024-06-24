@@ -104,7 +104,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         leading: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
           child: IconButton(
-            icon:  themeModeState == ThemeMode.light ? Icon(Icons.light_mode_outlined) : Icon(Icons.dark_mode_outlined),
+            icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
             onPressed: () {
               ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
             },
@@ -121,7 +121,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+              padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: Text(
                 S.of(context).joinGame,
                 style: const TextStyle(
@@ -144,7 +144,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+              padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: TextField(
                 controller: nameController,
                 keyboardType: TextInputType.text,
@@ -186,7 +186,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+              padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * .1,
