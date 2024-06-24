@@ -117,89 +117,95 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       body: SafeArea(
         minimum: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-              child: Text(
-                S.of(context).joinGame,
-                style: TextStyle(
-                  fontSize: 42,
-                  fontWeight: FontWeight.bold,
-                  color: theme.textTheme.headlineLarge?.color,
-                ),
-              ),
-            ),
-            const SizedBox(height: 20,),
-            TextField(
-              controller: gameCodeController,
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                setState(() {
-                  _gameCodeError = _validateGameCode(value);
-                });
-              },
-              decoration: InputDecoration(
-                labelText: S.of(context).enterGamecode,
-                errorText: _gameCodeError,
-              ),
-            ),
-            const SizedBox(height: 5,),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-              child: TextField(
-                controller: nameController,
-                keyboardType: TextInputType.text,
-                onChanged: (value) {
-                  setState(() {
-                    _nameError = _validateName(value);
-                  });
-                },
-                decoration: InputDecoration(
-                  labelText: S.of(context).enterName,
-                  errorText: _nameError,
-                  border: const OutlineInputBorder(),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20,),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .1,
-              child: ElevatedButton(
-                onPressed: () async {
-                  String? gameCodeError = _validateGameCode(gameCodeController.text);
-                  String? nameError = _validateName(nameController.text);
-
-                  ref.read(gameCodeProvider.notifier).state = gameCodeController.text;
-                  print("Code:${ref.read(gameCodeProvider.notifier).state}");
-                  _onJoinGamePressed(gameCodeController.text, nameController.text, context);
-                },
-                child: Text(S.of(context).joinGame, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * .1,
-                child: ElevatedButton(
-                    child: Text(S.of(context).createGame,
-                      style: TextStyle(
-                        color: textTheme.headlineLarge?.color,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 100, 0, 8),
+                  child: Text(
+                    S.of(context).joinGame,
+                    style: TextStyle(
+                      fontSize: 42,
+                      fontWeight: FontWeight.bold,
+                      color: theme.textTheme.headlineLarge?.color,
                     ),
-                    onPressed: () async {
-                      createGame(context);
-                    }
+                  ),
                 ),
-              ),
+                const SizedBox(height: 20,),
+                TextField(
+                  controller: gameCodeController,
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    setState(() {
+                      _gameCodeError = _validateGameCode(value);
+                    });
+                  },
+                  decoration: InputDecoration(
+                    labelText: S.of(context).enterGamecode,
+                    errorText: _gameCodeError,
+                  ),
+                ),
+                const SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: TextField(
+                    controller: nameController,
+                    keyboardType: TextInputType.text,
+                    onChanged: (value) {
+                      setState(() {
+                        _nameError = _validateName(value);
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: S.of(context).enterName,
+                      errorText: _nameError,
+                      border: const OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20,),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * .1,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      String? gameCodeError = _validateGameCode(gameCodeController.text);
+                      String? nameError = _validateName(nameController.text);
+
+                      ref.read(gameCodeProvider.notifier).state = gameCodeController.text;
+                      print("Code:${ref.read(gameCodeProvider.notifier).state}");
+                      _onJoinGamePressed(gameCodeController.text, nameController.text, context);
+                    },
+                    child: Text(S.of(context).joinGame, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Text("OR", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 5),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * .1,
+                    child: ElevatedButton(
+                        child: Text(S.of(context).createGame,
+                          style: TextStyle(
+                            color: textTheme.headlineLarge?.color,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () async {
+                          createGame(context);
+                        }
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

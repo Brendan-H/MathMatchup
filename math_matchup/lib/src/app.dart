@@ -33,7 +33,6 @@ class MyApp extends ConsumerWidget {
     final lightTheme = ref.watch(lightThemeProvider);
     final darkTheme = ref.watch(darkThemeProvider);
     final themeModeState = ref.watch(themesProvider);
-
     return MaterialApp.router(
       title: 'MathMatchup',
       theme: lightTheme,
