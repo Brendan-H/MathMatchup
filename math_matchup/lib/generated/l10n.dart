@@ -260,6 +260,216 @@ class S {
       args: [],
     );
   }
+
+  /// `Question Type`
+  String get questionType {
+    return Intl.message(
+      'Question Type',
+      name: 'questionType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Question Type`
+  String get selectQuestionType {
+    return Intl.message(
+      'Select Question Type',
+      name: 'selectQuestionType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Addition`
+  String get addition {
+    return Intl.message(
+      'Addition',
+      name: 'addition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subtraction`
+  String get subtraction {
+    return Intl.message(
+      'Subtraction',
+      name: 'subtraction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Multiplication`
+  String get multiplication {
+    return Intl.message(
+      'Multiplication',
+      name: 'multiplication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Division`
+  String get division {
+    return Intl.message(
+      'Division',
+      name: 'division',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Difficulty`
+  String get difficulty {
+    return Intl.message(
+      'Difficulty',
+      name: 'difficulty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Easy`
+  String get easy {
+    return Intl.message(
+      'Easy',
+      name: 'easy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medium`
+  String get medium {
+    return Intl.message(
+      'Medium',
+      name: 'medium',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hard`
+  String get hard {
+    return Intl.message(
+      'Hard',
+      name: 'hard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Impossible`
+  String get impossible {
+    return Intl.message(
+      'Impossible',
+      name: 'impossible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Difficulty`
+  String get selectDifficulty {
+    return Intl.message(
+      'Select Difficulty',
+      name: 'selectDifficulty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time Limit`
+  String get timeLimit {
+    return Intl.message(
+      'Time Limit',
+      name: 'timeLimit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `30 Seconds`
+  String get ThirtySeconds {
+    return Intl.message(
+      '30 Seconds',
+      name: 'ThirtySeconds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1 Minute`
+  String get OneMinute {
+    return Intl.message(
+      '1 Minute',
+      name: 'OneMinute',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2 Minutes`
+  String get TwoMinutes {
+    return Intl.message(
+      '2 Minutes',
+      name: 'TwoMinutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5 Minutes`
+  String get FiveMinutes {
+    return Intl.message(
+      '5 Minutes',
+      name: 'FiveMinutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `10 Minutes`
+  String get TenMinutes {
+    return Intl.message(
+      '10 Minutes',
+      name: 'TenMinutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Time Limit`
+  String get selectTimeLimit {
+    return Intl.message(
+      'Select Time Limit',
+      name: 'selectTimeLimit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are about to create a game with the following settings:`
+  String get aboutCreateGameWithSettings {
+    return Intl.message(
+      'You are about to create a game with the following settings:',
+      name: 'aboutCreateGameWithSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Chosen`
+  String get notChosen {
+    return Intl.message(
+      'Not Chosen',
+      name: 'notChosen',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

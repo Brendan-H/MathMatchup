@@ -28,6 +28,10 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
     final themeModeState = ref.watch(themesProvider);
     final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
     final textTheme = theme.textTheme;
+    var questionType = ref.watch(selectedQuestionTypeProvider.notifier).state ?? S.of(context).notChosen;
+    var difficulty = ref.watch(selectedDifficultyProvider.notifier).state ?? S.of(context).notChosen;
+    var timeLimit = ref.watch(timeLimitProvider.notifier).state ?? S.of(context).notChosen;
+
     return Scaffold(
       appBar: AppBar(
         //back button
@@ -40,15 +44,6 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
               },
           ),
         ),
-        // leading: Padding(
-        //   padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-        //   child: IconButton(
-        //     icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
-        //     onPressed: () {
-        //       ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
-        //     },
-        //   ),
-        // ),
         toolbarHeight: MediaQuery.of(context).size.height * .1,
         title: Text(S.of(context).chooseGameSettings),
         centerTitle: true,
@@ -62,115 +57,126 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
             children: [
               Row(
                 children: [
-                  Text("Question Type", style: textTheme.displayLarge,),
-                  const Spacer(),
-                  DropdownButton(
-                      items: const [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    child: Text(S.of(context).questionType, style: textTheme.displayLarge,),
+                  ),
+                  Expanded(
+                    child: DropdownButton(
+                        items: [
+                          DropdownMenuItem(
+                            value: "Addition",
+                            child: Text(S.of(context).addition),
+                          ),
+                          DropdownMenuItem(
+                            value: "Subtraction",
+                            child: Text(S.of(context).subtraction),
+                          ),
+                          DropdownMenuItem(
+                            value: "Multiplication",
+                            child: Text(S.of(context).multiplication),
+                          ),
+                          DropdownMenuItem(
+                            value: "Division",
+                            child: Text(S.of(context).division),
+                          ),
+                        ],
+                      onChanged: (value) {
+                        ref.read(selectedQuestionTypeProvider.notifier).state = value as String;
+                        setState(() {});
+                        // TODO find workaround for this that doesn't require setState
+                      },
+                      hint:  Text(S.of(context).selectQuestionType),
+                      value: ref.watch(selectedQuestionTypeProvider.notifier).state,
+                    ),
+                  ),
+                ],
+              ),
+              const Divider(thickness: 2,),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    child: Text(S.of(context).difficulty, style: textTheme.displayLarge,),
+                  ),
+                  Expanded(
+                    child: DropdownButton(
+                      items: [
                         DropdownMenuItem(
-                          value: "Addition",
-                          child: Text("Addition"),
+                          value: "Easy",
+                          child: Text(S.of(context).easy),
                         ),
                         DropdownMenuItem(
-                          value: "Subtraction",
-                          child: Text("Subtraction"),
+                          value: "Medium",
+                          child: Text(S.of(context).medium),
                         ),
                         DropdownMenuItem(
-                          value: "Multiplication",
-                          child: Text("Multiplication"),
+                          value: "Hard",
+                          child: Text(S.of(context).hard),
                         ),
                         DropdownMenuItem(
-                          value: "Division",
-                          child: Text("Division"),
+                          value: "Impossible",
+                          child: Text(S.of(context).impossible),
                         ),
                       ],
-                    onChanged: (value) {
-                      ref.read(selectedQuestionTypeProvider.notifier).state = value as String;
-                      setState(() {});
-                      // TODO find workaround for this that doesn't require setState
-                    },
-                    hint: const Text("Select Question Type"),
-                    value: ref.watch(selectedQuestionTypeProvider.notifier).state,
+                      onChanged: (value) {
+                        ref.read(selectedDifficultyProvider.notifier).state = value as String;
+                        setState(() {});
+                        // TODO find workaround for this that doesn't require setState
+                      },
+                      hint: Text(S.of(context).selectDifficulty),
+                      value: ref.watch(selectedDifficultyProvider.notifier).state,
+                    ),
                   ),
                 ],
               ),
               const Divider(thickness: 2,),
               Row(
                 children: [
-                  Text("Difficulty", style: textTheme.displayLarge,),
-                  const Spacer(),
-                  DropdownButton(
-                    items: const [
-                      DropdownMenuItem(
-                        value: "Easy",
-                        child: Text("Easy"),
-                      ),
-                      DropdownMenuItem(
-                        value: "Medium",
-                        child: Text("Medium"),
-                      ),
-                      DropdownMenuItem(
-                        value: "Hard",
-                        child: Text("Hard"),
-                      ),
-                      DropdownMenuItem(
-                        value: "Impossible",
-                        child: Text("Impossible"),
-                      ),
-                    ],
-                    onChanged: (value) {
-                      ref.read(selectedDifficultyProvider.notifier).state = value as String;
-                      setState(() {});
-                      // TODO find workaround for this that doesn't require setState
-                    },
-                    hint: const Text("Select Difficulty"),
-                    value: ref.watch(selectedDifficultyProvider.notifier).state,
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    child: Text(S.of(context).timeLimit, style: textTheme.displayLarge),
+                  ),
+                  Expanded(
+                    child: DropdownButton(
+                      items: [
+                        DropdownMenuItem(
+                          value: "30",
+                          child: Text(S.of(context).ThirtySeconds),
+                        ),
+                        DropdownMenuItem(
+                          value: "60",
+                          child: Text(S.of(context).OneMinute),
+                        ),
+                        DropdownMenuItem(
+                          value: "120",
+                          child: Text(S.of(context).TwoMinutes),
+                        ),
+                        DropdownMenuItem(
+                          value: "300",
+                          child: Text(S.of(context).FiveMinutes),
+                        ),
+                        DropdownMenuItem(
+                          value: "600",
+                          child: Text(S.of(context).TenMinutes),
+                        ),
+                      ],
+                      onChanged: (value) {
+                        ref.read(timeLimitProvider.notifier).state = value as String;
+                        setState(() {});
+                        // TODO find workaround for this that doesn't require setState
+                      },
+                      hint:  Text(S.of(context).selectTimeLimit),
+                      value: ref.watch(timeLimitProvider.notifier).state,
+                    ),
                   ),
                 ],
               ),
               const Divider(thickness: 2,),
-              Row(
-                children: [
-                  Text("Time Limit", style: textTheme.displayLarge),
-                  const Spacer(),
-                  DropdownButton(
-                    items: const [
-                      DropdownMenuItem(
-                        value: "30",
-                        child: Text("30 Seconds"),
-                      ),
-                      DropdownMenuItem(
-                        value: "60",
-                        child: Text("1 Minute"),
-                      ),
-                      DropdownMenuItem(
-                        value: "120",
-                        child: Text("2 Minutes"),
-                      ),
-                      DropdownMenuItem(
-                        value: "300",
-                        child: Text("5 Minutes"),
-                      ),
-                      DropdownMenuItem(
-                        value: "600",
-                        child: Text("10 Minutes"),
-                      ),
-                    ],
-                    onChanged: (value) {
-                      ref.read(timeLimitProvider.notifier).state = value as String;
-                      setState(() {});
-                      // TODO find workaround for this that doesn't require setState
-                    },
-                    hint: const Text("Select Time Limit"),
-                    value: ref.watch(timeLimitProvider.notifier).state,
-                  ),
-                ],
-              ),
-              const Divider(thickness: 2,),
-              Text("You are about to create a game with the following settings:", style: textTheme.displayLarge,),
-              Text("Question Type: ${ref.watch(selectedQuestionTypeProvider.notifier).state},"
-                  " \nDifficulty: ${ref.watch(selectedDifficultyProvider.notifier).state},"
-                  " \nTime Limit: ${ref.watch(timeLimitProvider.notifier).state} seconds (${(int.parse(ref.watch(timeLimitProvider.notifier).state ?? "0") ?? 0) / 60} minutes),"
-                  " \nAre you sure you want to proceed?", style: textTheme.displayMedium,),
+              Text(S.of(context).aboutCreateGameWithSettings, style: textTheme.displayLarge,),
+              Text("${S.of(context).questionType}: $questionType", style: textTheme.displayLarge,),
+              Text("${S.of(context).difficulty}: $difficulty", style: textTheme.displayLarge,),
+              Text("${S.of(context).timeLimit}: $timeLimit Seconds", style: textTheme.displayLarge,),
               const SizedBox(height: 20,),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
@@ -179,7 +185,7 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
                   onPressed: () {
                     createGame(context, ref.watch(selectedDifficultyProvider.notifier).state ?? "Easy", ref.watch(selectedQuestionTypeProvider.notifier).state ?? "Addition", int.parse(ref.watch(timeLimitProvider.notifier).state ?? "30"));
                   },
-                  child: Text("Create Game", style: textTheme.headlineMedium,),
+                  child: Text(S.of(context).createGame, style: textTheme.headlineMedium,),
                 ),
               ),
             ],

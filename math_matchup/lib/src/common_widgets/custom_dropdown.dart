@@ -44,8 +44,13 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
             return PopupMenuItem<Locale>(
               value: entry.key,
               child: Container(
-                width: 200,
-                child: Text(entry.value),
+                width: 75,
+                child: Text(entry.value,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+                ),
               ),
             );
           }).toList();

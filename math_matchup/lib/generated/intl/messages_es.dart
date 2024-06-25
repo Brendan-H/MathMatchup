@@ -31,6 +31,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "FiveMinutes": MessageLookupByLibrary.simpleMessage("5 minutos"),
+        "OneMinute": MessageLookupByLibrary.simpleMessage("1 minuto"),
+        "TenMinutes": MessageLookupByLibrary.simpleMessage("10 minutos"),
+        "ThirtySeconds": MessageLookupByLibrary.simpleMessage("30 segundos"),
+        "TwoMinutes": MessageLookupByLibrary.simpleMessage("2 minutos"),
+        "aboutCreateGameWithSettings": MessageLookupByLibrary.simpleMessage(
+            "Estás a punto de crear un juego con las siguientes configuraciones:"),
+        "addition": MessageLookupByLibrary.simpleMessage("Adición"),
         "anErrorOccurred":
             MessageLookupByLibrary.simpleMessage("Ocurrió un error"),
         "changeThemeMode":
@@ -39,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Elige la configuración del juego"),
         "continueText": MessageLookupByLibrary.simpleMessage("Continuar"),
         "createGame": MessageLookupByLibrary.simpleMessage("Crear juego"),
+        "difficulty": MessageLookupByLibrary.simpleMessage("Dificultad"),
+        "division": MessageLookupByLibrary.simpleMessage("División"),
+        "easy": MessageLookupByLibrary.simpleMessage("Fácil"),
         "enterGamecode":
             MessageLookupByLibrary.simpleMessage("Introducir código de juego"),
         "enterName": MessageLookupByLibrary.simpleMessage("Introducir nombre"),
@@ -48,13 +59,29 @@ class MessageLookup extends MessageLookupByLibrary {
             "El código de juego debe tener 6 dígitos"),
         "goBackHome": MessageLookupByLibrary.simpleMessage(
             "Volver a la pantalla principal"),
+        "hard": MessageLookupByLibrary.simpleMessage("Difícil"),
+        "impossible": MessageLookupByLibrary.simpleMessage("Imposible"),
         "joinGame": MessageLookupByLibrary.simpleMessage("Unirse al juego"),
+        "medium": MessageLookupByLibrary.simpleMessage("Medio"),
+        "multiplication":
+            MessageLookupByLibrary.simpleMessage("Multiplicación"),
         "nameIsRequired":
             MessageLookupByLibrary.simpleMessage("Se requiere nombre"),
         "noQuestionsAvailable": MessageLookupByLibrary.simpleMessage(
             "No hay preguntas disponibles"),
+        "notChosen": MessageLookupByLibrary.simpleMessage("No Elegido"),
         "points": MessageLookupByLibrary.simpleMessage("Puntos:"),
+        "questionType":
+            MessageLookupByLibrary.simpleMessage("Tipo de pregunta"),
+        "selectDifficulty":
+            MessageLookupByLibrary.simpleMessage("Selecciona dificultad"),
+        "selectQuestionType":
+            MessageLookupByLibrary.simpleMessage("Seleccionar tipo"),
+        "selectTimeLimit":
+            MessageLookupByLibrary.simpleMessage("Selecciona limite"),
         "startGame": MessageLookupByLibrary.simpleMessage("Iniciar juego"),
+        "subtraction": MessageLookupByLibrary.simpleMessage("Sustracción"),
+        "timeLimit": MessageLookupByLibrary.simpleMessage("Límite de tiempo"),
         "timeRemainingRemainingtimeSeconds": m0,
         "timesUp": MessageLookupByLibrary.simpleMessage("¡Se acabó el tiempo!"),
         "waitForYourStudentsToFinish": MessageLookupByLibrary.simpleMessage(

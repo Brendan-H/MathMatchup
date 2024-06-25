@@ -30,6 +30,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "FiveMinutes": MessageLookupByLibrary.simpleMessage("5 Minutes"),
+        "OneMinute": MessageLookupByLibrary.simpleMessage("1 Minute"),
+        "TenMinutes": MessageLookupByLibrary.simpleMessage("10 Minutes"),
+        "ThirtySeconds": MessageLookupByLibrary.simpleMessage("30 Seconds"),
+        "TwoMinutes": MessageLookupByLibrary.simpleMessage("2 Minutes"),
+        "aboutCreateGameWithSettings": MessageLookupByLibrary.simpleMessage(
+            "You are about to create a game with the following settings:"),
+        "addition": MessageLookupByLibrary.simpleMessage("Addition"),
         "anErrorOccurred":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
         "changeThemeMode":
@@ -38,6 +46,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose Game Settings"),
         "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
         "createGame": MessageLookupByLibrary.simpleMessage("Create Game"),
+        "difficulty": MessageLookupByLibrary.simpleMessage("Difficulty"),
+        "division": MessageLookupByLibrary.simpleMessage("Division"),
+        "easy": MessageLookupByLibrary.simpleMessage("Easy"),
         "enterGamecode": MessageLookupByLibrary.simpleMessage("Enter Gamecode"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter Name"),
         "gameCodeIsRequired":
@@ -45,13 +56,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameCodeMustBe6Digits":
             MessageLookupByLibrary.simpleMessage("Game code must be 6 digits"),
         "goBackHome": MessageLookupByLibrary.simpleMessage("Go Back Home"),
+        "hard": MessageLookupByLibrary.simpleMessage("Hard"),
+        "impossible": MessageLookupByLibrary.simpleMessage("Impossible"),
         "joinGame": MessageLookupByLibrary.simpleMessage("Join Game"),
+        "medium": MessageLookupByLibrary.simpleMessage("Medium"),
+        "multiplication":
+            MessageLookupByLibrary.simpleMessage("Multiplication"),
         "nameIsRequired":
             MessageLookupByLibrary.simpleMessage("Name is required"),
         "noQuestionsAvailable":
             MessageLookupByLibrary.simpleMessage("No Questions Available"),
+        "notChosen": MessageLookupByLibrary.simpleMessage("Not Chosen"),
         "points": MessageLookupByLibrary.simpleMessage("Points:"),
+        "questionType": MessageLookupByLibrary.simpleMessage("Question Type"),
+        "selectDifficulty":
+            MessageLookupByLibrary.simpleMessage("Select Difficulty"),
+        "selectQuestionType":
+            MessageLookupByLibrary.simpleMessage("Select Question Type"),
+        "selectTimeLimit":
+            MessageLookupByLibrary.simpleMessage("Select Time Limit"),
         "startGame": MessageLookupByLibrary.simpleMessage("Start Game"),
+        "subtraction": MessageLookupByLibrary.simpleMessage("Subtraction"),
+        "timeLimit": MessageLookupByLibrary.simpleMessage("Time Limit"),
         "timeRemainingRemainingtimeSeconds": m0,
         "timesUp": MessageLookupByLibrary.simpleMessage("Time\'s Up!"),
         "waitForYourStudentsToFinish": MessageLookupByLibrary.simpleMessage(
