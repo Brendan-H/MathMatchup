@@ -34,7 +34,6 @@ class TeacherGamePage extends ConsumerWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(60),
             ),
-            backgroundColor: theme.primaryColor,
             child: Text(S.of(context).startGame,
               style: const TextStyle(
                 fontSize: 22,
