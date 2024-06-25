@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (messages_es.dart) Last Modified on 6/24/24, 7:42 PM
- *
- */
-
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
 // This is a library that provides messages for a es locale. All the
 // messages from the main program should be duplicated here with the same
@@ -53,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Se requiere código de juego"),
         "gameCodeMustBe6Digits": MessageLookupByLibrary.simpleMessage(
             "El código de juego debe tener 6 dígitos"),
+        "goBackHome": MessageLookupByLibrary.simpleMessage(
+            "Volver a la pantalla principal"),
         "joinGame": MessageLookupByLibrary.simpleMessage("Unirse al juego"),
         "nameIsRequired":
             MessageLookupByLibrary.simpleMessage("Se requiere nombre"),
@@ -65,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "waitForYourStudentsToFinish": MessageLookupByLibrary.simpleMessage(
             "Espera a que tus estudiantes terminen el juego y presiona el botón OK antes de continuar o sus puntuaciones no se contarán"),
         "welcomeToMathmatchup":
-            MessageLookupByLibrary.simpleMessage("Bienvenido a MathMatchup"),
+            MessageLookupByLibrary.simpleMessage("MathMatchup"),
         "whoWillYourTeammateBeYoullFindOutInRemainingtime": m1,
         "youScoredXPoints": m2
       };

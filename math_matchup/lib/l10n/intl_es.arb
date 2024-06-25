@@ -1,6 +1,6 @@
 {
   "changeThemeMode": "Cambiar a modo oscuro",
-  "welcomeToMathmatchup": "Bienvenido a MathMatchup",
+  "welcomeToMathmatchup": "MathMatchup",
   "joinGame": "Unirse al juego",
   "enterGamecode": "Introducir código de juego",
   "enterName": "Introducir nombre",
@@ -18,5 +18,6 @@
   "gameCodeMustBe6Digits": "El código de juego debe tener 6 dígitos",
   "nameIsRequired": "Se requiere nombre",
   "anErrorOccurred": "Ocurrió un error",
-  "chooseGameSettings": "Elige la configuración del juego"
+  "chooseGameSettings": "Elige la configuración del juego",
+  "goBackHome": "Volver a la pantalla principal"
 }

@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (messages_en.dart) Last Modified on 6/24/24, 7:42 PM
- *
- */
-
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
 // This is a library that provides messages for a en locale. All the
 // messages from the main program should be duplicated here with the same
@@ -51,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Game code is required"),
         "gameCodeMustBe6Digits":
             MessageLookupByLibrary.simpleMessage("Game code must be 6 digits"),
+        "goBackHome": MessageLookupByLibrary.simpleMessage("Go Back Home"),
         "joinGame": MessageLookupByLibrary.simpleMessage("Join Game"),
         "nameIsRequired":
             MessageLookupByLibrary.simpleMessage("Name is required"),
@@ -63,7 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "waitForYourStudentsToFinish": MessageLookupByLibrary.simpleMessage(
             "Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted"),
         "welcomeToMathmatchup":
-            MessageLookupByLibrary.simpleMessage("Welcome to MathMatchup"),
+            MessageLookupByLibrary.simpleMessage("MathMatchup"),
         "whoWillYourTeammateBeYoullFindOutInRemainingtime": m1,
         "youScoredXPoints": m2
       };

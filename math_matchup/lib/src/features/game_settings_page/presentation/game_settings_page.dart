@@ -6,6 +6,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/game_settings_page/repository/create_game.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 import '../../../../generated/l10n.dart';
@@ -29,15 +30,25 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
     final textTheme = theme.textTheme;
     return Scaffold(
       appBar: AppBar(
+        //back button
         leading: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
           child: IconButton(
-            icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
+            icon:  Icon(Icons.arrow_back),
             onPressed: () {
-              ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
-            },
+            context.go('/');
+              },
           ),
         ),
+        // leading: Padding(
+        //   padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+        //   child: IconButton(
+        //     icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
+        //     onPressed: () {
+        //       ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
+        //     },
+        //   ),
+        // ),
         toolbarHeight: MediaQuery.of(context).size.height * .1,
         title: Text(S.of(context).chooseGameSettings),
         centerTitle: true,

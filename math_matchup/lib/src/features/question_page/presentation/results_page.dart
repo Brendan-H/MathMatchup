@@ -6,6 +6,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../generated/l10n.dart';
 
@@ -17,7 +18,17 @@ class ResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(S.of(context).youScoredXPoints(points)),
+        child: Column(
+          children: [
+            Text(S.of(context).youScoredXPoints(points)),
+            TextButton(
+              onPressed: () {
+                context.go('/');
+              },
+              child: Text(S.of(context).goBackHome),
+            ),
+          ],
+        ),
       ),);
   }
 }

@@ -1,6 +1,6 @@
 {
   "changeThemeMode": "Toggle Dark Mode",
-  "welcomeToMathmatchup": "Welcome to MathMatchup",
+  "welcomeToMathmatchup": "MathMatchup",
   "joinGame": "Join Game",
   "enterGamecode": "Enter Gamecode",
   "enterName": "Enter Name",
@@ -18,5 +18,6 @@
   "gameCodeMustBe6Digits": "Game code must be 6 digits",
   "nameIsRequired": "Name is required",
   "anErrorOccurred": "An error occurred",
-  "chooseGameSettings": "Choose Game Settings"
+  "chooseGameSettings": "Choose Game Settings",
+  "goBackHome": "Go Back Home"
 }

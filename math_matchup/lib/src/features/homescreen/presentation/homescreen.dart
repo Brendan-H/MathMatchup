@@ -8,10 +8,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:math_matchup/src/common_widgets/custom_dropdown.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../app.dart';
 import '../../../utils/theme_provider.dart';
 import '../repository/join_game.dart';
 
@@ -100,6 +102,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final themeModeState = ref.watch(themesProvider);
     final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
     final textTheme = theme.textTheme;
+    final Map<Locale, String> _locales = {
+      Locale('en', 'US'): 'English',
+      Locale('es', 'ES'): 'Español',
+    };
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -111,6 +117,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             },
           ),
         ),
+        actions: [
+         CustomDropdown(items: _locales, selectedItem: ref.watch(localeProvider.notifier).state)
+        ],
         toolbarHeight: MediaQuery.of(context).size.height * .1,
         title: Text(S.of(context).welcomeToMathmatchup),
         centerTitle: true,
