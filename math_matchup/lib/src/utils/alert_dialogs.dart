@@ -25,6 +25,7 @@ Future<bool?> showAlertDialog({
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Colors.red[300],
         title: Text(title),
         content: content != null ? Text(content) : null,
         actions: <Widget>[

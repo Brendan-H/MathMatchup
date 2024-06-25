@@ -2,7 +2,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (create_game.dart) Last Modified on 5/21/24, 7:10 PM
+ * Current File (create_game.dart) Last Modified on 6/24/24, 12:59 PM
  *
  */
 
@@ -14,15 +14,21 @@ import '../../../utils/alert_dialogs.dart';
 import '../../../utils/constants.dart';
 
 
-void createGame(BuildContext context) async {
+void createGame(BuildContext context, String difficulty, String questionType, int timeLimit) async {
   final String backendurl = Constants.backendurl;
   final Dio dio = Dio();
   print("$backendurl/games");
+  dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
+
 
   try {
     final response = await dio.post(
       "$backendurl/games",
-    data: {}
+    data: {
+        "difficulty": difficulty,
+        "gameType": questionType,
+        "timer": timeLimit,
+    }
     );
     if (response.statusCode == 200) {
       print("Game created");

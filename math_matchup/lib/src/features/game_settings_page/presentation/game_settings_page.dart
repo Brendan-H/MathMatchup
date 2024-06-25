@@ -6,6 +6,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup/src/features/game_settings_page/repository/create_game.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 import '../../../../generated/l10n.dart';
 import '../../../utils/theme_provider.dart';
@@ -163,7 +164,7 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
                   height: MediaQuery.of(context).size.height * .1,
                   child: ElevatedButton(
                     onPressed: () {
-                      context.go('/game');
+                      createGame(context, ref.watch(selectedDifficultyProvider.notifier).state ?? "Easy", ref.watch(selectedQuestionTypeProvider.notifier).state ?? "Addition", int.parse(ref.watch(timeLimitProvider.notifier).state ?? "30"));
                     },
                     child: Text("Create Game", style: textTheme.headlineMedium,),
                   ),
