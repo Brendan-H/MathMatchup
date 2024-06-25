@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/game_page/presentation/student_game_page.dart';
+import 'package:math_matchup/src/features/game_settings_page/presentation/game_settings_page.dart';
 import 'package:math_matchup/src/features/homescreen/presentation/homescreen.dart';
 import 'package:math_matchup/src/features/leaderboard/presentation/leaderboard_page.dart';
 import 'package:math_matchup/src/utils/page_not_found_screen.dart';
@@ -92,6 +93,14 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
             final gameCode = state.pathParameters['gamecode'];
             return MaterialPage(
                 child: LeaderboardPage(gameCode: gameCode ?? "123456")
+            );
+          },
+        ),
+        GoRoute(
+          path: '/game/settings',
+          pageBuilder: (context, state) {
+            return MaterialPage(
+                child: GameSettingsPage()
             );
           },
         ),

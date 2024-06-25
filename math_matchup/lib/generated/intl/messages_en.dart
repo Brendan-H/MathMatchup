@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("An error occurred"),
         "changeThemeMode":
             MessageLookupByLibrary.simpleMessage("Toggle Dark Mode"),
+        "chooseGameSettings":
+            MessageLookupByLibrary.simpleMessage("Choose Game Settings"),
         "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
         "createGame": MessageLookupByLibrary.simpleMessage("Create Game"),
         "enterGamecode": MessageLookupByLibrary.simpleMessage("Enter Gamecode"),

@@ -17,5 +17,6 @@
   "gameCodeIsRequired": "Game code is required",
   "gameCodeMustBe6Digits": "Game code must be 6 digits",
   "nameIsRequired": "Name is required",
-  "anErrorOccurred": "An error occurred"
+  "anErrorOccurred": "An error occurred",
+  "chooseGameSettings": "Choose Game Settings"
 }

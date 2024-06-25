@@ -46,6 +46,21 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
+        headlineMedium: TextStyle(
+          fontSize: 35,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
+        displayLarge: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+        displayMedium: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w400,
+          color: Colors.black,
+        ),
       )
    // textTheme: Typography.material2021(platform: defaultTargetPlatform).black,
   );
@@ -80,6 +95,11 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
   textTheme: TextTheme(
     headlineLarge: TextStyle(
       fontSize: 42,
+      fontWeight: FontWeight.bold,
+      color: Colors.grey[350],
+    ),
+    displayLarge: TextStyle(
+      fontSize: 32,
       fontWeight: FontWeight.bold,
       color: Colors.grey[350],
     ),

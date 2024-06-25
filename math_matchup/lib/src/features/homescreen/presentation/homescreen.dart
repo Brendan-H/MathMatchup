@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/homescreen/repository/create_game.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/themes.dart';
@@ -182,7 +183,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     child: Text(S.of(context).joinGame, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
                   ),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 Text("OR", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 5),
@@ -198,7 +199,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                         onPressed: () async {
-                          createGame(context);
+                         context.go('/game/settings');
                         }
                     ),
                   ),

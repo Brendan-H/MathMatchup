@@ -240,6 +240,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Choose Game Settings`
+  String get chooseGameSettings {
+    return Intl.message(
+      'Choose Game Settings',
+      name: 'chooseGameSettings',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
