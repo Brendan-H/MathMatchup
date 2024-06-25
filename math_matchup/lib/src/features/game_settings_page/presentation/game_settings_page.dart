@@ -10,7 +10,6 @@ import 'package:math_matchup/src/features/game_settings_page/repository/create_g
 import 'package:math_matchup/src/utils/themes.dart';
 import '../../../../generated/l10n.dart';
 import '../../../utils/theme_provider.dart';
-import 'package:go_router/go_router.dart';
 
 class GameSettingsPage extends ConsumerStatefulWidget {
   const GameSettingsPage({Key? key}) : super(key: key);
@@ -53,24 +52,24 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
               Row(
                 children: [
                   Text("Question Type", style: textTheme.displayLarge,),
-                  Spacer(),
+                  const Spacer(),
                   DropdownButton(
                       items: const [
                         DropdownMenuItem(
-                          child: Text("Addition"),
                           value: "Addition",
+                          child: Text("Addition"),
                         ),
                         DropdownMenuItem(
-                          child: Text("Subtraction"),
                           value: "Subtraction",
+                          child: Text("Subtraction"),
                         ),
                         DropdownMenuItem(
-                          child: Text("Multiplication"),
                           value: "Multiplication",
+                          child: Text("Multiplication"),
                         ),
                         DropdownMenuItem(
-                          child: Text("Division"),
                           value: "Division",
+                          child: Text("Division"),
                         ),
                       ],
                     onChanged: (value) {
@@ -83,28 +82,28 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
                   ),
                 ],
               ),
-              Divider(thickness: 2,),
+              const Divider(thickness: 2,),
               Row(
                 children: [
                   Text("Difficulty", style: textTheme.displayLarge,),
-                  Spacer(),
+                  const Spacer(),
                   DropdownButton(
                     items: const [
                       DropdownMenuItem(
-                        child: Text("Easy"),
                         value: "Easy",
+                        child: Text("Easy"),
                       ),
                       DropdownMenuItem(
-                        child: Text("Medium"),
                         value: "Medium",
+                        child: Text("Medium"),
                       ),
                       DropdownMenuItem(
-                        child: Text("Hard"),
                         value: "Hard",
+                        child: Text("Hard"),
                       ),
                       DropdownMenuItem(
-                        child: Text("Impossible"),
                         value: "Impossible",
+                        child: Text("Impossible"),
                       ),
                     ],
                     onChanged: (value) {
@@ -117,32 +116,32 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
                   ),
                 ],
               ),
-              Divider(thickness: 2,),
+              const Divider(thickness: 2,),
               Row(
                 children: [
                   Text("Time Limit", style: textTheme.displayLarge),
-                  Spacer(),
+                  const Spacer(),
                   DropdownButton(
                     items: const [
                       DropdownMenuItem(
-                        child: Text("30 Seconds"),
                         value: "30",
+                        child: Text("30 Seconds"),
                       ),
                       DropdownMenuItem(
-                        child: Text("1 Minute"),
                         value: "60",
+                        child: Text("1 Minute"),
                       ),
                       DropdownMenuItem(
-                        child: Text("2 Minutes"),
                         value: "120",
+                        child: Text("2 Minutes"),
                       ),
                       DropdownMenuItem(
-                        child: Text("5 Minutes"),
                         value: "300",
+                        child: Text("5 Minutes"),
                       ),
                       DropdownMenuItem(
-                        child: Text("10 Minutes"),
                         value: "600",
+                        child: Text("10 Minutes"),
                       ),
                     ],
                     onChanged: (value) {
@@ -155,7 +154,7 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
                   ),
                 ],
               ),
-              Divider(thickness: 2,),
+              const Divider(thickness: 2,),
               Text("You are about to create a game with the following settings:", style: textTheme.displayLarge,),
               Text("Question Type: ${ref.watch(selectedQuestionTypeProvider.notifier).state},"
                   " \nDifficulty: ${ref.watch(selectedDifficultyProvider.notifier).state},"

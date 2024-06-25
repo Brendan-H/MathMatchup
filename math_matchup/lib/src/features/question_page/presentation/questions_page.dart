@@ -101,18 +101,13 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
               return AnswerChoice(
                 answer: answer,
                 isCorrect: isCorrect,
-                onTap: () {
+                onTap: (BuildContext context) {
                   // Update selected answer
                   ref.read(selectedAnswerProvider.notifier).state = answer;
 
                   // Check answer and update UI
-                  ref.read(questionsProvider.notifier).checkAnswer(answer, ref, currentQuestion);
+                  ref.read(questionsProvider.notifier).checkAnswer(answer, ref, currentQuestion, context);
 
-                  // Move to next question after a delay
-                  Future.delayed(const Duration(seconds: 1), () {
-                    ref.read(currentQuestionIndexProvider.notifier).state++;
-                    ref.read(selectedAnswerProvider.notifier).state = null;
-                  });
                 },
               );
             }).toList(),
@@ -134,7 +129,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
 
 class AnswerChoice extends ConsumerWidget {
   final String answer;
-  final VoidCallback onTap;
+  final void Function(BuildContext) onTap;
   final bool isCorrect;
 
   const AnswerChoice({
@@ -147,6 +142,7 @@ class AnswerChoice extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedAnswer = ref.watch(selectedAnswerProvider);
+    final isAnswering = ref.watch(isAnsweringProvider);
     final isSelected = answer == selectedAnswer;
 
     Color backgroundColor;
@@ -157,7 +153,7 @@ class AnswerChoice extends ConsumerWidget {
     }
 
     return InkWell(
-      onTap: onTap,
+      onTap: isAnswering ? null : () => onTap(context),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(

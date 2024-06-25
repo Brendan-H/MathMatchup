@@ -43,8 +43,8 @@ class TeacherGamePage extends ConsumerWidget {
               ),
             ),
             onPressed: () async {
+              await startGame(gameCode);
               context.go('/teacher_countdown/$gameCode');
-              startGame(gameCode);
             }
         ),
       ),

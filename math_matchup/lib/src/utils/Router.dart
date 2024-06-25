@@ -99,7 +99,7 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
         GoRoute(
           path: '/game/settings',
           pageBuilder: (context, state) {
-            return MaterialPage(
+            return const MaterialPage(
                 child: GameSettingsPage()
             );
           },
