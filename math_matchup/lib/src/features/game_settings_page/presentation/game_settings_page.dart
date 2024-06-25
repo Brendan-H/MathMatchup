@@ -46,131 +46,129 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
       body: SafeArea(
         minimum: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Text("Question Type", style: textTheme.displayLarge,),
-                    Spacer(),
-                    DropdownButton(
-                        items: const [
-                          DropdownMenuItem(
-                            child: Text("Addition"),
-                            value: "Addition",
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Subtraction"),
-                            value: "Subtraction",
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Multiplication"),
-                            value: "Multiplication",
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Division"),
-                            value: "Division",
-                          ),
-                        ],
-                      onChanged: (value) {
-                        ref.read(selectedQuestionTypeProvider.notifier).state = value as String;
-                        setState(() {});
-                        // TODO find workaround for this that doesn't require setState
-                      },
-                      hint: const Text("Select Question Type"),
-                      value: ref.watch(selectedQuestionTypeProvider.notifier).state,
-                    ),
-                  ],
-                ),
-                Divider(thickness: 2,),
-                Row(
-                  children: [
-                    Text("Difficulty", style: textTheme.displayLarge,),
-                    Spacer(),
-                    DropdownButton(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  Text("Question Type", style: textTheme.displayLarge,),
+                  Spacer(),
+                  DropdownButton(
                       items: const [
                         DropdownMenuItem(
-                          child: Text("Easy"),
-                          value: "Easy",
+                          child: Text("Addition"),
+                          value: "Addition",
                         ),
                         DropdownMenuItem(
-                          child: Text("Medium"),
-                          value: "Medium",
+                          child: Text("Subtraction"),
+                          value: "Subtraction",
                         ),
                         DropdownMenuItem(
-                          child: Text("Hard"),
-                          value: "Hard",
+                          child: Text("Multiplication"),
+                          value: "Multiplication",
+                        ),
+                        DropdownMenuItem(
+                          child: Text("Division"),
+                          value: "Division",
                         ),
                       ],
-                      onChanged: (value) {
-                        ref.read(selectedDifficultyProvider.notifier).state = value as String;
-                        setState(() {});
-                        // TODO find workaround for this that doesn't require setState
-                      },
-                      hint: const Text("Select Difficulty"),
-                      value: ref.watch(selectedDifficultyProvider.notifier).state,
-                    ),
-                  ],
-                ),
-                Divider(thickness: 2,),
-                Row(
-                  children: [
-                    Text("Time Limit", style: textTheme.displayLarge),
-                    Spacer(),
-                    DropdownButton(
-                      items: const [
-                        DropdownMenuItem(
-                          child: Text("30 Seconds"),
-                          value: "30",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("1 Minute"),
-                          value: "60",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("2 Minutes"),
-                          value: "120",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("5 Minutes"),
-                          value: "300",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("10 Minutes"),
-                          value: "600",
-                        ),
-                      ],
-                      onChanged: (value) {
-                        ref.read(timeLimitProvider.notifier).state = value as String;
-                        setState(() {});
-                        // TODO find workaround for this that doesn't require setState
-                      },
-                      hint: const Text("Select Time Limit"),
-                      value: ref.watch(timeLimitProvider.notifier).state,
-                    ),
-                  ],
-                ),
-                Divider(thickness: 2,),
-                Text("You are about to create a game with the following settings:", style: textTheme.displayLarge,),
-                Text("Question Type: ${ref.watch(selectedQuestionTypeProvider.notifier).state},"
-                    " \nDifficulty: ${ref.watch(selectedDifficultyProvider.notifier).state},"
-                    " \nTime Limit: ${ref.watch(timeLimitProvider.notifier).state} seconds (${(int.parse(ref.watch(timeLimitProvider.notifier).state ?? "0") ?? 0) / 60} minutes),"
-                    " \nAre you sure you want to proceed?", style: textTheme.displayMedium,),
-                const SizedBox(height: 20,),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .1,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      createGame(context, ref.watch(selectedDifficultyProvider.notifier).state ?? "Easy", ref.watch(selectedQuestionTypeProvider.notifier).state ?? "Addition", int.parse(ref.watch(timeLimitProvider.notifier).state ?? "30"));
+                    onChanged: (value) {
+                      ref.read(selectedQuestionTypeProvider.notifier).state = value as String;
+                      setState(() {});
+                      // TODO find workaround for this that doesn't require setState
                     },
-                    child: Text("Create Game", style: textTheme.headlineMedium,),
+                    hint: const Text("Select Question Type"),
+                    value: ref.watch(selectedQuestionTypeProvider.notifier).state,
                   ),
+                ],
+              ),
+              Divider(thickness: 2,),
+              Row(
+                children: [
+                  Text("Difficulty", style: textTheme.displayLarge,),
+                  Spacer(),
+                  DropdownButton(
+                    items: const [
+                      DropdownMenuItem(
+                        child: Text("Easy"),
+                        value: "Easy",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("Medium"),
+                        value: "Medium",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("Hard"),
+                        value: "Hard",
+                      ),
+                    ],
+                    onChanged: (value) {
+                      ref.read(selectedDifficultyProvider.notifier).state = value as String;
+                      setState(() {});
+                      // TODO find workaround for this that doesn't require setState
+                    },
+                    hint: const Text("Select Difficulty"),
+                    value: ref.watch(selectedDifficultyProvider.notifier).state,
+                  ),
+                ],
+              ),
+              Divider(thickness: 2,),
+              Row(
+                children: [
+                  Text("Time Limit", style: textTheme.displayLarge),
+                  Spacer(),
+                  DropdownButton(
+                    items: const [
+                      DropdownMenuItem(
+                        child: Text("30 Seconds"),
+                        value: "30",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("1 Minute"),
+                        value: "60",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("2 Minutes"),
+                        value: "120",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("5 Minutes"),
+                        value: "300",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("10 Minutes"),
+                        value: "600",
+                      ),
+                    ],
+                    onChanged: (value) {
+                      ref.read(timeLimitProvider.notifier).state = value as String;
+                      setState(() {});
+                      // TODO find workaround for this that doesn't require setState
+                    },
+                    hint: const Text("Select Time Limit"),
+                    value: ref.watch(timeLimitProvider.notifier).state,
+                  ),
+                ],
+              ),
+              Divider(thickness: 2,),
+              Text("You are about to create a game with the following settings:", style: textTheme.displayLarge,),
+              Text("Question Type: ${ref.watch(selectedQuestionTypeProvider.notifier).state},"
+                  " \nDifficulty: ${ref.watch(selectedDifficultyProvider.notifier).state},"
+                  " \nTime Limit: ${ref.watch(timeLimitProvider.notifier).state} seconds (${(int.parse(ref.watch(timeLimitProvider.notifier).state ?? "0") ?? 0) / 60} minutes),"
+                  " \nAre you sure you want to proceed?", style: textTheme.displayMedium,),
+              const SizedBox(height: 20,),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .1,
+                child: ElevatedButton(
+                  onPressed: () {
+                    createGame(context, ref.watch(selectedDifficultyProvider.notifier).state ?? "Easy", ref.watch(selectedQuestionTypeProvider.notifier).state ?? "Addition", int.parse(ref.watch(timeLimitProvider.notifier).state ?? "30"));
+                  },
+                  child: Text("Create Game", style: textTheme.headlineMedium,),
                 ),
-              ],
-            )
+              ),
+            ],
           )
         )
       )

@@ -9,6 +9,8 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../game_settings_page/presentation/game_settings_page.dart';
+
 final remainingTimeProvider = StateProvider<int>((ref) => 30);
 final teacherTimerCompleteProvider = StateProvider<bool>((ref) => false);
 
@@ -42,7 +44,7 @@ class TeacherCountdownNotifier extends StateNotifier<int> {
     super.dispose();
   }
 }
-//TODO make countdown time configurable
 final teacherCountdownProvider = StateNotifierProvider<TeacherCountdownNotifier, int>((ref) {
-  return TeacherCountdownNotifier(30, ref);
+  final timeLimit = int.parse(ref.read(timeLimitProvider.notifier).state ?? '30');
+  return TeacherCountdownNotifier(timeLimit, ref);
 });

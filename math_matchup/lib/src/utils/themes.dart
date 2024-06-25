@@ -99,8 +99,18 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
       color: Colors.grey[350],
     ),
     displayLarge: TextStyle(
-      fontSize: 32,
+      fontSize: 22,
       fontWeight: FontWeight.bold,
+      color: Colors.grey[350],
+    ),
+    displayMedium: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
+      color: Colors.grey[350],
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 35,
+      fontWeight: FontWeight.w600,
       color: Colors.grey[350],
     ),
   )
