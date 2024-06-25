@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (game_settings_page.dart) Last Modified on 6/24/24, 7:33 PM
+ * Current File (game_settings_page.dart) Last Modified on 6/24/24, 9:36 PM
  *
  */
 import 'package:flutter/material.dart';
@@ -101,6 +101,10 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
                       DropdownMenuItem(
                         child: Text("Hard"),
                         value: "Hard",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("Impossible"),
+                        value: "Impossible",
                       ),
                     ],
                     onChanged: (value) {

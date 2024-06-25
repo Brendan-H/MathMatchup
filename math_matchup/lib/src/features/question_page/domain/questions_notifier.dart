@@ -3,7 +3,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (questions_notifier.dart) Last Modified on 6/12/24, 3:25 PM
+ * Current File (questions_notifier.dart) Last Modified on 6/24/24, 12:59 PM
  *
  */
 
@@ -11,6 +11,7 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../game_settings_page/presentation/game_settings_page.dart';
 import '../data/addition_question.dart';
 
 final questionsProvider = StateNotifierProvider<QuestionsNotifier, List<AdditionQuestion>>((ref) => QuestionsNotifier());
@@ -29,8 +30,6 @@ final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
     correctAnswer: '',
   );
 });
-
-final remainingTimeProvider = StateProvider<int>((ref) => 30);
 
 class CountdownNotifier extends StateNotifier<int> {
   CountdownNotifier(int remainingTime, this.ref) : super(remainingTime) {
@@ -66,7 +65,8 @@ class CountdownNotifier extends StateNotifier<int> {
 }
 
 final countdownProvider = StateNotifierProvider<CountdownNotifier, int>((ref) {
-  return CountdownNotifier(30, ref); // 5 minutes in seconds
+  final timeLimit = int.parse(ref.read(timeLimitProvider.notifier).state ?? '60');
+  return CountdownNotifier(timeLimit, ref);
 });
 
 class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {

@@ -3,7 +3,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (app.dart) Last Modified on 5/24/24, 4:59 PM
+ * Current File (app.dart) Last Modified on 6/24/24, 2:05 PM
  *
  */
 
@@ -21,8 +21,6 @@ import 'features/leaderboard/repository/get_leaderboard.dart';
 GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey();
 final playerIdProvider = StateProvider<int?>((ref) => null);
 final leaderboardProvider = StateProvider<List<Team>?>((ref) => null);
-final diffucultyProvider = StateProvider<String?>((ref) => null);
-final gameTypeProvider = StateProvider<String?>((ref) => null);
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});

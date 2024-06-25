@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (join_game.dart) Last Modified on 6/24/24, 12:31 PM
+ * Current File (join_game.dart) Last Modified on 6/24/24, 12:59 PM
  *
  */
 
@@ -12,6 +12,8 @@ import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/constants.dart';
 import 'package:math_matchup/src/app.dart';
+
+import '../../game_settings_page/presentation/game_settings_page.dart';
 
 
 void joinGame(String gamecode, String name, BuildContext context, WidgetRef ref) async {
@@ -31,13 +33,16 @@ void joinGame(String gamecode, String name, BuildContext context, WidgetRef ref)
     );
 
     if (response.statusCode == 200) {
-      print("game joined");
+      print(response.data);
+      print("\n\n\n\n\n\ngame joined");
       var playerID = response.data['player']['id'];
       var gameDifficulty = response.data['gameDifficulty'];
       var gameType = response.data['gameType'];
+      var timeLimit = response.data['timer'].toString();
       ref.read(playerIdProvider.notifier).state = playerID;
-      ref.read(gameTypeProvider.notifier).state = gameType;
-      ref.read(diffucultyProvider.notifier).state = gameDifficulty;
+      ref.read(selectedQuestionTypeProvider.notifier).state = gameType;
+      ref.read(selectedDifficultyProvider.notifier).state = gameDifficulty;
+      ref.read(timeLimitProvider.notifier).state = timeLimit;
       context.go('/student_game_page/$gamecode');
     } else {
       // Handle other status codes if needed

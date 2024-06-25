@@ -1,13 +1,14 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (addition_question.dart) Last Modified on 5/24/24, 5:05 PM
+ * Current File (addition_question.dart) Last Modified on 6/24/24, 12:59 PM
  *
  */
 
 import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup/src/features/game_settings_page/presentation/game_settings_page.dart';
 
 import '../../../app.dart';
 
@@ -25,13 +26,14 @@ class AdditionQuestion {
 }
 
 AdditionQuestion generateAdditionQuestion(WidgetRef ref) {
-  final difficulty = ref.read(diffucultyProvider.notifier).state;
-  final digitsPerNumber = difficulty == "easy" ? 1 :
-         difficulty == "medium" ? 2 :
-         difficulty == "hard" ? 3 :
-         difficulty == "impossible" ? 4
+  final difficulty = ref.read(selectedDifficultyProvider.notifier).state;
+  final digitsPerNumber = difficulty == "Easy" ? 1 :
+         difficulty == "Medium" ? 2 :
+         difficulty == "Hard" ? 3 :
+         difficulty == "Impossible" ? 4
            : 1; //default to easy
   int maxNumber = 10;
+  //maxNumber is the max distance from the correct answer that the incorrect answers can be
   final random = Random();
 
   // Generate two random numbers
@@ -41,7 +43,7 @@ AdditionQuestion generateAdditionQuestion(WidgetRef ref) {
   // Calculate the correct answer
   final correctAnswer = (num1 + num2).toString();
 
-  // Generate three other believable incorrect answers
+  // Generate three other believable incorrect answers using maxNumber
   List<String> answerChoices = [];
   while (answerChoices.length < 3) {
     final incorrectAnswer = (int.parse(correctAnswer) + random.nextInt(maxNumber)).toString();
