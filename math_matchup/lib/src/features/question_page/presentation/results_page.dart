@@ -16,16 +16,28 @@ class ResultsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(S.of(context).youScoredXPoints(points)),
-            TextButton(
-              onPressed: () {
-                context.go('/');
-              },
-              child: Text(S.of(context).goBackHome),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(S.of(context).youScoredXPoints(points), style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .1,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    context.go('/');
+                  },
+                  child: Text(S.of(context).goBackHome, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
+                ),
+              ),
             ),
           ],
         ),

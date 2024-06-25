@@ -13,7 +13,7 @@ class CustomDropdown extends ConsumerStatefulWidget {
   final Map<Locale, String> items;
   final Locale selectedItem;
 
-  CustomDropdown({required this.items, required this.selectedItem});
+  const CustomDropdown({super.key, required this.items, required this.selectedItem});
 
   @override
   _CustomDropdownState createState() => _CustomDropdownState();
@@ -31,7 +31,7 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: PopupMenuButton<Locale>(
         onSelected: (Locale locale) {
           setState(() {
@@ -43,7 +43,7 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
           return widget.items.entries.map((entry) {
             return PopupMenuItem<Locale>(
               value: entry.key,
-              child: Container(
+              child: SizedBox(
                 width: 75,
                 child: Text(entry.value,
                 style: const TextStyle(
@@ -67,7 +67,7 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
             ),
           ),
           child: Center(
-            child: Text(dropdownValue.languageCode.toUpperCase(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+            child: Text(dropdownValue.languageCode.toUpperCase(), style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
           ),
         ),
       ),

@@ -21,7 +21,7 @@ import 'features/leaderboard/repository/get_leaderboard.dart';
 GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey();
 final playerIdProvider = StateProvider<int?>((ref) => null);
 final leaderboardProvider = StateProvider<List<Team>?>((ref) => null);
-final localeProvider = StateProvider<Locale>((ref) => Locale('en', 'US')); // Default locale is English
+final localeProvider = StateProvider<Locale>((ref) => const Locale('en', 'US')); // Default locale is English
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});

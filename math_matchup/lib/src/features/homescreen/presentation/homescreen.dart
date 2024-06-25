@@ -102,9 +102,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final themeModeState = ref.watch(themesProvider);
     final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
     final textTheme = theme.textTheme;
-    final Map<Locale, String> _locales = {
-      Locale('en', 'US'): 'English',
-      Locale('es', 'ES'): 'Español',
+    final Map<Locale, String> locales = {
+      const Locale('en', 'US'): 'English',
+      const Locale('es', 'ES'): 'Español',
     };
     return Scaffold(
       appBar: AppBar(
@@ -118,7 +118,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ),
         actions: [
-         CustomDropdown(items: _locales, selectedItem: ref.watch(localeProvider.notifier).state)
+         CustomDropdown(items: locales, selectedItem: ref.watch(localeProvider.notifier).state)
         ],
         toolbarHeight: MediaQuery.of(context).size.height * .1,
         title: Text(S.of(context).welcomeToMathmatchup),
@@ -186,7 +186,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                       ref.read(gameCodeProvider.notifier).state = gameCodeController.text;
                       print("Code:${ref.read(gameCodeProvider.notifier).state}");
-                      _onJoinGamePressed(gameCodeController.text, nameController.text, context);
+                      context.go('/game/123456/play');
+                  //    _onJoinGamePressed(gameCodeController.text, nameController.text, context);
                     },
                     child: Text(S.of(context).joinGame, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
                   ),

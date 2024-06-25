@@ -102,7 +102,7 @@ class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
       ref.read(selectedAnswerProvider.notifier).state = null;
       ref.read(isAnsweringProvider.notifier).state = false; // Set isAnswering to false
     });
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Correct!'), duration: const Duration(seconds: 1),));
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Correct!'), duration: Duration(seconds: 1),));
   } else {
     // Delay moving to the next question by 3 seconds
     Future.delayed(const Duration(seconds: 3), () {
@@ -110,7 +110,7 @@ class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
       ref.read(selectedAnswerProvider.notifier).state = null;
       ref.read(isAnsweringProvider.notifier).state = false; // Set isAnswering to false
     });
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Incorrect! Waiting for 3 seconds...'), duration: const Duration(seconds: 3),));
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Incorrect! Waiting for 3 seconds...'), duration: Duration(seconds: 3),));
   }
 
   // Notify listeners about the state change

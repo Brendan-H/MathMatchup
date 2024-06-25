@@ -38,7 +38,7 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
         leading: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
           child: IconButton(
-            icon:  Icon(Icons.arrow_back),
+            icon:  const Icon(Icons.arrow_back),
             onPressed: () {
             context.go('/');
               },
