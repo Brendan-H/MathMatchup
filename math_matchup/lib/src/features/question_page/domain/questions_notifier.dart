@@ -3,7 +3,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (questions_notifier.dart) Last Modified on 6/25/24, 5:07 PM
+ * Current File (questions_notifier.dart) Last Modified on 6/25/24, 8:22 PM
  *
  */
 
@@ -11,22 +11,25 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup/src/features/question_page/data/subtraction_question.dart';
 
 import '../../game_settings_page/presentation/game_settings_page.dart';
 import '../data/addition_question.dart';
+import '../data/question.dart';
 import '../presentation/questions_page.dart';
+import '../repository/question_type_switcher.dart';
 
-final questionsProvider = StateNotifierProvider<QuestionsNotifier, List<AdditionQuestion>>((ref) => QuestionsNotifier());
+final questionsProvider = StateNotifierProvider<QuestionsNotifier, List<Question>>((ref) => QuestionsNotifier());
 final playerPointsProvider = StateProvider<int>((ref) => 0);
 final timerCompleteProvider = StateProvider<bool>((ref) => false);
 
 final currentQuestionIndexProvider = StateProvider<int>((ref) => 0);
 
-final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
+final currentQuestionProvider = Provider<Question>((ref) {
   final questions = ref.watch(questionsProvider);
   final currentQuestionIndex = ref.watch(currentQuestionIndexProvider);
 
-  return questions.isNotEmpty ? questions[currentQuestionIndex] : AdditionQuestion(
+  return questions.isNotEmpty ? questions[currentQuestionIndex] : Question(
     question: 'No questions available',
     answerChoices: ['An error Occurred', 'hi', 'hello', 'hola'],
     correctAnswer: '',
@@ -75,11 +78,10 @@ final countdownProvider = StateNotifierProvider<CountdownNotifier, int>((ref) {
 final isAnsweringProvider = StateProvider<bool>((ref) => false);
 
 /// Gets the selected answer that the user clicks while also providing short delays and incorrect answer penalties so the user cannot rush through
-class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
+class QuestionsNotifier extends StateNotifier<List<Question>> {
   QuestionsNotifier() : super([]);
-
   void generateQuestions({required int totalQuestions, required WidgetRef ref}) {
-    final questions = List.generate(totalQuestions, (_) => generateAdditionQuestion(ref));
+    final questions = List.generate(totalQuestions, (_) => generateQuestion(ref));
     state = questions;
   }
 
@@ -87,10 +89,9 @@ class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
     ref.read(playerPointsProvider.notifier).state += amount;
   }
 
- void checkAnswer(String selectedAnswer, WidgetRef ref, AdditionQuestion currentQuestion, BuildContext context) {
+ void checkAnswer(String selectedAnswer, WidgetRef ref, Question currentQuestion, BuildContext context) {
   var currentQuestionIndex = ref.read(currentQuestionIndexProvider);
   if (ref.read(isAnsweringProvider.notifier).state) {
-    // If already answering, ignore this answer
     return;
   }
 

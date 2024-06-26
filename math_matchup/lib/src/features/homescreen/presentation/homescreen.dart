@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (homescreen.dart) Last Modified on 6/25/24, 5:50 PM
+ * Current File (homescreen.dart) Last Modified on 6/25/24, 8:03 PM
  *
  */
 
@@ -189,8 +189,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                       ref.read(gameCodeProvider.notifier).state = gameCodeController.text;
                       print("Code:${ref.read(gameCodeProvider.notifier).state}");
-                      context.go('/game/123456/play');
-                  //    _onJoinGamePressed(gameCodeController.text, nameController.text, context);
+                      _onJoinGamePressed(gameCodeController.text, nameController.text, context);
                     },
                     child: Text(S.of(context).joinGame, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
                   ),
