@@ -9,13 +9,13 @@ The teacher's screen is meant to be projected to the class throughout the game.
 ## Screenshots
 
 ### Homescreen
-<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/mathmatchup_homescreen.png" width 250><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/spanish_darkmode_homescreen.png" width 250>
+<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/mathmatchup_homescreen.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/spanish_darkmode_homescreen.png" width="250">
 ### Teacher View Before/During Game
-<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/game_settings_page.png" width 250><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/teacher_game_page.png" width 250><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/teacher_timer.png" width 250>
+<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/game_settings_page.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/teacher_game_page.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/teacher_timer.png" width="250">
 ### Student View During Game
-<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/game_page.png" width 250><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/correct_answer.png" width 250><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/incorrect_answer.png" width 250>
+<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/game_page.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/correct_answer.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/incorrect_answer.png" width="250">
 ### Teacher View After The Game
-<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/teammate_reveal_countdown.png" width 250><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/leaderboard.png" width 250>
+<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/teammate_reveal_countdown.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/leaderboard.png" width="250">
 
 
 
