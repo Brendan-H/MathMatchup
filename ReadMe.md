@@ -24,7 +24,7 @@ The teacher's screen is meant to be projected to the class throughout the game.
 2. Create a Postgres database (```psql``` then ```CREATE database database_name;```)
 3. Modify application.properties (```MathMatchupBackend/src/main/resources/application.properties```) with database details
 4. Run the Spring backend
-5 (optional) If you want, you can skip running the frontend and simply visit [The MathMatchup Website](https://mathmatchup.brendanharan.com) and it will work with your locally running backend
+5. (optional) If you want, you can skip running the frontend and simply visit [The MathMatchup Website](https://mathmatchup.brendanharan.com) and it will work with your locally running backend
 
 ## Running MathMatchup Flutter frontend
 
