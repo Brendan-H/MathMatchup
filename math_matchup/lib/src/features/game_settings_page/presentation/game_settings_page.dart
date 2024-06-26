@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (game_settings_page.dart) Last Modified on 6/24/24, 9:36 PM
+ * Current File (game_settings_page.dart) Last Modified on 6/25/24, 5:07 PM
  *
  */
 import 'package:flutter/material.dart';
@@ -12,6 +12,9 @@ import 'package:math_matchup/src/utils/themes.dart';
 import '../../../../generated/l10n.dart';
 import '../../../utils/theme_provider.dart';
 
+/// The page where the user can choose the settings for the game they want to create.
+///
+/// Settings are shared with students who join the game and their games reflect these settings.
 class GameSettingsPage extends ConsumerStatefulWidget {
   const GameSettingsPage({Key? key}) : super(key: key);
 

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (get_leaderboard.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (get_leaderboard.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -67,28 +67,10 @@
 import 'package:dio/dio.dart';
 
 import '../../../utils/constants.dart';
-
-
-class Member {
-  final int id;
-  final String name;
-  final int points;
-
-  Member({required this.id, required this.name, required this.points});
-
-  factory Member.fromJson(Map<String, dynamic> json) {
-    return Member(
-      id: json['id'],
-      name: json['name'],
-      points: json['points'],
-    );
-  }
-  @override
-  String toString() {
-    return 'Member{id: $id, name: $name, points: $points}';
-  }
-}
-
+import '../data/Member.dart';
+/// Class to represent a team
+///
+/// Team class has to be in this file and I'm too lazy to figure out why
 class Team {
   final int gameId;
   final int teamId;
@@ -113,6 +95,7 @@ class Team {
     return 'Team{gameId: $gameId, teamId: $teamId, members: $members, points: $points}';
   }
 }
+
 
 Future<List<Team>> fetchLeaderboard(String gameCode) async {
   final String backendUrl = Constants.backendurl;

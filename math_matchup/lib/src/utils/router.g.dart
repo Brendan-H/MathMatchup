@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (Router.g.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (router.g.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Router.dart';
+part of 'router.dart';
 
 // **************************************************************************
 // RiverpodGenerator

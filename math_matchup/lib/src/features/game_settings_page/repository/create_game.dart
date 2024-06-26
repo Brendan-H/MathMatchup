@@ -2,7 +2,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (create_game.dart) Last Modified on 6/24/24, 9:27 PM
+ * Current File (create_game.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -13,7 +13,7 @@ import 'package:go_router/go_router.dart';
 import '../../../utils/alert_dialogs.dart';
 import '../../../utils/constants.dart';
 
-
+/// Creates the game with the given settings and navigates to the [TeacherGamePage] with the game code.
 void createGame(BuildContext context, String difficulty, String questionType, int timeLimit) async {
   final String backendurl = Constants.backendurl;
   final Dio dio = Dio();

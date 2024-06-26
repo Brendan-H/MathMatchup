@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (homescreen.dart) Last Modified on 6/24/24, 9:14 PM
+ * Current File (homescreen.dart) Last Modified on 6/25/24, 5:50 PM
  *
  */
 
@@ -32,6 +32,9 @@ final gameCodeProvider = StateNotifierProvider<GameCodeNotifier, String>((ref) {
 //TODO add widget tests
 
 
+/// Landing page of the app where the user can either join or create a game.
+///
+/// There is also both a dark mode theme switcher and a language switcher.
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 

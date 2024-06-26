@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (results_page.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (results_page.dart) Last Modified on 6/25/24, 5:55 PM
  *
  */
 
@@ -10,6 +10,10 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../generated/l10n.dart';
 
+/// Simple page that displays the user's score after they finish the game and lets them go home
+///
+/// Displayed after player runs out of time and lets them go home since their part is done
+/// Leaderboard is displayed on the teacher's screen so students are finished when they submit points
 class ResultsPage extends StatelessWidget {
   final int points;
   const ResultsPage({super.key, required this.points});
@@ -24,7 +28,7 @@ class ResultsPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(S.of(context).youScoredXPoints(points), style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+              child: Text(S.of(context).youScoredXPoints(points), style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

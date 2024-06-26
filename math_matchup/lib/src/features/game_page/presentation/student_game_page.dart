@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (student_game_page.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (student_game_page.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -15,7 +15,8 @@ import 'package:go_router/go_router.dart';
 import '../../../utils/constants.dart';
 import '../repository/get_names.dart';
 
-
+/// Status codes for the game that are tracked by the [GameStatusNotifier]
+/// and can tell the app to switch screens depending on the status (ex. go to questions page when game is active)
 enum GameStatus {
   WAITING_FOR_PLAYERS,
   ACTIVE,
@@ -61,6 +62,7 @@ class GameStatusNotifier extends StateNotifier<GameStatus> {
   }
 }
 
+/// Page displays the game code and the players in the game
 class GamePage extends ConsumerStatefulWidget {
   final String gameCode;
 

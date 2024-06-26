@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (themes.dart) Last Modified on 6/24/24, 9:37 PM
+ * Current File (themes.dart) Last Modified on 6/25/24, 2:39 PM
  *
  */
 
@@ -12,6 +12,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'themes.g.dart';
 
+///All of the Color themes and properties for the app are stored here to make sure the same feel is on every page.
 @riverpod
 ThemeData lightTheme(LightThemeRef lightThemeRef) {
   return FlexThemeData.light(
@@ -65,6 +66,7 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
    // textTheme: Typography.material2021(platform: defaultTargetPlatform).black,
   );
 }
+///Dark mode color themes and properties for the app.
 @riverpod
 ThemeData darkTheme(DarkThemeRef darkThemeRef) {
   return FlexThemeData.dark(

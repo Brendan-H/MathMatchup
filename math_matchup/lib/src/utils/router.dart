@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (Router.dart) Last Modified on 6/24/24, 7:49 PM
+ * Current File (router.dart) Last Modified on 6/25/24, 11:36 AM
  *
  */
 
@@ -20,8 +20,9 @@ import '../features/question_page/presentation/questions_page.dart';
 import '../features/question_page/presentation/results_page.dart';
 import '../features/teacher_countdown/presentation/teacher_countdown.dart';
 
-part 'Router.g.dart';
+part 'router.g.dart';
 
+/// This is the main router for the app, used to navigate between screens. Can transfer data, if needed.
 @riverpod
 GoRouter goRouter(GoRouterRef goRouterRef) {
   return GoRouter(

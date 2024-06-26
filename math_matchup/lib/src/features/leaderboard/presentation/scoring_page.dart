@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (scoring_page.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (scoring_page.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 import 'package:flutter/material.dart';
@@ -12,6 +12,7 @@ import '../../../app.dart';
 import '../domain/scoring_countdown_notifier.dart';
 import '../repository/get_leaderboard.dart';
 
+/// Page exists solely for suspense to build up before revealing the teammates and scores
 class ScoringPage extends ConsumerStatefulWidget {
   const ScoringPage({Key? key, required this.gameCode}) : super(key: key);
   final String gameCode;

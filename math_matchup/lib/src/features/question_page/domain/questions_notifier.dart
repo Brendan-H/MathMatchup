@@ -3,7 +3,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (questions_notifier.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (questions_notifier.dart) Last Modified on 6/25/24, 5:07 PM
  *
  */
 
@@ -33,6 +33,7 @@ final currentQuestionProvider = Provider<AdditionQuestion>((ref) {
   );
 });
 
+/// Timer displayed to the user from the limit set by the teacher
 class CountdownNotifier extends StateNotifier<int> {
   CountdownNotifier(int remainingTime, this.ref) : super(remainingTime) {
     _startTimer();
@@ -73,6 +74,7 @@ final countdownProvider = StateNotifierProvider<CountdownNotifier, int>((ref) {
 
 final isAnsweringProvider = StateProvider<bool>((ref) => false);
 
+/// Gets the selected answer that the user clicks while also providing short delays and incorrect answer penalties so the user cannot rush through
 class QuestionsNotifier extends StateNotifier<List<AdditionQuestion>> {
   QuestionsNotifier() : super([]);
 

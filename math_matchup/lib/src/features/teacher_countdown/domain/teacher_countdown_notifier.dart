@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (teacher_countdown_notifier.dart) Last Modified on 6/24/24, 9:41 PM
+ * Current File (teacher_countdown_notifier.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -14,6 +14,7 @@ import '../../game_settings_page/presentation/game_settings_page.dart';
 final remainingTimeProvider = StateProvider<int>((ref) => 30);
 final teacherTimerCompleteProvider = StateProvider<bool>((ref) => false);
 
+/// Simple timer for the big countdown timer displayed on the teacher's screen
 class TeacherCountdownNotifier extends StateNotifier<int> {
   TeacherCountdownNotifier(int remainingTime, this.ref) : super(remainingTime) {
     _startTimer();

@@ -1,13 +1,14 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (submit_points.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (submit_points.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
 import 'package:dio/dio.dart';
 import '../../../utils/constants.dart';
 
+/// Submits the player's points to the backend. Team scores are calculated on the backend.
 Future<void> submitPoints (String gameCode, int points, int playerID) async {
   var backendUrl = Constants.backendurl;
   var dio = Dio();

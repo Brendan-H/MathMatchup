@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (leaderboard_page.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (leaderboard_page.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import '../../../app.dart';
 
+/// Leaderboard page that displays the current standings of all teams in the game
 class LeaderboardPage extends ConsumerStatefulWidget {
   const LeaderboardPage({super.key, required this.gameCode});
   final String gameCode;

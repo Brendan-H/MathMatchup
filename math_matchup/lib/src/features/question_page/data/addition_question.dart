@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (addition_question.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (addition_question.dart) Last Modified on 6/25/24, 11:36 AM
  *
  */
 
@@ -11,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_matchup/src/features/game_settings_page/presentation/game_settings_page.dart';
 
 
-
+/// Class to represent an addition question
 class AdditionQuestion {
   String question;
   List<String> answerChoices;
@@ -24,6 +24,10 @@ class AdditionQuestion {
   });
 }
 
+/// Generates an addition question based on multiple teacher-defined factors
+///
+/// Takes into account the selected difficulty level and generates a question
+/// Keeps answers believable by ensuring they are within a certain range of the correct answer
 AdditionQuestion generateAdditionQuestion(WidgetRef ref) {
   final difficulty = ref.read(selectedDifficultyProvider.notifier).state;
   final digitsPerNumber = difficulty == "Easy" ? 1 :
@@ -39,10 +43,10 @@ AdditionQuestion generateAdditionQuestion(WidgetRef ref) {
   final num1 = random.nextInt(pow(10, digitsPerNumber).toInt());
   final num2 = random.nextInt(pow(10, digitsPerNumber).toInt());
 
-  // Calculate the correct answer
+  // Calculate the answer to the question
   final correctAnswer = (num1 + num2).toString();
 
-  // Generate three other believable incorrect answers using maxNumber
+  // Generate three other believable incorrect answers that are MaxNumber away from the correct answer
   List<String> answerChoices = [];
   while (answerChoices.length < 3) {
     final incorrectAnswer = (int.parse(correctAnswer) + random.nextInt(maxNumber)).toString();
@@ -54,7 +58,7 @@ AdditionQuestion generateAdditionQuestion(WidgetRef ref) {
   // Shuffle the answer choices
   answerChoices..add(correctAnswer)..shuffle();
 
-  // Create the question
+  // Create the question that's displayed
   final question = '$num1 + $num2 = ?';
 
   return AdditionQuestion(

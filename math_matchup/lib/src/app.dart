@@ -3,14 +3,14 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (app.dart) Last Modified on 6/24/24, 2:05 PM
+ * Current File (app.dart) Last Modified on 6/25/24, 5:07 PM
  *
  */
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup/src/utils/Router.dart';
+import 'package:math_matchup/src/utils/router.dart';
 import 'package:math_matchup/src/utils/theme_provider.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -23,6 +23,7 @@ final playerIdProvider = StateProvider<int?>((ref) => null);
 final leaderboardProvider = StateProvider<List<Team>?>((ref) => null);
 final localeProvider = StateProvider<Locale>((ref) => const Locale('en', 'US')); // Default locale is English
 
+/// The main app widget that holds theme, locale, router, and responsive resizing configurations.
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 

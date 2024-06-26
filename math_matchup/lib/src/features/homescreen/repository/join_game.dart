@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (join_game.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (join_game.dart) Last Modified on 6/24/24, 10:04 PM
  *
  */
 
@@ -15,7 +15,9 @@ import 'package:math_matchup/src/app.dart';
 
 import '../../game_settings_page/presentation/game_settings_page.dart';
 
-
+/// Joins the game with the given game code and name.
+///
+/// Saves details like game difficulty and timer to the state for use in the game on [QuestionPage].
 void joinGame(String gamecode, String name, BuildContext context, WidgetRef ref) async {
   var backendurl = Constants.backendurl;
   var dio = Dio();

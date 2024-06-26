@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (scoring_countdown_notifier.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (scoring_countdown_notifier.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -9,6 +9,7 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Simple timer that counts down from 10 to 0 to add suspense to the scoring and teammate reveal
 final remainingTimeProvider = StateProvider<int>((ref) => 10);
 final scoringTimerCompleteProvider = StateProvider<bool>((ref) => false);
 

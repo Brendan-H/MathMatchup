@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (start_game.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (start_game.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -9,6 +9,7 @@ import 'package:dio/dio.dart';
 
 import '../../../utils/constants.dart';
 
+/// Starts the game with the given game code.
 Future<void> startGame(String gameCode) async {
   var backendUrl = Constants.backendurl;
   var dio = Dio();

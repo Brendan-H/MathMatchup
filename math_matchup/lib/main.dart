@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (main.dart) Last Modified on 6/24/24, 7:48 PM
+ * Current File (main.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -14,6 +14,8 @@ import 'package:math_matchup/firebase_options.dart';
 import 'package:math_matchup/src/app.dart';
 
 
+///Entry point for the app that initializes things like Firebase, Crashlytics, and Riverpod's scope
+/// while ensuring all widgets are properly initialized before the app starts from the splash screen.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

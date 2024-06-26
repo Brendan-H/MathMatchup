@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (teacher_countdown.dart) Last Modified on 6/24/24, 12:59 PM
+ * Current File (teacher_countdown.dart) Last Modified on 6/24/24, 9:42 PM
  *
  */
 
@@ -14,7 +14,7 @@ import 'package:math_matchup/src/features/teacher_countdown/domain/teacher_count
 import '../../../../generated/l10n.dart';
 import '../../../utils/constants.dart';
 
-
+/// Screen that displays the countdown timer for the teacher. Meant to be projected to the class.
 class TeacherCountdown extends ConsumerStatefulWidget {
   final String gameCode;
   const TeacherCountdown({super.key, required this.gameCode});
