@@ -210,7 +210,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                         onPressed: () async {
-                         context.go('/game/settings');
+                         context.go('/game/creation_homepage');
                         }
                     ),
                   ),
