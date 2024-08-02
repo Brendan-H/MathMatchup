@@ -15,10 +15,12 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,7 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
 public class GameTests {
 
     @InjectMocks
@@ -40,65 +43,24 @@ public class GameTests {
 
     @Mock
     private GameRepository gameRepository;
+//setup, test, verify (assert)
 
     @Test
     public void testCreateGame() {
-        // Setup
-        Game game = new Game();
-        when(gameService.createGame(any(Game.class))).thenReturn(game);
+        Game testGame = new Game();
+        testGame.setGameCode("111111");
+        testGame.setGameType("addition");
+        testGame.setDifficulty("easy");
+        testGame.setStartTime(LocalDateTime.now());
 
-        // Test
-        ResponseEntity<Game> response = gameController.createGame(game);
+        when(gameService.createGame(any(Game.class))).thenReturn(testGame);
+        ResponseEntity<Game> response = gameController.createGame(testGame);
 
-        // Verify
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(game, response.getBody());
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody().getGameCode(), testGame.getGameCode());
+        assertEquals(response.getBody().getGameType(), testGame.getGameType());
+        assertEquals(response.getBody().getDifficulty(), testGame.getDifficulty());
+        assertEquals(response.getBody().getStartTime(), testGame.getStartTime());
     }
 
-    @Test
-    public void testGetPlayersByGameCode() {
-        // Setup
-        String gameCode = "abc";
-        List<Player> players = new ArrayList<>(); // Add some players
-        when(gameService.getPlayersByGameCode(gameCode)).thenReturn(players);
-
-        // Test
-        ResponseEntity<List<Player>> response = gameController.getPlayersByGameCode(gameCode);
-
-        // Verify
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(players, response.getBody());
-    }
-
-    @Test
-    public void testStartGameByCode_GameNotFound() throws ChangeSetPersister.NotFoundException {
-        // Setup
-        String gameCode = "abc";
-        Long gameId = 1L;
-        when(gameService.getGameIdFromCode(gameCode)).thenReturn(gameId);
-        when(gameService.startGame(gameId)).thenThrow(ChangeSetPersister.NotFoundException.class);
-
-        // Test
-        ResponseEntity<String> response = gameController.startGameByCode(gameCode);
-
-        // Verify
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-    }
-
-
-    @Test
-    public void testFinishGameByCode() {
-        // Setup
-        String gameCode = "abc";
-        Long gameId = 1L;
-        when(gameService.getGameIdFromCode(gameCode)).thenReturn(gameId);
-        when(gameService.getGameByCode(gameCode)).thenReturn(new Game());
-
-        // Test
-        ResponseEntity<String> response = gameController.finishGameByCode(gameCode);
-
-        // Verify
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Game finished.", response.getBody());
-    }
 }

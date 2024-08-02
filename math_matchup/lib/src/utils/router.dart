@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (router.dart) Last Modified on 6/25/24, 8:22 PM
+ * Current File (router.dart) Last Modified on 7/31/24, 6:10 PM
  *
  */
 
@@ -12,6 +12,7 @@ import 'package:math_matchup/src/features/game_page/presentation/student_game_pa
 import 'package:math_matchup/src/features/game_settings_page/presentation/game_settings_page.dart';
 import 'package:math_matchup/src/features/homescreen/presentation/homescreen.dart';
 import 'package:math_matchup/src/features/leaderboard/presentation/leaderboard_page.dart';
+import 'package:math_matchup/src/features/login_page/presentation/teacher_login_page.dart';
 import 'package:math_matchup/src/utils/page_not_found_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -111,6 +112,14 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
           pageBuilder: (context, state) {
             return const MaterialPage(
                 child: GameCreationHomepage()
+            );
+          },
+        ),
+        GoRoute(
+          path: '/teacher_login',
+          pageBuilder: (context, state) {
+            return const MaterialPage(
+                child: TeacherLoginPage()
             );
           },
         ),

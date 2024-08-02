@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (l10n.dart) Last Modified on 8/2/24, 6:18 PM
+ *
+ */
+
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
