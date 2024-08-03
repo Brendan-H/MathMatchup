@@ -36,7 +36,7 @@ public class UserService {
             String lastName = row[1];
             String firstName = row[2];
             String displayName = firstName + " " + lastName;
-            String uid = Math.random() + "user" + Math.random();
+            String uid = UIDGenerator.generatePushId();
             System.out.println("Creating user with email: " + email + " and display name: " + displayName + " and uid: " + uid);
             users.add(ImportUserRecord.builder()
                     .setEmail(email)
@@ -60,6 +60,7 @@ public class UserService {
             newUser.setEmail(email);
             newUser.setDisplayName(displayName);
             newUser.setUid(uid);
+            newUser.setRole("Teacher");
             userRepository.save(newUser);
         }
     }
