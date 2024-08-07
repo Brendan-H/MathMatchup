@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup_website/src/features/header/presentation/header.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Homescreen extends ConsumerStatefulWidget {
@@ -16,7 +17,7 @@ class _HomescreenState extends ConsumerState<Homescreen> {
     return Scaffold(
       body: Column(
         children:  [
-          Text('Hello World!'),
+          Header(),
           ElevatedButton(
               onPressed: ()  {
                 try {

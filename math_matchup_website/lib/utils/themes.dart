@@ -43,13 +43,13 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
     typography: Typography.material2021(platform: defaultTargetPlatform),
       textTheme: const TextTheme(
         headlineLarge: TextStyle(
-          fontSize: 42,
-          fontWeight: FontWeight.bold,
+          fontSize: 50,
+          fontWeight: FontWeight.w900,
           color: Colors.black,
         ),
         headlineMedium: TextStyle(
           fontSize: 35,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w500,
           color: Colors.black,
         ),
         displayLarge: TextStyle(
@@ -62,7 +62,35 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
           fontWeight: FontWeight.w400,
           color: Colors.black,
         ),
-      )
+        displaySmall: TextStyle(
+            fontSize: 42.0,
+            fontWeight: FontWeight.w700,
+            color: Colors.black),
+        headlineSmall: TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.w400,
+            ),
+        titleLarge: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.black),
+        titleMedium: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.black),
+        titleSmall: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w400,
+            color: Colors.black),
+        labelLarge: TextStyle(
+            fontSize: 14.0,
+            fontWeight: FontWeight.w400,
+            color: Colors.black),
+        labelMedium: TextStyle(
+            fontSize: 12.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.black),
+      ),
    // textTheme: Typography.material2021(platform: defaultTargetPlatform).black,
   );
 }
@@ -115,6 +143,34 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
       fontWeight: FontWeight.w600,
       color: Colors.grey[350],
     ),
+    displaySmall: TextStyle(
+        fontSize: 42.0,
+        fontWeight: FontWeight.w700,
+        color: Colors.grey[350]),
+    headlineSmall: TextStyle(
+      fontSize: 28.0,
+      fontWeight: FontWeight.w700,
+    ),
+    titleLarge: TextStyle(
+        fontSize: 20.0,
+        fontWeight: FontWeight.w500,
+        color: Colors.grey[350]),
+    titleMedium: TextStyle(
+        fontSize: 18.0,
+        fontWeight: FontWeight.w500,
+        color: Colors.grey[350]),
+    titleSmall: TextStyle(
+        fontSize: 16.0,
+        fontWeight: FontWeight.w400,
+        color: Colors.grey[350]),
+    labelLarge: TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w400,
+        color: Colors.grey[350]),
+    labelMedium: TextStyle(
+        fontSize: 12.0,
+        fontWeight: FontWeight.w500,
+        color: Colors.grey[350]),
   )
   //  textTheme: Typography.material2021(platform: defaultTargetPlatform).white,
   );
