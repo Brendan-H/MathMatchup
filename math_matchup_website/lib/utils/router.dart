@@ -29,5 +29,6 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
 
       ],
     errorBuilder: (context, state) => const PageNotFoundScreen(),
+    initialLocation: '/',
   );
 }
