@@ -8,7 +8,7 @@ class Header extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      color: Theme.of(context).appBarTheme.backgroundColor,
+      color: Theme.of(context).colorScheme.primaryContainer,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 40, 0, 20),
         child: Column(
@@ -17,14 +17,14 @@ class Header extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipOval(
-                    child: Image.asset('mathmatchuplogo.png', height: 250.0, width: 250.0,)
+                    child: Image.asset('assets/mathmatchuplogo.png', height: 250.0, width: 250.0,)
                 ),
                 const SizedBox(width: 50),
                 Column(
                   children: [
                     SelectableText('Welcome To', style: Theme.of(context).textTheme.headlineMedium),
                     SelectableText('MathMatchup', style: Theme.of(context).textTheme.headlineLarge),
-                    SelectableText('The ultimate learning app', style: Theme.of(context).textTheme.headlineSmall),
+                    SelectableText('The math quiz app with hidden partners', style: Theme.of(context).textTheme.headlineSmall),
                   ],
                 ),
              ],

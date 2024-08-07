@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup_website/src/features/about/presentation/about.dart';
 import 'package:math_matchup_website/src/features/header/presentation/header.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:math_matchup_website/src/features/pricing/presentation/pricing.dart';
 
 class Homescreen extends ConsumerStatefulWidget {
   const Homescreen({super.key});
@@ -12,25 +13,58 @@ class Homescreen extends ConsumerStatefulWidget {
 }
 
 class _HomescreenState extends ConsumerState<Homescreen> {
+  bool _showBackToTopButton = false;
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(
+            () {
+          setState(
+                () {
+              if (_scrollController.offset >= 300) {
+                _showBackToTopButton = true;
+              } else {
+                _showBackToTopButton = false;
+              }
+            },
+          );
+        },
+      );
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(0,
+        duration: const Duration(milliseconds: 1000), curve: Curves.easeInOut);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children:  [
-          Header(),
-          ElevatedButton(
-              onPressed: ()  {
-                try {
-                  final uri = Uri(scheme: 'https', host: 'mathmatchupapp.brendanharan.com', path: '/');
-                  launchUrl(uri);
-                } on Exception catch (e) {
-                  print(e);
-                }
-              },
-              child: Text("Go to mathmatchup app", style: Theme.of(context).textTheme.bodyLarge,),
-          )
-        ],
+      body: SafeArea(
+        child: ListView(
+          shrinkWrap: true,
+          physics: const ClampingScrollPhysics(),
+          controller: _scrollController,
+          children:  const [
+            Header(),
+            About(),
+            Pricing(),
+          ],
+        ),
       ),
+      floatingActionButton: _showBackToTopButton ? FloatingActionButton(
+        onPressed: () { _scrollToTop(); },
+        child: const Icon(Icons.arrow_upward),
+      ) : null,
     );
   }
 }

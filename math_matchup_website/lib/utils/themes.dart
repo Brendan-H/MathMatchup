@@ -147,7 +147,7 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
         fontSize: 42.0,
         fontWeight: FontWeight.w700,
         color: Colors.grey[350]),
-    headlineSmall: TextStyle(
+    headlineSmall: const TextStyle(
       fontSize: 28.0,
       fontWeight: FontWeight.w700,
     ),
