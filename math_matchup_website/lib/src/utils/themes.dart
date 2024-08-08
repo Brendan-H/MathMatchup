@@ -48,8 +48,8 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
           color: Colors.black,
         ),
         headlineMedium: TextStyle(
-          fontSize: 35,
-          fontWeight: FontWeight.w500,
+          fontSize: 40,
+          fontWeight: FontWeight.w700,
           color: Colors.black,
         ),
         displayLarge: TextStyle(
