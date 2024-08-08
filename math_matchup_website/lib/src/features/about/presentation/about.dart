@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup_website/utils/keys.dart';
+
+import '../../../utils/keys.dart';
 class About extends ConsumerWidget {
   const About({super.key});
 

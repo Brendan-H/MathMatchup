@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../../utils/keys.dart';
+import '../../../utils/keys.dart';
 
 class Pricing extends ConsumerWidget {
   const Pricing({super.key});
@@ -26,7 +25,7 @@ class Pricing extends ConsumerWidget {
                     color: Theme.of(context).colorScheme.primaryContainer,
                   ),
                   width: 350,
-                  height: 350,
+                  height: 450,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 30, 10, 20),
                     child: Column(
@@ -49,7 +48,7 @@ class Pricing extends ConsumerWidget {
                 const Spacer(),
                 Container(
                   width: 350,
-                  height: 350,
+                  height: 450,
                   decoration: BoxDecoration(
                     border: Border.all(color: Theme.of(context).primaryColor),
                     borderRadius: BorderRadius.circular(10),
@@ -69,7 +68,7 @@ class Pricing extends ConsumerWidget {
                         const SizedBox(height: 20),
                         SelectableText("No ads", style: Theme.of(context).textTheme.displayMedium, textAlign: TextAlign.center,),
                         const SizedBox(height: 20),
-                        SelectableText("Sign up in app", style: Theme.of(context).textTheme.displayMedium, textAlign: TextAlign.center,),
+                        SelectableText("Sign up in app", style: Theme.of(context).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w900), textAlign: TextAlign.center,),
                       ],
                     ),
                   ),
@@ -77,7 +76,7 @@ class Pricing extends ConsumerWidget {
                 const Spacer(),
                 Container(
                   width: 350,
-                  height: 350,
+                  height: 450,
                   decoration: BoxDecoration(
                     border: Border.all(color: Theme.of(context).primaryColor),
                     borderRadius: BorderRadius.circular(10),
@@ -89,13 +88,13 @@ class Pricing extends ConsumerWidget {
                       children: [
                         SelectableText("Education Pricing", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,),
                         const SizedBox(height: 20),
-                        SelectableText("\$1.99/month", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,),
-                        const SizedBox(height: 20),
                         SelectableText("Start games for your class", style: Theme.of(context).textTheme.displayMedium, textAlign: TextAlign.center,),
                         const SizedBox(height: 20),
                         SelectableText("Unlimited questions", style: Theme.of(context).textTheme.displayMedium, textAlign: TextAlign.center,),
                         const SizedBox(height: 20),
                         SelectableText("No ads", style: Theme.of(context).textTheme.displayMedium, textAlign: TextAlign.center,),
+                        const SizedBox(height: 20),
+                        SelectableText("Advanced Game Stats", style: Theme.of(context).textTheme.displayMedium, textAlign: TextAlign.center,),
                         const SizedBox(height: 20),
                         ElevatedButton(onPressed: () {}, child: const Text("View Education Pricing", style: TextStyle(color: Colors.black),))
                       ],

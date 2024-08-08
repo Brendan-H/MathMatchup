@@ -7,10 +7,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:math_matchup_website/utils/page_not_found_screen.dart';
+import 'package:math_matchup_website/src/utils/page_not_found_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../src/features/homescreen/presentation/homescreen.dart';
+import '../features/homescreen/presentation/homescreen.dart';
 
 part 'router.g.dart';
 
