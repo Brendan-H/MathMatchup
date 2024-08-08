@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup_website/src/common_widgets/navbar.dart';
 
 class Header extends ConsumerWidget {
   const Header({super.key});
@@ -30,7 +29,6 @@ class Header extends ConsumerWidget {
              ],
             ),
             const SizedBox(height: 10),
-            Navbar().desktopNavBar(ref),
           ],
         ),
       )

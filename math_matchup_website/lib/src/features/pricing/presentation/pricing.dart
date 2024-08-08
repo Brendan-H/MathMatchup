@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../utils/keys.dart';
 
 class Pricing extends ConsumerWidget {
@@ -96,7 +97,7 @@ class Pricing extends ConsumerWidget {
                         const SizedBox(height: 20),
                         SelectableText("Advanced Game Stats", style: Theme.of(context).textTheme.displayMedium, textAlign: TextAlign.center,),
                         const SizedBox(height: 20),
-                        ElevatedButton(onPressed: () {}, child: const Text("View Education Pricing", style: TextStyle(color: Colors.black),))
+                        ElevatedButton(onPressed: () {context.go('/education/pricing');}, child: const Text("View Education Pricing", style: TextStyle(color: Colors.black),))
                       ],
                     ),
                   ),

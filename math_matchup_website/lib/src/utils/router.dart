@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:math_matchup_website/src/features/pricing/presentation/education_pricing_page.dart';
 import 'package:math_matchup_website/src/utils/page_not_found_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -24,6 +25,12 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
             path: '/',
             pageBuilder: (context, state) {
               return const MaterialPage(child: Homescreen());
+            }
+        ),
+        GoRoute(
+            path: '/education/pricing',
+            pageBuilder: (context, state) {
+              return const MaterialPage(child: EducationPricingPage());
             }
         ),
 

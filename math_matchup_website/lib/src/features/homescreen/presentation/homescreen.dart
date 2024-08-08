@@ -5,6 +5,8 @@ import 'package:math_matchup_website/src/features/about/presentation/about.dart'
 import 'package:math_matchup_website/src/features/header/presentation/header.dart';
 import 'package:math_matchup_website/src/features/pricing/presentation/pricing.dart';
 
+import '../../../common_widgets/navbar.dart';
+
 class Homescreen extends ConsumerStatefulWidget {
   const Homescreen({super.key});
 
@@ -54,10 +56,11 @@ class _HomescreenState extends ConsumerState<Homescreen> {
           shrinkWrap: true,
           physics: const ClampingScrollPhysics(),
           controller: _scrollController,
-          children:  const [
-            Header(),
-            About(),
-            Pricing(),
+          children:   [
+            const Header(),
+            Navbar().desktopNavBar(ref),
+            const About(),
+            const Pricing(),
           ],
         ),
       ),
