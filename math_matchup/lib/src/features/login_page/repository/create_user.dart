@@ -16,6 +16,8 @@ import '../../../utils/constants.dart';
         email: email,
         password: password,
       );
+      /*TODO send password reset email if password is wrong and display popup about how thats
+      TODO probably because the password isn't set yet*/
       User? user = userCredential.user;
 
       if (user != null) {

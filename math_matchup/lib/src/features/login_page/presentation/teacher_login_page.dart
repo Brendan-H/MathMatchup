@@ -100,6 +100,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: ()  async{
+
                   await createUser(emailController.text, passwordController.text, fullNameController.text);
                 },
                 child:  Text("Login", style: Theme.of(context).textTheme.displayLarge,),

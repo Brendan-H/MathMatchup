@@ -7,10 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:math_matchup_website/src/education_purchase/presentation/admin_account_page.dart';
 import 'package:math_matchup_website/src/features/pricing/presentation/education_pricing_page.dart';
 import 'package:math_matchup_website/src/utils/page_not_found_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../education_purchase/presentation/education_purchase_page.dart';
 import '../features/homescreen/presentation/homescreen.dart';
 
 part 'router.g.dart';
@@ -31,6 +33,18 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
             path: '/education/pricing',
             pageBuilder: (context, state) {
               return const MaterialPage(child: EducationPricingPage());
+            }
+        ),
+        GoRoute(
+            path: '/education/login',
+            pageBuilder: (context, state) {
+              return const MaterialPage(child: AdminAccountPage());
+            }
+        ),
+        GoRoute(
+            path: '/education/purchase',
+            pageBuilder: (context, state) {
+              return const MaterialPage(child: EducationPurchasePage());
             }
         ),
 

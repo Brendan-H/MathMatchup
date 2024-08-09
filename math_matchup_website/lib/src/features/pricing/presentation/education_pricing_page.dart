@@ -112,11 +112,11 @@ class _EducationPricingPageState extends State<EducationPricingPage> {
                                     inputFormatters: [
                                       FilteringTextInputFormatter.allow(RegExp(r'^([1-9][0-9]{0,2}|1000)$')), //allow 1-1000
                                     ],
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       labelText: 'Number of teachers',
                                       contentPadding: EdgeInsets.all(20.0),
                                     ),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 30.0,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -128,9 +128,9 @@ class _EducationPricingPageState extends State<EducationPricingPage> {
                                     },
                                   ),
                                   Text('Number of teachers: ${_sliderValue.round()},', style: Theme.of(context).textTheme.headlineMedium,),
-                                  SizedBox(height: 5,),
+                                  const SizedBox(height: 5,),
                                   Text('Cost per teacher: \$$_costPerTeacher per month', style: Theme.of(context).textTheme.headlineMedium,),
-                                  SizedBox(height: 5,),
+                                  const SizedBox(height: 5,),
                                   Text('Total cost per month: \$${(_costPerTeacher * _sliderValue).toStringAsFixed(2)} per month', style: Theme.of(context).textTheme.headlineMedium,),
                                 ],
                               ),
@@ -150,16 +150,16 @@ class _EducationPricingPageState extends State<EducationPricingPage> {
                                     "The unique structure of MathMatchup makes students work harder rather than relying on their partner to do all the work."
                                     " Students are more engaged and more likely to retain the information they learn."
                                     " MathMatchup is the best way to supplement your curriculum and keep students learning!", style: Theme.of(context).textTheme.displayMedium,textAlign: TextAlign.center,),
-                                SizedBox(height: 20,),
+                                const SizedBox(height: 20,),
                                 Text("Ready to get started?", style: Theme.of(context).textTheme.displayMedium,textAlign: TextAlign.center),
-                                SizedBox(height: 20,),
+                                const SizedBox(height: 20,),
                                 Container(
                                   decoration: BoxDecoration(
                                     color: Theme.of(context).primaryColor,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: TextButton(
-                                    onPressed: () {context.go('/education/purchase');},
+                                    onPressed: () {context.go('/education/login');},
                                     child: Text("Purchase a license now!", style: Theme.of(context).textTheme.displayLarge?.copyWith(color: Colors.white)),
                                   ),
                                 ),
