@@ -78,6 +78,7 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                 style: Theme.of(context).textTheme.displayMedium,
                                 textAlign: TextAlign.center,
                               ),
+                              const SizedBox(height: 20),
                               Expanded(
                                 child: ListView(
                                   children: [
@@ -192,6 +193,36 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                 style: Theme.of(context).textTheme.displayMedium,
                                 textAlign: TextAlign.center,
                               ),
+                              const SizedBox(height: 20),
+                              TextField(
+                                decoration: InputDecoration(
+                                  labelText: "Email",
+                                  labelStyle: Theme.of(context).textTheme.displayMedium,
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              TextField(
+                                obscureText: obscurePassword,
+                                decoration: InputDecoration(
+                                  labelText: "Password",
+                                  labelStyle: Theme.of(context).textTheme.displayMedium,
+                                  border: OutlineInputBorder(),
+                                  icon: IconButton(
+                                    icon: Icon(
+                                      obscurePassword
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        obscurePassword = !obscurePassword;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
                             ],
                           ),
                         ),

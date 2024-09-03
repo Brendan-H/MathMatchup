@@ -33,7 +33,7 @@ public class UserController
     private UserService userService;
 
     @PostMapping ("/create")
-    public void createUser(User user) throws Exception {
+    public void createUser(@RequestBody User user) throws Exception {
         userService.createUser(user);
     }
 
