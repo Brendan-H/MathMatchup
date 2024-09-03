@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:math_matchup_website/src/education_purchase/repository/admin_account_creation_or_login.dart';
 import 'package:math_matchup_website/src/features/header/presentation/header.dart';
 class AdminAccountPage extends ConsumerStatefulWidget {
   const AdminAccountPage({super.key});
@@ -12,11 +13,41 @@ class AdminAccountPage extends ConsumerStatefulWidget {
 class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
   var obscurePassword;
   var obscureConfirmPassword;
+  late TextEditingController _createEmailController;
+  late TextEditingController _nameController;
+  late TextEditingController _roleController;
+  late TextEditingController _schoolController;
+  late TextEditingController _createPasswordController;
+  late TextEditingController _confirmCreatePasswordController;
+  late TextEditingController _loginEmailController;
+  late TextEditingController _loginPasswordController;
+
 
   @override
   void initState() {
     obscurePassword = true;
     obscureConfirmPassword = true;
+    _createEmailController = TextEditingController();
+    _nameController = TextEditingController();
+    _roleController = TextEditingController();
+    _schoolController = TextEditingController();
+    _createPasswordController = TextEditingController();
+    _confirmCreatePasswordController = TextEditingController();
+    _loginEmailController = TextEditingController();
+    _loginPasswordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _createEmailController.dispose();
+    _nameController.dispose();
+    _roleController.dispose();
+    _schoolController.dispose();
+    _createPasswordController.dispose();
+    _confirmCreatePasswordController.dispose();
+    _loginEmailController.dispose();
+    _loginPasswordController.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -88,6 +119,7 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                         labelStyle: Theme.of(context).textTheme.displayMedium,
                                         border: OutlineInputBorder(),
                                       ),
+                                      controller: _createEmailController,
                                     ),
                                     const SizedBox(height: 10),
                                     TextField(
@@ -96,6 +128,7 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                         labelStyle: Theme.of(context).textTheme.displayMedium,
                                         border: OutlineInputBorder(),
                                       ),
+                                      controller: _nameController,
                                     ),
                                     const SizedBox(height: 10),
                                     TextField(
@@ -104,6 +137,7 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                         labelStyle: Theme.of(context).textTheme.displayMedium,
                                         border: OutlineInputBorder(),
                                       ),
+                                      controller: _schoolController,
                                     ),
                                     const SizedBox(height: 10),
                                     TextField(
@@ -125,6 +159,7 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                           },
                                         ),
                                       ),
+                                      controller: _createPasswordController,
                                     ),
                                     const SizedBox(height: 10),
                                     TextField(
@@ -146,6 +181,7 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                           },
                                         ),
                                       ),
+                                      controller: _confirmCreatePasswordController,
                                     ),
                                   ],
                                 ),
@@ -158,7 +194,15 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                   ),
                                   minimumSize: Size(width * .3, 50), // button width and height
                                 ),
-                                onPressed: () {},
+                                onPressed: () async {
+                                  await createAdminAccount(_createEmailController.text,
+                                      _nameController.text,
+                                      _schoolController.text,
+                                      _roleController.text,
+                                      _createPasswordController.text,
+                                    _confirmCreatePasswordController.text
+                                  );
+                                },
                                 child: Text(
                                   "Create Account",
                                   style: Theme.of(context).textTheme.displayMedium,
@@ -200,6 +244,7 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                   labelStyle: Theme.of(context).textTheme.displayMedium,
                                   border: OutlineInputBorder(),
                                 ),
+                                controller: _loginEmailController,
                               ),
                               const SizedBox(height: 10),
                               TextField(
@@ -221,6 +266,7 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                     },
                                   ),
                                 ),
+                                controller: _loginPasswordController,
                               ),
                               const SizedBox(height: 10),
                             ],

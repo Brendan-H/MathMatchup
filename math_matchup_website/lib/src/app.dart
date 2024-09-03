@@ -13,7 +13,7 @@ import '../generated/l10n.dart';
 
 
 final localeProvider = StateProvider<Locale>((ref) => const Locale('en', 'US')); // Default locale is English
-
+final navigatorKey = GlobalKey<NavigatorState>();
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
