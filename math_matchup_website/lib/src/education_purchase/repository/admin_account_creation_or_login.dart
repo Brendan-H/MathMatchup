@@ -8,7 +8,10 @@ createAdminAccount(String email, String name, String school, String role, String
 
   var context = navigatorKey.currentContext!;
   if (password != confirmPassword) {
-    showAlertDialog(context: context, title: "Passwords Must Match", defaultActionText: "Okay");
+    showAlertDialog(context: context, title: "Passwords must match", defaultActionText: "Okay");
+  }
+  if (password.length < 6) {
+    showAlertDialog(context: context, title: "Password must be at least 6 characters", defaultActionText: "Okay");
   }
 
   try {
@@ -21,7 +24,7 @@ createAdminAccount(String email, String name, String school, String role, String
 
    //add user to spring backend
    Dio dio = Dio();
-   dio.post(Constants.backendurl + '/users/create', data: {
+   await dio.post('${Constants.backendurl}/users/create', data: {
      "uid": "$uid",
      "email": email,
      "isAdmin": true,
@@ -29,6 +32,7 @@ createAdminAccount(String email, String name, String school, String role, String
      "role": role,
      "school": school
    });
+   print("$uid $email $name $role $school");
 
   } on FirebaseAuthException catch (e) {
     print(e);
