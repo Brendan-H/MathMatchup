@@ -28,13 +28,30 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-oauth2-client</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,11 +69,11 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
@@ -70,11 +87,12 @@
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
-            <version>5.9</version>
+            <version>5.8</version>
         </dependency>
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.firebase</groupId>
@@ -84,7 +102,18 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
+            <version>7.0.1.Final</version>
         </dependency>
+        <!--        <dependency>-->
+<!--            <groupId>org.springframework.security</groupId>-->
+<!--            <artifactId>spring-security-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.google.firebase</groupId>-->
+<!--            <artifactId>firebase-admin</artifactId>-->
+<!--            <version>9.2.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
@@ -99,10 +128,16 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
+            <version>6.1.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>5.7.1</version>
         </dependency>
     </dependencies>
 
