@@ -21,6 +21,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public void createUser(User user) throws Exception {
+        user.setSchoolId(user.getSchoolId());
         userRepository.save(user);
     }
 

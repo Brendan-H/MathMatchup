@@ -29,9 +29,10 @@ public class WebSecurityConfig {
         http.cors(AbstractHttpConfigurer::disable);
         http
                 .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/users/**").authenticated()
-                .anyRequest().permitAll()).oauth2ResourceServer((oauth2) -> oauth2
-                        .jwt(Customizer.withDefaults())
+                .requestMatchers("/users/**").permitAll()
+//                        .authenticated()
+//                .anyRequest().permitAll()).oauth2ResourceServer((oauth2) -> oauth2
+//                        .jwt(Customizer.withDefaults())
                 );
 
         return http.build();

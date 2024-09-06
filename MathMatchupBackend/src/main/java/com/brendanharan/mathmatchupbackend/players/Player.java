@@ -39,6 +39,8 @@ public class Player {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
+            //the first line here makes a duplicate of the regular game_id column but I'm too lazy to fix the error
+            //that appears when I remove it so it's staying for now
             @JoinColumn(name = "team_game_id", referencedColumnName = "game_id"),
             @JoinColumn(name = "team_team_id", referencedColumnName = "team_id")
     })
