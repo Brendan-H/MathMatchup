@@ -1,5 +1,11 @@
 # MathMatchup
 
+[MathMatchup Website](mathmatchup.brendanharan.com)
+
+[MathMatchup App Hosted on Web](mathmatchupapp.brendanharan.com)
+
+Note that the MathMatchup app is meant for smaller screen sizes and may not look right when viewed on a computer
+
 Players join the game and are separated into teams. The only catch is that they don't know their teammate.
 They then have to answer questions to get points, which get added together with their partner's points at the end.
 Teammates are revealed and the partnership with the most points wins!

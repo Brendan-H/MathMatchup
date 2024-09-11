@@ -141,6 +141,16 @@ class _AdminAccountPageState extends ConsumerState<AdminAccountPage> {
                                     ),
                                     const SizedBox(height: 10),
                                     TextField(
+                                      decoration: InputDecoration(
+                                        labelText: "Role in School",
+                                        labelStyle: Theme.of(context).textTheme.displayMedium,
+                                        hintText: "Ex. Principal, Tech Lead",
+                                        border: OutlineInputBorder(),
+                                      ),
+                                      controller: _schoolController,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    TextField(
                                       obscureText: obscurePassword,
                                       decoration: InputDecoration(
                                         labelText: "Password",
