@@ -1,8 +1,8 @@
 # MathMatchup
 
-[MathMatchup Website](mathmatchup.brendanharan.com)
+[MathMatchup Website](https://mathmatchup.brendanharan.com)
 
-[MathMatchup App Hosted on Web](mathmatchupapp.brendanharan.com)
+[MathMatchup App Hosted on Web](https://mathmatchupapp.brendanharan.com)
 
 Note that the MathMatchup app is meant for smaller screen sizes and may not look right when viewed on a computer
 
