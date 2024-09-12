@@ -12,6 +12,29 @@ Teammates are revealed and the partnership with the most points wins!
 
 Technologies: Dart + Flutter, Java + Spring, PostgreSQL
 
+## App Features
+
+- Fully supported internationalization with numbers and languages (currently English and Spanish)
+- Responsive screen sizing tailored to phones and tablets
+- Efficient state management using Riverpod for a predictable and scalable architecture 
+- Dynamic theming with light and dark modes, instantly changeable without restating the app
+- Custom splash screen with app logo and HARAN branding
+- Comprehensive error handling with user-friendly alert dialogs and behind-the-scenes error logging using Firebase Analytics
+- Optimized API calls reduce the number of database writes necessary by generating as much as possible, like all math questions, on the client side
+- Endless customizations allow teachers to tailor nearly every aspect of games, ranging from the timer to the difficulty of questions (Easy, Medium, Hard, and Impossible)
+- Real time updates for players in game, scoring, and leaderboards
+
+## Backend Features
+
+- CRUD operations for admin and teacher profiles (students don't need a profile to play)
+- Bulk user creation from CSV files
+- Integration with Firebase for secure user authentication
+- Role-based authorization to ensure users can only access what they are supposed to
+- Request logging for debugging and monitoring
+- JPA and Hibernate for ORM and database operations
+- Easily extendable service, controller, and repository layers
+- RESTful API endpoints for user, team, player, and game operations
+
 ## Screenshots
 
 ### Homescreen
