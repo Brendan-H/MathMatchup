@@ -1,16 +1,16 @@
 # MathMatchup
 
-[MathMatchup Website](https://mathmatchup.brendanharan.com)
+[Jump to "Running MathMatchup" Section](#running-mathmatchup-spring-backend)
 
-[MathMatchup App Hosted on Web](https://mathmatchupapp.brendanharan.com)
+[Go to MathMatchup Website](https://mathmatchup.brendanharan.com)
 
-Note that the MathMatchup app is meant for smaller screen sizes and may not look right when viewed on a computer
+[Go to MathMatchup App Hosted on Web](https://mathmatchupapp.brendanharan.com)
 
-Players join the game and are separated into teams. The only catch is that they don't know their teammate.
+Players join the game and are automatically separated into teams of 2 or, if needed, 3. The only catch is that they don't know their teammate.
 They then have to answer questions to get points, which get added together with their partner's points at the end.
 Teammates are revealed and the partnership with the most points wins!
 
-The teacher's screen is meant to be projected to the class throughout the game.
+Technologies: Dart + Flutter, Java + Spring, PostgreSQL
 
 ## Screenshots
 
@@ -30,11 +30,23 @@ The teacher's screen is meant to be projected to the class throughout the game.
 2. Create a Postgres database (```psql``` then ```CREATE database database_name;```)
 3. Modify application.properties (```MathMatchupBackend/src/main/resources/application.properties```) with database details
 4. Run the Spring backend
-5. (optional) If you want, you can skip running the frontend and simply visit [The MathMatchup Website](https://mathmatchup.brendanharan.com) and it will work with your locally running backend
+5. (optional) If you want, you can skip running the frontend and simply visit [The MathMatchup Website](https://mathmatchupapp.brendanharan.com) and it will work with your locally running backend
 
 ## Running MathMatchup Flutter frontend
 
-1. Install the Flutter framework
+1. Install the [Flutter](https://flutter.dev) framework
 2. Run ```flutter pub get```
 3. and ```dart run build_runner watch -d```
 4. then ```flutter run``` or ```flutter build app --release``` to compile an apk for installation on android or ```flutter build web``` to compile for deployment to the web
+
+## Running MathMatchup Website
+
+1. Install the [Flutter](https://flutter.dev) framework
+2. Run ```flutter pub get```
+3. then ```flutter run -d chrome``` or ```flutter build web``` to compile for deployment to the web
+
+## Other Notes
+- CSV format for bulk user upload: email, last name, first name (ex. john.doe@school.edu, doe, john)
+- Note that the MathMatchup app is meant for smaller screen sizes and may not look right when viewed on a computer
+- The teacher's screen is meant to be projected to the class throughout the game.
+- The team with 3 players (if there is an odd number of students playing) will have their total points multiplied by 2/3 to make the game even
