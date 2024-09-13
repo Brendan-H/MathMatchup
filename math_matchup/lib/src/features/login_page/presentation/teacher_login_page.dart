@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (teacher_login_page.dart) Last Modified on 8/2/24, 6:20 PM
+ * Current File (teacher_login_page.dart) Last Modified on 9/13/24, 10:45 AM
  *
  */
 
@@ -62,7 +62,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
           ),
         ),
         toolbarHeight: MediaQuery.of(context).size.height * .1,
-        title: Text("Teacher Login"),
+        title: const Text("Teacher Login"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -79,32 +79,27 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
               const SizedBox(height: 20),
                TextField(
                 controller: emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Email",
                 ),
               ),
               const SizedBox(height: 20),
                TextField(
                 controller: passwordController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Password",
-                ),
-              ),
-              const SizedBox(height: 20),
-               TextField(
-                controller: fullNameController,
-                decoration: InputDecoration(
-                  labelText: "Full Name",
                 ),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: ()  async{
-
-                  await createUser(emailController.text, passwordController.text, fullNameController.text);
+                  await login(emailController.text, passwordController.text);
                 },
                 child:  Text("Login", style: Theme.of(context).textTheme.displayLarge,),
               ),
+              SizedBox(height: 20),
+              Text("Don't remember your password or haven't logged in before? Click below to reset your password or set your password for the first time.", style: theme.textTheme.displaySmall,),
+              TextButton(onPressed: ()  {context.go('/teacher_login/password_reset');}, child: Text("Forgot Password / First Time Login Password Set")),
             ],
           ),
         ),

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (alert_dialogs.dart) Last Modified on 6/25/24, 8:29 PM
+ * Current File (alert_dialogs.dart) Last Modified on 9/13/24, 10:45 AM
  *
  */
 

@@ -1,0 +1,75 @@
+/*
+ * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (password_reset_page.dart) Last Modified on 9/13/24, 10:53 AM
+ *
+ */
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class PasswordResetPage extends StatefulWidget {
+  const PasswordResetPage({super.key});
+
+  @override
+  _PasswordResetPageState createState() => _PasswordResetPageState();
+}
+
+class _PasswordResetPageState extends State<PasswordResetPage> {
+  final TextEditingController emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _resetPassword() async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Password reset email sent')),
+      );
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.message}')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Reset Password'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            context.go('/');
+          },
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _resetPassword,
+              child: Text('Send Password Reset Email', style: TextStyle(fontSize: 20, color: Colors.black)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

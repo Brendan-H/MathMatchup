@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (create_user.dart) Last Modified on 8/2/24, 6:21 PM
+ * Current File (create_user.dart) Last Modified on 9/13/24, 10:45 AM
  *
  */
 
@@ -16,8 +16,6 @@ import '../../../utils/constants.dart';
         email: email,
         password: password,
       );
-      /*TODO send password reset email if password is wrong and display popup about how thats
-      TODO probably because the password isn't set yet*/
       User? user = userCredential.user;
 
       if (user != null) {
@@ -38,6 +36,21 @@ import '../../../utils/constants.dart';
       }
     } catch (e) {
       print(e);
+    }
+ }
+
+ Future<void> login(String email, String password) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
     }
  }
 
@@ -62,7 +75,7 @@ import '../../../utils/constants.dart';
         // Handle other status codes if needed
         print("Error when creating user: ${response.data}");
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       // Handle Dio specific errors
       if (e.response != null) {
         // DioError with a response from the server

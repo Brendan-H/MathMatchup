@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (solo_game_settings_page.dart) Last Modified on 7/31/24, 6:08 PM
+ * Current File (solo_game_settings_page.dart) Last Modified on 9/13/24, 10:45 AM
  *
  */
 import 'package:flutter/material.dart';
