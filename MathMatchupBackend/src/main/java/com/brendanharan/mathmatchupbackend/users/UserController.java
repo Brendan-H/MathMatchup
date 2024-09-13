@@ -43,7 +43,7 @@ public class UserController
     }
 
     @PostMapping("/bulkcreate")
-    public void bulkCreateUsers(@RequestParam MultipartFile usersCSV) throws Exception {
+    public void bulkCreateUsers(@RequestParam("usersCSV") MultipartFile usersCSV, @RequestHeader("schoolID") Long schoolID, @RequestHeader("school") String school) throws Exception {
         Reader reader = new InputStreamReader(usersCSV.getInputStream());
 //use opencsv to read the csv file and leave it as List<String[]> rows
 
@@ -51,6 +51,6 @@ public class UserController
 
         List<String[]> rows = csvReader.readAll();
 
-        userService.bulkCreateUsers(rows);
+        userService.bulkCreateUsers(rows, schoolID, school);
     }
 }

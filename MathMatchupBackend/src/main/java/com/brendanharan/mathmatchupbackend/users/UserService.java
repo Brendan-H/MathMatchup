@@ -8,12 +8,14 @@
 package com.brendanharan.mathmatchupbackend.users;
 
 import com.google.firebase.auth.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class UserService {
 
@@ -29,10 +31,9 @@ public class UserService {
         return userRepository.findByUid(uid);
     }
 
-
-    public void bulkCreateUsers(List<String[]> rows) throws Exception {
+    public void bulkCreateUsers(List<String[]> rows, Long schoolID, String school) throws Exception {
+        List<ImportUserRecord> users = new ArrayList<>();
         for (String[] row : rows) {
-            List<ImportUserRecord> users = new ArrayList<>();
             String email = row[0];
             String lastName = row[1];
             String firstName = row[2];
@@ -45,26 +46,36 @@ public class UserService {
                     .setDisplayName(displayName)
                     .setUid(uid)
                     .build());
-            try {
-                UserImportResult result = FirebaseAuth.getInstance().importUsers(users);
-                System.out.println("Successfully imported " + result.getSuccessCount() + " users");
-                System.out.println("Failed to import " + result.getFailureCount() + " users");
-                for (ErrorInfo indexedError : result.getErrors()) {
-                    System.out.println("Failed to import user at index: " + indexedError.getIndex()
-                            + " due to error: " + indexedError.getReason());
-                }
-            } catch (FirebaseAuthException e) {
-                e.printStackTrace();
+        }
+
+        try {
+            UserImportResult result = FirebaseAuth.getInstance().importUsers(users);
+            System.out.println("Successfully imported " + result.getSuccessCount() + " users");
+            System.out.println("Failed to import " + result.getFailureCount() + " users");
+            for (ErrorInfo indexedError : result.getErrors()) {
+                System.out.println("Failed to import user at index: " + indexedError.getIndex()
+                        + " due to error: " + indexedError.getReason());
             }
+        } catch (FirebaseAuthException e) {
+            log.error("e: ", e);
+        }
+
+        for (String[] row : rows) {
+            String email = row[0];
+            String lastName = row[1];
+            String firstName = row[2];
+            String displayName = firstName + " " + lastName;
+            String uid = UIDGenerator.generatePushId();
 
             User newUser = new User();
             newUser.setEmail(email);
             newUser.setDisplayName(displayName);
             newUser.setUid(uid);
             newUser.setRole("Teacher");
+            newUser.setSchool(school);
+            newUser.setSchoolId(schoolID);
             userRepository.save(newUser);
         }
     }
-
 }
 

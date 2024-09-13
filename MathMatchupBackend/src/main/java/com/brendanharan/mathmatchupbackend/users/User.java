@@ -20,11 +20,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
-@Accessors(chain = true)
+@Accessors(chain = true) // Enable method chaining
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,9 +44,8 @@ public class User {
 
     private String school;
 
-    //autogenerate this field for admin users, but will be manually set for school users
 
-    @Setter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE) // Disable direct setting of schoolId using @Setter so that we can control how it is set
     private Long schoolId;
 
     @JsonProperty("isAdmin")
@@ -52,17 +53,18 @@ public class User {
 
     public void setSchoolId(Long schoolId) {
         if (this.isAdmin) {
-            // Auto-generate schoolId for admin users
+            // Auto-generate the schoolId for admin users
             this.schoolId = generateSchoolId();
         } else {
-            // Manually set schoolId for school users
+            // Manually set schoolId for school users using the provided value (which will be the same as the admin's)
             this.schoolId = schoolId;
         }
     }
 
     private Long generateSchoolId() {
-       //generate a random number that is pretty much guaranteed to be unique without needing checks
-        return System.nanoTime() + (long) (Math.random() * 10000000);
+        //generate uuid
+        return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+       //return System.nanoTime() + (long) (Math.random() * 10000000);
     }
 
 }
