@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/common_widgets/custom_dropdown.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
+import 'package:math_matchup/src/utils/auth_provider.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 
 import '../../../../generated/l10n.dart';
@@ -105,6 +106,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final themeModeState = ref.watch(themesProvider);
     final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
     final textTheme = theme.textTheme;
+    final user = ref.watch(authStateProvider);
     final Map<Locale, String> locales = {
       const Locale('en', 'US'): 'English',
       const Locale('es', 'ES'): 'Español',
@@ -210,7 +212,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                         onPressed: () async {
-                         context.go('/game/creation_homepage');
+                          if (user == null) {
+                          context.go('/game/creation_homepage');
+                          } else {
+                            context.go('/game/settings');
+                          }
                         }
                     ),
                   ),
