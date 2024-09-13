@@ -104,4 +104,5 @@ coverage/
 */MathMatchupBackend/src/main/resources/ServiceAccountKey.json
 */src/main/resources/ServiceAccountKey.json
 **/ServiceAccountKey.json
+# Ignore ServiceAccountKey.json in any directory
 # End of https://www.toptal.com/developers/gitignore/api/flutter
