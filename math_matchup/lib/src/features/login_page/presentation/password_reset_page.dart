@@ -9,6 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../generated/l10n.dart';
+
 class PasswordResetPage extends StatefulWidget {
   const PasswordResetPage({super.key});
 
@@ -42,7 +44,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reset Password'),
+        title: Text(S.of(context).resetPassword),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -58,14 +60,14 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
             TextField(
               controller: emailController,
               decoration: InputDecoration(
-                labelText: 'Email',
+                labelText: S.of(context).email,
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: _resetPassword,
-              child: Text('Send Password Reset Email', style: TextStyle(fontSize: 20, color: Colors.black)),
+              child: Text(S.of(context).sendPasswordResetEmail, style: TextStyle(fontSize: 20, color: Colors.black)),
             ),
           ],
         ),

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../common_widgets/expandable_section.dart';
 
 class GameCreationHomepage extends ConsumerStatefulWidget {
@@ -39,22 +40,22 @@ class _GameCreationHomepageState extends ConsumerState<GameCreationHomepage> {
          ),
        ),
      ),
-      body: const SingleChildScrollView(
+      body:  SingleChildScrollView(
         child: Column(
           children: [
            ExpandableSection(
-              title: "Teachers, start here",
-              content: "Teachers can create games, track progress, and more. Get started by logging in or creating an account with your *school* email after your administrator has purchased a license.",
+              title: S.of(context).teachersStartHere,
+              content: S.of(context).teachersCanCreateGamesTrackProgressAndMoreGetStarted,
               nextPage: '/teacher_login',
             ),
            ExpandableSection(
-             title: "Students, start here",
-             content: "Students can play solo games for free. Either create a solo game or join your class game with a game code provided by your teacher.",
+             title: S.of(context).studentsStartHere,
+             content: S.of(context).studentsCanPlaySoloGamesForFreeEitherCreateA,
              nextPage: '/game/settings',
             ),
             ExpandableSection(
-             title: "Parents, start here",
-             content: "Learn about our family plans, starting at \$2.50 per month per child, on our website and engage with your child's learning journey in a fun way.",
+             title: S.of(context).parentsStartHere,
+             content: S.of(context).learnAboutOurFamilyPlansStartingAt250PerMonth,
              nextPage: '/login/parent',
            ),
           ],

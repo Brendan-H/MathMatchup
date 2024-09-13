@@ -40,5 +40,21 @@
   "TenMinutes": "10 minutos",
   "selectTimeLimit": "Selecciona limite",
   "aboutCreateGameWithSettings": "Estás a punto de crear un juego con las siguientes configuraciones:",
-  "notChosen": "No Elegido"
+  "notChosen": "No Elegido",
+  "dontRememberYourPasswordOrHaventLoggedInBeforeClick": "¿No recuerdas tu contraseña o no has iniciado sesión antes? Haz clic a continuación para restablecer tu contraseña o establecerla por primera vez.",
+  "password": "Contraseña",
+  "email": "Correo electrónico",
+  "pleaseEnterYourSchoolEmailAndPasswordToLogin": "Por favor, introduce tu correo electrónico y contraseña de la escuela para iniciar sesión.",
+  "welcomeTeacher": "¡Bienvenido, profesor!",
+  "teacherLogin": "Inicio de sesión del profesor",
+  "login": "Iniciar sesión",
+  "teachersStartHere": "Los profesores comienzan aquí",
+  "teachersCanCreateGamesTrackProgressAndMoreGetStarted": "Los profesores pueden crear juegos, seguir el progreso y más. Comienza iniciando sesión o creando una cuenta con tu correo electrónico de la escuela después de que tu administrador haya comprado una licencia.",
+  "studentsStartHere": "Los estudiantes comienzan aquí",
+  "studentsCanPlaySoloGamesForFreeEitherCreateA": "Los estudiantes pueden jugar juegos en solitario de forma gratuita. Crea un juego en solitario o únete al juego de tu clase con un código de juego proporcionado por tu profesor.",
+  "parentsStartHere": "Los padres comienzan aquí",
+  "learnAboutOurFamilyPlansStartingAt250PerMonth": "Conoce nuestros planes familiares, a partir de $2.50 por mes por niño, en nuestro sitio web y participa en el viaje de aprendizaje de tu hijo de una manera divertida.",
+  "resetPassword": "Restablecer contraseña",
+  "sendPasswordResetEmail": "Enviar correo electrónico para restablecer contraseña",
+  "forgotPasswordFirstTimeLoginPasswordSet": "Olvidé la contraseña / Primer inicio de sesión, establecer contraseña"
 }

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../utils/theme_provider.dart';
 import '../../../utils/themes.dart';
 import '../repository/create_user.dart';
@@ -62,7 +63,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
           ),
         ),
         toolbarHeight: MediaQuery.of(context).size.height * .1,
-        title: const Text("Teacher Login"),
+        title:  Text(S.of(context).teacherLogin),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -73,21 +74,21 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-               Text("Welcome, teacher!", style: theme.textTheme.headlineLarge,),
+               Text(S.of(context).welcomeTeacher, style: theme.textTheme.headlineLarge,),
               const SizedBox(height: 20),
-               Text("Please enter your school email and password to login.", style: theme.textTheme.displayLarge,),
+               Text(S.of(context).pleaseEnterYourSchoolEmailAndPasswordToLogin, style: theme.textTheme.displayLarge,),
               const SizedBox(height: 20),
                TextField(
                 controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: "Email",
+                decoration:  InputDecoration(
+                  labelText: S.of(context).email,
                 ),
               ),
               const SizedBox(height: 20),
                TextField(
                 controller: passwordController,
-                decoration: const InputDecoration(
-                  labelText: "Password",
+                decoration:  InputDecoration(
+                  labelText: S.of(context).password,
                 ),
               ),
               const SizedBox(height: 20),
@@ -95,11 +96,11 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
                 onPressed: ()  async{
                   await login(emailController.text, passwordController.text);
                 },
-                child:  Text("Login", style: Theme.of(context).textTheme.displayLarge,),
+                child:  Text(S.of(context).login, style: Theme.of(context).textTheme.displayLarge,),
               ),
               SizedBox(height: 20),
-              Text("Don't remember your password or haven't logged in before? Click below to reset your password or set your password for the first time.", style: theme.textTheme.displaySmall,),
-              TextButton(onPressed: ()  {context.go('/teacher_login/password_reset');}, child: Text("Forgot Password / First Time Login Password Set")),
+              Text(S.of(context).dontRememberYourPasswordOrHaventLoggedInBeforeClick, style: theme.textTheme.displaySmall,),
+              TextButton(onPressed: ()  {context.go('/teacher_login/password_reset');}, child: Text(S.of(context).forgotPasswordFirstTimeLoginPasswordSet)),
             ],
           ),
         ),

@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (messages_en.dart) Last Modified on 9/13/24, 10:45 AM
- *
- */
-
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
 // This is a library that provides messages for a en locale. All the
 // messages from the main program should be duplicated here with the same
@@ -55,9 +48,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "createGame": MessageLookupByLibrary.simpleMessage("Create Game"),
         "difficulty": MessageLookupByLibrary.simpleMessage("Difficulty"),
         "division": MessageLookupByLibrary.simpleMessage("Division"),
+        "dontRememberYourPasswordOrHaventLoggedInBeforeClick":
+            MessageLookupByLibrary.simpleMessage(
+                "Don\'t remember your password or haven\'t logged in before? Click below to reset your password or set your password for the first time."),
         "easy": MessageLookupByLibrary.simpleMessage("Easy"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterGamecode": MessageLookupByLibrary.simpleMessage("Enter Gamecode"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter Name"),
+        "forgotPasswordFirstTimeLoginPasswordSet":
+            MessageLookupByLibrary.simpleMessage(
+                "Forgot Password / First Time Login Password Set"),
         "gameCodeIsRequired":
             MessageLookupByLibrary.simpleMessage("Game code is required"),
         "gameCodeMustBe6Digits":
@@ -66,6 +66,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "hard": MessageLookupByLibrary.simpleMessage("Hard"),
         "impossible": MessageLookupByLibrary.simpleMessage("Impossible"),
         "joinGame": MessageLookupByLibrary.simpleMessage("Join Game"),
+        "learnAboutOurFamilyPlansStartingAt250PerMonth":
+            MessageLookupByLibrary.simpleMessage(
+                "Learn about our family plans, starting at \$2.50 per month per child, on our website and engage with your child\'s learning journey in a fun way."),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
         "medium": MessageLookupByLibrary.simpleMessage("Medium"),
         "multiplication":
             MessageLookupByLibrary.simpleMessage("Multiplication"),
@@ -74,21 +78,43 @@ class MessageLookup extends MessageLookupByLibrary {
         "noQuestionsAvailable":
             MessageLookupByLibrary.simpleMessage("No Questions Available"),
         "notChosen": MessageLookupByLibrary.simpleMessage("Not Chosen"),
+        "parentsStartHere":
+            MessageLookupByLibrary.simpleMessage("Parents, start here"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "pleaseEnterYourSchoolEmailAndPasswordToLogin":
+            MessageLookupByLibrary.simpleMessage(
+                "Please enter your school email and password to login."),
         "points": MessageLookupByLibrary.simpleMessage("Points:"),
         "questionType": MessageLookupByLibrary.simpleMessage("Question Type"),
+        "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "selectDifficulty":
             MessageLookupByLibrary.simpleMessage("Select Difficulty"),
         "selectQuestionType":
             MessageLookupByLibrary.simpleMessage("Select Question Type"),
         "selectTimeLimit":
             MessageLookupByLibrary.simpleMessage("Select Time Limit"),
+        "sendPasswordResetEmail":
+            MessageLookupByLibrary.simpleMessage("Send Password Reset Email"),
         "startGame": MessageLookupByLibrary.simpleMessage("Start Game"),
+        "studentsCanPlaySoloGamesForFreeEitherCreateA":
+            MessageLookupByLibrary.simpleMessage(
+                "Students can play solo games for free. Either create a solo game or join your class game with a game code provided by your teacher."),
+        "studentsStartHere":
+            MessageLookupByLibrary.simpleMessage("Students, start here"),
         "subtraction": MessageLookupByLibrary.simpleMessage("Subtraction"),
+        "teacherLogin": MessageLookupByLibrary.simpleMessage("Teacher Login"),
+        "teachersCanCreateGamesTrackProgressAndMoreGetStarted":
+            MessageLookupByLibrary.simpleMessage(
+                "Teachers can create games, track progress, and more. Get started by logging in or creating an account with your *school* email after your administrator has purchased a license."),
+        "teachersStartHere":
+            MessageLookupByLibrary.simpleMessage("Teachers, start here"),
         "timeLimit": MessageLookupByLibrary.simpleMessage("Time Limit"),
         "timeRemainingRemainingtimeSeconds": m0,
         "timesUp": MessageLookupByLibrary.simpleMessage("Time\'s Up!"),
         "waitForYourStudentsToFinish": MessageLookupByLibrary.simpleMessage(
             "Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted"),
+        "welcomeTeacher":
+            MessageLookupByLibrary.simpleMessage("Welcome, teacher!"),
         "welcomeToMathmatchup":
             MessageLookupByLibrary.simpleMessage("MathMatchup"),
         "whoWillYourTeammateBeYoullFindOutInRemainingtime": m1,

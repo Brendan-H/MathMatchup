@@ -40,5 +40,21 @@
   "TenMinutes": "10 Minutes",
   "selectTimeLimit": "Select Time Limit",
   "aboutCreateGameWithSettings": "You are about to create a game with the following settings:",
-  "notChosen": "Not Chosen"
+  "notChosen": "Not Chosen",
+  "dontRememberYourPasswordOrHaventLoggedInBeforeClick": "Don't remember your password or haven't logged in before? Click below to reset your password or set your password for the first time.",
+  "password": "Password",
+  "email": "Email",
+  "pleaseEnterYourSchoolEmailAndPasswordToLogin": "Please enter your school email and password to login.",
+  "welcomeTeacher": "Welcome, teacher!",
+  "teacherLogin": "Teacher Login",
+  "login": "Login",
+  "teachersStartHere": "Teachers, start here",
+  "teachersCanCreateGamesTrackProgressAndMoreGetStarted": "Teachers can create games, track progress, and more. Get started by logging in or creating an account with your *school* email after your administrator has purchased a license.",
+  "studentsStartHere": "Students, start here",
+  "studentsCanPlaySoloGamesForFreeEitherCreateA": "Students can play solo games for free. Either create a solo game or join your class game with a game code provided by your teacher.",
+  "parentsStartHere": "Parents, start here",
+  "learnAboutOurFamilyPlansStartingAt250PerMonth": "Learn about our family plans, starting at $2.50 per month per child, on our website and engage with your child's learning journey in a fun way.",
+  "resetPassword": "Reset Password",
+  "sendPasswordResetEmail": "Send Password Reset Email",
+  "forgotPasswordFirstTimeLoginPasswordSet": "Forgot Password / First Time Login Password Set"
 }

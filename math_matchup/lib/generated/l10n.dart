@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (l10n.dart) Last Modified on 9/13/24, 10:45 AM
- *
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -473,6 +466,166 @@ class S {
     return Intl.message(
       'Not Chosen',
       name: 'notChosen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't remember your password or haven't logged in before? Click below to reset your password or set your password for the first time.`
+  String get dontRememberYourPasswordOrHaventLoggedInBeforeClick {
+    return Intl.message(
+      'Don\'t remember your password or haven\'t logged in before? Click below to reset your password or set your password for the first time.',
+      name: 'dontRememberYourPasswordOrHaventLoggedInBeforeClick',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your school email and password to login.`
+  String get pleaseEnterYourSchoolEmailAndPasswordToLogin {
+    return Intl.message(
+      'Please enter your school email and password to login.',
+      name: 'pleaseEnterYourSchoolEmailAndPasswordToLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome, teacher!`
+  String get welcomeTeacher {
+    return Intl.message(
+      'Welcome, teacher!',
+      name: 'welcomeTeacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Teacher Login`
+  String get teacherLogin {
+    return Intl.message(
+      'Teacher Login',
+      name: 'teacherLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Teachers, start here`
+  String get teachersStartHere {
+    return Intl.message(
+      'Teachers, start here',
+      name: 'teachersStartHere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Teachers can create games, track progress, and more. Get started by logging in or creating an account with your *school* email after your administrator has purchased a license.`
+  String get teachersCanCreateGamesTrackProgressAndMoreGetStarted {
+    return Intl.message(
+      'Teachers can create games, track progress, and more. Get started by logging in or creating an account with your *school* email after your administrator has purchased a license.',
+      name: 'teachersCanCreateGamesTrackProgressAndMoreGetStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Students, start here`
+  String get studentsStartHere {
+    return Intl.message(
+      'Students, start here',
+      name: 'studentsStartHere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Students can play solo games for free. Either create a solo game or join your class game with a game code provided by your teacher.`
+  String get studentsCanPlaySoloGamesForFreeEitherCreateA {
+    return Intl.message(
+      'Students can play solo games for free. Either create a solo game or join your class game with a game code provided by your teacher.',
+      name: 'studentsCanPlaySoloGamesForFreeEitherCreateA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parents, start here`
+  String get parentsStartHere {
+    return Intl.message(
+      'Parents, start here',
+      name: 'parentsStartHere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learn about our family plans, starting at $2.50 per month per child, on our website and engage with your child's learning journey in a fun way.`
+  String get learnAboutOurFamilyPlansStartingAt250PerMonth {
+    return Intl.message(
+      'Learn about our family plans, starting at \$2.50 per month per child, on our website and engage with your child\'s learning journey in a fun way.',
+      name: 'learnAboutOurFamilyPlansStartingAt250PerMonth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Password Reset Email`
+  String get sendPasswordResetEmail {
+    return Intl.message(
+      'Send Password Reset Email',
+      name: 'sendPasswordResetEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password / First Time Login Password Set`
+  String get forgotPasswordFirstTimeLoginPasswordSet {
+    return Intl.message(
+      'Forgot Password / First Time Login Password Set',
+      name: 'forgotPasswordFirstTimeLoginPasswordSet',
       desc: '',
       args: [],
     );
