@@ -31,7 +31,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Password reset email sent')),
+        const SnackBar(content: Text('Password reset email sent')),
       );
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -46,7 +46,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
       appBar: AppBar(
         title: Text(S.of(context).resetPassword),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             context.go('/');
           },
@@ -61,13 +61,13 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
               controller: emailController,
               decoration: InputDecoration(
                 labelText: S.of(context).email,
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _resetPassword,
-              child: Text(S.of(context).sendPasswordResetEmail, style: TextStyle(fontSize: 20, color: Colors.black)),
+              child: Text(S.of(context).sendPasswordResetEmail, style: const TextStyle(fontSize: 20, color: Colors.black)),
             ),
           ],
         ),

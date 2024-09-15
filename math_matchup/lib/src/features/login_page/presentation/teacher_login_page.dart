@@ -98,7 +98,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
                 },
                 child:  Text(S.of(context).login, style: Theme.of(context).textTheme.displayLarge,),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(S.of(context).dontRememberYourPasswordOrHaventLoggedInBeforeClick, style: theme.textTheme.displaySmall,),
               TextButton(onPressed: ()  {context.go('/teacher_login/password_reset');}, child: Text(S.of(context).forgotPasswordFirstTimeLoginPasswordSet)),
             ],

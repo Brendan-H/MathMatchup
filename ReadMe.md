@@ -22,7 +22,7 @@ Technologies: Dart + Flutter, Java + Spring, PostgreSQL
 - Comprehensive error handling with user-friendly alert dialogs and behind-the-scenes error logging using Firebase Analytics
 - Optimized API calls reduce the number of database writes necessary by generating as much as possible, like all math questions, on the client side
 - Endless customizations allow teachers to tailor nearly every aspect of games, ranging from the timer to the difficulty of questions (Easy, Medium, Hard, and Impossible)
-- Real time updates for players in game, scoring, and leaderboards
+- Real time updates for players in game, including scoring, leaderboards, and other players
 
 ## Backend Features
 
