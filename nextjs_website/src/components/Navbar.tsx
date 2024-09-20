@@ -18,7 +18,10 @@ const Navbar = () => {
             <button onClick={() => handleNavigation('/about')} style={styles.button}>
                 <span style={styles.text}>About</span>
             </button>
-            <button onClick={() => handleNavigation('/pricing')} style={styles.button}>
+            <button onClick={() => handleNavigation('/screenshots')} style={styles.button}>
+                <span style={styles.text}>Screenshots</span>
+            </button>
+            <button onClick={() => handleNavigation('/pricingPage')} style={styles.button}>
                 <span style={styles.text}>Pricing</span>
             </button>
             <button onClick={() => handleNavigation('/contact')} style={styles.button}>
