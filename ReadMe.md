@@ -12,6 +12,20 @@ Teammates are revealed and the partnership with the most points wins!
 
 Technologies: Dart + Flutter, Java + Spring, PostgreSQL
 
+## Repository Navigation
+
+[MathMatchupBackend](/MathMatchupBackend/) - Directory that stores the Spring backend to the app and website
+
+[math_matchup](/math_matchup/) - Directory that stores the MathMatchup Flutter app
+
+[math_matchup_website](/math_matchup_website/) - Directory that stores the MathMatchup Flutter website (no longer updated, rewritten with Next.js)
+
+[nextjs_website](/nextjs_website/) - Directory that stores the brand-new MathMatchup website, written with Typescript using Next.js
+
+## Why rewrite the website?
+
+It is always hard to throw away code, but I made the decision to completely rewrite the website for MathMatchup. The original website was written in Flutter, which, while familiar to me (something that sped up development), is not a great choice for a mostly static website because it has slow initial loading times and no SEO. Using Next.js solves both of these problems well (and gave me something new to learn), so it was an obvious choice.  
+
 ## App Features
 
 - Fully supported internationalization with numbers and languages (currently English and Spanish)
