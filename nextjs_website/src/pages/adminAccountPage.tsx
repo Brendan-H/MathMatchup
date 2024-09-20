@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import CreateAccountForm from '../components/CreateAccountForm';
+import { colors } from '@/styles/colors';
 
 export default function AdminAccountPage() {
     return (
-        <div>
+        <div style={styles.pageContainer}>
             <Head>
                 <title>MathMatchup</title>
             </Head>
@@ -17,11 +18,16 @@ export default function AdminAccountPage() {
 }
 
 const styles = {
+    pageContainer: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: colors.appBarColor,
+    },
     main: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: colors.appBarColor,
     },
 };

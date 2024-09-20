@@ -60,6 +60,7 @@ const EducationPricingPage = () => {
                         onChange={(e) => handleNumberChange(e.target.value)}
                         style={styles.input}
                         maxLength={4}
+                        placeholder='Number of teachers'
                     />
                     <p>Number of teachers: {sliderValue}</p>
                     <p>Cost per teacher: ${costPerTeacher.toFixed(2)} per month</p>

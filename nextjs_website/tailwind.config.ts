@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { colors } from "@/styles/colors";
 
 const config: Config = {
   content: [
@@ -7,9 +8,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      display: ["Poppins", "sans-serif"],
+    },
     extend: {
       colors: {
-        background: "var(--background)",
+        background: colors.appBarColor,
         foreground: "var(--foreground)",
       },
     },

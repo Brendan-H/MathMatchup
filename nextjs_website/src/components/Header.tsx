@@ -12,10 +12,12 @@ const Header: React.FC = () => {
                         <Image src={mathmatchuplogo} alt="MathMatchup Logo" height={250} width={250} />
                     </div>
                     <div style={styles.spacer}></div>
-                    <div >
-                        <h2 >Welcome To</h2>
-                        <h1 >MathMatchup</h1>
-                        <h3 >The math quiz app with hidden partners</h3>
+                    <div>
+                        <div style={styles.column}>
+                            <h2 style={styles.h2}>Welcome To</h2>
+                            <h1 style={styles.h1}>MathMatchup</h1>
+                            <h3 style={styles.h3}>The math quiz app with hidden partners</h3>
+                        </div>
                     </div>
                 </div>
                 <div style={styles.spacerVertical}></div>
@@ -47,10 +49,23 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        textAlign: 'center',
     },
     spacerVertical: {
         height: '10px',
     },
+    h1: {
+        fontSize: '56px',
+        margin: '0 auto',
+    },
+    h2: {
+        fontSize: '40px',
+        margin: '0 auto',
+    },
+    h3: {
+        fontSize: '25px',
+        margin: '0 auto',
+    }
 };
 
 export default Header;
