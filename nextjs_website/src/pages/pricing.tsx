@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 import {Url} from "next/dist/shared/lib/router/router";
 
 
-export default function PricingPage() {
+export default function Pricing() {
     const router = useRouter();
 
     const handleNavigation = (path: Url) => {
@@ -54,7 +54,7 @@ export default function PricingPage() {
                         <li>Customize questions</li>
                         <li>Advanced game stats</li>
                     </ul>
-                    <button style={styles.button} onClick={() => handleNavigation('/contact')}>Sign Up</button>
+                    <button style={styles.button} onClick={() => handleNavigation('/education/pricing')}>Sign Up</button>
                 </div>
             </div>
         </div>
