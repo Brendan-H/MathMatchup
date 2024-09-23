@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
 import { colors } from '@/styles/colors';
+import createUser from "@/firebase/auth/createUser";
 
 const AdminAccountPage = () => {
     const [obscurePassword, setObscurePassword] = useState(true);
@@ -19,7 +20,11 @@ const AdminAccountPage = () => {
     const router = useRouter();
 
     const handleCreateAccount = async () => {
-        // Add your create account logic here
+        try {
+            await createUser(createEmail, createPassword);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
@@ -32,7 +37,7 @@ const AdminAccountPage = () => {
             <div style={styles.container}>
                 <div style={styles.smallContainer}>
                     <h2>Create Account</h2>
-                    <p>Create your organization's main administrator account</p>
+                    <p>Create your organization&apos;s main administrator account</p>
                     <input
                         type="email"
                         placeholder="Email"
@@ -81,13 +86,14 @@ const AdminAccountPage = () => {
                     <button onClick={() => setObscureConfirmPassword(!obscureConfirmPassword)}>
                         {obscureConfirmPassword ? 'Show' : 'Hide'}
                     </button>
-                    <button onClick={handleCreateAccount} style={styles.button}>
+                    <button style={styles.button} onClick={handleCreateAccount}>
+                        //TODO push to a different page when account is created successfully
                         Create Account
                     </button>
                 </div>
                 <div style={styles.smallContainer}>
                     <h2>Login</h2>
-                    <p>Login to your organization's main administrator account</p>
+                    <p>Login to your organization&apos;s main administrator account</p>
                     <input
                         type="email"
                         placeholder="Email"
