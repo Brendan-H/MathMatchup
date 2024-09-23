@@ -26,7 +26,7 @@ const AdminAccountPage = () => {
             console.error(error);
         }
     };
-
+//TODO push to a different page when account is created successfully
     return (
         <div>
             <Head>
@@ -87,7 +87,6 @@ const AdminAccountPage = () => {
                         {obscureConfirmPassword ? 'Show' : 'Hide'}
                     </button>
                     <button style={styles.button} onClick={handleCreateAccount}>
-                        //TODO push to a different page when account is created successfully
                         Create Account
                     </button>
                 </div>
