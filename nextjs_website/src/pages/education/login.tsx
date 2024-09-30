@@ -21,12 +21,34 @@ const AdminAccountPage = () => {
 
     const handleCreateAccount = async () => {
         try {
+            if (createPassword !== confirmCreatePassword) {
+                alert('Passwords do not match');
+                return;
+            } else if (createPassword.length < 6) {
+                alert('Password must be at least 6 characters');
+                return;
+            } else if (createEmail === '' || name === '' || role === '' || school === '') {
+                alert('All fields are required');
+                return;
+            }
             await createUser(createEmail, createPassword);
+            router.push('/');
         } catch (error) {
             console.error(error);
         }
     };
-//TODO push to a different page when account is created successfully
+    const handleLogin = async () => {
+        try {
+            if (loginEmail === '' || loginPassword === '') {
+                alert('All fields are required');
+                return;
+            }
+            await createUser(loginEmail, loginPassword);
+            router.push('/');
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
         <div>
             <Head>
@@ -110,7 +132,7 @@ const AdminAccountPage = () => {
                     <button onClick={() => setObscurePassword(!obscurePassword)}>
                         {obscurePassword ? 'Show' : 'Hide'}
                     </button>
-                    <button onClick={() => router.push('/')} style={styles.button}>
+                    <button onClick={handleLogin} style={styles.button}>
                         Login
                     </button>
                 </div>

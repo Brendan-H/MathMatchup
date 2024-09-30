@@ -31,7 +31,7 @@ It is always hard to throw away code, but I made the decision to completely rewr
 - Fully supported internationalization with numbers and languages (currently English and Spanish)
 - Responsive screen sizing tailored to phones and tablets
 - Efficient state management using Riverpod for a predictable and scalable architecture 
-- Dynamic theming with light and dark modes, instantly changeable without restating the app
+- Dynamic theming with light and dark modes, instantly changeable without restarting the app
 - Custom splash screen with app logo and HARAN branding
 - Comprehensive error handling with user-friendly alert dialogs and behind-the-scenes error logging using Firebase Analytics
 - Optimized API calls reduce the number of database writes necessary by generating as much as possible, like all math questions, on the client side
