@@ -1,1 +1,0 @@
-//the home page for logged in admin users, where they can purchase licenses, view their licenses, view their teachers, and add teachers

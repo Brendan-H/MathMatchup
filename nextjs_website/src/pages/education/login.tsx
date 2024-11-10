@@ -44,7 +44,7 @@ const AdminAccountPage = () => {
                 return;
             }
             await createUser(loginEmail, loginPassword);
-            router.push('/');
+            router.push('/education/admin');
         } catch (error) {
             console.error(error);
         }
