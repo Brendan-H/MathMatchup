@@ -10,6 +10,8 @@ package com.brendanharan.mathmatchupbackend.players;
 
 import com.brendanharan.mathmatchupbackend.games.Game;
 import com.brendanharan.mathmatchupbackend.games.GameService;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,11 @@ public class PlayerController {
 
     @Autowired
     private GameService gameService;
+
+    @GetMapping("/token")
+    public ResponseEntity<String> getToken() throws FirebaseAuthException {
+        return ResponseEntity.ok(FirebaseAuth.getInstance().createCustomToken("BCT168B58dbeutFOZR3kUwuIt6B2"));
+    }
 
     @PostMapping("/create")
     public ResponseEntity<PlayerResponse> createPlayer(@RequestBody Player player, @RequestParam("gameCode") String gameCode) {

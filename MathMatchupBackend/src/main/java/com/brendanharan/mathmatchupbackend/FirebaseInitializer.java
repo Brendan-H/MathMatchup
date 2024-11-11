@@ -10,6 +10,7 @@ package com.brendanharan.mathmatchupbackend;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -38,7 +39,7 @@ public class FirebaseInitializer {
 
     ///TODO: THIS IS FOR RUNNING LOCALLY
     @Bean
-    void initializeFirebaseApp() throws IOException {
+    public FirebaseAuth initializeFirebaseApp() throws IOException {
 
         if (FirebaseApp.getApps() == null || FirebaseApp.getApps().isEmpty()) {
             InputStream serviceAccount = FirebaseInitializer.class.getResourceAsStream("/ServiceAccountKey.json");
@@ -50,6 +51,6 @@ public class FirebaseInitializer {
 
             FirebaseApp.initializeApp(options);
         }
-
+    return FirebaseAuth.getInstance();
     }
 }
