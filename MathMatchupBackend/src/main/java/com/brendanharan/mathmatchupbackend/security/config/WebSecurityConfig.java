@@ -24,7 +24,9 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    private static final String[] WHITELISTED_API_ENDPOINTS = { "/players/**", "/user/login" };
+    //whitelisted endpoints don't need authentication
+    //not really any reason for leaderboard to be restricted so I'll whitelist it
+    private static final String[] WHITELISTED_API_ENDPOINTS = {"/leaderboard/**" };
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, TokenAuthenticationFilter tokenAuthenticationFilter) throws Exception {

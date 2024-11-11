@@ -27,11 +27,6 @@ public class PlayerController {
     @Autowired
     private GameService gameService;
 
-    @GetMapping("/token")
-    public ResponseEntity<String> getToken() throws FirebaseAuthException {
-        return ResponseEntity.ok(FirebaseAuth.getInstance().createCustomToken("BCT168B58dbeutFOZR3kUwuIt6B2"));
-    }
-
     @PostMapping("/create")
     public ResponseEntity<PlayerResponse> createPlayer(@RequestBody Player player, @RequestParam("gameCode") String gameCode) {
 
