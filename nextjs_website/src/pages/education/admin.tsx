@@ -3,10 +3,12 @@ import Head from 'next/head';
 import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
 import { colors } from '@/styles/colors';
+import importFromCsv from '@/app/backend/importfromcsv';
 
 const AdminHomePage = () => {
     const [licenses, setLicenses] = useState([]);
     const [teachers, setTeachers] = useState([]);
+    const [csvFile, setCsvFile] = useState(null);
 
     useEffect(() => {
         fetchLicenses();
@@ -30,6 +32,26 @@ const AdminHomePage = () => {
             setTeachers(data);
         } catch (error) {
             console.error('Error fetching teachers:', error);
+        }
+    };
+
+    const handleFileChange = (event) => {
+        setCsvFile(event.target.files[0]);
+    };
+
+    const handleUploadCsv = async () => {
+        if (csvFile) {
+            try {
+                const schoolID = 930143811889614372; // Replace with actual schoolID
+                const school = 'Sandburg High School'; // Replace with actual school name
+                await importFromCsv(csvFile, schoolID, school);
+                alert('CSV uploaded successfully');
+            } catch (error) {
+                console.error('Error uploading CSV:', error);
+                alert('Failed to upload CSV');
+            }
+        } else {
+            alert('Please select a CSV file first');
         }
     };
 
@@ -63,7 +85,8 @@ const AdminHomePage = () => {
                         <div style={styles.noshadowsection}>
                             <h2>Just starting out?</h2>
                             <p>Upload your teachers via CSV</p>
-                            <button style={styles.button}>Upload CSV</button>
+                            <input type="file" accept=".csv" onChange={handleFileChange} />
+                            <button style={styles.button} onClick={handleUploadCsv}>Upload CSV</button>
                         </div>
                     </div>
                 </div>
