@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
+ * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (password_reset_page.dart) Last Modified on 9/13/24, 10:53 AM
+ * Current File (password_reset_page.dart) Last Modified on 9/14/24, 7:22 PM
  *
  */
 

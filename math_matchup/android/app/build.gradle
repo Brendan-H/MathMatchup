@@ -25,9 +25,9 @@ if (flutterVersionName == null) {
 
 
 /*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
+ * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (build.gradle) Last Modified on 9/13/24, 10:45 AM
+ * Current File (build.gradle) Last Modified on 1/25/25, 9:24 PM
  *
  */
 
@@ -35,7 +35,7 @@ if (flutterVersionName == null) {
 android {
     namespace "com.brendanharan.math_matchup"
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    ndkVersion = "25.1.8937393"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

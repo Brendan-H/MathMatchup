@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
+ * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (Member.dart) Last Modified on 6/25/24, 8:03 PM
+ * Current File (Member.dart) Last Modified on 6/25/24, 8:03 PM
  *
  */
 
