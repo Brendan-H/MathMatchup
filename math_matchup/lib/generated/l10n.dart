@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (l10n.dart) Last Modified on 9/13/24, 12:33 PM
- *
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -25,17 +18,20 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -48,8 +44,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -79,12 +77,7 @@ class S {
 
   /// `Join Game`
   String get joinGame {
-    return Intl.message(
-      'Join Game',
-      name: 'joinGame',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Join Game', name: 'joinGame', desc: '', args: []);
   }
 
   /// `Enter Gamecode`
@@ -99,42 +92,22 @@ class S {
 
   /// `Enter Name`
   String get enterName {
-    return Intl.message(
-      'Enter Name',
-      name: 'enterName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Enter Name', name: 'enterName', desc: '', args: []);
   }
 
   /// `Start Game`
   String get startGame {
-    return Intl.message(
-      'Start Game',
-      name: 'startGame',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Start Game', name: 'startGame', desc: '', args: []);
   }
 
   /// `Create Game`
   String get createGame {
-    return Intl.message(
-      'Create Game',
-      name: 'createGame',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Create Game', name: 'createGame', desc: '', args: []);
   }
 
   /// `Time's Up!`
   String get timesUp {
-    return Intl.message(
-      'Time\'s Up!',
-      name: 'timesUp',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Time\'s Up!', name: 'timesUp', desc: '', args: []);
   }
 
   /// `Wait for your students to finish the game and press the OK button before you continue or their scores will not be counted`
@@ -149,12 +122,7 @@ class S {
 
   /// `Continue`
   String get continueText {
-    return Intl.message(
-      'Continue',
-      name: 'continueText',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Continue', name: 'continueText', desc: '', args: []);
   }
 
   /// `No Questions Available`
@@ -169,12 +137,7 @@ class S {
 
   /// `Points:`
   String get points {
-    return Intl.message(
-      'Points:',
-      name: 'points',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Points:', name: 'points', desc: '', args: []);
   }
 
   /// `Time Remaining: {remainingTime} seconds`
@@ -199,7 +162,8 @@ class S {
 
   /// `Who will YOUR teammate be? You'll find out in: {remainingTime}`
   String whoWillYourTeammateBeYoullFindOutInRemainingtime(
-      Object remainingTime) {
+    Object remainingTime,
+  ) {
     return Intl.message(
       'Who will YOUR teammate be? You\'ll find out in: $remainingTime',
       name: 'whoWillYourTeammateBeYoullFindOutInRemainingtime',
@@ -260,12 +224,7 @@ class S {
 
   /// `Go Back Home`
   String get goBackHome {
-    return Intl.message(
-      'Go Back Home',
-      name: 'goBackHome',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Go Back Home', name: 'goBackHome', desc: '', args: []);
   }
 
   /// `Question Type`
@@ -290,22 +249,12 @@ class S {
 
   /// `Addition`
   String get addition {
-    return Intl.message(
-      'Addition',
-      name: 'addition',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Addition', name: 'addition', desc: '', args: []);
   }
 
   /// `Subtraction`
   String get subtraction {
-    return Intl.message(
-      'Subtraction',
-      name: 'subtraction',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Subtraction', name: 'subtraction', desc: '', args: []);
   }
 
   /// `Multiplication`
@@ -320,62 +269,32 @@ class S {
 
   /// `Division`
   String get division {
-    return Intl.message(
-      'Division',
-      name: 'division',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Division', name: 'division', desc: '', args: []);
   }
 
   /// `Difficulty`
   String get difficulty {
-    return Intl.message(
-      'Difficulty',
-      name: 'difficulty',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Difficulty', name: 'difficulty', desc: '', args: []);
   }
 
   /// `Easy`
   String get easy {
-    return Intl.message(
-      'Easy',
-      name: 'easy',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Easy', name: 'easy', desc: '', args: []);
   }
 
   /// `Medium`
   String get medium {
-    return Intl.message(
-      'Medium',
-      name: 'medium',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Medium', name: 'medium', desc: '', args: []);
   }
 
   /// `Hard`
   String get hard {
-    return Intl.message(
-      'Hard',
-      name: 'hard',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Hard', name: 'hard', desc: '', args: []);
   }
 
   /// `Impossible`
   String get impossible {
-    return Intl.message(
-      'Impossible',
-      name: 'impossible',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Impossible', name: 'impossible', desc: '', args: []);
   }
 
   /// `Select Difficulty`
@@ -390,12 +309,7 @@ class S {
 
   /// `Time Limit`
   String get timeLimit {
-    return Intl.message(
-      'Time Limit',
-      name: 'timeLimit',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Time Limit', name: 'timeLimit', desc: '', args: []);
   }
 
   /// `30 Seconds`
@@ -410,42 +324,22 @@ class S {
 
   /// `1 Minute`
   String get OneMinute {
-    return Intl.message(
-      '1 Minute',
-      name: 'OneMinute',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('1 Minute', name: 'OneMinute', desc: '', args: []);
   }
 
   /// `2 Minutes`
   String get TwoMinutes {
-    return Intl.message(
-      '2 Minutes',
-      name: 'TwoMinutes',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('2 Minutes', name: 'TwoMinutes', desc: '', args: []);
   }
 
   /// `5 Minutes`
   String get FiveMinutes {
-    return Intl.message(
-      '5 Minutes',
-      name: 'FiveMinutes',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('5 Minutes', name: 'FiveMinutes', desc: '', args: []);
   }
 
   /// `10 Minutes`
   String get TenMinutes {
-    return Intl.message(
-      '10 Minutes',
-      name: 'TenMinutes',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('10 Minutes', name: 'TenMinutes', desc: '', args: []);
   }
 
   /// `Select Time Limit`
@@ -470,12 +364,7 @@ class S {
 
   /// `Not Chosen`
   String get notChosen {
-    return Intl.message(
-      'Not Chosen',
-      name: 'notChosen',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Not Chosen', name: 'notChosen', desc: '', args: []);
   }
 
   /// `Don't remember your password or haven't logged in before? Click below to reset your password or set your password for the first time.`
@@ -490,22 +379,12 @@ class S {
 
   /// `Password`
   String get password {
-    return Intl.message(
-      'Password',
-      name: 'password',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Password', name: 'password', desc: '', args: []);
   }
 
   /// `Email`
   String get email {
-    return Intl.message(
-      'Email',
-      name: 'email',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Email', name: 'email', desc: '', args: []);
   }
 
   /// `Please enter your school email and password to login.`
@@ -540,12 +419,7 @@ class S {
 
   /// `Login`
   String get login {
-    return Intl.message(
-      'Login',
-      name: 'login',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Login', name: 'login', desc: '', args: []);
   }
 
   /// `Teachers, start here`

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/common_widgets/custom_dropdown.dart';
+import 'package:math_matchup/src/common_widgets/main_drawer.dart';
 import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/auth_provider.dart';
 import 'package:math_matchup/src/utils/themes.dart';
@@ -103,6 +104,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     final themeModeState = ref.watch(themesProvider);
     final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
     final textTheme = theme.textTheme;
@@ -112,15 +114,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       const Locale('es', 'ES'): 'Español',
     };
     return Scaffold(
+      key: scaffoldKey,
+      drawer: const MainDrawer(),
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-          child: IconButton(
-            icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
-            onPressed: () {
-              ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
-            },
-          ),
+         child: IconButton(icon: const Icon(Icons.menu, color: Colors.black, size: 30,), onPressed: () {scaffoldKey.currentState!.openDrawer();}),
+          // child: IconButton(
+          //   icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
+          //   onPressed: () {
+          //     ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
+          //   },
+          // ),
         ),
         actions: [
          CustomDropdown(items: locales, selectedItem: ref.watch(localeProvider.notifier).state)
@@ -160,6 +165,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   decoration: InputDecoration(
                     labelText: S.of(context).enterGamecode,
                     errorText: _gameCodeError,
+                    border: const OutlineInputBorder(),
                   ),
                 ),
                 const SizedBox(height: 5,),
@@ -177,6 +183,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       labelText: S.of(context).enterName,
                       errorText: _nameError,
                       border: const OutlineInputBorder(),
+
                     ),
                   ),
                 ),

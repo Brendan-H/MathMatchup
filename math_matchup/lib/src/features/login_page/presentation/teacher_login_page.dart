@@ -78,6 +78,8 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
               const SizedBox(height: 20),
                Text(S.of(context).pleaseEnterYourSchoolEmailAndPasswordToLogin, style: theme.textTheme.displayLarge,),
               const SizedBox(height: 20),
+               const Text("Note: successfully logging in will redirect you to the homepage, where you will be able to press the \"Create Game\" button again to begin a game"),
+              const SizedBox(height: 20),
                TextField(
                 controller: emailController,
                 decoration:  InputDecoration(
@@ -95,6 +97,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
               ElevatedButton(
                 onPressed: ()  async{
                   await login(emailController.text, passwordController.text);
+                  context.go('/');
                 },
                 child:  Text(S.of(context).login, style: Theme.of(context).textTheme.displayLarge,),
               ),
