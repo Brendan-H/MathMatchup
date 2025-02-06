@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:math_matchup/src/features/question_page/domain/question_timer.dart';
 import 'package:math_matchup/src/features/question_page/repository/submit_points.dart';
 
 import '../../../../generated/l10n.dart';
@@ -27,13 +28,23 @@ class QuestionsPage extends ConsumerStatefulWidget {
 }
 
 class _QuestionsPageState extends ConsumerState<QuestionsPage> {
+  late QuestionTimer _questionTimer;
+
   @override
   void initState() {
     super.initState();
+    _questionTimer = QuestionTimer(ref);
     Future.delayed(Duration.zero, () {
       ref.read(questionsProvider.notifier).generateQuestions(totalQuestions: 100, ref: ref);
       ref.read(countdownProvider.notifier); // Start the countdown
+      _questionTimer.start();
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _questionTimer.start();
   }
 
   @override
@@ -106,9 +117,9 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
                 onTap: (BuildContext context) {
                   // Update selected answer provider with the clicked answer
                   ref.read(selectedAnswerProvider.notifier).state = answer;
-
                   // Checks the answer and updates the UI
                   ref.read(questionsProvider.notifier).checkAnswer(answer, ref, currentQuestion, context);
+                  _questionTimer.stop(currentQuestionIndex);
 
                 },
               );

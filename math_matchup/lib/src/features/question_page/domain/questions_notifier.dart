@@ -11,6 +11,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup/src/features/question_page/domain/question_timer.dart';
 
 import '../../game_settings_page/presentation/game_settings_page.dart';
 import '../data/question.dart';
@@ -94,6 +95,8 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
   }
 
   ref.read(isAnsweringProvider.notifier).state = true; // Set isAnswering to true
+  late QuestionTimer _questionTimer;
+  _questionTimer = QuestionTimer(ref);
 
   if (currentQuestion.correctAnswer == selectedAnswer) {
     incrementPlayerPoints(50, ref);
@@ -102,6 +105,7 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
       ref.read(currentQuestionIndexProvider.notifier).state++;
       ref.read(selectedAnswerProvider.notifier).state = null;
       ref.read(isAnsweringProvider.notifier).state = false; // Set isAnswering to false
+      _questionTimer.start();
     });
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Correct!'), duration: Duration(seconds: 1),));
   } else {
@@ -110,6 +114,7 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
       ref.read(currentQuestionIndexProvider.notifier).state++;
       ref.read(selectedAnswerProvider.notifier).state = null;
       ref.read(isAnsweringProvider.notifier).state = false; // Set isAnswering to false
+      _questionTimer.start();
     });
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Incorrect! Waiting for 3 seconds...'), duration: Duration(seconds: 3),));
   }
