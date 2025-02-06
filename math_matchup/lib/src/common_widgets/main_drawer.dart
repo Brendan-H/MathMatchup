@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (main_drawer.dart) Last Modified on 1/25/25, 11:40 PM
+ * Current File (main_drawer.dart) Last Modified on 1/26/25, 3:53 PM
  *
  */
 import 'package:firebase_auth/firebase_auth.dart';
@@ -42,7 +42,6 @@ class _MainDrawerState extends ConsumerState<MainDrawer> {
                     child: Text(
                       FirebaseAuth.instance.currentUser?.email ?? "Email not found",
                       style: const TextStyle(
-                        color: Colors.black,
                         fontSize: 24,
                       ),
                     ),
