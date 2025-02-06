@@ -1,9 +1,10 @@
 import { getAuth } from "firebase/auth";
 import firebase_app from "@/firebase/config";
 
-// @ts-ignore
-export default async function importFromCsv(file, schoolID, school) {
+
+export default async function importFromCsv(file: string | Blob, schoolID: number, school: string) {
     const auth = getAuth(firebase_app);
+
 
     // @ts-ignore
     const idToken = await auth.currentUser.getIdToken(true);
