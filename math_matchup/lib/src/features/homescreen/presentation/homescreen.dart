@@ -219,11 +219,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                         onPressed: () async {
-                          if (user == null) {
-                          context.go('/game/creation_homepage');
-                          } else {
-                            context.go('/game/settings');
-                          }
+                          context.go('/game/123556/play');
+                          //TODO replace this when done testing
+                          // if (user == null) {
+                          // context.go('/game/creation_homepage');
+                          // } else {
+                          //   context.go('/game/settings');
+                          // }
                         }
                     ),
                   ),

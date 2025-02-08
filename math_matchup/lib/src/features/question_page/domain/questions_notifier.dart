@@ -12,6 +12,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_matchup/src/features/question_page/domain/question_timer.dart';
+import 'package:math_matchup/src/features/question_page/repository/player_analytics.dart';
 
 import '../../game_settings_page/presentation/game_settings_page.dart';
 import '../data/question.dart';
@@ -98,6 +99,7 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
 
   if (currentQuestion.correctAnswer == selectedAnswer) {
     incrementPlayerPoints(50, ref);
+    ref.read(correctAnswersProvider.notifier).state++;
     // Delay moving to the next question by 1 second
     Future.delayed(const Duration(seconds: 1), () {
       ref.read(currentQuestionIndexProvider.notifier).state++;
@@ -106,6 +108,7 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
     });
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Correct!'), duration: Duration(seconds: 1),));
   } else {
+    ref.read(incorrectAnswersProvider.notifier).state++;
     // Delay moving to the next question by 3 seconds
     Future.delayed(const Duration(seconds: 3), () {
       ref.read(currentQuestionIndexProvider.notifier).state++;

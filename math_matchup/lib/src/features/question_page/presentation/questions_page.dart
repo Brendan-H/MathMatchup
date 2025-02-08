@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/question_page/domain/question_timer.dart';
+import 'package:math_matchup/src/features/question_page/repository/player_analytics.dart';
 import 'package:math_matchup/src/features/question_page/repository/submit_points.dart';
 
 import '../../../../generated/l10n.dart';
@@ -59,6 +60,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
 
     // Shows dialog when player runs out of time
     if (isTimerComplete) {
+      finalizeAnalytics(ref);
       WidgetsBinding.instance.addPostFrameCallback((_) {
         showDialog(context: context, builder: (context) => AlertDialog(
           title: Text(S.of(context).timesUp),
@@ -72,7 +74,6 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
               },
               child: const Text("Ok"),
             ),
-            //TODO send analytics to backend here
           ],
         ));
        });
