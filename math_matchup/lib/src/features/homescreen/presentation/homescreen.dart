@@ -38,7 +38,7 @@ final gameCodeProvider = StateNotifierProvider<GameCodeNotifier, String>((ref) {
 ///
 /// There is also both a dark mode theme switcher and a language switcher.
 class HomeScreen extends ConsumerStatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();

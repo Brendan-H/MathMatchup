@@ -14,7 +14,7 @@ import '../../../common_widgets/expandable_section.dart';
 
 class GameCreationHomepage extends ConsumerStatefulWidget {
 
-  const GameCreationHomepage({Key? key}) : super(key: key);
+  const GameCreationHomepage({super.key});
 
   @override
   _GameCreationHomepageState createState() => _GameCreationHomepageState();

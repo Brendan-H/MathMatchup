@@ -14,7 +14,7 @@ import '../repository/get_leaderboard.dart';
 
 /// Page exists solely for suspense to build up before revealing the teammates and scores
 class ScoringPage extends ConsumerStatefulWidget {
-  const ScoringPage({Key? key, required this.gameCode}) : super(key: key);
+  const ScoringPage({super.key, required this.gameCode});
   final String gameCode;
 
   @override

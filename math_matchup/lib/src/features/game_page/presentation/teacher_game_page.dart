@@ -21,7 +21,7 @@ import '../repository/get_names.dart';
 /// Same as the [StudentGamePage] but with a start game button and is meant to be projected to the class.
 class TeacherGamePage extends ConsumerWidget {
   final String gameCode;
-  const TeacherGamePage({Key? key, required this.gameCode}) : super(key: key);
+  const TeacherGamePage({super.key, required this.gameCode});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

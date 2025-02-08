@@ -13,7 +13,7 @@ import '../../../utils/theme_provider.dart';
 import '../../../utils/themes.dart';
 
 class SoloGameSettingsPage extends ConsumerStatefulWidget {
-  const SoloGameSettingsPage({Key? key}) : super(key: key);
+  const SoloGameSettingsPage({super.key});
 
   @override
   _SoloGameSettingsPageState createState() => _SoloGameSettingsPageState();

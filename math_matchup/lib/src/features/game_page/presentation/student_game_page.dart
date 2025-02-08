@@ -66,7 +66,7 @@ class GameStatusNotifier extends StateNotifier<GameStatus> {
 class GamePage extends ConsumerStatefulWidget {
   final String gameCode;
 
-  const GamePage({Key? key, required this.gameCode}) : super(key: key);
+  const GamePage({super.key, required this.gameCode});
 
   @override
   _GamePageState createState() => _GamePageState();

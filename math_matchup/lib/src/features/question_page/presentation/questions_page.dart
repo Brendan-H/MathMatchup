@@ -22,7 +22,7 @@ final selectedAnswerProvider = StateProvider<String?>((ref) => null);
 class QuestionsPage extends ConsumerStatefulWidget {
   final String gameCode;
 
-  const QuestionsPage({Key? key, required this.gameCode}) : super(key: key);
+  const QuestionsPage({super.key, required this.gameCode});
 
   @override
   ConsumerState<QuestionsPage> createState() => _QuestionsPageState();
@@ -125,7 +125,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
                   _questionTimer.stop(currentQuestionIndex);
                 },
               );
-            }).toList(),
+            }),
             const SizedBox(height: 16),
 
             // Remaining Time
@@ -148,11 +148,11 @@ class AnswerChoice extends ConsumerWidget {
   final bool isCorrect;
 
   const AnswerChoice({
-    Key? key,
+    super.key,
     required this.answer,
     required this.onTap,
     required this.isCorrect,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

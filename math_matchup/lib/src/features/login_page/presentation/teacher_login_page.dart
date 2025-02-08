@@ -15,7 +15,7 @@ import '../../../utils/themes.dart';
 import '../repository/create_user.dart';
 
 class TeacherLoginPage extends ConsumerStatefulWidget {
-  const TeacherLoginPage({Key? key}) : super(key: key);
+  const TeacherLoginPage({super.key});
 
   @override
   _TeacherLoginPageState createState() => _TeacherLoginPageState();

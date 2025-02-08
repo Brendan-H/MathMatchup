@@ -12,8 +12,10 @@ Steps for game analytics:
 
 F is done on frontend, B is done on backend, A is done on both
 
-- A: Game ends
-- F: Player data is finalized, with necessary computations like percent correct computed and stored so as to not have to waste money on server time
+- is something in progress, | is something completed
+
+| A: Game ends
+| F: Player data is finalized, with necessary computations like percent correct computed and stored so as to not have to waste money on server time
 - F -> B: Player data is sent to backend
 - B: Player data is stored in database
 - B: Class data is updated with player data

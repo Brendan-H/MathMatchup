@@ -13,11 +13,11 @@ class ExpandableSection extends StatefulWidget {
   final String nextPage;
 
   const ExpandableSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.content,
     required this.nextPage,
-  }) : super(key: key);
+  });
 
   @override
   _ExpandableSectionState createState() => _ExpandableSectionState();

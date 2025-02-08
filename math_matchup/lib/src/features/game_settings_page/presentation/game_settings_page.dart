@@ -16,7 +16,7 @@ import '../../../utils/theme_provider.dart';
 ///
 /// Settings are shared with students who join the game and their games reflect these settings.
 class GameSettingsPage extends ConsumerStatefulWidget {
-  const GameSettingsPage({Key? key}) : super(key: key);
+  const GameSettingsPage({super.key});
 
   @override
   _GameSettingsPageState createState() => _GameSettingsPageState();

@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final questionTimeProvider = StateProvider<Map<int, Duration>>((ref) => {});
 
 class QuestionTimer {
-  Stopwatch _stopwatch = Stopwatch();
+  final Stopwatch _stopwatch = Stopwatch();
   final WidgetRef ref;
 
   QuestionTimer(this.ref);
