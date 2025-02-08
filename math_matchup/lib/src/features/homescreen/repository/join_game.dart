@@ -20,7 +20,7 @@ import '../../game_settings_page/presentation/game_settings_page.dart';
 /// Saves details like game difficulty and timer to the state for use in the game on [QuestionPage].
 void joinGame(String gamecode, String name, BuildContext context, WidgetRef ref) async {
   var backendurl = Constants.backendurl;
-  var dio = Dio();
+  Dio dio = Dio();
   print("$backendurl/players/create?gameCode=${gamecode.toString()}");
 
   try {

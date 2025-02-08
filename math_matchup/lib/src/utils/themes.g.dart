@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (themes.g.dart) Last Modified on 1/25/25, 9:25 PM
- *
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'themes.dart';
@@ -13,9 +6,11 @@ part of 'themes.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$lightThemeHash() => r'739db35ee810b66ac68c4c9be57a37956644bca8';
+String _$lightThemeHash() => r'3c6e6cab9fae7aff6101241f8dc5ed8a025cd9a1';
 
-/// See also [lightTheme].
+///All of the Color themes and properties for the app are stored here to make sure the same feel is on every page.
+///
+/// Copied from [lightTheme].
 @ProviderFor(lightTheme)
 final lightThemeProvider = AutoDisposeProvider<ThemeData>.internal(
   lightTheme,
@@ -26,10 +21,14 @@ final lightThemeProvider = AutoDisposeProvider<ThemeData>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef LightThemeRef = AutoDisposeProviderRef<ThemeData>;
-String _$darkThemeHash() => r'201162e2c0a0f974b1bb067c333fa1ee69ffed16';
+String _$darkThemeHash() => r'03614d6efcab412be83597593ca6e059b2156294';
 
-/// See also [darkTheme].
+///Dark mode color themes and properties for the app.
+///
+/// Copied from [darkTheme].
 @ProviderFor(darkTheme)
 final darkThemeProvider = AutoDisposeProvider<ThemeData>.internal(
   darkTheme,
@@ -40,6 +39,8 @@ final darkThemeProvider = AutoDisposeProvider<ThemeData>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef DarkThemeRef = AutoDisposeProviderRef<ThemeData>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

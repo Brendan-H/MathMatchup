@@ -14,7 +14,6 @@ import 'package:math_matchup/src/features/homescreen/presentation/homescreen.dar
 import 'package:math_matchup/src/features/leaderboard/presentation/leaderboard_page.dart';
 import 'package:math_matchup/src/features/login_page/presentation/password_reset_page.dart';
 import 'package:math_matchup/src/features/login_page/presentation/teacher_login_page.dart';
-import 'package:math_matchup/src/features/question_page/presentation/question_time_viewer.dart';
 import 'package:math_matchup/src/utils/page_not_found_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (router.g.dart) Last Modified on 1/25/25, 9:25 PM
- *
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'router.dart';
@@ -13,9 +6,11 @@ part of 'router.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'1df359d35d009ba5f72ef8f14c7e8af8fd99c1dc';
+String _$goRouterHash() => r'61460a53605f689e776ae943435cae1d33faf063';
 
-/// See also [goRouter].
+/// This is the main router for the app, used to navigate between screens. Can transfer data, if needed.
+///
+/// Copied from [goRouter].
 @ProviderFor(goRouter)
 final goRouterProvider = AutoDisposeProvider<GoRouter>.internal(
   goRouter,
@@ -26,6 +21,8 @@ final goRouterProvider = AutoDisposeProvider<GoRouter>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef GoRouterRef = AutoDisposeProviderRef<GoRouter>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

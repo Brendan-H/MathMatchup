@@ -15,7 +15,7 @@ class QuestionTimer {
   QuestionTimer(this.ref);
 
   void start() {
-    _stopwatch.reset();
+    reset();
     _stopwatch.start();
   }
 

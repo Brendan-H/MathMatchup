@@ -25,10 +25,10 @@ Question generateSubtractionQuestion(WidgetRef ref) {
   final num1 = random.nextInt(pow(10, digitsPerNumber).toInt());
   final num2 = random.nextInt(pow(10, digitsPerNumber).toInt());
 
-  // Calculate the answer to the question
+  // Calculates the answer to the question
   final correctAnswer = (num1 - num2).toString();
 
-  // Generate three other believable incorrect answers that are MaxNumber away from the correct answer
+  // Generates three other believable incorrect answers that are MaxNumber away from the correct answer
   List<String> answerChoices = [];
   while (answerChoices.length < 3) {
     final incorrectAnswer = random.nextBool()
@@ -39,10 +39,10 @@ Question generateSubtractionQuestion(WidgetRef ref) {
     }
   }
 
-  // Shuffle the answer choices
+  // Shuffles the answer choices
   answerChoices..add(correctAnswer)..shuffle();
 
-  // Create the question that's displayed
+  // Creates the question that's displayed
   final question = '$num1 - $num2 = ?';
 
   return Question(

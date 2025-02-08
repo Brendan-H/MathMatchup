@@ -35,7 +35,7 @@ final currentQuestionProvider = Provider<Question>((ref) {
   );
 });
 
-/// Timer displayed to the user from the limit set by the teacher
+/// Timer displayed to the user based on the limit set by the teacher
 class CountdownNotifier extends StateNotifier<int> {
   CountdownNotifier(int remainingTime, this.ref) : super(remainingTime) {
     _startTimer();
@@ -87,7 +87,7 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
   void incrementPlayerPoints(int amount, WidgetRef ref) {
     ref.read(playerPointsProvider.notifier).state += amount;
   }
-
+ /// Checks if the answer is right or wrong and increments the player's points accordingly
  void checkAnswer(String selectedAnswer, WidgetRef ref, Question currentQuestion, BuildContext context) {
   var currentQuestionIndex = ref.read(currentQuestionIndexProvider);
   if (ref.read(isAnsweringProvider.notifier).state) {
@@ -95,8 +95,6 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
   }
 
   ref.read(isAnsweringProvider.notifier).state = true; // Set isAnswering to true
-  late QuestionTimer _questionTimer;
-  _questionTimer = QuestionTimer(ref);
 
   if (currentQuestion.correctAnswer == selectedAnswer) {
     incrementPlayerPoints(50, ref);
@@ -105,7 +103,6 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
       ref.read(currentQuestionIndexProvider.notifier).state++;
       ref.read(selectedAnswerProvider.notifier).state = null;
       ref.read(isAnsweringProvider.notifier).state = false; // Set isAnswering to false
-      _questionTimer.start();
     });
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Correct!'), duration: Duration(seconds: 1),));
   } else {
@@ -114,7 +111,6 @@ class QuestionsNotifier extends StateNotifier<List<Question>> {
       ref.read(currentQuestionIndexProvider.notifier).state++;
       ref.read(selectedAnswerProvider.notifier).state = null;
       ref.read(isAnsweringProvider.notifier).state = false; // Set isAnswering to false
-      _questionTimer.start();
     });
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Incorrect! Waiting for 3 seconds...'), duration: Duration(seconds: 3),));
   }

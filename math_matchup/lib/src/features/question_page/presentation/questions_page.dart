@@ -41,11 +41,6 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
     });
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _questionTimer.start();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +50,12 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
     final isTimerComplete = ref.watch(timerCompleteProvider);
     final points = ref.watch(playerPointsProvider);
     final playerID = ref.read(playerIdProvider.notifier).state;
+
+    ref.listen<int>(currentQuestionIndexProvider, (prev, current) {
+            print("QuestionsPage: ref.listen currentQuestionIndex changed from $prev to $current");
+            _questionTimer.reset();
+            _questionTimer.start();
+          });
 
     // Shows dialog when player runs out of time
     if (isTimerComplete) {
@@ -71,6 +72,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
               },
               child: const Text("Ok"),
             ),
+            //TODO send analytics to backend here
           ],
         ));
        });
@@ -120,7 +122,6 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
                   // Checks the answer and updates the UI
                   ref.read(questionsProvider.notifier).checkAnswer(answer, ref, currentQuestion, context);
                   _questionTimer.stop(currentQuestionIndex);
-
                 },
               );
             }).toList(),
