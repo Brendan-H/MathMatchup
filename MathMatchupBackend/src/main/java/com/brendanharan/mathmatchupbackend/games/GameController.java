@@ -35,6 +35,10 @@ public class GameController {
     private GameRepository gameRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(GameService.class);
+    @Autowired
+    private AnalyticsService analyticsService;
+    @Autowired
+    private GameAnalyticsRepository gameAnalyticsRepository;
 
     @PostMapping()
     public ResponseEntity<Game> createGame(@Valid @RequestBody Game game) {
@@ -80,11 +84,23 @@ public class GameController {
 
     @PostMapping("/finish")
     public ResponseEntity<String> finishGameByCode(@RequestParam String gameCode) {
-        Long gameId = gameService.getGameIdFromCode(gameCode);
+        long gameId = gameService.getGameIdFromCode(gameCode);
         Game game = gameService.getGameByCode(gameCode);
         gameService.finishGame(game);
         logger.info("The game ID is ... Game ID: " + gameId);
         return ResponseEntity.ok("Game finished.");
 
+    }
+
+    @GetMapping("/analytics/{gameCode}")
+    public ResponseEntity<String> getGameAnalytics(@PathVariable String gameCode) {
+        try {
+            analyticsService.processGameAnalytics(gameCode);
+            //TODO actually return analytics
+            return ResponseEntity.ok("Game analytics processed.");
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to process game analytics: error: " + e.getMessage());
+        }
     }
 }

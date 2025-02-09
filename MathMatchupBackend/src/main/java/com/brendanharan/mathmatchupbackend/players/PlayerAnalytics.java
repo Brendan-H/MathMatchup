@@ -12,10 +12,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Getter
 @Setter
-@Table(name="player_analytics")
+@Table(name = "player_analytics")
 public class PlayerAnalytics {
 
     @Id
@@ -23,10 +25,11 @@ public class PlayerAnalytics {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "game_id", nullable = false, unique = true)
+    @JoinColumn(name = "game_id", nullable = false)
+    @JsonIgnore
     private Game game;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "player_id", nullable = false)
     private Player player;
 
@@ -47,5 +50,4 @@ public class PlayerAnalytics {
 
     @Column(nullable = false)
     private double points;
-    //player.getpoints
 }

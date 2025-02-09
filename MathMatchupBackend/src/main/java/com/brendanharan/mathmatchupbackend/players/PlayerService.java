@@ -15,6 +15,8 @@ public class PlayerService {
 
     @Autowired
     private PlayerRepository playerRepository;
+    @Autowired
+    private PlayerAnalyticsRepository playerAnalyticsRepository;
 
     public Player createPlayer(Player player) {
         return playerRepository.save(player);
@@ -31,5 +33,9 @@ public class PlayerService {
     public void updatePlayer(Player player) {
 
         playerRepository.save(player);
+    }
+
+    public void setPlayerAnalytics(PlayerAnalytics playerAnalytics) {
+        playerAnalyticsRepository.save(playerAnalytics);
     }
 }

@@ -26,6 +26,8 @@ public class PlayerController {
 
     @Autowired
     private GameService gameService;
+    @Autowired
+    private PlayerAnalyticsRepository playerAnalyticsRepository;
 
     @PostMapping("/create")
     public ResponseEntity<PlayerResponse> createPlayer(@RequestBody Player player, @RequestParam("gameCode") String gameCode) {
@@ -49,11 +51,11 @@ public class PlayerController {
         return ResponseEntity.ok(playerResponse);
     }
 
-    @PostMapping("/{playerId}/submit-points")
+    @PostMapping("/submit-points")
     public ResponseEntity<Player> submitPoints(
-            @PathVariable Long playerId,
+            @RequestParam("playerID") Long playerId,
             @RequestParam("gameCode") String gameCode,
-            @RequestParam("points") int points
+            @RequestBody PointsAndAnalytics pointsAndAnalytics
     ) {
         // Get the player by ID from the database
         Player player = playerService.getPlayerById(playerId);
@@ -73,7 +75,29 @@ public class PlayerController {
         }
 
         // Update the player's points
-        player.setPoints(points);
+        player.setPoints(pointsAndAnalytics.points);
+        playerService.updatePlayer(player);
+
+        // Check if PlayerAnalytics already exists for the player
+        PlayerAnalytics playerAnalytics = player.getPlayerAnalytics();
+        if (playerAnalytics == null) {
+            playerAnalytics = new PlayerAnalytics();
+            playerAnalytics.setPlayer(player);
+            playerAnalytics.setGame(game);
+        }
+
+        // Update the PlayerAnalytics object
+        playerAnalytics.setTotalCorrect(pointsAndAnalytics.correctAnswers);
+        playerAnalytics.setTotalIncorrect(pointsAndAnalytics.incorrectAnswers);
+        playerAnalytics.setTotalQuestions(pointsAndAnalytics.totalQuestions);
+        playerAnalytics.setAverageTime(pointsAndAnalytics.averageTime);
+        playerAnalytics.setAccuracy(pointsAndAnalytics.accuracy);
+        playerAnalytics.setPoints(pointsAndAnalytics.points);
+
+        playerAnalyticsRepository.save(playerAnalytics);
+
+        // Associate the PlayerAnalytics with the Player
+        player.setPlayerAnalytics(playerAnalytics);
         playerService.updatePlayer(player);
 
         return ResponseEntity.ok(player);

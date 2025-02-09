@@ -8,16 +8,18 @@
 //File to hold providers for questions right or wrong
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_matchup/src/features/question_page/repository/submit_points_and_analytics.dart';
 
 import '../../../app.dart';
 import '../../../utils/constants.dart';
 import '../../homescreen/presentation/homescreen.dart';
+import '../data/points_and_analytics.dart';
 import '../domain/question_timer.dart';
 
 final correctAnswersProvider = StateProvider<int>((ref) => 0);
 final incorrectAnswersProvider = StateProvider<int>((ref) => 0);
 
-void finalizeAnalytics(WidgetRef ref) {
+void finalizeAnalytics(WidgetRef ref, String gamecode, int points, int playerID) {
   final correctAnswers = ref.read(correctAnswersProvider.notifier).state;
   final incorrectAnswers = ref.read(incorrectAnswersProvider.notifier).state;
   final questionTimes = ref.read(questionTimeProvider.notifier).state;
@@ -40,11 +42,14 @@ void finalizeAnalytics(WidgetRef ref) {
   print('Average Time: $averageTime');
   print('Accuracy: $accuracy');
 
-  sendAnalyticsToServer(correctAnswers, incorrectAnswers, totalQuestions, averageTime, accuracy, playerID, gameCode);
+  final pointsandanalytics = PointsAndAnalytics(
+    points: points,
+    correctAnswers: correctAnswers,
+    incorrectAnswers: incorrectAnswers,
+    totalQuestions: totalQuestions,
+    averageTime: averageTime,
+    accuracy: accuracy,
+  );
+  submitPointsAndAnalytics(pointsandanalytics, playerID, gameCode);
 }
 
-void sendAnalyticsToServer(int correct, int incorrect, int total, double averageTime, double accuracy, int playerID, String gameCode) {
-  print('Sending analytics to server');
-  var backendurl = Constants.backendurl;
-  Dio dio = Dio();
-}

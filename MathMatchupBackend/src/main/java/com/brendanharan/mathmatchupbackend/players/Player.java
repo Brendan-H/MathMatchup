@@ -10,8 +10,6 @@ package com.brendanharan.mathmatchupbackend.players;
 
 import com.brendanharan.mathmatchupbackend.games.Game;
 import com.brendanharan.mathmatchupbackend.teams.Team;
-import com.brendanharan.mathmatchupbackend.teams.TeamId;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -19,10 +17,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "players")
 @Getter
 @Setter
+@Table(name = "players")
 public class Player {
 
     @Id
@@ -39,8 +39,6 @@ public class Player {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
-            //the first line here makes a duplicate of the regular game_id column but I'm too lazy to fix the error
-            //that appears when I remove it so it's staying for now
             @JoinColumn(name = "team_game_id", referencedColumnName = "game_id"),
             @JoinColumn(name = "team_team_id", referencedColumnName = "team_id")
     })
@@ -51,6 +49,10 @@ public class Player {
     @Column(nullable = false, name = "points")
     private int points;
 
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private PlayerAnalytics playerAnalytics;
+
     public void updatePoints(int pointsToAdd, int teamSize) {
         if (teamSize == 3) {
             this.points += (int) Math.round(pointsToAdd * 2.0 / 3.0);
@@ -58,6 +60,4 @@ public class Player {
             this.points += pointsToAdd;
         }
     }
-
-
 }

@@ -29,7 +29,7 @@ public class GameAnalytics {
     private double averageCorrect;
 
     @Column(nullable = false)
-    private int toalCorrect;
+    private int totalCorrect;
 
     @Column(nullable = false)
     private double averageScore;
@@ -44,7 +44,10 @@ public class GameAnalytics {
     private int totalIncorrect;
 
     @Column(nullable = false)
-    private int totalScore;
+    private int totalPoints;
+
+    @Column(nullable = false)
+    private double totalAccuracy;
 
     @Column(nullable = false)
     private int totalQuestions;
