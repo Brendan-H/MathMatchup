@@ -1,7 +1,7 @@
-/*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
+    /*
+ * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (Player.java) Last Modified on 9/5/24, 5:16 PM
+ * Current File (Player.java) Last Modified on 2/9/25, 2:47 PM
  *
  */
 

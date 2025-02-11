@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2024 by Brendan Haran, All Rights Reserved.
+ * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (UserController.java) Last Modified on 9/3/24, 7:34 PM
+ * Current File (UserController.java) Last Modified on 9/13/24, 11:37 AM
  *
  */
 
