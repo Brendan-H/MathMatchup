@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -41,8 +42,10 @@ public class GameController {
     private GameAnalyticsRepository gameAnalyticsRepository;
 
     @PostMapping()
-    public ResponseEntity<Game> createGame(@Valid @RequestBody Game game) {
-
+    public ResponseEntity<?> createGame(@Valid @RequestBody Game game, BindingResult result) {
+        if (result.hasErrors()) {
+            return ResponseEntity.badRequest().body(result.getAllErrors());
+        }
         String gameCode = generateGameCode();
         game.setGameCode(gameCode);
         game.setStatus(GameStatus.WAITING_FOR_PLAYERS);
