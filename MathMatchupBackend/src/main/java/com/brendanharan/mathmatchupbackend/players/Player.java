@@ -9,6 +9,7 @@ package com.brendanharan.mathmatchupbackend.players;
 
 
 import com.brendanharan.mathmatchupbackend.games.Game;
+import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalytics;
 import com.brendanharan.mathmatchupbackend.teams.Team;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,10 +17,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
+    @Entity
 @Getter
 @Setter
 @Table(name = "players")

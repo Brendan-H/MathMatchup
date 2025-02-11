@@ -10,8 +10,9 @@ package com.brendanharan.mathmatchupbackend.players;
 
 import com.brendanharan.mathmatchupbackend.games.Game;
 import com.brendanharan.mathmatchupbackend.games.GameService;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
+import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalytics;
+import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalyticsRepository;
+import com.brendanharan.mathmatchupbackend.players.analytics.PointsAndAnalytics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,7 +76,7 @@ public class PlayerController {
         }
 
         // Update the player's points
-        player.setPoints(pointsAndAnalytics.points);
+        player.setPoints(pointsAndAnalytics.getPoints());
         playerService.updatePlayer(player);
 
         // Check if PlayerAnalytics already exists for the player
@@ -87,12 +88,12 @@ public class PlayerController {
         }
 
         // Update the PlayerAnalytics object
-        playerAnalytics.setTotalCorrect(pointsAndAnalytics.correctAnswers);
-        playerAnalytics.setTotalIncorrect(pointsAndAnalytics.incorrectAnswers);
-        playerAnalytics.setTotalQuestions(pointsAndAnalytics.totalQuestions);
-        playerAnalytics.setAverageTime(pointsAndAnalytics.averageTime);
-        playerAnalytics.setAccuracy(pointsAndAnalytics.accuracy);
-        playerAnalytics.setPoints(pointsAndAnalytics.points);
+        playerAnalytics.setTotalCorrect(pointsAndAnalytics.getCorrectAnswers());
+        playerAnalytics.setTotalIncorrect(pointsAndAnalytics.getIncorrectAnswers());
+        playerAnalytics.setTotalQuestions(pointsAndAnalytics.getTotalQuestions());
+        playerAnalytics.setAverageTime(pointsAndAnalytics.getAverageTime());
+        playerAnalytics.setAccuracy(pointsAndAnalytics.getAccuracy());
+        playerAnalytics.setPoints(pointsAndAnalytics.getPoints());
 
         playerAnalyticsRepository.save(playerAnalytics);
 

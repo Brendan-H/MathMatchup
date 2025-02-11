@@ -7,6 +7,8 @@
 
 package com.brendanharan.mathmatchupbackend.games;
 
+import com.brendanharan.mathmatchupbackend.games.analytics.AnalyticsService;
+import com.brendanharan.mathmatchupbackend.games.analytics.GameAnalyticsRepository;
 import com.brendanharan.mathmatchupbackend.players.Player;
 import com.brendanharan.mathmatchupbackend.players.PlayerService;
 import jakarta.validation.Valid;

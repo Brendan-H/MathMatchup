@@ -1,53 +1,56 @@
 /*
  * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (PlayerAnalytics.java) Last Modified on 2/9/25, 2:45 PM
+ * Current File (GameAnalytics.java) Last Modified on 2/9/25, 2:50 PM
  *
  */
 
-package com.brendanharan.mathmatchupbackend.players;
+package com.brendanharan.mathmatchupbackend.games.analytics;
 
 import com.brendanharan.mathmatchupbackend.games.Game;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Getter
 @Setter
-@Table(name = "player_analytics")
-public class PlayerAnalytics {
+@Table(name="game_analytics")
+public class GameAnalytics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "game_id", nullable = false)
-    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "game_id", nullable = false, unique = true)
     private Game game;
 
-    @OneToOne
-    @JoinColumn(name = "player_id", nullable = false)
-    private Player player;
+    @Column(nullable = false)
+    private double averageCorrect;
 
     @Column(nullable = false)
     private int totalCorrect;
 
     @Column(nullable = false)
-    private int totalIncorrect;
-
-    @Column(nullable = false)
-    private int totalQuestions;
+    private double averageScore;
 
     @Column(nullable = false)
     private double averageTime;
 
     @Column(nullable = false)
-    private double accuracy;
+    private double averageIncorrect;
 
     @Column(nullable = false)
-    private double points;
+    private int totalIncorrect;
+
+    @Column(nullable = false)
+    private int totalPoints;
+
+    @Column(nullable = false)
+    private double totalAccuracy;
+
+    @Column(nullable = false)
+    private int totalQuestions;
+
 }

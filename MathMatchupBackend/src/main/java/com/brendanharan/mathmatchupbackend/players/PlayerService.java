@@ -7,6 +7,8 @@
 
 package com.brendanharan.mathmatchupbackend.players;
 
+import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalytics;
+import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalyticsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

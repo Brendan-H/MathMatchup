@@ -1,14 +1,16 @@
 /*
  * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (AnalyticsService.java) Last Modified on 2/9/25, 2:06 PM
+ * Current File (AnalyticsService.java) Last Modified on 2/9/25, 2:50 PM
  *
  */
 
-package com.brendanharan.mathmatchupbackend.games;
+package com.brendanharan.mathmatchupbackend.games.analytics;
 
+import com.brendanharan.mathmatchupbackend.games.Game;
+import com.brendanharan.mathmatchupbackend.games.GameRepository;
 import com.brendanharan.mathmatchupbackend.players.Player;
-import com.brendanharan.mathmatchupbackend.players.PlayerAnalytics;
+import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalytics;
 import com.brendanharan.mathmatchupbackend.players.PlayerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

@@ -5,7 +5,7 @@
  *
  */
 
-package com.brendanharan.mathmatchupbackend.players;
+package com.brendanharan.mathmatchupbackend.players.analytics;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
