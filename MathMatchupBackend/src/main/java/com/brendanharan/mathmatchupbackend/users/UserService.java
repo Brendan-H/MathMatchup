@@ -10,6 +10,7 @@ package com.brendanharan.mathmatchupbackend.users;
 import com.google.firebase.auth.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +23,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
+    //Allows for Firebase to be disabled for testing, defaults to on but is shut off in tests
+    //Firebase is still mocked in tests, but this prevents real calls from happening
+    @Value("${firebase.enabled:true}")
+    private boolean firebaseEnabled;
+
+    // CreateUser doesnt need to use firebase because creation on firebase is handled on the frontend
     public void createUser(User user) throws Exception {
         user.setSchoolId(user.getSchoolId());
         userRepository.save(user);
@@ -31,6 +39,7 @@ public class UserService {
         return userRepository.findByUid(uid);
     }
 
+    //bulkCreateUsers needs firebase because you cant bulk create on the frontend
     public void bulkCreateUsers(List<String[]> rows, Long schoolID, String school) throws Exception {
         List<ImportUserRecord> users = new ArrayList<>();
         for (String[] row : rows) {
@@ -48,17 +57,20 @@ public class UserService {
                     .build());
         }
 
-        try {
-            UserImportResult result = FirebaseAuth.getInstance().importUsers(users);
-            System.out.println("Successfully imported " + result.getSuccessCount() + " users");
-            System.out.println("Failed to import " + result.getFailureCount() + " users");
-            for (ErrorInfo indexedError : result.getErrors()) {
-                System.out.println("Failed to import user at index: " + indexedError.getIndex()
-                        + " due to error: " + indexedError.getReason());
+        if (firebaseEnabled) {  // Prevent Firebase calls in tests
+            try {
+                UserImportResult result = FirebaseAuth.getInstance().importUsers(users);
+                System.out.println("Successfully imported " + result.getSuccessCount() + " users");
+                System.out.println("Failed to import " + result.getFailureCount() + " users");
+                for (ErrorInfo indexedError : result.getErrors()) {
+                    System.out.println("Failed to import user at index: " + indexedError.getIndex()
+                            + " due to error: " + indexedError.getReason());
+                }
+            } catch (FirebaseAuthException e) {
+                log.error("e: ", e);
             }
-        } catch (FirebaseAuthException e) {
-            log.error("e: ", e);
         }
+
 
         for (String[] row : rows) {
             String email = row[0];

@@ -26,13 +26,12 @@ public class TeamId implements Serializable {
     private Long teamId;
 
 
-    // Default constructor to initialize gameId and teamId to 0
+
     public TeamId() {
         this.gameId = 0L;
         this.teamId = 0L;
     }
 
-    // Constructor to initialize gameId and teamId with specific values
     public TeamId(Long gameId, Long teamId) {
         this.gameId = gameId;
         this.teamId = teamId;

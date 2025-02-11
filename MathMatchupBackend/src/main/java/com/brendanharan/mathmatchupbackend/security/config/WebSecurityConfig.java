@@ -26,6 +26,7 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter;
 public class WebSecurityConfig {
     //whitelisted endpoints don't need authentication
     //not really any reason for leaderboard to be restricted so I'll whitelist it
+    //whitelisted all endpoints ("/**") for now
     private static final String[] WHITELISTED_API_ENDPOINTS = {"/leaderboard/**", "/**" };
 
     @Bean
