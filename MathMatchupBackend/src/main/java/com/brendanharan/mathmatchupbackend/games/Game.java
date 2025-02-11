@@ -9,8 +9,6 @@ package com.brendanharan.mathmatchupbackend.games;
 
 import com.brendanharan.mathmatchupbackend.players.Player;
 import com.brendanharan.mathmatchupbackend.teams.Team;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

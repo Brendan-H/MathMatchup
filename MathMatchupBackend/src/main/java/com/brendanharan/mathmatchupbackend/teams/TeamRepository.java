@@ -7,7 +7,6 @@
 
 package com.brendanharan.mathmatchupbackend.teams;
 
-import com.brendanharan.mathmatchupbackend.teams.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

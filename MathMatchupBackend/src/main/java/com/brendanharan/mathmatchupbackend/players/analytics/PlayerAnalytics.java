@@ -9,11 +9,10 @@ package com.brendanharan.mathmatchupbackend.players.analytics;
 
 import com.brendanharan.mathmatchupbackend.games.Game;
 import com.brendanharan.mathmatchupbackend.players.Player;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Getter

@@ -2,6 +2,11 @@
 
 ## Planned Features
 
+ ### Comprehensive Backend Integration Testing
+ - GameController - DONE
+ - PlayerController - DONE
+ - UserController - DONE
+
  ### Game analytics
  - Track how many questions each student answers
  - Track how many questions each student answers correctly
@@ -16,10 +21,10 @@ F is done on frontend, B is done on backend, A is done on both
 
 | A: Game ends
 | F: Player data is finalized, with necessary computations like percent correct computed and stored so as to not have to waste money on server time
-- F -> B: Player data is sent to backend
-- B: Player data is stored in database
-- B: Class data is updated with player data
-- B : Full class data (like average percent correct) is computed and stored
+| F -> B: Player data is sent to backend
+| B: Player data is stored in database
+| B: Class data is updated with player data
+| B : Full class data (like average percent correct) is computed and stored
 - B: Necessary player data for graphing is aggregated in game data table
 - B -> F: Class data is sent to teacher frontend. Leaderboard is still displayed on teacher's screen since it will be mirrored to the class
 - F: Once teacher is done mirroring, they can click a button to display class data
@@ -35,4 +40,4 @@ This will effectively give the teacher a way to see how well the class is doing 
 
 ### School Admin Website for License Management
 
-In progress but put on back burner for now since analytics are more useful
+In progress but put on back burner for now since analytics are more useful (and interesting for me to implement)

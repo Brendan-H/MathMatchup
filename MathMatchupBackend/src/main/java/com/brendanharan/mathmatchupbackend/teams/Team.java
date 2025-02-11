@@ -10,13 +10,10 @@ package com.brendanharan.mathmatchupbackend.teams;
 import com.brendanharan.mathmatchupbackend.games.Game;
 import com.brendanharan.mathmatchupbackend.players.Player;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

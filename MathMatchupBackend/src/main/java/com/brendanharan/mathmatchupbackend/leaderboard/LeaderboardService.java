@@ -12,7 +12,6 @@ import com.brendanharan.mathmatchupbackend.teams.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 
 @Service

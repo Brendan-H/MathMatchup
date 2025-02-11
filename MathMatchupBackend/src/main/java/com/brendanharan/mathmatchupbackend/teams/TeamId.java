@@ -7,8 +7,8 @@
 
 package com.brendanharan.mathmatchupbackend.teams;
 
-import com.brendanharan.mathmatchupbackend.games.Game;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;
 

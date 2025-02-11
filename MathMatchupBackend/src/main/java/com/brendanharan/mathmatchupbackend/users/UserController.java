@@ -8,21 +8,14 @@
 package com.brendanharan.mathmatchupbackend.users;
 
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.UserRecord;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import com.opencsv.exceptions.CsvException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController

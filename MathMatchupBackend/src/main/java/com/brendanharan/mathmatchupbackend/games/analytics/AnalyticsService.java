@@ -10,8 +10,8 @@ package com.brendanharan.mathmatchupbackend.games.analytics;
 import com.brendanharan.mathmatchupbackend.games.Game;
 import com.brendanharan.mathmatchupbackend.games.GameRepository;
 import com.brendanharan.mathmatchupbackend.players.Player;
-import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalytics;
 import com.brendanharan.mathmatchupbackend.players.PlayerRepository;
+import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalytics;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

@@ -37,6 +37,7 @@ It is always hard to throw away code, but I made the decision to completely rewr
 - Optimized API calls reduce the number of database writes necessary by generating as much as possible, like all math questions, on the client side
 - Endless customizations allow teachers to tailor nearly every aspect of games, ranging from the timer to the difficulty of questions (Easy, Medium, Hard, and Impossible)
 - Real time updates for players in game, including scoring, leaderboards, and other players
+- Player analytics for teachers to view
 
 ## Backend Features
 
@@ -48,6 +49,12 @@ It is always hard to throw away code, but I made the decision to completely rewr
 - JPA and Hibernate for ORM and database operations
 - Easily extendable service, controller, and repository layers
 - RESTful API endpoints for user, team, player, and game operations
+- Player and combined class analytics for teachers to view
+- Comprehensive REST API + PostgreSQL database integration testing suite for complete coverage
+
+## NextJS Admin Website
+
+In progress, but put on the back burner for now as I work on more interesting features.
 
 ## Screenshots
 

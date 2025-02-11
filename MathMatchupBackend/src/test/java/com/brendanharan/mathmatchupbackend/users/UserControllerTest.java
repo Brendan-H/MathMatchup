@@ -25,8 +25,6 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -99,6 +97,6 @@ public class UserControllerTest {
                         .header("school", "Test School"))
                 .andExpect(status().isOk());
 
-        assertEquals(2, userRepository.count());
+        Assertions.assertEquals(2, userRepository.count());
     }
 }
