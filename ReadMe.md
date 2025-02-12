@@ -22,6 +22,10 @@ Technologies: Dart + Flutter, Java + Spring, PostgreSQL
 
 [nextjs_website](/nextjs_website/) - Directory that stores the brand-new MathMatchup website, written with Typescript using Next.js
 
+Roadmap.md - A roadmap of planned features
+
+testingscript.py - A python script that simulates a full class of players, letting you participate in a "real" game when you're using the app. Does everything needed to have a full game, with breakpoints that give you a chance to join the game on the frontend as well as play through the full game. 
+
 ## Why rewrite the website?
 
 It is always hard to throw away code, but I made the decision to completely rewrite the website for MathMatchup. The original website was written in Flutter, which, while familiar to me (something that sped up development), is not a great choice for a mostly static website because it has slow initial loading times and no SEO. Using Next.js solves both of these problems well (and gave me something new to learn), so it was an obvious choice.  
@@ -75,6 +79,7 @@ In progress, but put on the back burner for now as I work on more interesting fe
 3. Modify application.properties (```MathMatchupBackend/src/main/resources/application.properties```) with database details
 4. Run the Spring backend
 5. (optional) If you want, you can skip running the frontend and simply visit [The MathMatchup Website](https://mathmatchupapp.brendanharan.com) and it will work with your locally running backend
+6. Run the testing script to simulate a classroom environment (```python testingscript.py```)
 
 ## Running MathMatchup Flutter frontend
 
@@ -82,6 +87,7 @@ In progress, but put on the back burner for now as I work on more interesting fe
 2. Run ```flutter pub get```
 3. and ```dart run build_runner watch -d```
 4. then ```flutter run``` or ```flutter build app --release``` to compile an apk for installation on android or ```flutter build web``` to compile for deployment to the web
+5. Run the testing script to simulate a classroom environment (```python testingscript.py```)
 
 ## Running MathMatchup Website
 
@@ -94,3 +100,4 @@ In progress, but put on the back burner for now as I work on more interesting fe
 - Note that the MathMatchup app is meant for smaller screen sizes and may not look right when viewed on a computer
 - The teacher's screen is meant to be projected to the class throughout the game.
 - The team with 3 players (if there is an odd number of students playing) will have their total points multiplied by 2/3 to make the game even
+- The testing script will do everything needed for you to act as a player in a game. It will open the game, add 30 test players, give you a chance to join the game, start the game, submit randomized (within reason) fake player data for the 30 fake players, and finish the game. This covers everything that a teacher and your fellow students would do.
