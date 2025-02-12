@@ -104,7 +104,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     final themeModeState = ref.watch(themesProvider);
     final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
     final textTheme = theme.textTheme;
@@ -114,12 +113,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       const Locale('es', 'ES'): 'Español',
     };
     return Scaffold(
-      key: scaffoldKey,
       drawer: const MainDrawer(),
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-         child: IconButton(icon: const Icon(Icons.menu, color: Colors.black, size: 30,), onPressed: () {scaffoldKey.currentState!.openDrawer();}),
+         child: Builder(
+           builder: (BuildContext innerContext) {
+             return IconButton(icon: const Icon(Icons.menu, color: Colors.black, size: 30,), onPressed: () {Scaffold.of(innerContext).openDrawer();});
+           }
+         ),
           // child: IconButton(
           //   icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
           //   onPressed: () {
@@ -155,8 +157,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
                 const SizedBox(height: 20,),
                 TextField(
-                  controller: gameCodeController,
-                  keyboardType: TextInputType.number,
+                 controller: gameCodeController,
+                 keyboardType: TextInputType.number,
                   onChanged: (value) {
                     setState(() {
                       _gameCodeError = _validateGameCode(value);
@@ -219,13 +221,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                         onPressed: () async {
-                          context.go('/game/123556/play');
-                          //TODO replace this when done testing
-                          // if (user == null) {
-                          // context.go('/game/creation_homepage');
-                          // } else {
-                          //   context.go('/game/settings');
-                          // }
+                          if (user == null) {
+                          context.go('/game/creation_homepage');
+                          } else {
+                            context.go('/game/settings');
+                          }
                         }
                     ),
                   ),
