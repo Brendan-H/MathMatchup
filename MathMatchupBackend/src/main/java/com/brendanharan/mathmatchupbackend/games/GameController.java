@@ -93,6 +93,7 @@ public class GameController {
         long gameId = gameService.getGameIdFromCode(gameCode);
         Game game = gameService.getGameByCode(gameCode);
         gameService.finishGame(game);
+        analyticsService.processGameAnalytics(gameCode);
         logger.info("The game ID is ... Game ID: " + gameId);
         return ResponseEntity.ok("Game finished.");
 
@@ -101,7 +102,6 @@ public class GameController {
     @GetMapping("/analytics/{gameCode}")
     public ResponseEntity<String> getGameAnalytics(@PathVariable String gameCode) {
         try {
-            analyticsService.processGameAnalytics(gameCode);
             //TODO actually return analytics
             return ResponseEntity.ok("Game analytics processed.");
 

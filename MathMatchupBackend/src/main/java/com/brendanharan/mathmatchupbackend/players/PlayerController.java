@@ -18,6 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
@@ -86,6 +89,10 @@ public class PlayerController {
             playerAnalytics.setPlayer(player);
             playerAnalytics.setGame(game);
         }
+        BigDecimal avgTime = new BigDecimal(pointsAndAnalytics.getAverageTime()).setScale(2, RoundingMode.HALF_UP);
+        pointsAndAnalytics.setAverageTime(avgTime.doubleValue());
+        BigDecimal accuracy = new BigDecimal(pointsAndAnalytics.getAccuracy()).setScale(2, RoundingMode.HALF_UP);
+        pointsAndAnalytics.setAccuracy(accuracy.doubleValue());
 
         // Update the PlayerAnalytics object
         playerAnalytics.setTotalCorrect(pointsAndAnalytics.getCorrectAnswers());
