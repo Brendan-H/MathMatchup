@@ -10,6 +10,8 @@ package com.brendanharan.mathmatchupbackend.players;
 
 import com.brendanharan.mathmatchupbackend.games.Game;
 import com.brendanharan.mathmatchupbackend.games.GameService;
+import com.brendanharan.mathmatchupbackend.games.analytics.GameAnalytics;
+import com.brendanharan.mathmatchupbackend.games.analytics.GameAnalyticsRepository;
 import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalytics;
 import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalyticsRepository;
 import com.brendanharan.mathmatchupbackend.players.analytics.PointsAndAnalytics;
@@ -32,6 +34,8 @@ public class PlayerController {
     private GameService gameService;
     @Autowired
     private PlayerAnalyticsRepository playerAnalyticsRepository;
+    @Autowired
+    private GameAnalyticsRepository gameAnalyticsRepository;
 
     @PostMapping("/create")
     public ResponseEntity<PlayerResponse> createPlayer(@RequestBody Player player, @RequestParam("gameCode") String gameCode) {
@@ -89,6 +93,14 @@ public class PlayerController {
             playerAnalytics.setPlayer(player);
             playerAnalytics.setGame(game);
         }
+        GameAnalytics gameAnalytics = gameAnalyticsRepository.findByGame_GameCode(game.getGameCode());
+        if (gameAnalytics == null) {
+            gameAnalytics = new GameAnalytics();
+            gameAnalytics.setGame(game);
+            // Set other initial values for gameAnalytics if necessary
+            gameAnalyticsRepository.save(gameAnalytics); // Save the gameAnalytics first
+        }
+
         BigDecimal avgTime = new BigDecimal(pointsAndAnalytics.getAverageTime()).setScale(2, RoundingMode.HALF_UP);
         pointsAndAnalytics.setAverageTime(avgTime.doubleValue());
         BigDecimal accuracy = new BigDecimal(pointsAndAnalytics.getAccuracy()).setScale(2, RoundingMode.HALF_UP);
@@ -101,6 +113,7 @@ public class PlayerController {
         playerAnalytics.setAverageTime(pointsAndAnalytics.getAverageTime());
         playerAnalytics.setAccuracy(pointsAndAnalytics.getAccuracy());
         playerAnalytics.setPoints(pointsAndAnalytics.getPoints());
+        playerAnalytics.setGameAnalytics(gameAnalytics);
 
         playerAnalyticsRepository.save(playerAnalytics);
 

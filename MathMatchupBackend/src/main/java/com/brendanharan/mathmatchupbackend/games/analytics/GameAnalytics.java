@@ -8,9 +8,13 @@
 package com.brendanharan.mathmatchupbackend.games.analytics;
 
 import com.brendanharan.mathmatchupbackend.games.Game;
+import com.brendanharan.mathmatchupbackend.players.analytics.PlayerAnalytics;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -53,4 +57,8 @@ public class GameAnalytics {
     @Column(nullable = false)
     private int totalQuestions;
 
+    @OneToMany(mappedBy = "gameAnalytics", cascade = CascadeType.ALL)
+    private List<PlayerAnalytics> playerAnalyticsList = new ArrayList<>();
+
 }
+

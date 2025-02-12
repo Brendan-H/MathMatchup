@@ -37,6 +37,13 @@ public class AnalyticsService {
             return;
         }
 
+        GameAnalytics gameAnalytics = gameAnalyticsRepository.findByGame_GameCode(game.getGameCode());
+
+        if (gameAnalytics == null) {
+            gameAnalytics = new GameAnalytics();
+            gameAnalytics.setGame(game);
+        }
+
         List<Player> players = game.getPlayers();
         int totalCorrect = 0;
         int totalIncorrect = 0;
@@ -72,8 +79,7 @@ public class AnalyticsService {
         averageCorrect = avgCorrect.doubleValue();
         BigDecimal avgIncorrect = new BigDecimal(averageIncorrect).setScale(2, RoundingMode.HALF_UP);
         averageIncorrect = avgIncorrect.doubleValue();
-        GameAnalytics gameAnalytics = new GameAnalytics();
-        gameAnalytics.setGame(game);
+
         gameAnalytics.setTotalCorrect(totalCorrect);
         gameAnalytics.setTotalIncorrect(totalIncorrect);
         gameAnalytics.setTotalQuestions(totalQuestions);

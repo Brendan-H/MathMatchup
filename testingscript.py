@@ -58,7 +58,7 @@ def start_game(gamecode):
         print(f"ERROR: Failed to start game: {response.status_code}", response.text)
 
 def submit_fake_player_points(player_ids, gamecode):
-    time.sleep(15)
+    time.sleep(5)
     for playerid in player_ids:
         points = random.randint(0,500)
         correct = random.randint(1,15)

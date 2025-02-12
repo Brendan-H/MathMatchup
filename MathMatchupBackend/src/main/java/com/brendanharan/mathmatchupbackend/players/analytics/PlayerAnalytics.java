@@ -8,6 +8,7 @@
 package com.brendanharan.mathmatchupbackend.players.analytics;
 
 import com.brendanharan.mathmatchupbackend.games.Game;
+import com.brendanharan.mathmatchupbackend.games.analytics.GameAnalytics;
 import com.brendanharan.mathmatchupbackend.players.Player;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -50,4 +51,10 @@ public class PlayerAnalytics {
 
     @Column(nullable = false)
     private double points;
+
+    @ManyToOne
+    @JoinColumn(name = "game_analytics_id", nullable = false)
+    @JsonIgnore
+    private GameAnalytics gameAnalytics;
 }
+

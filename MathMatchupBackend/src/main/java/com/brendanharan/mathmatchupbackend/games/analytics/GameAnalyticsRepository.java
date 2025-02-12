@@ -15,4 +15,5 @@ public interface GameAnalyticsRepository extends JpaRepository<GameAnalytics, Lo
     GameAnalytics findByGameId(Long gameId);
 
     GameAnalytics findByGame_GameCode(String gameCode);
+
 }
