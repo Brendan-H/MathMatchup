@@ -60,6 +60,7 @@ class _QuestionsPageState extends ConsumerState<QuestionsPage> {
 
     // Shows dialog when player runs out of time
     if (isTimerComplete) {
+      print("THE GAMECODE IS: ${widget.gameCode}");
       finalizeAnalytics(ref, widget.gameCode, points, playerID ?? 0);
       WidgetsBinding.instance.addPostFrameCallback((_) {
         showDialog(context: context, builder: (context) => AlertDialog(

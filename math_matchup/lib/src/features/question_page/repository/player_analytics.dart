@@ -23,8 +23,6 @@ void finalizeAnalytics(WidgetRef ref, String gamecode, int points, int playerID)
   final correctAnswers = ref.read(correctAnswersProvider.notifier).state;
   final incorrectAnswers = ref.read(incorrectAnswersProvider.notifier).state;
   final questionTimes = ref.read(questionTimeProvider.notifier).state;
-  final playerID = ref.read(playerIdProvider.notifier).state ?? 0;
-  final gameCode = ref.read(gameCodeProvider.notifier).state;
   double averageTime = 0.0;
   final totalQuestions = correctAnswers + incorrectAnswers;
   final double accuracy = (correctAnswers / totalQuestions) * 100;
@@ -35,7 +33,7 @@ void finalizeAnalytics(WidgetRef ref, String gamecode, int points, int playerID)
   });
   averageTime /= totalQuestions;
   averageTime /= 1000;
-  averageTime = averageTime.toStringAsFixed(4) as double;
+  averageTime = double.parse(averageTime.toStringAsFixed(4));
   print('Correct Answers: $correctAnswers');
   print('Incorrect Answers: $incorrectAnswers');
   print('Total Questions: $totalQuestions');
@@ -50,6 +48,6 @@ void finalizeAnalytics(WidgetRef ref, String gamecode, int points, int playerID)
     averageTime: averageTime,
     accuracy: accuracy,
   );
-  submitPointsAndAnalytics(pointsandanalytics, playerID, gameCode);
+  submitPointsAndAnalytics(pointsandanalytics, playerID, gamecode);
 }
 

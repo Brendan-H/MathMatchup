@@ -11,26 +11,28 @@ import '../../../utils/constants.dart';
 
 /// Submits the player's points to the backend. Team scores are calculated on the backend.
 Future<void> submitPointsAndAnalytics (PointsAndAnalytics p, int playerID, String gameCode) async {
-  //TODO refactor to have less parameters, just have it this way for testing
   var backendUrl = Constants.backendurl;
   var dio = Dio();
 
-  print("\n\n\n\n URL: \n $backendUrl/players/$playerID/submit-points");
+  print("\n\n\n\n URL: \n $backendUrl/players/submit-points/?playerID=$playerID/");
 
   try {
     print("\n\n\n playerid: $playerID\n\n\n");
+    print("\n\n\n gamecode: $gameCode\n\n\n");
+    print("\n\n\nPoints: ${p.points}");
     final response = await dio.post(
-      "$backendUrl/players/$playerID/submit-points",
+      "$backendUrl/players/submit-points",
       queryParameters: {
         "gameCode": gameCode,
+        "playerID": playerID,
       },
       data: {
-        "points": p.points,
-        "correctAnswers": p.correctAnswers,
-        "incorrectAnswers": p.incorrectAnswers,
-        "totalQuestions": p.totalQuestions,
-        "averageTime": p.averageTime,
-        "accuracy": p.accuracy,
+        "points": p.points ?? 0,
+        "correctAnswers": p.correctAnswers ?? 1,
+        "incorrectAnswers": p.incorrectAnswers ?? 1,
+        "totalQuestions": p.totalQuestions ?? 2,
+        "averageTime": p.averageTime ?? 3.5,
+        "accuracy": p.accuracy ?? 50.0,
       },
     );
 
