@@ -14,7 +14,7 @@ final remainingTimeProvider = StateProvider<int>((ref) => 10);
 final scoringTimerCompleteProvider = StateProvider<bool>((ref) => false);
 
 class ScoringCountdownNotifier extends StateNotifier<int> {
-  ScoringCountdownNotifier(int remainingTime, this.ref) : super(remainingTime) {
+  ScoringCountdownNotifier(super.remainingTime, this.ref) {
     _startTimer();
   }
 

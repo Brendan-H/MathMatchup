@@ -14,7 +14,7 @@ final themesProvider = StateNotifierProvider<ThemesProvider, ThemeMode>((_) {
 });
 
 class ThemesProvider extends StateNotifier<ThemeMode> {
-  ThemesProvider(ThemeMode initialThemeMode) : super(initialThemeMode);
+  ThemesProvider(super.initialThemeMode);
   void changeTheme(bool isOn) {
     state = isOn ? ThemeMode.dark : ThemeMode.light;
   }

@@ -16,7 +16,7 @@ final teacherTimerCompleteProvider = StateProvider<bool>((ref) => false);
 
 /// Simple timer for the big countdown timer displayed on the teacher's screen
 class TeacherCountdownNotifier extends StateNotifier<int> {
-  TeacherCountdownNotifier(int remainingTime, this.ref) : super(remainingTime) {
+  TeacherCountdownNotifier(super.remainingTime, this.ref) {
     _startTimer();
   }
 

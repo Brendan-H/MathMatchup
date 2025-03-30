@@ -37,7 +37,7 @@ final currentQuestionProvider = Provider<Question>((ref) {
 
 /// Timer displayed to the user based on the limit set by the teacher
 class CountdownNotifier extends StateNotifier<int> {
-  CountdownNotifier(int remainingTime, this.ref) : super(remainingTime) {
+  CountdownNotifier(super.remainingTime, this.ref) {
     _startTimer();
   }
 

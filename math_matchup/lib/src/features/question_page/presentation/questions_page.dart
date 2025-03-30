@@ -10,7 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/question_page/domain/question_timer.dart';
 import 'package:math_matchup/src/features/question_page/repository/player_analytics.dart';
-import 'package:math_matchup/src/features/question_page/repository/submit_points_and_analytics.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../app.dart';

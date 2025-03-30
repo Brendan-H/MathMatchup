@@ -18,7 +18,10 @@ class LeaderboardPage extends ConsumerStatefulWidget {
   @override
   ConsumerState createState() => _LeaderboardPageState();
 }
-
+////////////////////////////////////////////////////////////////////////////////////
+// Total Questions   /// Correct Questions   /// Incorrect Questions   /// Points //
+//    580            ///      400            ///         180           ///  2000  //
+////////////////////////////////////////////////////////////////////////////////////
 class _LeaderboardPageState extends ConsumerState<LeaderboardPage> {
   @override
   Widget build(BuildContext context) {
@@ -29,24 +32,68 @@ class _LeaderboardPageState extends ConsumerState<LeaderboardPage> {
       appBar: AppBar(
         title: Text('Leaderboard for ${widget.gameCode}'),
       ),
-      body: ListView.builder(
-        itemCount: teams?.length,
-        itemBuilder: (context, index) {
-          final team = teams?[index];
-          return Card(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        children: [
+          Text("Class Stats", style: TextStyle(fontSize: 30),),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+              ),
+              child: Table(
+                border: TableBorder.symmetric(
+                  inside: BorderSide(color: Colors.black),
+                ),
+                columnWidths: const {
+                  0: FlexColumnWidth(2),
+                  1: FlexColumnWidth(2),
+                  2: FlexColumnWidth(2),
+                  3: FlexColumnWidth(1),
+                },
                 children: [
-                  Text('Team ${team?.teamId} - Total Points: ${team?.points}'),
-                  for (var member in team!.members)
-                    Text('Member: ${member.name} - Points: ${member.points}'),
+                  TableRow(
+                    children: [
+                      Center(child: Text('Total Questions')),
+                      Center(child: Text('Correct')),
+                      Center(child: Text('Incorrect')),
+                      Center(child: Text('Points')),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      Center(child: Text('723')),
+                      Center(child: Text('570')),
+                      Center(child: Text('200')),
+                      Center(child: Text('11240')),
+                    ],
+                  ),
                 ],
               ),
             ),
-          );
-        },
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: teams?.length,
+              itemBuilder: (context, index) {
+                final team = teams?[index];
+                return Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Team ${team?.teamId} - Total Points: ${team?.points}'),
+                        for (var member in team!.members)
+                          Text('Member: ${member.name} - Points: ${member.points}'),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

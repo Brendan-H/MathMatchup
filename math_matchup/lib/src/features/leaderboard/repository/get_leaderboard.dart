@@ -68,6 +68,8 @@ import 'package:dio/dio.dart';
 
 import '../../../utils/constants.dart';
 import '../data/Member.dart';
+
+
 /// Class to represent a team
 ///
 /// Team class has to be in this file and I'm too lazy to figure out why
@@ -95,7 +97,6 @@ class Team {
     return 'Team{gameId: $gameId, teamId: $teamId, members: $members, points: $points}';
   }
 }
-
 
 Future<List<Team>> fetchLeaderboard(String gameCode) async {
   final String backendUrl = Constants.backendurl;
