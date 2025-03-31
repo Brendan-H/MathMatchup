@@ -26,7 +26,7 @@ F is done on frontend, B is done on backend, A is done on both
 | B: Class data is updated with player data
 | B : Full class data (like average percent correct) is computed and stored
 | B: Necessary player data for graphing is aggregated in game data table
-- B -> F: Class data is sent to teacher frontend. Leaderboard is still displayed on teacher's screen since it will be mirrored to the class
+| B -> F: Class data is sent to teacher frontend. Leaderboard is still displayed on teacher's screen since it will be mirrored to the class
 - F: Once teacher is done mirroring, they can click a button to display class data
 - F: frontend displays class data in a horizontal bar graph (similar to the one used at https://waf.cs.illinois.edu/discovery/grade_disparity_between_sections_at_uiuc/#findCourse)
 

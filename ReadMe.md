@@ -86,7 +86,7 @@ In progress, but put on the back burner for now as I work on more interesting fe
 1. Install the [Flutter](https://flutter.dev) framework
 2. Run ```flutter pub get```
 3. and ```dart run build_runner watch -d```
-4. then ```flutter run``` or ```flutter build app --release``` to compile an apk for installation on android or ```flutter build web``` to compile for deployment to the web
+4. then ```flutter run``` or ```flutter build apk --release``` to compile an apk for installation on android or ```flutter build web``` to compile for deployment to the web
 5. Run the testing script to simulate a classroom environment (```python testingscript.py```)
 
 ## Running MathMatchup Website

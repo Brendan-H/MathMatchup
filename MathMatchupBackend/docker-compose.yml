@@ -8,30 +8,45 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-#    depends_on:
-#      - postgreSQL
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgres://mathmatchup_user:qun4grrSZLF5zZqVYCrioi4A3w6bIFz6@dpg-cjels1qvvtos739m3560-a.ohio-postgres.render.com/mathmatchup
-      - SPRING_DATASOURCE_USERNAME=mathmatchup_user
-      - SPRING_DATASOURCE_PASSWORD=qun4grrSZLF5zZqVYCrioi4A3w6bIFz6
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - postgreSQL
 #    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgreSQL:5432/mathmatchup
+#      - SPRING_DATASOURCE_URL=jdbc:postgres://mathmatchup_user:qun4grrSZLF5zZqVYCrioi4A3w6bIFz6@dpg-cjels1qvvtos739m3560-a.ohio-postgres.render.com/mathmatchup
+#      - SPRING_DATASOURCE_USERNAME=mathmatchup_user
+#      - SPRING_DATASOURCE_PASSWORD=qun4grrSZLF5zZqVYCrioi4A3w6bIFz6
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/mathmatchupdb
+   #   - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+
+  postgreSQL:  # Renamed service name to lowercase
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+   #   - POSTGRES_USER=postgres
+      - POSTGRES_DB=mathmatchupdb
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/instructionarsenal
 #      - SPRING_DATASOURCE_USERNAME=postgres
 #      - SPRING_DATASOURCE_PASSWORD=password
 #      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-
 #
-#  postgreSQL:  # Renamed service name to lowercase
+#  PostgreSQL:
 #    image: postgres
 #    ports:
 #      - "5432:5432"
 #    environment:
-#      - POSTGRES_PASSWORD=qun4grrSZLF5zZqVYCrioi4A3w6bIFz6
-#      - POSTGRES_USER=mathmatchup_user
-#      - POSTGRES_DB=mathmatchup
-#    healthcheck:
-#      test: ["CMD-SHELL", "pg_isready -U postgres"]
-#      interval: 10s
-#      timeout: 5s
-#      retries: 5
+#      - POSTGRES_PASSWORD=password
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_DB=instructionarsenal
