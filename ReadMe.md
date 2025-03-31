@@ -69,7 +69,7 @@ In progress, but put on the back burner for now as I work on more interesting fe
 ### Student View During Game
 <img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/game_page.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/correct_answer.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/incorrect_answer.png" width="250">
 ### Teacher View After The Game
-<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/teammate_reveal_countdown.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/leaderboard.png" width="250">
+<img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/teammate_reveal_countdown.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/leaderboard.png" width="250"><img src="https://github.com/Brendan-H/MathMatchup/blob/master/math_matchup/Screenshots/bar_chart.png" width="250">
 
 
 
