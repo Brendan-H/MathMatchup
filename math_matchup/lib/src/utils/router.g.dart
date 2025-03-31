@@ -6,7 +6,7 @@ part of 'router.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'61460a53605f689e776ae943435cae1d33faf063';
+String _$goRouterHash() => r'98b915a36fddb31d4e329279d95a38e9f49e0cc9';
 
 /// This is the main router for the app, used to navigate between screens. Can transfer data, if needed.
 ///
