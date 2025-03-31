@@ -16,11 +16,13 @@ import 'package:math_matchup/src/utils/themes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../generated/l10n.dart';
+import 'features/analytics_page/repository/class_analytics.dart';
 import 'features/leaderboard/repository/get_leaderboard.dart';
 
 GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey();
 final playerIdProvider = StateProvider<int?>((ref) => null);
 final leaderboardProvider = StateProvider<List<Team>?>((ref) => null);
+final classAnalyticsProvider = StateProvider<GameAnalyticsDTO?>((ref) => null);
 final localeProvider = StateProvider<Locale>((ref) => const Locale('en', 'US')); // Default locale is English
 
 /// The main app widget that holds theme, locale, router, and responsive resizing configurations.

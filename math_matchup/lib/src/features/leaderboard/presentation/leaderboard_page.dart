@@ -7,6 +7,7 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../app.dart';
 
@@ -18,19 +19,22 @@ class LeaderboardPage extends ConsumerStatefulWidget {
   @override
   ConsumerState createState() => _LeaderboardPageState();
 }
-////////////////////////////////////////////////////////////////////////////////////
-// Total Questions   /// Correct Questions   /// Incorrect Questions   /// Points //
-//    580            ///      400            ///         180           ///  2000  //
-////////////////////////////////////////////////////////////////////////////////////
 class _LeaderboardPageState extends ConsumerState<LeaderboardPage> {
   @override
   Widget build(BuildContext context) {
+    final classAnalytics = ref.read(classAnalyticsProvider.notifier).state;
     final teams = ref.read(leaderboardProvider.notifier).state;
     teams?.sort((a, b) => b.points.compareTo(a.points)); // Sort teams by total points
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Leaderboard for ${widget.gameCode}'),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          context.go('/game/analytics');
+        },
+        label: Text("View Analytics", style: TextStyle(fontSize: 16)),
       ),
       body: Column(
         children: [
@@ -62,10 +66,10 @@ class _LeaderboardPageState extends ConsumerState<LeaderboardPage> {
                   ),
                   TableRow(
                     children: [
-                      Center(child: Text('723')),
-                      Center(child: Text('570')),
-                      Center(child: Text('200')),
-                      Center(child: Text('11240')),
+                      Center(child: Text('${classAnalytics?.totalQuestions}')),
+                      Center(child: Text('${classAnalytics?.totalCorrect}')),
+                      Center(child: Text('${classAnalytics?.totalIncorrect}')),
+                      Center(child: Text('${classAnalytics?.totalPoints}')),
                     ],
                   ),
                 ],

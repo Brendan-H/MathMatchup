@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (player_analytics.dart) Last Modified on 2/7/25, 8:05 PM
+ * Current File (player_analytics.dart) Last Modified on 3/29/25, 7:18 PM
  *
  */
 
 //File to hold providers for questions right or wrong
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup/src/features/question_page/repository/submit_points_and_analytics.dart';
+import 'package:math_matchup/src/features/analytics_page/repository/submit_points_and_analytics.dart';
 
-import '../data/points_and_analytics.dart';
-import '../domain/question_timer.dart';
+import '../../question_page/data/points_and_analytics.dart';
+import '../../question_page/domain/question_timer.dart';
 
 final correctAnswersProvider = StateProvider<int>((ref) => 0);
 final incorrectAnswersProvider = StateProvider<int>((ref) => 0);

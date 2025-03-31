@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:math_matchup/src/features/analytics_page/presentation/analytics_page.dart';
 import 'package:math_matchup/src/features/game_creation_homepage/presentation/game_creation_homepage.dart';
 import 'package:math_matchup/src/features/game_page/presentation/student_game_page.dart';
 import 'package:math_matchup/src/features/game_settings_page/presentation/game_settings_page.dart';
@@ -129,6 +130,14 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
           pageBuilder: (context, state) {
             return const MaterialPage(
                 child: PasswordResetPage()
+            );
+          },
+        ),
+        GoRoute(
+          path: '/game/analytics',
+          pageBuilder: (context, state) {
+            return const MaterialPage(
+                child: AnalyticsPage()
             );
           },
         ),

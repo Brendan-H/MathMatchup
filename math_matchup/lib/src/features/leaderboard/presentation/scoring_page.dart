@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:math_matchup/src/features/analytics_page/repository/class_analytics.dart';
 import '../../../../generated/l10n.dart';
 import '../../../app.dart';
 import '../domain/scoring_countdown_notifier.dart';
@@ -23,6 +24,7 @@ class ScoringPage extends ConsumerStatefulWidget {
 
 class _ScoringPageState extends ConsumerState<ScoringPage> {
   late Future<List<Team>> futureTeams;
+  late Future<GameAnalyticsDTO> futureAnalytics;
 
   @override
   void initState() {
@@ -31,6 +33,10 @@ class _ScoringPageState extends ConsumerState<ScoringPage> {
       ref.read(scoringCountdownProvider.notifier); // Start the countdown
     });
     futureTeams = fetchLeaderboard(widget.gameCode);
+    futureAnalytics = getClassAnalytics(widget.gameCode);
+    futureAnalytics.then((analytics) {
+      ref.read(classAnalyticsProvider.notifier).state = analytics;
+    });
     futureTeams.then((teams) {
       ref.read(leaderboardProvider.notifier).state = teams;
       print(teams);
