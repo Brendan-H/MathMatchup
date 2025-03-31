@@ -28,6 +28,7 @@ class _ScoringPageState extends ConsumerState<ScoringPage> {
 
   @override
   void initState() {
+    print("SCORING PAGE GAMECODE: ${widget.gameCode}");
     super.initState();
     Future.delayed(Duration.zero, () {
       ref.read(scoringCountdownProvider.notifier); // Start the countdown

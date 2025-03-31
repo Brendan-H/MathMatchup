@@ -134,10 +134,11 @@ GoRouter goRouter(GoRouterRef goRouterRef) {
           },
         ),
         GoRoute(
-          path: '/game/analytics',
+          path: '/game/analytics/:gamecode',
           pageBuilder: (context, state) {
-            return const MaterialPage(
-                child: AnalyticsPage()
+            final gameCode = state.pathParameters['gamecode'];
+            return MaterialPage(
+                child: AnalyticsPage(gameCode: gameCode ?? "123456")
             );
           },
         ),

@@ -32,7 +32,7 @@ class _LeaderboardPageState extends ConsumerState<LeaderboardPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          context.go('/game/analytics');
+          context.go('/game/analytics/${widget.gameCode}');
         },
         label: Text("View Analytics", style: TextStyle(fontSize: 16)),
       ),

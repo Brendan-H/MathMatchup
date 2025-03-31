@@ -48,6 +48,7 @@ class _TeacherCountdownState extends ConsumerState<TeacherCountdown> {
               onPressed: () async{
                 await Dio().post('$backendUrl/games/finish?gameCode=${widget.gameCode}');
                 context.pop();
+                print("COUNTDOWN GAMECODE: ${widget.gameCode}");
                 context.go('/game/scoring_page/${widget.gameCode}');
               },
               child: Text(S.of(context).continueText),
