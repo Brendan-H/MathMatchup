@@ -154,7 +154,6 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
               Card(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                 elevation: 2,
-                color: theme.cardColor.withOpacity(0.98),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(

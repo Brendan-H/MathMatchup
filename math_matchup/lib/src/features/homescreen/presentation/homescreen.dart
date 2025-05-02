@@ -119,7 +119,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
          child: Builder(
            builder: (BuildContext innerContext) {
-             return IconButton(icon: const Icon(Icons.menu, color: Colors.black, size: 30,), onPressed: () {Scaffold.of(innerContext).openDrawer();});
+             return IconButton(icon: Icon(Icons.menu, color: theme.colorScheme.onPrimaryContainer, size: 30,), onPressed: () {Scaffold.of(innerContext).openDrawer();});
            }
          ),
           // child: IconButton(
