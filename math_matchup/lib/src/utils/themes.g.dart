@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (themes.g.dart) Last Modified on 3/30/25, 8:24 PM
- *
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'themes.dart';
@@ -13,7 +6,7 @@ part of 'themes.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$lightThemeHash() => r'3c6e6cab9fae7aff6101241f8dc5ed8a025cd9a1';
+String _$lightThemeHash() => r'b1118418fe7e17f6edd1419de2d4a6e07db340e7';
 
 ///All of the Color themes and properties for the app are stored here to make sure the same feel is on every page.
 ///
@@ -31,7 +24,7 @@ final lightThemeProvider = AutoDisposeProvider<ThemeData>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef LightThemeRef = AutoDisposeProviderRef<ThemeData>;
-String _$darkThemeHash() => r'03614d6efcab412be83597593ca6e059b2156294';
+String _$darkThemeHash() => r'ded567388d9beafe0bdb8457e65b0568f097c710';
 
 ///Dark mode color themes and properties for the app.
 ///

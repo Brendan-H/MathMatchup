@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (messages_es.dart) Last Modified on 3/30/25, 9:07 PM
- *
- */
-
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
 // This is a library that provides messages for a es locale. All the
 // messages from the main program should be duplicated here with the same
@@ -98,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No hay preguntas disponibles",
     ),
     "notChosen": MessageLookupByLibrary.simpleMessage("No Elegido"),
+    "or": MessageLookupByLibrary.simpleMessage("O"),
     "parentsStartHere": MessageLookupByLibrary.simpleMessage(
       "Los padres comienzan aquí",
     ),

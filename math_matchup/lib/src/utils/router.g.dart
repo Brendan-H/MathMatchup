@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
- * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (router.g.dart) Last Modified on 3/30/25, 8:24 PM
- *
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'router.dart';
@@ -13,7 +6,7 @@ part of 'router.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'98b915a36fddb31d4e329279d95a38e9f49e0cc9';
+String _$goRouterHash() => r'250e35ae48f8d53c761db5a3e8dcdd9e9319ca64';
 
 /// This is the main router for the app, used to navigate between screens. Can transfer data, if needed.
 ///

@@ -6,6 +6,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/common_widgets/custom_dropdown.dart';
@@ -132,9 +133,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         actions: [
          CustomDropdown(items: locales, selectedItem: ref.watch(localeProvider.notifier).state)
         ],
-        toolbarHeight: MediaQuery.of(context).size.height * .1,
-        title: Text(S.of(context).welcomeToMathmatchup),
+        elevation: 3,
+        shadowColor: Colors.black.withOpacity(0.05),
+        toolbarHeight: MediaQuery.of(context).size.height * .085,
+        title: Text(S.of(context).welcomeToMathmatchup, style: TextStyle(
+          fontSize: 26,
+          fontWeight: FontWeight.w600,
+          color: theme.colorScheme.onPrimaryContainer,
+        ),),
         centerTitle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
       ),
       body: SafeArea(
         minimum: const EdgeInsets.all(20.0),
@@ -158,6 +168,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 const SizedBox(height: 20,),
                 TextField(
                  controller: gameCodeController,
+                  // maxLength: 6,
+                  // maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  textAlignVertical: TextAlignVertical.center,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                  keyboardType: TextInputType.number,
                   onChanged: (value) {
                     setState(() {
@@ -166,8 +182,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   },
                   decoration: InputDecoration(
                     labelText: S.of(context).enterGamecode,
+                    floatingLabelStyle: TextStyle(
+                      color: theme.colorScheme.primary,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
                     errorText: _gameCodeError,
-                    border: const OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: theme.colorScheme.primary),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 5,),
@@ -184,14 +212,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     decoration: InputDecoration(
                       labelText: S.of(context).enterName,
                       errorText: _nameError,
-                      border: const OutlineInputBorder(),
-
+                      floatingLabelStyle: TextStyle(
+                        color: theme.colorScheme.primary,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: theme.colorScheme.primary),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 20,),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: double.infinity,
                   height: MediaQuery.of(context).size.height * .1,
                   child: ElevatedButton(
                     onPressed: () async {
@@ -206,11 +245,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 20,),
-                Text("OR", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
+                Row(
+                  children: [
+                    const Expanded(child: Divider(thickness: 1)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(S.of(context).or, style: textTheme.displayMedium?.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),),
+                    ),
+                    const Expanded(child: Divider(thickness: 1)),
+                  ],
+                ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 5),
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
+                    width: double.infinity,
                     height: MediaQuery.of(context).size.height * .1,
                     child: ElevatedButton(
                         child: Text(S.of(context).createGame,

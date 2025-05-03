@@ -56,5 +56,6 @@
   "learnAboutOurFamilyPlansStartingAt250PerMonth": "Conoce nuestros planes familiares, a partir de $2.50 por mes por niño, en nuestro sitio web y participa en el viaje de aprendizaje de tu hijo de una manera divertida.",
   "resetPassword": "Restablecer contraseña",
   "sendPasswordResetEmail": "Enviar correo electrónico para restablecer contraseña",
-  "forgotPasswordFirstTimeLoginPasswordSet": "Olvidé la contraseña / Primer inicio de sesión, establecer contraseña"
+  "forgotPasswordFirstTimeLoginPasswordSet": "Olvidé la contraseña / Primer inicio de sesión, establecer contraseña",
+  "or": "O"
 }

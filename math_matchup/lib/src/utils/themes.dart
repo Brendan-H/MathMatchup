@@ -32,10 +32,39 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
       blendOnLevel: 10,
       blendOnColors: false,
       useTextTheme: true,
-      elevatedButtonSchemeColor: SchemeColor.primaryContainer,
+  //    elevatedButtonSchemeColor: SchemeColor.primaryContainer,
       elevatedButtonElevation: 2,
-      elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
-      appBarBackgroundSchemeColor: SchemeColor.secondaryContainer,
+     elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
+      appBarBackgroundSchemeColor: SchemeColor.primaryContainer,
+      inputDecoratorBorderType: FlexInputBorderType.outline,
+      inputDecoratorRadius: 8,
+      inputDecoratorUnfocusedHasBorder: true,
+      inputDecoratorSchemeColor: SchemeColor.secondaryContainer,
+      //TOOO fix the little text when you click on the textfield because it now turns somewhat invisible
+      cardRadius: 12,
+      cardElevation: 4,
+      chipRadius: 8,
+      elevatedButtonSchemeColor: SchemeColor.primary,
+      outlinedButtonSchemeColor: SchemeColor.primary,
+      textButtonSchemeColor: SchemeColor.primary,
+      switchSchemeColor: SchemeColor.primary,
+      checkboxSchemeColor: SchemeColor.primary,
+      radioSchemeColor: SchemeColor.primary,
+      sliderBaseSchemeColor: SchemeColor.primary,
+      chipSchemeColor: SchemeColor.primaryContainer,
+      sliderTrackHeight: 4,
+      navigationBarLabelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      bottomSheetRadius: 24,
+      dialogRadius: 16,
+      tooltipRadius: 8,
+      tooltipSchemeColor: SchemeColor.tertiary,
+      snackBarBackgroundSchemeColor: SchemeColor.inversePrimary,
+      buttonMinSize: Size(48, 48),
+      tooltipOpacity: 0.9,
+      inputDecoratorIsFilled: true,
+      snackBarRadius: 12,
+      appBarScrolledUnderElevation: 6,
+      appBarForegroundSchemeColor: SchemeColor.onSecondaryContainer,
   ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
@@ -64,6 +93,15 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
         ),
       )
    // textTheme: Typography.material2021(platform: defaultTargetPlatform).black,
+  ).copyWith(
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      backgroundColor: Color(0xffcbe6ff),
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+      ),
+    ),
   );
 }
 ///Dark mode color themes and properties for the app.
@@ -71,12 +109,12 @@ ThemeData lightTheme(LightThemeRef lightThemeRef) {
 ThemeData darkTheme(DarkThemeRef darkThemeRef) {
   return FlexThemeData.dark(
     colors: const FlexSchemeColor(
-      primary: Color(0xff90caf9),
-      primaryContainer: Color(0xff0d47a1),
-      secondary: Color(0xff81d4fa),
-      secondaryContainer: Color(0xff004b73),
-      tertiary: Color(0xffe1f5fe),
-      tertiaryContainer: Color(0xff1a567d),
+      primary: Color(0xff90caf9),             // light version of 0xff1976d2
+      primaryContainer: Color(0xff0d47a1),     // dark version of 0xff90caf9
+      secondary: Color(0xff81d4fa),            // light version of 0xff039be5
+      secondaryContainer: Color(0xff004b73),   // dark version of 0xffcbe6ff
+      tertiary: Color(0xffe1f5fe),             // light version of 0xff0277bd
+      tertiaryContainer: Color(0xff1a567d),    // dark version of 0xffbedcff
       appBarColor: Color(0xff004b73),
       error: Color(0xffcf6679),
     ),
@@ -84,38 +122,73 @@ ThemeData darkTheme(DarkThemeRef darkThemeRef) {
     blendLevel: 13,
     subThemesData: const FlexSubThemesData(
       blendOnLevel: 20,
+      blendOnColors: false,
       useTextTheme: true,
-      elevatedButtonSchemeColor: SchemeColor.primaryContainer,
       elevatedButtonElevation: 2,
       elevatedButtonSecondarySchemeColor: SchemeColor.primaryContainer,
-      appBarBackgroundSchemeColor: SchemeColor.secondaryContainer,
+      appBarBackgroundSchemeColor: SchemeColor.primaryContainer,
+      appBarForegroundSchemeColor: SchemeColor.onSecondaryContainer,
+      inputDecoratorBorderType: FlexInputBorderType.outline,
+      inputDecoratorRadius: 8,
+      inputDecoratorUnfocusedHasBorder: true,
+      inputDecoratorSchemeColor: SchemeColor.secondaryContainer,
+      inputDecoratorIsFilled: true,
+      cardRadius: 12,
+      cardElevation: 4,
+      chipRadius: 8,
+      elevatedButtonSchemeColor: SchemeColor.primary,
+      outlinedButtonSchemeColor: SchemeColor.primary,
+      textButtonSchemeColor: SchemeColor.primary,
+      switchSchemeColor: SchemeColor.primary,
+      checkboxSchemeColor: SchemeColor.primary,
+      radioSchemeColor: SchemeColor.primary,
+      sliderBaseSchemeColor: SchemeColor.primary,
+      chipSchemeColor: SchemeColor.primaryContainer,
+      sliderTrackHeight: 4,
+      navigationBarLabelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      bottomSheetRadius: 24,
+      dialogRadius: 16,
+      tooltipRadius: 8,
+      tooltipSchemeColor: SchemeColor.tertiary,
+      snackBarBackgroundSchemeColor: SchemeColor.inversePrimary,
+      snackBarRadius: 12,
+      tooltipOpacity: 0.9,
+      appBarScrolledUnderElevation: 6,
     ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
     appBarElevation: 5,
     typography: Typography.material2021(platform: defaultTargetPlatform),
-  textTheme: TextTheme(
-    headlineLarge: TextStyle(
-      fontSize: 42,
-      fontWeight: FontWeight.bold,
-      color: Colors.grey[350],
+    textTheme: const TextTheme(
+      headlineLarge: TextStyle(
+        fontSize: 42,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+      headlineMedium: TextStyle(
+        fontSize: 35,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
+      displayLarge: TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+      displayMedium: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: Colors.white,
+      ),
     ),
-    displayLarge: TextStyle(
-      fontSize: 22,
-      fontWeight: FontWeight.bold,
-      color: Colors.grey[350],
+  ).copyWith(
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      backgroundColor: Color(0xff004b73),
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+      ),
     ),
-    displayMedium: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w400,
-      color: Colors.grey[350],
-    ),
-    headlineMedium: TextStyle(
-      fontSize: 35,
-      fontWeight: FontWeight.w600,
-      color: Colors.grey[350],
-    ),
-  )
-  //  textTheme: Typography.material2021(platform: defaultTargetPlatform).white,
   );
 }

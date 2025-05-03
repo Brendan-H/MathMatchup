@@ -56,5 +56,6 @@
   "learnAboutOurFamilyPlansStartingAt250PerMonth": "Learn about our family plans, starting at $2.50 per month per child, on our website and engage with your child's learning journey in a fun way.",
   "resetPassword": "Reset Password",
   "sendPasswordResetEmail": "Send Password Reset Email",
-  "forgotPasswordFirstTimeLoginPasswordSet": "Forgot Password / First Time Login Password Set"
+  "forgotPasswordFirstTimeLoginPasswordSet": "Forgot Password / First Time Login Password Set",
+  "or": "OR"
 }
