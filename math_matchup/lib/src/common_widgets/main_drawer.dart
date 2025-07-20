@@ -25,7 +25,6 @@ class _MainDrawerState extends ConsumerState<MainDrawer> {
   @override
   Widget build(BuildContext context) {
     final themeModeState = ref.watch(themesProvider);
-    final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
 
     return Drawer(
       child: ListView(

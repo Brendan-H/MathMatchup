@@ -47,9 +47,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final themeModeState = ref.watch(themesProvider);
-    final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
-    
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         //back button
@@ -74,9 +72,9 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-               Text(S.of(context).welcomeTeacher, style: theme.textTheme.headlineLarge,),
+               Text(S.of(context).welcomeTeacher, style: textTheme.headlineLarge,),
               const SizedBox(height: 20),
-               Text(S.of(context).pleaseEnterYourSchoolEmailAndPasswordToLogin, style: theme.textTheme.displayLarge,),
+               Text(S.of(context).pleaseEnterYourSchoolEmailAndPasswordToLogin, style: textTheme.displayLarge,),
               const SizedBox(height: 20),
                const Text("Note: successfully logging in will redirect you to the homepage, where you will be able to press the \"Create Game\" button again to begin a game"),
               const SizedBox(height: 20),
@@ -102,7 +100,7 @@ class _TeacherLoginPageState extends ConsumerState<TeacherLoginPage> {
                 child:  Text(S.of(context).login, style: Theme.of(context).textTheme.displayLarge,),
               ),
               const SizedBox(height: 20),
-              Text(S.of(context).dontRememberYourPasswordOrHaventLoggedInBeforeClick, style: theme.textTheme.displaySmall,),
+              Text(S.of(context).dontRememberYourPasswordOrHaventLoggedInBeforeClick, style: textTheme.displaySmall,),
               TextButton(onPressed: ()  {context.go('/teacher_login/password_reset');}, child: Text(S.of(context).forgotPasswordFirstTimeLoginPasswordSet)),
             ],
           ),

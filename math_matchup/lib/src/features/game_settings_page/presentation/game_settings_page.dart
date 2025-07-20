@@ -29,9 +29,7 @@ final timeLimitProvider = StateProvider<String?>((ref) => null);
 class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
   @override
   Widget build(BuildContext context) {
-    final themeModeState = ref.watch(themesProvider);
-    final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
-    final textTheme = theme.textTheme;
+    final textTheme = Theme.of(context).textTheme;
     var questionType = ref.watch(selectedQuestionTypeProvider.notifier).state ?? S.of(context).notChosen;
     var difficulty = ref.watch(selectedDifficultyProvider.notifier).state ?? S.of(context).notChosen;
     var timeLimit = ref.watch(timeLimitProvider.notifier).state ?? S.of(context).notChosen;

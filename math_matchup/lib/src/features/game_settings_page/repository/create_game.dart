@@ -7,6 +7,7 @@
  */
 
 import 'package:dio/dio.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -33,6 +34,15 @@ void createGame(BuildContext context, String difficulty, String questionType, in
     if (response.statusCode == 200) {
       print("Game created");
       final String gamecode = response.data['gameCode'];
+      await FirebaseAnalytics.instance.logEvent(
+        name: 'game_created',
+        parameters: {
+          'game_code': gamecode,
+          'difficulty': difficulty,
+          'question_type': questionType,
+          'time_limit': timeLimit,
+        },
+      );
       context.go('/teacher_game_page/$gamecode');
     } else {
       // Handle other status codes if needed

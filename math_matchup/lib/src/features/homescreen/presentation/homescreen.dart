@@ -105,9 +105,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeModeState = ref.watch(themesProvider);
-    final theme = themeModeState == ThemeMode.light ? ref.read(lightThemeProvider) : ref.read(darkThemeProvider);
-    final textTheme = theme.textTheme;
+    final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
     final user = ref.watch(authStateProvider);
     final Map<Locale, String> locales = {
       const Locale('en', 'US'): 'English',

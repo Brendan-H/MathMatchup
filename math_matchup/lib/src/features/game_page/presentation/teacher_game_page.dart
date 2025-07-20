@@ -25,7 +25,6 @@ class TeacherGamePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = ref.read(lightThemeProvider);
     final themeModeState = ref.watch(themesProvider);
     final playersAsyncValue = ref.watch(playersStreamProvider(gameCode));
     return Scaffold(

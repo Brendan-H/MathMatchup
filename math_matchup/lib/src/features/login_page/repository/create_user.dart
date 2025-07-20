@@ -6,6 +6,7 @@
  */
 
   import 'package:dio/dio.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../utils/constants.dart';
@@ -25,8 +26,7 @@ import '../../../utils/constants.dart';
         var uid = user!.uid;
         print("email: $email, displayName: $displayName, uid: $uid");
         await sendUserToBackend(email, displayName, uid, "teacher");
-
-
+        await FirebaseAnalytics.instance.logSignUp(signUpMethod: 'email');
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -44,6 +44,9 @@ import '../../../utils/constants.dart';
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
+      );
+      await FirebaseAnalytics.instance.logLogin(
+        loginMethod: "email",
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

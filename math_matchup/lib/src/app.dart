@@ -15,6 +15,7 @@ import 'package:math_matchup/src/utils/router.dart';
 import 'package:math_matchup/src/utils/theme_provider.dart';
 import 'package:math_matchup/src/utils/themes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:matchup_core/matchup_core.dart';
 
 import '../generated/l10n.dart';
 import 'features/analytics_page/repository/class_analytics.dart';
@@ -33,14 +34,14 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final goRouter = ref.watch(goRouterProvider);
-    final lightTheme = ref.watch(lightThemeProvider);
-    final darkTheme = ref.watch(darkThemeProvider);
+    // final lightTheme = ref.watch(lightThemeProvider);
+    // final darkTheme = ref.watch(darkThemeProvider);
     final themeModeState = ref.watch(themesProvider);
     final locale = ref.watch(localeProvider);
     return MaterialApp.router(
       title: 'MathMatchup',
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      theme: lightTheme(),
+      darkTheme: darkTheme(),
       routerConfig: goRouter,
       themeMode: themeModeState,
       supportedLocales: const [

@@ -1,0 +1,2 @@
+/Users/brendan/StudioProjects/Null Safety/RIVERPOD-ENABLED-APPS/MathMatchup/math_matchup/android/app/.cxx/RelWithDebInfo/3f3l6237/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/brendan/StudioProjects/Null Safety/RIVERPOD-ENABLED-APPS/MathMatchup/math_matchup/android/app/.cxx/RelWithDebInfo/3f3l6237/arm64-v8a/CMakeFiles/rebuild_cache.dir
