@@ -10,8 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../utils/alert_dialogs.dart';
+import 'package:matchup_core/matchup_core.dart';
 import '../../../utils/constants.dart';
 
 /// Creates the game with the given settings and navigates to the [TeacherGamePage] with the game code.

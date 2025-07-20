@@ -7,13 +7,11 @@
  *
  */
 
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:math_matchup/src/utils/router.dart';
 import 'package:math_matchup/src/utils/theme_provider.dart';
-import 'package:math_matchup/src/utils/themes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:matchup_core/matchup_core.dart';
 

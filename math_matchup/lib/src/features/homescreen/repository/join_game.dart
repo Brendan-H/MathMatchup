@@ -9,10 +9,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:math_matchup/src/utils/alert_dialogs.dart';
 import 'package:math_matchup/src/utils/constants.dart';
 import 'package:math_matchup/src/app.dart';
-
+import 'package:matchup_core/matchup_core.dart';
 import '../../game_settings_page/presentation/game_settings_page.dart';
 
 /// Joins the game with the given game code and name.

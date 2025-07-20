@@ -8,7 +8,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:math_matchup/src/app.dart';
 import 'package:community_charts_flutter/community_charts_flutter.dart' as charts;
 
 import '../repository/class_analytics.dart';
@@ -125,13 +124,14 @@ class _AnalyticsPageState extends ConsumerState<AnalyticsPage> {
   }
 }
 
+// Model from the bar chart package
 class OrdinalSales {
   final String name;
   final int value;
   final charts.Color color;
 
   OrdinalSales(this.name, this.value, Color color)
-      : this.color = charts.ColorUtil.fromDartColor(color);
+      : color = charts.ColorUtil.fromDartColor(color);
 }
 
 
@@ -139,7 +139,7 @@ class HorizontalBarChart extends StatelessWidget {
   final List<charts.Series<dynamic, String>> seriesList;
   final bool animate;
 
-  HorizontalBarChart(this.seriesList, {this.animate = false});
+  const HorizontalBarChart(this.seriesList, {super.key, this.animate = false});
 
   @override
   Widget build(BuildContext context) {
