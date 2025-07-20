@@ -14,7 +14,6 @@ import 'package:math_matchup/src/features/game_page/repository/start_game.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../utils/theme_provider.dart';
-import '../../../utils/themes.dart';
 import '../repository/get_names.dart';
 
 /// Page for the teacher to view the players in the game and start the game.

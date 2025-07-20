@@ -11,13 +11,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/common_widgets/custom_dropdown.dart';
 import 'package:math_matchup/src/common_widgets/main_drawer.dart';
-import 'package:math_matchup/src/utils/alert_dialogs.dart';
+import 'package:matchup_core/matchup_core.dart';
 import 'package:math_matchup/src/utils/auth_provider.dart';
-import 'package:math_matchup/src/utils/themes.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../app.dart';
-import '../../../utils/theme_provider.dart';
 import '../repository/join_game.dart';
 
 

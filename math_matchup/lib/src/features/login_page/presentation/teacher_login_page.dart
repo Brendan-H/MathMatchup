@@ -10,8 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../utils/theme_provider.dart';
-import '../../../utils/themes.dart';
 import '../repository/create_user.dart';
 
 class TeacherLoginPage extends ConsumerStatefulWidget {

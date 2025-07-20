@@ -9,8 +9,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../utils/theme_provider.dart';
-import '../../../utils/themes.dart';
 
 class SoloGameSettingsPage extends ConsumerStatefulWidget {
   const SoloGameSettingsPage({super.key});

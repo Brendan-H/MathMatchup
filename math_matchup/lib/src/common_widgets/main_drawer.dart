@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../utils/theme_provider.dart';
-import '../utils/themes.dart';
 
 class MainDrawer extends ConsumerStatefulWidget {
   const MainDrawer({super.key});

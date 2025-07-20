@@ -8,9 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/features/game_settings_page/repository/create_game.dart';
-import 'package:math_matchup/src/utils/themes.dart';
 import '../../../../generated/l10n.dart';
-import '../../../utils/theme_provider.dart';
 
 /// The page where the user can choose the settings for the game they want to create.
 ///
