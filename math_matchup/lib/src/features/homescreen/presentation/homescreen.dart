@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (homescreen.dart) Last Modified on 3/30/25, 9:43 PM
+ * Current File (homescreen.dart) Last Modified on 7/20/25, 1:37 PM
  *
  */
 
@@ -12,8 +12,11 @@ import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/common_widgets/custom_dropdown.dart';
 import 'package:math_matchup/src/common_widgets/main_drawer.dart';
 import 'package:matchup_core/matchup_core.dart';
+import 'package:math_matchup/src/features/homescreen/domain/join_button_controller.dart';
+import 'package:math_matchup/src/features/homescreen/presentation/widgets/game_code_textfield.dart';
+import 'package:math_matchup/src/features/homescreen/presentation/widgets/player_name_textfield.dart';
 import 'package:math_matchup/src/utils/auth_provider.dart';
-
+import '../domain/input_validation.dart';
 import '../../../../generated/l10n.dart';
 import '../../../app.dart';
 import '../repository/join_game.dart';
@@ -46,45 +49,9 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   late final TextEditingController gameCodeController;
   late final TextEditingController nameController;
-  final gameCodeProvider = StateProvider<String>((ref) => '');
   String? _gameCodeError;
   String? _nameError;
-  String? _validateGameCode(String value) {
-    if (value.isEmpty) {
-      return S.of(context).gameCodeIsRequired;
-    } else if (value.length != 6 || int.tryParse(value) == null) {
-      return S.of(context).gameCodeMustBe6Digits;
-    }
-    return null;
-  }
 
-  String? _validateName(String value) {
-    if (value.isEmpty) {
-      return S.of(context).nameIsRequired;
-    }
-    return null;
-  }
-
-  void _onJoinGamePressed(String gamecode, String name, BuildContext context) async {
-    String? gameCodeError = _validateGameCode(gameCodeController.text);
-    String? nameError = _validateName(nameController.text);
-
-    if (gameCodeError != null || nameError != null) {
-      // Input validation failed, show error messages
-      setState(() {
-        _gameCodeError = gameCodeError;
-        _nameError = nameError;
-      });
-      if (_gameCodeError!.isNotEmpty) {
-        showExceptionAlertDialog(context: context, title: S.of(context).anErrorOccurred, exception: _gameCodeError);
-      } else if (_nameError!.isNotEmpty) {
-        showExceptionAlertDialog(context: context, title: S.of(context).anErrorOccurred, exception: _nameError);
-      }
-
-    } else {
-       joinGame(gameCodeController.text, nameController.text, context, ref);
-    }
-  }
 
 
   @override
@@ -103,8 +70,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     final user = ref.watch(authStateProvider);
     final Map<Locale, String> locales = {
       const Locale('en', 'US'): 'English',
@@ -158,71 +125,33 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     style: TextStyle(
                       fontSize: 42,
                       fontWeight: FontWeight.bold,
-                      color: theme.textTheme.headlineLarge?.color,
+                      color: textTheme.headlineLarge?.color,
                     ),
                   ),
                 ),
                 const SizedBox(height: 20,),
-                TextField(
-                 controller: gameCodeController,
-                  // maxLength: 6,
-                  // maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                  maxLines: 1,
-                  textAlign: TextAlign.center,
-                  textAlignVertical: TextAlignVertical.center,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                 keyboardType: TextInputType.number,
-                  onChanged: (value) {
-                    setState(() {
-                      _gameCodeError = _validateGameCode(value);
+                GameCodeTextField(
+                   controller: gameCodeController,
+                   label: S.of(context).enterGamecode,
+                   onChanged: (value) {
+                     setState(() {
+                      _gameCodeError = validateGameCode(context, value);
                     });
-                  },
-                  decoration: InputDecoration(
-                    labelText: S.of(context).enterGamecode,
-                    floatingLabelStyle: TextStyle(
-                      color: theme.colorScheme.primary,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    errorText: _gameCodeError,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: theme.colorScheme.primary),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
-                    ),
-                  ),
+                 },
+                   errorText: _gameCodeError,
                 ),
                 const SizedBox(height: 5,),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                  child: TextField(
+                  child: PlayerNameTextField(
                     controller: nameController,
-                    keyboardType: TextInputType.text,
+                    label: S.of(context).enterName,
                     onChanged: (value) {
                       setState(() {
-                        _nameError = _validateName(value);
+                        _nameError = validateName(context, value);
                       });
                     },
-                    decoration: InputDecoration(
-                      labelText: S.of(context).enterName,
-                      errorText: _nameError,
-                      floatingLabelStyle: TextStyle(
-                        color: theme.colorScheme.primary,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(color: theme.colorScheme.primary),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
-                      ),
-                    ),
+                    errorText: _nameError,
                   ),
                 ),
                 const SizedBox(height: 20,),
@@ -230,14 +159,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * .1,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      String? gameCodeError = _validateGameCode(gameCodeController.text);
-                      String? nameError = _validateName(nameController.text);
-
-                      ref.read(gameCodeProvider.notifier).state = gameCodeController.text;
-                      print("Code:${ref.read(gameCodeProvider.notifier).state}");
-                      _onJoinGamePressed(gameCodeController.text, nameController.text, context);
-                    },
+                    onPressed: () => handleJoinGame(
+                          ref: ref,
+                          context: context,
+                          gameCodeController: gameCodeController,
+                          nameController: nameController,
+                          onValidationError: (codeError, nameError) {
+                            setState(() {
+                              _gameCodeError = codeError;
+                              _nameError = nameError;
+                            });
+                          },
+                      ),
                     child: Text(S.of(context).joinGame, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: textTheme.headlineLarge?.color,),),
                   ),
                 ),
