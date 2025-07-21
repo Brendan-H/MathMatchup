@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (router.g.dart) Last Modified on 5/2/25, 11:34 PM
+ *
+ */
+
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'router.dart';

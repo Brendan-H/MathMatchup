@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
  * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
- * Current File (game_settings_page.dart) Last Modified on 5/1/25, 11:41 PM
+ * Current File (game_settings_page.dart) Last Modified on 7/20/25, 1:37 PM
  *
  */
 import 'package:flutter/material.dart';

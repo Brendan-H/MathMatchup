@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025 by Brendan Haran, All Rights Reserved.
+ * Use of this file or any of its contents is strictly prohibited without prior written permission from Brendan Haran.
+ * Current File (messages_en.dart) Last Modified on 7/19/25, 9:43 PM
+ *
+ */
+
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
 // This is a library that provides messages for a en locale. All the
 // messages from the main program should be duplicated here with the same
