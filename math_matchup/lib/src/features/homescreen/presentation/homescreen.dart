@@ -14,6 +14,7 @@ import 'package:math_matchup/src/common_widgets/main_drawer.dart';
 import 'package:matchup_core/matchup_core.dart';
 import 'package:math_matchup/src/features/homescreen/domain/join_button_controller.dart';
 import 'package:math_matchup/src/features/homescreen/presentation/widgets/game_code_textfield.dart';
+import 'package:math_matchup/src/features/homescreen/presentation/widgets/homescreen_appbar.dart';
 import 'package:math_matchup/src/features/homescreen/presentation/widgets/player_name_textfield.dart';
 import 'package:math_matchup/src/utils/auth_provider.dart';
 import '../domain/input_validation.dart';
@@ -70,46 +71,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-    final user = ref.watch(authStateProvider);
     final Map<Locale, String> locales = {
       const Locale('en', 'US'): 'English',
       const Locale('es', 'ES'): 'Español',
     };
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final user = ref.watch(authStateProvider);
     return Scaffold(
       drawer: const MainDrawer(),
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-         child: Builder(
-           builder: (BuildContext innerContext) {
-             return IconButton(icon: Icon(Icons.menu, color: theme.colorScheme.onPrimaryContainer, size: 30,), onPressed: () {Scaffold.of(innerContext).openDrawer();});
-           }
-         ),
-          // child: IconButton(
-          //   icon:  themeModeState == ThemeMode.light ? const Icon(Icons.light_mode_outlined) : const Icon(Icons.dark_mode_outlined),
-          //   onPressed: () {
-          //     ref.read(themesProvider.notifier).changeTheme(themeModeState == ThemeMode.light);
-          //   },
-          // ),
-        ),
-        actions: [
-         CustomDropdown(items: locales, selectedItem: ref.watch(localeProvider.notifier).state)
-        ],
-        elevation: 3,
-        shadowColor: Colors.black.withOpacity(0.05),
-        toolbarHeight: MediaQuery.of(context).size.height * .085,
-        title: Text(S.of(context).welcomeToMathmatchup, style: TextStyle(
-          fontSize: 26,
-          fontWeight: FontWeight.w600,
-          color: theme.colorScheme.onPrimaryContainer,
-        ),),
-        centerTitle: true,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-        ),
-      ),
+      appBar: HomescreenAppBar(ref: ref, actions: [CustomDropdown(items: locales, selectedItem: ref.watch(localeProvider.notifier).state)]),
       body: SafeArea(
         minimum: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
