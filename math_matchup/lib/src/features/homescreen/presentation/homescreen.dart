@@ -6,12 +6,10 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:math_matchup/src/common_widgets/custom_dropdown.dart';
 import 'package:math_matchup/src/common_widgets/main_drawer.dart';
-import 'package:matchup_core/matchup_core.dart';
 import 'package:math_matchup/src/features/homescreen/domain/join_button_controller.dart';
 import 'package:math_matchup/src/features/homescreen/presentation/widgets/game_code_textfield.dart';
 import 'package:math_matchup/src/features/homescreen/presentation/widgets/homescreen_appbar.dart';
@@ -20,7 +18,6 @@ import 'package:math_matchup/src/utils/auth_provider.dart';
 import '../domain/input_validation.dart';
 import '../../../../generated/l10n.dart';
 import '../../../app.dart';
-import '../repository/join_game.dart';
 
 
 class GameCodeNotifier extends StateNotifier<String> {

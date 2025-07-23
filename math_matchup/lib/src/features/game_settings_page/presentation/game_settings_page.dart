@@ -7,6 +7,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:math_matchup/src/features/game_settings_page/presentation/widgets/labeled_dropdown.dart';
+import 'package:math_matchup/src/features/game_settings_page/presentation/widgets/settings_preview_card.dart';
 import 'package:math_matchup/src/features/game_settings_page/repository/create_game.dart';
 import '../../../../generated/l10n.dart';
 
@@ -65,133 +67,58 @@ class _GameSettingsPageState extends ConsumerState<GameSettingsPage> {
                     children: [
                       Text(S.of(context).questionType, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.grey.shade400),
-                        ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            isExpanded: true,
-                            value: ref.watch(selectedQuestionTypeProvider),
-                            hint: Text(S.of(context).selectQuestionType),
-                            items: [
-                              DropdownMenuItem(value: "Addition", child: Text(S.of(context).addition)),
-                              DropdownMenuItem(value: "Subtraction", child: Text(S.of(context).subtraction)),
-                              DropdownMenuItem(value: "Multiplication", child: Text(S.of(context).multiplication)),
-                              DropdownMenuItem(value: "Division", child: Text(S.of(context).division)),
-                            ],
-                            onChanged: (value) {
-                              ref.read(selectedQuestionTypeProvider.notifier).state = value;
-                            },
-                          ),
-                        ),
+                      LabeledDropdown(
+                          label: S.of(context).selectQuestionType,
+                          value: ref.watch(selectedQuestionTypeProvider),
+                          onChanged: (value) {
+                            ref.read(selectedQuestionTypeProvider.notifier).state = value;
+                          },
+                          items: [
+                            DropdownMenuItem(value: "Addition", child: Text(S.of(context).addition)),
+                            DropdownMenuItem(value: "Subtraction", child: Text(S.of(context).subtraction)),
+                            DropdownMenuItem(value: "Multiplication", child: Text(S.of(context).multiplication)),
+                            DropdownMenuItem(value: "Division", child: Text(S.of(context).division)),
+                          ],
                       ),
                       const SizedBox(height: 20),
                       Text(S.of(context).difficulty, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.grey.shade400),
-                        ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            isExpanded: true,
-                            value: ref.watch(selectedDifficultyProvider),
-                            hint: Text(S.of(context).selectDifficulty),
-                            items: [
-                              DropdownMenuItem(value: "Easy", child: Text(S.of(context).easy)),
-                              DropdownMenuItem(value: "Medium", child: Text(S.of(context).medium)),
-                              DropdownMenuItem(value: "Hard", child: Text(S.of(context).hard)),
-                              DropdownMenuItem(value: "Impossible", child: Text(S.of(context).impossible)),
-                            ],
-                            onChanged: (value) {
-                              ref.read(selectedDifficultyProvider.notifier).state = value;
-                            },
-                          ),
-                        ),
+                      LabeledDropdown(
+                          label: S.of(context).selectDifficulty,
+                          value: ref.watch(selectedDifficultyProvider),
+                          onChanged: (value) {
+                                    ref.read(selectedDifficultyProvider.notifier).state = value;
+                                  },
+                          items: [
+                                DropdownMenuItem(value: "Easy", child: Text(S.of(context).easy)),
+                                DropdownMenuItem(value: "Medium", child: Text(S.of(context).medium)),
+                                DropdownMenuItem(value: "Hard", child: Text(S.of(context).hard)),
+                                DropdownMenuItem(value: "Impossible", child: Text(S.of(context).impossible)),
+                              ],
                       ),
                       const SizedBox(height: 20),
                       Text(S.of(context).timeLimit, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.grey.shade400),
-                        ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            isExpanded: true,
-                            value: ref.watch(timeLimitProvider),
-                            hint: Text(S.of(context).selectTimeLimit),
-                            items: [
-                              DropdownMenuItem(value: "30", child: Text(S.of(context).ThirtySeconds)),
-                              DropdownMenuItem(value: "60", child: Text(S.of(context).OneMinute)),
-                              DropdownMenuItem(value: "120", child: Text(S.of(context).TwoMinutes)),
-                              DropdownMenuItem(value: "300", child: Text(S.of(context).FiveMinutes)),
-                              DropdownMenuItem(value: "600", child: Text(S.of(context).TenMinutes)),
-                            ],
-                            onChanged: (value) {
-                              ref.read(timeLimitProvider.notifier).state = value;
-                            },
-                          ),
-                        ),
+                      LabeledDropdown(
+                          label: S.of(context).selectTimeLimit,
+                          value: ref.watch(timeLimitProvider),
+                          onChanged: (value) {
+                            ref.read(timeLimitProvider.notifier).state = value;
+                          },
+                          items:  [
+                            DropdownMenuItem(value: "30", child: Text(S.of(context).ThirtySeconds)),
+                            DropdownMenuItem(value: "60", child: Text(S.of(context).OneMinute)),
+                            DropdownMenuItem(value: "120", child: Text(S.of(context).TwoMinutes)),
+                            DropdownMenuItem(value: "300", child: Text(S.of(context).FiveMinutes)),
+                            DropdownMenuItem(value: "600", child: Text(S.of(context).TenMinutes)),
+                          ]
                       ),
                     ],
                   ),
                 ),
               ),
-
               const SizedBox(height: 20),
-              Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                elevation: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        S.of(context).aboutCreateGameWithSettings,
-                        style: textTheme.displayLarge,
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        children: [
-                          const Icon(Icons.question_answer_outlined, size: 22),
-                          const SizedBox(width: 8),
-                          Text("${S.of(context).questionType}: ", style: textTheme.displayMedium),
-                          Text(questionType, style: textTheme.displayMedium?.copyWith(fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          const Icon(Icons.flag_outlined, size: 22),
-                          const SizedBox(width: 8),
-                          Text("${S.of(context).difficulty}: ", style: textTheme.displayMedium),
-                          Text(difficulty, style: textTheme.displayMedium?.copyWith(fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          const Icon(Icons.timer_outlined, size: 22),
-                          const SizedBox(width: 8),
-                          Text("${S.of(context).timeLimit}: ", style: textTheme.displayMedium),
-                          Text("$timeLimit Seconds", style: textTheme.displayMedium?.copyWith(fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-
+              SettingsPreviewCard(questionType: questionType, difficulty: difficulty, timeLimit: timeLimit),
               const SizedBox(height: 20,),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
