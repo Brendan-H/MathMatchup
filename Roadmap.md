@@ -41,3 +41,5 @@ This will effectively give the teacher a way to see how well the class is doing 
 ### School Admin Website for License Management
 
 In progress but put on back burner for now since analytics are more useful (and interesting for me to implement)
+
+### UI Overhaul
