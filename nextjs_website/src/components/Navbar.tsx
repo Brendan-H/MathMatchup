@@ -6,7 +6,7 @@ export default function Navbar() {
     const links = [
         { label: "Home", href: "/" },
         { label: "About", href: "/about" },
-        { label: "Screenshots", href: "/screenshots" },
+     //   { label: "Screenshots", href: "/screenshots" }, // TODO: Add screenshots page
         { label: "Pricing", href: "/pricing" },
         { label: "Contact", href: "/contact" },
     ];
