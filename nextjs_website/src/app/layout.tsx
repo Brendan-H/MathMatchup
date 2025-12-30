@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "../styles/globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -13,23 +12,21 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "MathMatchup",
-  description: "The MathMatchup website",
+  description: "The math quiz game with mystery teammates!",
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <html lang="en">
+      <body className="min-h-screen bg-background text-foreground">
+      {children}
       </body>
-    </html>
+      </html>
   );
 }
