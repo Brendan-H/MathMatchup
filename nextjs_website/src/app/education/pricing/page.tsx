@@ -1,9 +1,10 @@
+"use client"
+
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
-import { colors } from '@/styles/colors';
 
 const EducationPricingPage = () => {
     const [sliderValue, setSliderValue] = useState(1);
@@ -105,7 +106,6 @@ const styles = {
     },
     button: {
         padding: '10px 20px',
-        backgroundColor: colors.primary,
         color: '#fff',
         border: 'none',
         borderRadius: '5px',

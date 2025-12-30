@@ -1,33 +1,89 @@
+"use client";
+
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
-import { Card, CardHeader, CardTitle, CardContent} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function PricingPage() {
+    const router = useRouter();
+
     return (
         <>
             <Header />
             <Navbar />
-            <main className="mx-auto max-w-6xl p-8 text-foreground">
-                <h1 className="text-4xl font-bold mb-2">Pricing</h1>
-                <p className="text-foreground mb-8">
-                    Choose the plan that's right for you
-                </p>
-            <div className="grid md:grid-cols-3 gap-6">
-                <Card className="hover:shadow-md transition-shadow">
-                    <CardHeader>
-                        <CardTitle>Student</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="font-semibold">Free</p>
-                        <ul className="list-disc list-inside mt-4 space-y-2">
-                            <li>Unlimited questions</li>
-                            <li>No Ads</li>
-                            <li className="text-red-600">Cannot start games</li>
-                        </ul>
-                    </CardContent>
-                </Card>
-            </div>
 
+            <main className="mx-auto max-w-6xl px-6 py-12">
+                <div className="mb-12">
+                    <h1 className="text-4xl font-bold mb-2">Pricing</h1>
+                    <p className="text-muted-foreground">
+                        Choose the plan that's right for you
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Student</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <p className="text-2xl font-bold">Free</p>
+                            <ul className="space-y-2 text-sm">
+                                <li>Unlimited questions</li>
+                                <li>No ads</li>
+                                <li className="text-destructive">Cannot start games</li>
+                            </ul>
+                        </CardContent>
+                        <CardFooter>
+                            <Button variant="outline" className="w-full"
+                                    onClick={() => (window.location.href = "https://mathmatchupapp.brendanharan.com")}>
+                                Play for Free
+                            </Button>
+                        </CardFooter>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Parent</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <p className="text-2xl font-bold">$1.99 / month</p>
+                            <ul className="space-y-2 text-sm">
+                                <li>Start games</li>
+                                <li>Unlimited questions</li>
+                                <li>No ads</li>
+                                <li>View child&apos;s progress</li>
+                            </ul>
+                        </CardContent>
+                        <CardFooter>
+                            <Button className="w-full">
+                                Subscribe
+                            </Button>
+                        </CardFooter>
+                    </Card>
+
+                    <Card className="border-primary shadow-md">
+                        <CardHeader>
+                            <CardTitle>Education</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <p className="text-2xl font-bold">School Licensing</p>
+                            <ul className="space-y-2 text-sm">
+                                <li>Start games for classes</li>
+                                <li>Unlimited questions</li>
+                                <li>No ads</li>
+                                <li>Advanced analytics</li>
+                                {/*<li>Custom questions</li>*/}
+                            </ul>
+                        </CardContent>
+                        <CardFooter>
+                            <Button className="w-full" onClick={() => router.push("/education/pricing")}>
+                                Get a License
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </div>
             </main>
         </>
     );

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
-import { colors } from '@/styles/colors';
 import importFromCsv from '@/app/backend/importfromcsv';
 
 const AdminHomePage = () => {
@@ -102,34 +101,29 @@ const styles = {
         display: 'flex' as const,
         flexDirection: 'row' as const,
         padding: '20px',
-        backgroundColor: colors.appBarColor,
         justifyContent: 'space-around',
     },
     minicontainer: {
         display: 'flex' as const,
         flexDirection: 'row' as const,
         padding: '20px',
-        backgroundColor: colors.primaryContainer,
         justifyContent: 'space-around',
     },
     noshadowsection: {
         marginBottom: '20px',
         padding: '20px',
-        backgroundColor: colors.primaryContainer,
         borderRadius: '10px',
         width: '45%',
     },
     section: {
         marginBottom: '20px',
         padding: '20px',
-        backgroundColor: colors.primaryContainer,
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         width: '45%',
     },
     button: {
         padding: '10px 20px',
-        backgroundColor: colors.primary,
         color: '#fff',
         border: 'none',
         borderRadius: '5px',

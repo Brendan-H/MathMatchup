@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
-import { colors } from '@/styles/colors';
 import createUser from "@/firebase/auth/createUser";
 
 const AdminAccountPage = () => {
@@ -145,14 +144,12 @@ const AdminAccountPage = () => {
 
 const styles = {
     container: {
-        backgroundColor: colors.appBarColor,
         display: 'flex' as const,
         flexDirection: 'row' as const,
         padding: '20px',
         justifyContent: 'space-around',
     },
     smallContainer: {
-        backgroundColor: colors.primaryContainer,
         padding: '20px',
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
@@ -169,7 +166,6 @@ const styles = {
     },
     button: {
         padding: '10px 20px',
-        backgroundColor: colors.primary,
         color: '#fff',
         border: 'none',
         borderRadius: '5px',
