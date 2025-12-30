@@ -13,11 +13,11 @@ export default async function importFromCsv(file: string | Blob, schoolID: numbe
     formData.append('usersCSV', file);
     const response = await fetch('http://localhost:8080/users/bulkcreate', {
         method: 'POST',
-        headers: {
-            Authorization: `Bearer ${idToken}`,
-            'schoolID': schoolID,
-            'school': school,
-        },
+        // headers: {
+        //     Authorization: `Bearer ${idToken}`,
+        //     'schoolID': schoolID,
+        //     'school': school,
+        // },
         body: formData,
     });
     const data = await response.json();

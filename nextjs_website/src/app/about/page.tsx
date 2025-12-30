@@ -10,9 +10,9 @@ export default function AboutPage() {
                 <h1 className="text-3xl font-bold mb-4">About</h1>
                 <p className="text-lg text-muted-foreground">
                     Players join the game and are automatically separated into teams of 2
-                    (or 3 if needed). The only catch is that they don't know their teammate!
+                    (or 3 if needed). The only catch? They don't know their teammate!
                     Teammates are hidden until the end, and the team
-                    with the most combined points wins.
+                    with the most combined points (adjusted for team size) wins!
                 </p>
             </main>
         </>

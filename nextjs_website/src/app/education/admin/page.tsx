@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction} from 'react';
 import Head from 'next/head';
 import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
 import importFromCsv from '@/app/backend/importfromcsv';
+import {resolveAny} from "node:dns";
 
 const AdminHomePage = () => {
     const [licenses, setLicenses] = useState([]);
@@ -36,7 +37,7 @@ const AdminHomePage = () => {
         }
     };
 
-    const handleFileChange = (event) => {
+    const handleFileChange = (event: any) => {
         setCsvFile(event.target.files[0]);
     };
 

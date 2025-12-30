@@ -1,10 +1,7 @@
-"use client";
-
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 export default function Navbar() {
-    const router = useRouter();
 
     const links = [
         { label: "Home", href: "/" },
@@ -18,13 +15,13 @@ export default function Navbar() {
         <nav className="bg-primary text-primary-foreground">
             <div className="mx-auto max-w-6xl flex justify-center gap-8 py-4">
                 {links.map((link) => (
-                    <button
+                    <Link
                         key={link.href}
-                        onClick={() => router.push(link.href)}
+                        href={link.href}
                         className="px-3 py-2 text-lg font-medium hover:underline underline-offset-4"
                     >
                         {link.label}
-                    </button>
+                    </Link>
                 ))}
             </div>
         </nav>
