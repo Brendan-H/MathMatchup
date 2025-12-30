@@ -2,29 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-:root {
-  --background: 255 255 255;
-  --foreground: 15 23 42;
-  --muted-foreground: 71 85 105;
-}
-
-body {
-  background-color: rgb(var(--background));
-  color: rgb(var(--foreground));
-}
-
-
 
 @layer base {
   :root {
@@ -92,3 +74,14 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/*export const colors = {*/
+/*  primary: '#1976d2',*/
+/*  primaryContainer: '#90caf9',*/
+/*  secondary: '#039be5',*/
+/*  secondaryContainer: '#cbe6ff',*/
+/*  tertiary: '#0277bd',*/
+/*  tertiaryContainer: '#bedcff',*/
+/*  appBarColor: '#cbe6ff',*/
+/*  error: '#b00020',*/
+/*};*/

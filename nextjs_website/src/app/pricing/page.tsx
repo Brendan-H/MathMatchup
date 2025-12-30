@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
+import { Card, CardHeader, CardTitle, CardContent} from "@/components/ui/card";
 
 export default function PricingPage() {
     return (
@@ -8,21 +9,25 @@ export default function PricingPage() {
             <Navbar />
             <main className="mx-auto max-w-6xl p-8 text-foreground">
                 <h1 className="text-4xl font-bold mb-2">Pricing</h1>
-                <p className="text-muted-foreground mb-8">
+                <p className="text-foreground mb-8">
                     Choose the plan that's right for you
                 </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="rounded-xl border p-6">
-                        <h2 className="text-xl font-semibold mb-2">Student</h2>
-                        <p className="font-bold mb-4">Free</p>
-                        <ul className="text-sm space-y-1">
+            <div className="grid md:grid-cols-3 gap-6">
+                <Card className="hover:shadow-md transition-shadow">
+                    <CardHeader>
+                        <CardTitle>Student</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="font-semibold">Free</p>
+                        <ul className="list-disc list-inside mt-4 space-y-2">
                             <li>Unlimited questions</li>
-                            <li>No ads</li>
-                            <li className="text-red-500">Cannot start games</li>
+                            <li>No Ads</li>
+                            <li className="text-red-600">Cannot start games</li>
                         </ul>
-                    </div>
-                </div>
+                    </CardContent>
+                </Card>
+            </div>
+
             </main>
         </>
     );
