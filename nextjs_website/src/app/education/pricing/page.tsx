@@ -1,116 +1,74 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Head from 'next/head';
-import Header from '@/components/Header';
-import Navbar from '@/components/Navbar';
+import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
+import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const EducationPricingPage = () => {
-    const [sliderValue, setSliderValue] = useState(1);
-    const [costPerTeacher, setCostPerTeacher] = useState(2.99);
-    const [number, setNumber] = useState('');
+export default function EducationPricingPage() {
+    const [teachers, setTeachers] = useState(25);
+    const [price, setPrice] = useState(2.99);
     const router = useRouter();
 
     useEffect(() => {
-        calculateCost();
-    }, [sliderValue]);
+        if (teachers <= 100) setPrice(2.99);
+        else if (teachers <= 300) setPrice(2.85);
+        else setPrice(2.75);
+    }, [teachers]);
 
-    const calculateCost = () => {
-        if (sliderValue <= 250) {
-            setCostPerTeacher(2.99);
-        } else if (sliderValue <= 500) {
-            setCostPerTeacher(2.85);
-        } else {
-            setCostPerTeacher(2.75);
-        }
-    };
-
-    const handleSliderChange = (value: number) => {
-        setSliderValue(value);
-        calculateCost();
-    };
-
-    const handleNumberChange = (value: string) => {
-        const parsedValue = parseInt(value, 10);
-        setSliderValue(isNaN(parsedValue) ? 1 : parsedValue);
-        setNumber(value);
-        calculateCost();
-    };
     return (
-        <div>
-            <Head>
-                <title>Education Pricing</title>
-            </Head>
+        <>
             <Header />
             <Navbar />
-            <div style={styles.container}>
-                <div style={styles.column}>
+
+            <main className="mx-auto max-w-4xl px-6 py-16 space-y-12">
+
+                <section className="text-center space-y-4">
+                    <h1 className="text-4xl font-bold">
+                        Education Pricing
+                    </h1>
+                    <p className="text-muted-foreground">
+                        Simple, transparent pricing for schools. Any questions? Contact us.
+                    </p>
+                </section>
+
+                <section className="space-y-6">
                     <input
                         type="range"
-                        min="1"
-                        max="1000"
-                        value={sliderValue}
-                        onChange={(e) => handleSliderChange(parseInt(e.target.value, 10))}
-                        style={styles.slider}
-                        placeholder='Number of teachers'
+                        min={1}
+                        max={1000}
+                        value={teachers}
+                        onChange={(e) => setTeachers(Number(e.target.value))}
+                        className="w-full"
                     />
-                    <input
-                        type="number"
-                        value={number}
-                        onChange={(e) => handleNumberChange(e.target.value)}
-                        style={styles.input}
-                        maxLength={4}
-                        placeholder='Number of teachers'
-                    />
-                    <p>Number of teachers: {sliderValue}</p>
-                    <p>Cost per teacher: ${costPerTeacher.toFixed(2)} per month</p>
-                    <p>Total cost per month: ${(costPerTeacher * sliderValue).toFixed(2)} per month</p>
-                </div>
-                <div style={styles.column}>
-                    <p>That's less than a cup of coffee per teacher per month!
-                        Purchasing a license helps us keep MathMatchup 100% ad-free and allows us to continue to develop new features and content!
-                        Your license will also give you access to in-depth analysis of every game, allowing you to track progress.
-                        The best part? Students love playing MathMatchup!
-                        The unique structure of MathMatchup makes students work harder rather than relying on their partner to do all the work.
-                        Students are more engaged and more likely to retain the information they learn.
-                        MathMatchup is the best way to supplement your curriculum and keep students learning!</p>
-                    <p>Ready to get started?</p>
-                    <button onClick={() => router.push('/education/login')} style={styles.button}>
-                        Purchase a license now!
-                    </button>
-                </div>
-            </div>
-        </div>
+
+                    <div className="text-center space-y-2">
+                        <p className="text-lg">
+                            {teachers} teachers
+                        </p>
+                        <p className="text-muted-foreground">
+                            ${price.toFixed(2)} per teacher / month
+                        </p>
+                        <p className="text-xl font-semibold">
+                            ${(teachers * price).toFixed(2)} / month total
+                        </p>
+                    </div>
+                </section>
+
+                <section className="text-center">
+                    <Button size="lg" onClick={() => router.push("/education/signup")}>
+                        Create School Account
+                    </Button>
+                </section>
+                <section className="text-center space-y-4">
+                    <p className="text-muted-foreground">
+                       We strive to make MathMatchup affordable for all schools.
+                        If your school has budget constraints that don't fit the pricing above, contact us!
+                    </p>
+                </section>
+
+            </main>
+        </>
     );
-};
-
-const styles = {
-    container: {
-        display: 'flex' as const,
-        flexDirection: 'row' as const,
-        padding: '20px',
-    },
-    column: {
-        flex: 1,
-        padding: '10px',
-    },
-    slider: {
-        width: '100%',
-        margin: '10px 0',
-    },
-    input: {
-        width: '90%',
-        padding: '10px',
-        margin: '10px 0',
-    },
-    button: {
-        padding: '10px 20px',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-    },
-};
-
-export default EducationPricingPage;
+}

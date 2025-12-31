@@ -58,7 +58,7 @@ export default function PricingPage() {
                         </CardContent>
                         <CardFooter>
                             <Button className="w-full">
-                                Subscribe
+                                Subscribe in app
                             </Button>
                         </CardFooter>
                     </Card>
@@ -74,11 +74,11 @@ export default function PricingPage() {
                                 <li>Unlimited questions</li>
                                 <li>No ads</li>
                                 <li>Advanced analytics</li>
-                                {/*<li>Custom questions</li>*/}
+                                {/*/!*<li>Custom questions</li>*!/ TODO: add custom questions to app*/}
                             </ul>
                         </CardContent>
                         <CardFooter>
-                            <Button className="w-full" onClick={() => router.push("/education/pricing")}>
+                            <Button className="w-full" onClick={() => router.push("/education")}>
                                 Get a License
                             </Button>
                         </CardFooter>
