@@ -11,6 +11,7 @@ package com.brendanharan.mathmatchupbackend.users;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,10 +31,17 @@ public class UserController
         userService.createUser(user);
     }
 
-    @GetMapping ("/findbyuid")
-    public User getUserByUid(String uid) {
+//    @GetMapping ("/findbyuid")
+//    public User getUserByUid(String uid) {
+//        return userService.getUserByUid(uid);
+//    }
+
+    @GetMapping("/current")
+    public User getCurrentUser(Authentication authentication) {
+        String uid = (String) authentication.getPrincipal();
         return userService.getUserByUid(uid);
     }
+
 
     @PostMapping("/bulkcreate")
     public void bulkCreateUsers(@RequestParam("usersCSV") MultipartFile usersCSV, @RequestHeader("schoolID") Long schoolID, @RequestHeader("school") String school) throws Exception {

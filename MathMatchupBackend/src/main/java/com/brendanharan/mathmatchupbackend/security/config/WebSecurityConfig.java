@@ -8,6 +8,7 @@ package com.brendanharan.mathmatchupbackend.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -29,12 +30,14 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, TokenAuthenticationFilter tokenAuthenticationFilter) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
-        http.cors(AbstractHttpConfigurer::disable);
+        http.cors(cors -> {});
         http
                 .authorizeHttpRequests(authmanager -> authmanager
-                .requestMatchers(WHITELISTED_API_ENDPOINTS).permitAll().anyRequest().authenticated())
-                .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-        ;
+                .requestMatchers(HttpMethod.OPTIONS, WHITELISTED_API_ENDPOINTS).permitAll()
+                .requestMatchers("/users/**").authenticated()
+                .anyRequest().authenticated()
+                )
+                .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
