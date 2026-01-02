@@ -20,8 +20,8 @@ export default function Header() {
 
     return (
         <header className="bg-primary text-primary-foreground">
-            <div className="mx-auto max-w-6xl px-6 py-16 flex items-center justify-between gap-10">
-                <div className="flex items-center gap-10">
+            <div className="mx-auto max-w-6xl px-6 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-10">
+                <div className="flex items-center gap-6 md:gap-10">
                     <div className="rounded-full bg-white p-3 overflow-hidden">
                         <Image
                             src={mathmatchuplogo}
@@ -45,7 +45,7 @@ export default function Header() {
                 </div>
 
                 {!loading && (
-                    <div className="flex items-center gap-4 text-sm">
+                    <div className="flex items-center gap-4 text-sm mt-4 md:mt-0">
                         {!user ? (
                             <>
                                 <Link
