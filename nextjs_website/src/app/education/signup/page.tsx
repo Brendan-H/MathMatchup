@@ -16,7 +16,15 @@ export default function EducationSignupPage() {
     const router = useRouter();
 
     const handleSignup = async () => {
-        const router = useRouter();
+        console.log("clicked continue");
+
+        console.log({ email, password, school, adminname, role });
+        if (!email || !password || !school || !adminname || !role) {
+            console.warn("missing fields");
+            return;
+        }
+
+        console.log("creating firebase user");
         if (!email || !password || !school || !adminname || !role) return;
 
         const { result, error } = await createUser(email, password);
