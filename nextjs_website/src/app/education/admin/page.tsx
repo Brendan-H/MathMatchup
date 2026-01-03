@@ -8,6 +8,12 @@ import { authenticatedfetch } from "@/app/backend/authenticatedfetch";
 export default function AdminPage() {
     const [admin, setAdmin] = useState<any>(null);
     const [teachers, setTeachers] = useState<any[]>([]);
+    const [showAddTeacher, setShowAddTeacher] = useState(false);
+    const [newTeacher, setNewTeacher] = useState({
+        displayName: "",
+        email: "",
+    });
+
 
     useEffect(() => {
         const loadData = async () => {
@@ -65,7 +71,8 @@ export default function AdminPage() {
                             <button className="px-4 py-2 border rounded">
                                 Upload CSV
                             </button>
-                            <button className="px-4 py-2 bg-primary text-primary-foreground rounded">
+                            <button className="px-4 py-2 bg-primary text-primary-foreground rounded"
+                                    onClick={() => setShowAddTeacher(true)}>
                                 Add Teacher
                             </button>
                         </div>
@@ -101,6 +108,61 @@ export default function AdminPage() {
                             </tbody>
                         </table>
                     </div>
+                    {showAddTeacher && (
+                        <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
+                            <div className="bg-background p-6 rounded-lg w-96 space-y-4">
+                                <h3 className="text-xl font-semibold">Add Teacher</h3>
+
+                                <input
+                                    className="w-full border p-2 rounded"
+                                    placeholder="Full Name"
+                                    value={newTeacher.displayName}
+                                    onChange={(e) =>
+                                        setNewTeacher({ ...newTeacher, displayName: e.target.value })
+                                    }
+                                />
+
+                                <input
+                                    className="w-full border p-2 rounded"
+                                    placeholder="Email"
+                                    type="email"
+                                    value={newTeacher.email}
+                                    onChange={(e) =>
+                                        setNewTeacher({ ...newTeacher, email: e.target.value })
+                                    }
+                                />
+
+                                <div className="flex justify-end gap-3">
+                                    <button onClick={() => setShowAddTeacher(false)}>Cancel</button>
+                                    <button
+                                        className="bg-primary text-primary-foreground px-4 py-2 rounded"
+                                        onClick={async () => {
+                                            await authenticatedfetch(
+                                                "http://localhost:8080/users/teachers/create?name=" + newTeacher.displayName + "&email=" + newTeacher.email + "&schoolID=" + encodeURIComponent(admin.schoolId),
+                                                {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                }
+                                            );
+
+                                            setShowAddTeacher(false);
+                                            setNewTeacher({ displayName: "", email: "" });
+                                            const teachersRes = await authenticatedfetch(
+                                                `http://localhost:8080/users/teachers?schoolID=${admin.schoolId}`
+                                            );
+                                            if (teachersRes.ok) {
+                                                setTeachers(await teachersRes.json());
+                                            }
+
+                                        }}
+                                    >
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                 </section>
             </main>
         </>
