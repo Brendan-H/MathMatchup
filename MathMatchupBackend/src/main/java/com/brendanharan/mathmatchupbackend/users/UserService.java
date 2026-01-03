@@ -31,7 +31,7 @@ public class UserService {
 
     // CreateUser doesnt need to use firebase because creation on firebase is handled on the frontend
     public void createUser(User user) throws Exception {
-        user.setSchoolId(user.getSchoolId());
+        user.setSchoolId(UIDGenerator.generatePushId());
         userRepository.save(user);
     }
 
@@ -40,7 +40,7 @@ public class UserService {
     }
 
     //bulkCreateUsers needs firebase because you cant bulk create on the frontend
-    public void bulkCreateUsers(List<String[]> rows, Long schoolID, String school) throws Exception {
+    public void bulkCreateUsers(List<String[]> rows, String schoolID, String school) throws Exception {
         List<ImportUserRecord> users = new ArrayList<>();
         for (String[] row : rows) {
             String email = row[0];
@@ -90,8 +90,51 @@ public class UserService {
         }
     }
 
-    public List<User> getTeachersBySchool(Long schoolID) {
+    public List<User> getTeachersBySchool(String schoolID) {
         return userRepository.findBySchoolIdAndRole(schoolID, "teacher");
     }
+
+    public void createTeacher(String name, String email, String schoolID, String school) throws Exception {
+
+        String uid;
+
+        if (firebaseEnabled) {
+            try {
+                UserRecord existing = FirebaseAuth.getInstance().getUserByEmail(email);
+                uid = existing.getUid();
+            } catch (FirebaseAuthException e) {
+                if (e.getAuthErrorCode() == AuthErrorCode.USER_NOT_FOUND) {
+                    UserRecord.CreateRequest request = new UserRecord.CreateRequest()
+                            .setEmail(email)
+                            .setEmailVerified(false)
+                            .setDisplayName(name)
+                            .setDisabled(false);
+
+                    UserRecord created = FirebaseAuth.getInstance().createUser(request);
+                    uid = created.getUid();
+                } else {
+                    throw e;
+                }
+            }
+
+
+            //      FirebaseAuth.getInstance().generatePasswordResetLink(email);
+        } else {
+            // For tests / local
+            uid = UIDGenerator.generatePushId();
+        }
+
+        User newUser = new User();
+        newUser.setUid(uid);
+        newUser.setDisplayName(name);
+        newUser.setEmail(email);
+        newUser.setRole("teacher");
+        newUser.setAdmin(false);
+        newUser.setSchool(school);
+        newUser.setSchoolId(schoolID);
+
+        userRepository.save(newUser);
+    }
+
 }
 

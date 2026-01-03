@@ -53,9 +53,9 @@ class TokenAuthenticationFilter extends OncePerRequestFilter {
 
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER_PREFIX)) {
             String token = authorizationHeader.replace(BEARER_PREFIX, ""); //same thing as doing substring(7) but avoids magic numbers
-            logger.info("Token: {}", token);
+        //    logger.info("Token: {}", token);
             Optional<String> userId = extractUserIdFromToken(token);
-            logger.info("User ID: {}", userId.orElse("Not found"));
+       //     logger.info("User ID: {}", userId.orElse("Not found"));
 
             if (userId.isPresent()) {
                 var authentication = new UsernamePasswordAuthenticationToken(userId.get(), null, null);
@@ -76,7 +76,7 @@ class TokenAuthenticationFilter extends OncePerRequestFilter {
     private Optional<String> extractUserIdFromToken(String token) {
         try {
             FirebaseToken firebaseToken = firebaseAuth.verifyIdToken(token, true);
-            logger.info("Firebase Token: {}", firebaseToken);
+     //       logger.info("Firebase Token: {}", firebaseToken);
             String userId = String.valueOf(firebaseToken.getClaims().get(USER_ID_CLAIM));
             return Optional.of(userId);
         } catch (FirebaseAuthException exception) {

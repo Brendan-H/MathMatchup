@@ -31,6 +31,18 @@ public class UserController
         userService.createUser(user);
     }
 
+    @PostMapping ("/teachers/create")
+    public void createTeacher(@RequestParam("name") String name, @RequestParam("email") String email, Authentication authentication) throws Exception {
+        String adminUID = (String) authentication.getPrincipal();
+        User admin = userService.getUserByUid(adminUID);
+        userService.createTeacher(
+                name,
+                email,
+                admin.getSchoolId(),
+                admin.getSchool()
+        );
+    }
+
 //    @GetMapping ("/findbyuid")
 //    public User getUserByUid(String uid) {
 //        return userService.getUserByUid(uid);
@@ -43,13 +55,13 @@ public class UserController
     }
 
     @GetMapping("/teachers")
-    public List<User> getTeachersBySchool(@RequestParam("schoolID") Long schoolID) {
+    public List<User> getTeachersBySchool(@RequestParam("schoolID") String schoolID) {
         return userService.getTeachersBySchool(schoolID);
     }
 
 
     @PostMapping("/bulkcreate")
-    public void bulkCreateUsers(@RequestParam("usersCSV") MultipartFile usersCSV, @RequestHeader("schoolID") Long schoolID, @RequestHeader("school") String school) throws Exception {
+    public void bulkCreateUsers(@RequestParam("usersCSV") MultipartFile usersCSV, @RequestHeader("schoolID") String schoolID, @RequestHeader("school") String school) throws Exception {
         Reader reader = new InputStreamReader(usersCSV.getInputStream());
 //use opencsv to read the csv file and leave it as List<String[]> rows
 
