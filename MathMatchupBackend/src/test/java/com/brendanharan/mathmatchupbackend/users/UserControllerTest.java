@@ -68,7 +68,7 @@ public class UserControllerTest {
         user.setEmail("test@example.com");
         user.setDisplayName("Test User");
         user.setSchoolId(123L);
-        user.setRole("Teacher");
+        user.setRole("teacher");
 
         mockMvc.perform(post("/users/create")
                         .contentType(MediaType.APPLICATION_JSON)

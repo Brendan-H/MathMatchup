@@ -4,15 +4,69 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { authenticatedfetch } from "@/app/backend/authenticatedfetch";
+import {getAuth} from "firebase/auth";
+import firebase_app from "@/firebase/config";
 
 export default function AdminPage() {
     const [admin, setAdmin] = useState<any>(null);
     const [teachers, setTeachers] = useState<any[]>([]);
     const [showAddTeacher, setShowAddTeacher] = useState(false);
+    const [showUploadCSV, setShowUploadCSV] = useState(false);
+    const [csvFile, setCsvFile] = useState<File | null>(null);
+    const [uploading, setUploading] = useState(false);
+    const [uploadError, setUploadError] = useState<string | null>(null);
     const [newTeacher, setNewTeacher] = useState({
         displayName: "",
         email: "",
     });
+
+    const handleCsvUpload = async () => {
+        if (!csvFile || !admin) return;
+        if (!csvFile.name.endsWith(".csv")) {
+            setUploadError("Please upload a CSV file");
+            return;
+        }
+
+
+        setUploading(true);
+        setUploadError(null);
+
+        const formData = new FormData();
+        formData.append("usersCSV", csvFile);
+        const auth = getAuth(firebase_app);
+        const token = await auth.currentUser!.getIdToken();
+
+        try {
+            const res = await authenticatedfetch(
+                "http://localhost:8080/users/bulkcreate",
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: formData,
+                }
+            );
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                setUploadError(errorData.message || "Upload failed");
+            } else {
+                setShowUploadCSV(false);
+                const teachersRes = await authenticatedfetch(
+                    `http://localhost:8080/users/teachers?schoolID=${admin.schoolId}`
+                );
+                if (teachersRes.ok) {
+                    setTeachers(await teachersRes.json());
+                }
+            }
+        } catch (error) {
+            setUploadError("An unexpected error occurred");
+        } finally {
+            setUploading(false);
+            setCsvFile(null);
+        }
+    }
 
 
     useEffect(() => {
@@ -39,7 +93,7 @@ export default function AdminPage() {
             <>
                 <Header />
                 <Navbar />
-                <main className="p-8 text-center">Loading…</main>
+                <main className="p-8 text-center">Loading…it's possible you may need to visit the homepage and come back to the dashboard because of an error.</main>
             </>
         );
     }
@@ -68,7 +122,8 @@ export default function AdminPage() {
                             Teacher Management
                         </h2>
                         <div className="flex gap-4">
-                            <button className="px-4 py-2 border rounded">
+                            <button className="px-4 py-2 border rounded"
+                            onClick={() => setShowUploadCSV(true)}>
                                 Upload CSV
                             </button>
                             <button className="px-4 py-2 bg-primary text-primary-foreground rounded"
@@ -162,6 +217,37 @@ export default function AdminPage() {
                             </div>
                         </div>
                     )}
+                    {showUploadCSV && (
+                        <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
+                            <div className="bg-background p-6 rounded-lg w-96 space-y-4">
+
+                                    <h2 className="text-xl font-semibold mb-2">Bulk Upload Teachers via .csv</h2>
+                                    <p className="text-lg font-normal mb-2">Format: email,lastName,firstName</p>
+
+                                    <input
+                                        type="file"
+                                        accept=".csv"
+                                        onChange={(e) => setCsvFile(e.target.files?.[0] ?? null)}
+                                    />
+
+                                    <button
+                                        className="mt-3 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
+                                        disabled={!csvFile || uploading}
+                                             onClick={handleCsvUpload}
+                                    >
+                                        {uploading ? "Uploading..." : "Upload CSV"}
+                                    </button>
+
+                                    {uploadError && (
+                                        <p className="text-red-600 mt-2">{uploadError}</p>
+                                    )}
+
+                            </div>
+                        </div>
+
+
+                    )}
+
 
                 </section>
             </main>

@@ -83,7 +83,7 @@ public class UserService {
             newUser.setEmail(email);
             newUser.setDisplayName(displayName);
             newUser.setUid(uid);
-            newUser.setRole("Teacher");
+            newUser.setRole("teacher");
             newUser.setSchool(school);
             newUser.setSchoolId(schoolID);
             userRepository.save(newUser);
@@ -118,7 +118,7 @@ public class UserService {
             }
 
 
-            //      FirebaseAuth.getInstance().generatePasswordResetLink(email);
+            //      FirebaseAuth.getInstance().generatePasswordResetLink(email); //TODO uncomment
         } else {
             // For tests / local
             uid = UIDGenerator.generatePushId();

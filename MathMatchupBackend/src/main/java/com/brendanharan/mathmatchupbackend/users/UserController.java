@@ -61,13 +61,23 @@ public class UserController
 
 
     @PostMapping("/bulkcreate")
-    public void bulkCreateUsers(@RequestParam("usersCSV") MultipartFile usersCSV, @RequestHeader("schoolID") String schoolID, @RequestHeader("school") String school) throws Exception {
+    public void bulkCreateUsers(@RequestParam("usersCSV") MultipartFile usersCSV, Authentication authentication) throws Exception {
         Reader reader = new InputStreamReader(usersCSV.getInputStream());
 //use opencsv to read the csv file and leave it as List<String[]> rows
 
         CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
 
         List<String[]> rows = csvReader.readAll();
+        if (rows.isEmpty()) {
+            throw new IllegalArgumentException("CSV file is empty or only contains headers");
+        }
+        if (rows.get(0).length < 3) {
+            throw new IllegalArgumentException("CSV file must contain 3 columns: email,lastName,firstName");
+        }
+        String adminUID = (String) authentication.getPrincipal();
+        User admin = userService.getUserByUid(adminUID);
+        String schoolID = admin.getSchoolId();
+        String school = admin.getSchool();
 
         userService.bulkCreateUsers(rows, schoolID, school);
     }
