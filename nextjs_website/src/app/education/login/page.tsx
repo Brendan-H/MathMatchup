@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebase_app from "@/firebase/config";
@@ -51,6 +51,13 @@ export default function LoginPage() {
                 <Button className="w-full" onClick={handleLogin}>
                     Log in
                 </Button>
+
+                <button
+                    className="underline opacity-80 mx-auto block text-sm"
+                    onClick={() => router.push("/education/forgot-password")}
+                >
+                    Forgot Password?
+                </button>
             </main>
         </>
     );
