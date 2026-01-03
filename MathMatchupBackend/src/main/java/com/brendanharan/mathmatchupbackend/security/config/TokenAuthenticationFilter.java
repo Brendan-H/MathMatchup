@@ -52,7 +52,7 @@ class TokenAuthenticationFilter extends OncePerRequestFilter {
         logger.info("Authorization Header: {}", authorizationHeader);
 
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER_PREFIX)) {
-            String token = authorizationHeader.replace(BEARER_PREFIX, "");
+            String token = authorizationHeader.replace(BEARER_PREFIX, ""); //same thing as doing substring(7) but avoids magic numbers
             logger.info("Token: {}", token);
             Optional<String> userId = extractUserIdFromToken(token);
             logger.info("User ID: {}", userId.orElse("Not found"));

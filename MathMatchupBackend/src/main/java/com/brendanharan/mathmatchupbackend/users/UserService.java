@@ -89,5 +89,9 @@ public class UserService {
             userRepository.save(newUser);
         }
     }
+
+    public List<User> getTeachersBySchool(Long schoolID) {
+        return userRepository.findBySchoolIdAndRole(schoolID, "teacher");
+    }
 }
 

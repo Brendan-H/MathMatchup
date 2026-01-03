@@ -40,6 +40,8 @@ This will effectively give the teacher a way to see how well the class is doing 
 
 ### School Admin Website for License Management
 
-In progress but put on back burner for now since analytics are more useful (and interesting for me to implement)
+In progress (admin features nearly done)
 
 ### UI Overhaul
+
+Not started yet. Will be moving teacher functions out of the app and into the website.

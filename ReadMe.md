@@ -10,7 +10,7 @@ Players join the game and are automatically separated into teams of 2 or, if nee
 They then have to answer questions to get points, which get added together with their partner's points at the end.
 Teammates are revealed and the partnership with the most points wins!
 
-Technologies: Dart + Flutter, Java + Spring, PostgreSQL
+Technologies: Dart + Flutter, Java + Spring, Typescript + NextJS, PostgreSQL
 
 ## Repository Navigation
 
@@ -28,7 +28,7 @@ testingscript.py - A python script that simulates a full class of players, letti
 
 ## Why rewrite the website?
 
-It is always hard to throw away code, but I made the decision to completely rewrite the website for MathMatchup. The original website was written in Flutter, which, while familiar to me (something that sped up development), is not a great choice for a mostly static website because it has slow initial loading times and no SEO. Using Next.js solves both of these problems well (and gave me something new to learn), so it was an obvious choice.  
+It is always hard to throw away code, but I made the decision to completely rewrite the website for MathMatchup. The original website was written in Flutter, which, while familiar to me (something that sped up development), is not a great choice for a mostly static website because it has slow initial loading times and no SEO. Using Next.js solves both of these problems well (and gave me something new to learn), so it was an obvious choice. The app is mostly optimized for small screens, so I needed a computer-screen ready way to manage licenses and start games. A website separate from the app made the most sense. While it is currently a MathMatchup website, it will eventually be changed to MatchupLearning to allow for more school subjects.
 
 ## App Features
 
@@ -59,7 +59,9 @@ It is always hard to throw away code, but I made the decision to completely rewr
 
 ## NextJS Admin Website
 
-In progress, but put on the back burner for now as I work on more interesting features.
+- Serves as the marketing website for MathMatchup
+- Allows for school-wide license management
+- Easily create teacher accounts by hand, or through CSV upload
 
 ## Screenshots
 

@@ -1,48 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { authenticatedfetch } from "@/app/backend/authenticatedfetch";
-import { getAuth } from "firebase/auth";
-import firebase_app from "@/firebase/config";
 
 export default function AdminPage() {
-    const [userData, setUserData] = useState<any>(null);
-    const router = useRouter();
+    const [admin, setAdmin] = useState<any>(null);
+    const [teachers, setTeachers] = useState<any[]>([]);
 
     useEffect(() => {
-        const loadUser = async () => {
-            const auth = getAuth(firebase_app);
-            const user = auth.currentUser;
+        const loadData = async () => {
+            const adminRes = await authenticatedfetch(
+                "http://localhost:8080/users/current"
+            );
+            const adminData = await adminRes.json();
+            setAdmin(adminData);
 
-            if (!user) {
-                router.push("/education/login");
-                return;
-            }
-
-            try {
-                const res = await authenticatedfetch(
-                    `http://localhost:8080/users/current`
-                );
-
-                if (!res.ok) {
-                    throw new Error("Bad request");
-                }
-
-                const data = await res.json();
-                setUserData(data);
-            } catch (err) {
-                console.error(err);
-                router.push("/education/login");
+            const teachersRes = await authenticatedfetch(
+                `http://localhost:8080/users/teachers?schoolID=${adminData.schoolId}`
+            );
+            if (teachersRes.ok) {
+                setTeachers(await teachersRes.json());
             }
         };
 
-        loadUser();
-    }, [router]);
+        loadData();
+    }, []);
 
-    if (!userData) {
+    if (!admin) {
         return (
             <>
                 <Header />
@@ -57,17 +43,65 @@ export default function AdminPage() {
             <Header />
             <Navbar />
 
-            <main className="mx-auto max-w-3xl p-8 space-y-6">
-                <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+            <main className="mx-auto max-w-6xl p-8 space-y-10">
+                <h1 className="text-4xl font-bold">Admin Dashboard</h1>
 
-                <div className="space-y-2">
-                    <div><strong>Name:</strong> {userData.displayName}</div>
-                    <div><strong>Email:</strong> {userData.email}</div>
-                    <div><strong>Role:</strong> {userData.role}</div>
-                    <div><strong>School:</strong> {userData.school}</div>
-                    <div><strong>School ID:</strong> {userData.schoolId}</div>
-                    <div><strong>Admin:</strong> {String(userData.isAdmin)}</div>
-                </div>
+                <section className="rounded-lg border p-6 space-y-2">
+                    <h2 className="text-xl font-semibold">School Overview</h2>
+                    <div><strong>Name:</strong> {admin.displayName}</div>
+                    <div><strong>Email:</strong> {admin.email}</div>
+                    <div><strong>Role:</strong> {admin.role}</div>
+                    <div><strong>School:</strong> {admin.school}</div>
+                    <div><strong>School ID:</strong> {admin.schoolId}</div>
+                    <div><strong>Admin:</strong> {String(admin.isAdmin)}</div>
+                </section>
+
+                <section className="space-y-6">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-2xl font-semibold">
+                            Teacher Management
+                        </h2>
+                        <div className="flex gap-4">
+                            <button className="px-4 py-2 border rounded">
+                                Upload CSV
+                            </button>
+                            <button className="px-4 py-2 bg-primary text-primary-foreground rounded">
+                                Add Teacher
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="overflow-x-auto border rounded">
+                        <table className="w-full text-left">
+                            <thead className="bg-muted">
+                            <tr>
+                                <th className="p-3">Name</th>
+                                <th className="p-3">Email</th>
+                                <th className="p-3">Role</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {teachers.length === 0 && (
+                                <tr>
+                                    <td
+                                        colSpan={3}
+                                        className="p-6 text-center opacity-70"
+                                    >
+                                        No teachers added yet
+                                    </td>
+                                </tr>
+                            )}
+                            {teachers.map((t) => (
+                                <tr key={t.uid} className="border-t">
+                                    <td className="p-3">{t.displayName}</td>
+                                    <td className="p-3">{t.email}</td>
+                                    <td className="p-3">{t.role}</td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </main>
         </>
     );

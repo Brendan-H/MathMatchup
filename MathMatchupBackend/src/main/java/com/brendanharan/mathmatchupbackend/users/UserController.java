@@ -42,6 +42,11 @@ public class UserController
         return userService.getUserByUid(uid);
     }
 
+    @GetMapping("/teachers")
+    public List<User> getTeachersBySchool(@RequestParam("schoolID") Long schoolID) {
+        return userService.getTeachersBySchool(schoolID);
+    }
+
 
     @PostMapping("/bulkcreate")
     public void bulkCreateUsers(@RequestParam("usersCSV") MultipartFile usersCSV, @RequestHeader("schoolID") Long schoolID, @RequestHeader("school") String school) throws Exception {
