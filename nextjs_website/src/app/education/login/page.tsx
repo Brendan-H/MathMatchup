@@ -30,6 +30,7 @@ export default function LoginPage() {
             <Navbar />
             <main className="mx-auto max-w-md p-8 space-y-6">
                 <h1 className="text-3xl font-bold text-center">Admin Login</h1>
+                <p className="text-lg font-bold text-center">Note: the backend is not currently running, so login will not work</p>
 
                 <input
                     className="w-full p-3 border rounded"

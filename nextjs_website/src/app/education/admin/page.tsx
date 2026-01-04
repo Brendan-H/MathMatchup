@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { authenticatedfetch } from "@/app/backend/authenticatedfetch";
-import {getAuth} from "firebase/auth";
+import {getAuth, sendPasswordResetEmail} from "firebase/auth";
 import firebase_app from "@/firebase/config";
 
 export default function AdminPage() {
@@ -52,6 +52,14 @@ export default function AdminPage() {
                 const errorData = await res.json();
                 setUploadError(errorData.message || "Upload failed");
             } else {
+                const emails = await extractEmailsFromCsv(csvFile);
+                for (const email of emails) {
+                    try {
+                        await sendPasswordResetEmail(auth, email);
+                    } catch (err) {
+                        console.error(`Failed to send reset email to ${email}`, err);
+                    }
+                }
                 setShowUploadCSV(false);
                 const teachersRes = await authenticatedfetch(
                     `http://localhost:8080/users/teachers?schoolID=${admin.schoolId}`
@@ -67,6 +75,15 @@ export default function AdminPage() {
             setCsvFile(null);
         }
     }
+
+    const extractEmailsFromCsv = async (file: File): Promise<string[]> => {
+        const text = await file.text();
+        const lines = text.split("\n").slice(1); // skip header
+        return lines
+            .map(line => line.split(",")[0]?.trim())
+            .filter(email => email && email.includes("@"));
+    };
+
 
 
     useEffect(() => {
@@ -207,6 +224,7 @@ export default function AdminPage() {
                                             );
                                             if (teachersRes.ok) {
                                                 setTeachers(await teachersRes.json());
+                                                sendPasswordResetEmail(getAuth(firebase_app), newTeacher.email);
                                             }
 
                                         }}

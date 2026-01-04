@@ -117,8 +117,6 @@ public class UserService {
                 }
             }
 
-
-            //      FirebaseAuth.getInstance().generatePasswordResetLink(email); //TODO uncomment
         } else {
             // For tests / local
             uid = UIDGenerator.generatePushId();

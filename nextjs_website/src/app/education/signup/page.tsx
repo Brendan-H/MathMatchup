@@ -3,7 +3,7 @@
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import createUser from "@/firebase/auth/createUser";
 
@@ -66,6 +66,7 @@ export default function EducationSignupPage() {
                 <h1 className="text-3xl font-bold text-center">
                     Create School Account
                 </h1>
+                <p className="text-lg font-bold text-center">Note: the backend is not currently running, so signup will not work</p>
 
                 <input
                     className="w-full p-3 border rounded"
