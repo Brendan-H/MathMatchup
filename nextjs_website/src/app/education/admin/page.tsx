@@ -15,10 +15,41 @@ export default function AdminPage() {
     const [csvFile, setCsvFile] = useState<File | null>(null);
     const [uploading, setUploading] = useState(false);
     const [uploadError, setUploadError] = useState<string | null>(null);
+    const [resetStatus, setResetStatus] = useState<Record<string, number>>({});
+    const [now, setNow] = useState(Date.now());
     const [newTeacher, setNewTeacher] = useState({
         displayName: "",
         email: "",
     });
+
+    const isOnCooldown = (email: string) => {
+        const until = resetStatus[email];
+        return typeof until === "number" && now < until;
+    };
+
+    const remainingSeconds = (email: string) => {
+        const until = resetStatus[email];
+        if (!until) return 0;
+        return Math.max(0, Math.ceil((until - now) / 1000));
+    };
+
+    const handlePasswordReset = async (email: string) => {
+        if (isOnCooldown(email)) return;
+
+        try {
+            await sendPasswordResetEmail(getAuth(firebase_app), email);
+
+            // 60 second cooldown
+            setResetStatus(prev => ({
+                ...prev,
+                [email]: Date.now() + 60_000,
+            }));
+        } catch (err) {
+            console.error(`Failed to send reset email to ${email}`, err);
+            alert("Failed to send password reset email.");
+        }
+    };
+
 
     const handleCsvUpload = async () => {
         if (!csvFile || !admin) return;
@@ -105,6 +136,21 @@ export default function AdminPage() {
         loadData();
     }, []);
 
+    useEffect(() => {
+        const hasActiveCooldowns = Object.values(resetStatus).some(
+            until => until > Date.now()
+        );
+
+        if (!hasActiveCooldowns) return;
+
+        const interval = setInterval(() => {
+            setNow(Date.now());
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [resetStatus]);
+
+
     if (!admin) {
         return (
             <>
@@ -157,6 +203,7 @@ export default function AdminPage() {
                                 <th className="p-3">Name</th>
                                 <th className="p-3">Email</th>
                                 <th className="p-3">Role</th>
+                                <th className="p-3">Email Reset</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -175,6 +222,23 @@ export default function AdminPage() {
                                     <td className="p-3">{t.displayName}</td>
                                     <td className="p-3">{t.email}</td>
                                     <td className="p-3">{t.role}</td>
+                                    <td className="p-3">
+                                        <button
+                                            disabled={isOnCooldown(t.email)}
+                                            onClick={() => handlePasswordReset(t.email)}
+                                            className={`
+                                                    px-3 py-1.5 rounded-md text-sm font-medium transition
+                                                    border
+                                                    ${isOnCooldown(t.email)
+                                                ? "bg-muted text-muted-foreground cursor-not-allowed"
+                                                : "bg-background hover:bg-muted text-foreground border-border"}
+    `}
+                                        >
+                                            {isOnCooldown(t.email)
+                                                ? `Sent (${remainingSeconds(t.email)}s)`
+                                                : "Send reset email"}
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                             </tbody>
