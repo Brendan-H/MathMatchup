@@ -7,6 +7,7 @@ import firebase_app from "@/firebase/config";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
+import {authenticatedfetch} from "@/app/backend/authenticatedfetch";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
@@ -15,14 +16,38 @@ export default function LoginPage() {
     const router = useRouter();
 
     const handleLogin = async () => {
+        setError(null);
+        const auth = getAuth(firebase_app);
+
         try {
-            const auth = getAuth(firebase_app);
             await signInWithEmailAndPassword(auth, email, password);
-            router.push("/education/admin");
-        } catch {
-            setError("Invalid email or password");
+        } catch (err) {
+            setError("Invalid email or password.");
+            return;
+        }
+
+        try {
+            const res = await authenticatedfetch("http://localhost:8080/users/current");
+            if (!res.ok) {
+                const text = await res.text();
+                throw new Error(text);
+            }
+            const user = await res.json();
+            console.log(user);
+
+            if (user.isAdmin) {
+                router.push("/education/admin");
+            } else if (user.role === "teacher") {
+                router.push("/education/teacher");
+            } else {
+                router.push("/");
+            }
+        } catch (err) {
+            console.error(err);
+            setError("Login succeeded, but dashboard routing failed.");
         }
     };
+
 
     return (
         <>

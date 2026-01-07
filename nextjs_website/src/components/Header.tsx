@@ -28,6 +28,7 @@ export default function Header() {
                             alt="MathMatchup Logo"
                             width={160}
                             height={160}
+                            loading="eager"
                         />
                     </div>
 
@@ -52,7 +53,7 @@ export default function Header() {
                                     href="/education/login"
                                     className="hover:underline"
                                 >
-                                    Admin Login
+                                    Login
                                 </Link>
                                 <Link
                                     href="/education/signup"
@@ -61,6 +62,7 @@ export default function Header() {
                                     Get Started
                                 </Link>
                             </>
+
                         ) : (
                             <>
                                 <Link

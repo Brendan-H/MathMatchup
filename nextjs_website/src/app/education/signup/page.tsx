@@ -21,6 +21,7 @@ export default function EducationSignupPage() {
         console.log({ email, password, school, adminname, role });
         if (!email || !password || !school || !adminname || !role) {
             console.warn("missing fields");
+            alert("Please fill in all fields");
             return;
         }
 
@@ -94,7 +95,6 @@ export default function EducationSignupPage() {
                     </option>
                     <option value="principal">Principal</option>
                     <option value="tech_lead">Tech Lead</option>
-                    <option value="teacher">Teacher</option>
                     <option value="admin">Admin</option>
                     <option value="other">Other</option>
                 </select>
