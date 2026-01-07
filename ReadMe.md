@@ -10,8 +10,6 @@ Players join the game and are automatically separated into teams of 2 or, if nee
 They then have to answer questions to get points, which get added together with their partner's points at the end.
 Teammates are revealed and the partnership with the most points wins!
 
-Technologies: Dart + Flutter, Java + Spring, Typescript + NextJS, PostgreSQL
-
 ## Repository Navigation
 
 [MathMatchupBackend](/MathMatchupBackend/) - Directory that stores the Spring backend to the app and website
@@ -29,6 +27,16 @@ testingscript.py - A python script that simulates a full class of players, letti
 ## Why rewrite the website?
 
 It is always hard to throw away code, but I made the decision to completely rewrite the website for MathMatchup. The original website was written in Flutter, which, while familiar to me (something that sped up development), is not a great choice for a mostly static website because it has slow initial loading times and no SEO. Using Next.js solves both of these problems well (and gave me something new to learn), so it was an obvious choice. The app is mostly optimized for small screens, so I needed a computer-screen ready way to manage licenses and start games. A website separate from the app made the most sense. While it is currently labeled the "MathMatchup" website, it will eventually be changed to "MatchupLearning" to allow for more school subjects to be part of the MathMatchup experience. This will only happen when MathMatchup is perfected, though.
+
+## Technical Architecture
+
+- Technologies: Dart + Flutter, Java + Spring, Typescript + NextJS, PostgreSQL
+- The backend (Spring + PostgreSQL) manages users, games, and analytics. It enforces full endpoint security by verifying Firebase credentials
+- Firebase Authentication provides fast, infinitely scalable, secure authentication for MathMatchup. It also allows me to avoid needing an OAuth, website hosting or email blast vendor since that's all included for free.
+- The app (Flutter) is used by students to play games. It also handles all question generation (based on teacher-set game settings) to ensure no delay from API calls.
+- The website (NextJS) is used by teachers and administrators. On it, admins can handle licenses and teachers can create games. Teachers can also view game analytics (which are more limited than I'd like because I don't want to mess with COPPA)
+
+This architecture minimizes backend load while ensuring ease of use for students, teachers, and administrators.
 
 ## App Features
 
