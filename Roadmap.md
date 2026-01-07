@@ -7,6 +7,15 @@
  - PlayerController - DONE
  - UserController - DONE
 
+### School Admin Website for License Management
+
+- In progress (admin features done)
+- Teacher features (game creation, etc.) coming soon
+
+### UI Overhaul
+
+Not started yet. Will be moving teacher functions out of the app and into the website.
+
  ### Game analytics
  - Track how many questions each student answers
  - Track how many questions each student answers correctly
@@ -37,11 +46,3 @@ Data to be stored:
 - Game data: Game id, class average percent correct, class average time spent on questions, standard deviation for both
 
 This will effectively give the teacher a way to see how well the class is doing as a whole and how well each student is doing individually in an intuitive way.
-
-### School Admin Website for License Management
-
-In progress (admin features nearly done)
-
-### UI Overhaul
-
-Not started yet. Will be moving teacher functions out of the app and into the website.
