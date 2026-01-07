@@ -11,6 +11,7 @@ package com.brendanharan.mathmatchupbackend.users;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,9 +50,16 @@ public class UserController
 //    }
 
     @GetMapping("/current")
-    public User getCurrentUser(Authentication authentication) {
+    public ResponseEntity<?> getCurrentUser(Authentication authentication) {
         String uid = (String) authentication.getPrincipal();
-        return userService.getUserByUid(uid);
+        User user = userService.getUserByUid(uid);
+
+        if (user == null) {
+            return ResponseEntity.status(404)
+                    .body("User not found in db");
+        }
+
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/teachers")
