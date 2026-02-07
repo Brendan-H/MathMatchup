@@ -50,7 +50,7 @@ This architecture minimizes backend load while ensuring ease of use for students
 - Endless customizations allow teachers to tailor nearly every aspect of games, ranging from the timer to the difficulty of questions (Easy, Medium, Hard, and Impossible)
 - Real time updates for players in game, including scoring, leaderboards, and other players
 - Player analytics for teachers to view
-- 47.5% test coverage (with more coming)
+- Comprehensive backend test coverage to validate core API functions
 
 ## Backend Features
 
